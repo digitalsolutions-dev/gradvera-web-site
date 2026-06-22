@@ -55,3 +55,18 @@
 html {
   overflow-x: clip;
 }
+
+/* --- Capability 2 foot overlap on mobile ------------------------------------
+   On desktop, .cap2-annot .capx-foot is pulled up (margin-top:-184px) to sit
+   beside the floating annotation column. At <=1000px that column is hidden and
+   the stacked .cap2-list appears, but the foot kept the negative margin and
+   collided with the last list item ("Accept, adjust, or teach Gradvera"). Reset
+   it so the foot flows normally below the list. */
+@media (max-width: 1000px) {
+  .cap2-annot .capx-foot {
+    margin-top: 18px;
+    justify-content: center;
+    text-align: center;
+    max-width: none;
+  }
+}
