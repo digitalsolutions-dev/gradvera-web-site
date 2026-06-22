@@ -34,6 +34,14 @@ const {
 const site = Astro.site;
 const siteOrigin = site ? String(site).replace(/\/$/, '') : SITE.url;
 
+// Force noindex on any non-production deploy (Vercel Preview / staging) so
+// pre-production URLs are never indexed — even on a custom preview domain, where
+// Vercel's automatic *.vercel.app noindex header does NOT apply. At build time
+// VERCEL_ENV is 'production' on the prod deploy, 'preview' for previews, and
+// unset locally (local builds are never deployed, so they index normally).
+const vercelEnv = process.env.VERCEL_ENV;
+const robotsNoindex = noindex || (vercelEnv !== undefined && vercelEnv !== 'production');
+
 const canonical = absoluteUrl(localizePath(path, lang), site);
 const ogImage = absoluteUrl(image ?? SITE.ogImage, site);
 const alts = alternates(path).map((a) => ({ ...a, href: absoluteUrl(a.path, site) }));
@@ -75,7 +83,7 @@ const structuredData = [organizationLd, webSiteLd, ...jsonLd];
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 {
-  noindex ? (
+  robotsNoindex ? (
     <meta name="robots" content="noindex, nofollow" />
   ) : (
     <meta
