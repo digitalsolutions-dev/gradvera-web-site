@@ -1,0 +1,172 @@
+---
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const privacyHref = localizePath('/privacy-policy/', lang);
+---
+<div
+  id="gv-consent-banner"
+  class="gv-consent"
+  role="dialog"
+  aria-label={t('consent.title')}
+  aria-live="polite"
+  hidden
+>
+  <div class="gv-consent__inner">
+    <div class="gv-consent__copy">
+      <p class="gv-consent__title">{t('consent.title')}</p>
+      <p class="gv-consent__body">
+        {t('consent.body')} <a class="gv-consent__link" href={privacyHref}>{t('consent.privacy')}</a>
+      </p>
+    </div>
+    <div class="gv-consent__actions">
+      <button type="button" class="gv-consent__btn gv-consent__btn--ghost" data-consent="reject">{t('consent.reject')}</button>
+      <button type="button" class="gv-consent__btn gv-consent__btn--accept" data-consent="accept">{t('consent.accept')}</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gv-consent {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483000;
+    background: #141E33;
+    color: #EEF2FA;
+    border: 1px solid rgba(151, 166, 192, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    padding: 18px 20px;
+    font-family: "IBM Plex Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  .gv-consent[hidden] { display: none; }
+  .gv-consent__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .gv-consent__copy { flex: 1 1 auto; min-width: 0; }
+  .gv-consent__title {
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #EEF2FA;
+  }
+  .gv-consent__body {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #97A6C0;
+  }
+  .gv-consent__link {
+    color: #E8901C;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .gv-consent__link:hover { color: #C77713; }
+  .gv-consent__actions {
+    flex: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .gv-consent__btn {
+    appearance: none;
+    cursor: pointer;
+    border-radius: 9px;
+    padding: 10px 18px;
+    font: 500 13.5px/1 "IBM Plex Sans", "Inter", system-ui, sans-serif;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .gv-consent__btn--ghost {
+    background: transparent;
+    color: #97A6C0;
+    border-color: rgba(151, 166, 192, 0.28);
+  }
+  .gv-consent__btn--ghost:hover {
+    color: #EEF2FA;
+    border-color: rgba(151, 166, 192, 0.5);
+  }
+  .gv-consent__btn--accept {
+    background: #E8901C;
+    color: #0A1020;
+    font-weight: 600;
+  }
+  .gv-consent__btn--accept:hover { background: #C77713; }
+  .gv-consent__btn:focus-visible {
+    outline: 2px solid #E8901C;
+    outline-offset: 2px;
+  }
+  @media (max-width: 720px) {
+    .gv-consent__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+    .gv-consent__actions { justify-content: flex-end; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gv-consent__btn { transition: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var banner = document.getElementById('gv-consent-banner');
+    if (!banner) return;
+
+    function getCookie(name) {
+      var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+    function setCookie(name, value) {
+      document.cookie =
+        name + '=' + encodeURIComponent(value) +
+        ';max-age=31536000;path=/;SameSite=Lax';
+    }
+
+    // Already decided: stay hidden.
+    if (getCookie('gv-consent')) return;
+
+    banner.hidden = false;
+
+    var acceptBtn = banner.querySelector('[data-consent="accept"]');
+    var rejectBtn = banner.querySelector('[data-consent="reject"]');
+
+    // Move keyboard focus into the dialog.
+    if (acceptBtn && typeof acceptBtn.focus === 'function') {
+      try { acceptBtn.focus({ preventScroll: true }); } catch (e) { acceptBtn.focus(); }
+    }
+
+    function hide() { banner.hidden = true; }
+
+    function accept() {
+      setCookie('gv-consent', 'granted');
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          ad_storage: 'granted',
+          analytics_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+        });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'consent_granted' });
+      hide();
+    }
+
+    function reject() {
+      setCookie('gv-consent', 'denied');
+      hide();
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', accept);
+    if (rejectBtn) rejectBtn.addEventListener('click', reject);
+  })();
+</script>

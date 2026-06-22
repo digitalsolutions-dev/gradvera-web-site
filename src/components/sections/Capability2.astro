@@ -1,0 +1,112 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="cap shade">
+  <div class="wrap">
+    <div class="cap-head reveal">
+      <span class="cap-num">CAPABILITY 02</span>
+      <div>
+        <h2>{t('cap2.h2')}</h2>
+        <p>{t('cap2.p')}</p>
+      </div>
+    </div>
+    <div class="capx cap2-annot reveal">
+      <div class="cap2-stage">
+        <svg class="cap2-conns" aria-hidden="true"></svg>
+        <div class="cap2-col left">
+          <div class="c2card" data-side="left" data-target="#c2-conf" data-ty="0.82" data-low="1">
+            <div class="ct"><span class="cic pic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>{t('cap2.card1t')}</div>
+            <div class="cdesc">{t('cap2.card1d')}</div>
+          </div>
+          <div class="c2card" data-side="left" data-target="#c2-track">
+            <div class="ct"><span class="cic pic-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="5"/></svg></span>{t('cap2.card2t')}</div>
+            <div class="cdesc">{t('cap2.card2d')}</div>
+          </div>
+          <div class="c2card" data-side="left" data-target="#c2-src">
+            <div class="ct"><span class="cic pic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>{t('cap2.card3t')}</div>
+            <div class="cdesc">{t('cap2.card3d')}</div>
+          </div>
+          <div class="c2card" data-side="left" data-target="#c2-foot">
+            <div class="ct"><span class="cic pic-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>{t('cap2.card4t')}</div>
+            <div class="cdesc">{t('cap2.card4d')}</div>
+          </div>
+        </div>
+        <div class="cap2-panel">
+        <div class="capx-vis">
+        <div class="gv-panelwrap">
+          <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="">Gradvera · Price suggestion</span></div>
+          <div class="gv-holder">
+            <div class="gv-screen solo pnl" style="--gw:620px">
+              <div class="pp-top">
+                <div class="ttl"><span class="gv-spark">✦</span>Suggested unit price</div>
+                <span class="ai">✦ AI suggestion</span>
+              </div>
+              <div class="pp-crumbs"><span class="pp-crumb">Concrete works</span><span class="pp-crumb">Foundations</span><span class="pp-crumb cur">Concrete foundation C25/30</span></div>
+              <div class="pp-body">
+                <div class="pp-row1">
+                  <div>
+                    <div class="pp-k">Proposed price</div>
+                    <div class="pp-price tnum">€170.00 <span class="pp-unit">/ m³</span></div>
+                    <div class="pp-calc tnum">Material <b>€110</b> · Labor <b>€38</b> · Equipment <b>€12</b> · Margin <b>€10</b></div>
+                  </div>
+                  <div class="pp-conf" id="c2-conf">
+                    <div class="ck">Confidence</div>
+                    <div class="cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>High · 87%</div>
+                    <div class="cd">Based on 14 matching projects within ±10%.</div>
+                  </div>
+                </div>
+                <div class="pp-hist">
+                  <div class="hh"><span class="ht">Compared to previous prices</span><span class="obs">Last 24 months</span></div>
+                  <div class="pp-track" id="c2-track">
+                    <div class="bar"></div>
+                    <div class="mk" style="left:18%"><span class="lab">MIN €148</span></div>
+                    <div class="mk" style="left:50%"><span class="lab">MEDIAN €165</span></div>
+                    <div class="mk prop" style="left:69%"><span class="dot"></span><span class="lab">€170.00</span><span class="sublab">Proposed price</span></div>
+                    <div class="mk" style="left:88%"><span class="lab">MAX €198</span></div>
+                  </div>
+                  <div class="pp-scale"><span>Lower</span><span>Company range</span><span>Higher</span></div>
+                </div>
+                <div class="pp-src" id="c2-src">
+                  <div class="sh"><span class="gv-spark">✦</span>Projects behind this suggestion<span class="cnt">14 matches</span></div>
+                  <div class="pp-proj">
+                    <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
+                    <div><div class="pj-nm">Residential block</div><div class="pj-meta tnum">2024 · 320 m³ · C25/30</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€167.40</div><div class="pj-match">98% match</div></div>
+                  </div>
+                  <div class="pp-proj">
+                    <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
+                    <div><div class="pj-nm">Logistics hall</div><div class="pj-meta tnum">2023 · 540 m³ · C25/30</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€172.10</div><div class="pj-match">95% match</div></div>
+                  </div>
+                  <div class="pp-proj">
+                    <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
+                    <div><div class="pj-nm">Office refit</div><div class="pj-meta tnum">2023 · 180 m³ · C25/30</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€168.00</div><div class="pj-match">92% match</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-foot" id="c2-foot">
+                <span class="pp-btn primary"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Accept price</span>
+                <span class="pp-btn ghost">Adjust…</span>
+                <span class="teach"><span class="gv-spark">✦</span>Edits teach Gradvera</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="cap2-list">
+      </div>
+      <div class="cap2-list">
+        <div class="point"><span class="pic pic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><div class="pt">{t('cap2.point1t')}</div><div class="pd">{t('cap2.point1d')}</div></div></div>
+        <div class="point"><span class="pic pic-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="5"/></svg></span><div><div class="pt">{t('cap2.point2t')}</div><div class="pd">{t('cap2.point2d')}</div></div></div>
+        <div class="point"><span class="pic pic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span><div><div class="pt">{t('cap2.point3t')}</div><div class="pd">{t('cap2.point3d')}</div></div></div>
+        <div class="point"><span class="pic pic-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><div><div class="pt">{t('cap2.point4t')}</div><div class="pd">{t('cap2.point4d')}</div></div></div>
+      </div>
+      <div class="capx-foot"><span class="gv-spark">✦</span>{t('cap2.foot')}</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import { type Locale } from '../../i18n/utils';
+import Hero from '../sections/Hero.astro';
+import Problem from '../sections/Problem.astro';
+import HelpsIntro from '../sections/HelpsIntro.astro';
+import Capability1 from '../sections/Capability1.astro';
+import Capability2 from '../sections/Capability2.astro';
+import Capability3 from '../sections/Capability3.astro';
+import Capability4 from '../sections/Capability4.astro';
+import Cta1 from '../sections/Cta1.astro';
+import HowItWorks from '../sections/HowItWorks.astro';
+import Outcomes from '../sections/Outcomes.astro';
+import Results from '../sections/Results.astro';
+import Cta2 from '../sections/Cta2.astro';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<Hero lang={lang} />
+<Problem lang={lang} />
+<HelpsIntro lang={lang} />
+<Capability1 lang={lang} />
+<Capability2 lang={lang} />
+<Capability3 lang={lang} />
+<Capability4 lang={lang} />
+<Cta1 lang={lang} />
+<HowItWorks lang={lang} />
+<Outcomes lang={lang} />
+<Results lang={lang} />
+<Cta2 lang={lang} />

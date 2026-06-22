@@ -1,0 +1,77 @@
+{
+  "privacy.hero.title": "Privacy policy",
+  "privacy.hero.sub": "How DIGITAL SOLUTIONS d.o.o. collects, uses, and protects your personal data in connection with Gradvera and this website.",
+
+  "privacy.basic.title": "Basic data",
+  "privacy.basic.controller": "The data controller is DIGITAL SOLUTIONS d.o.o., Vilharjeva cesta 42, 1000 Ljubljana, Slovenia (EU).",
+  "privacy.basic.gdprLabel": "GDPR:",
+  "privacy.basic.gdpr": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) — the terms described in the GDPR are also used in this policy.",
+
+  "privacy.rights.title": "What are my rights and how can I exercise them?",
+  "privacy.rights.intro": "You can exercise the following rights in relation to your personal data at any time. Your rights include the right:",
+  "privacy.rights.items": [
+    "to access your own personal data;",
+    "to rectify your personal data;",
+    "to erase your personal data when there is no longer a legal basis (or a legal obligation) for its storage, or you have given us your consent;",
+    "to restrict your personal data (in certain cases);",
+    "to object — where processing is carried out on the basis of a legitimate interest;",
+    "to portability — in the case of a contract or personal consent and where processing is carried out by automated means."
+  ],
+  "privacy.rights.exercise.pre": "You can exercise your rights by writing to the address of the controller or via the e-mail address ",
+  "privacy.rights.exercise.post": ". In certain cases, we may contact you to verify your identity.",
+  "privacy.rights.complaintLabel": "Possibility of complaint:",
+  "privacy.rights.complaint": "if you feel that your rights are not being exercised properly, we will be happy to hear from you in the first instance. If you are not satisfied, you can lodge a complaint or report with the Information Commissioner of the Republic of Slovenia.",
+
+  "privacy.purposes.title": "Processing purposes",
+  "privacy.detailsLabel": "Details",
+  "privacy.term.legalBasis": "Legal basis",
+  "privacy.term.userCategories": "User categories",
+  "privacy.term.transfers": "Transfers",
+  "privacy.term.storagePeriod": "Storage period",
+  "privacy.term.unsubscribe": "Unsubscribe",
+  "privacy.term.complaint": "Complaint",
+
+  "privacy.visit.title": "When you visit our website",
+  "privacy.visit.p1": "When you visit our website, we store your IP address for a short period of time up to the end of the session. If our system determines that you are not engaging in any activities that would compromise the operation of our website, this information will be automatically deleted.",
+  "privacy.visit.p2": "In the event that our system determines that you are performing activities that are obviously illegal or clearly directed towards disabling the operation of the website, your IP address is stored permanently and our system places it on a blacklist of IP addresses, consequently preventing you from continuing to use the website.",
+  "privacy.visit.detail.legalBasis": "On the basis of its own legitimate interests (Article 6(1)f of the General Regulation), the controller processes personal data for the purpose of website security and the prevention of illegal activities on the website (such as hacking, misuse of passwords, etc.).",
+  "privacy.visit.detail.userCategories": "Website hosting provider and security solutions provider. Users process personal data solely on the instructions and under the supervision of the controller.",
+  "privacy.visit.detail.transfers": "Personal data is transferred to the USA on the basis of standard contractual clauses (Commission Implementing Decision (EU) 2021/914 of 4 June 2021), which are included in the data processing contract agreed with the provider in accordance with Article 28 of the GDPR.",
+  "privacy.visit.detail.storagePeriod": "At most until the end of the session (the general rule) or permanently (in case of attempted abuse).",
+
+  "privacy.contact.title": "If you contact us via the online form or by email",
+  "privacy.contact.p1": "We welcome your every message. Here, our communications will be based on our legitimate interest as demonstrated by the controller's communication with the general public. If you do not wish to disclose your personal data to us, we regret that we will not be able to respond to your enquiry or send you an offer. You may terminate the communication at any time (by notifying us), which will also mean that we will delete your personal data.",
+  "privacy.contact.detail.legalBasis": "Legitimate interest (communication with the general public) — Article 6(1)f GDPR.",
+  "privacy.contact.detail.userCategories": "Website hosting provider. The user processes personal data solely according to the instructions and under the supervision of the controller.",
+  "privacy.contact.detail.storagePeriod": "Until communication is completed. You can request the termination of communication prior to this — as a result, your personal data (if there is no further legal basis for its further processing, e.g. a contract) will be irreversibly destroyed.",
+
+  "privacy.inquiry.title": "If you send us an inquiry or want a demo",
+  "privacy.inquiry.p1": "We would be delighted if you decide to work with us. You can contact us through various channels, including the website.",
+  "privacy.inquiry.p2": "In order to prepare the best offer for you, we will of course need some information from you. The personal data you disclose to us in this case will, of course, only be used to respond to your enquiry, and not for direct marketing. If you do not wish to disclose your personal data to us, we will not be able to send you an offer or provide you with a demo of the platform.",
+  "privacy.inquiry.detail.legalBasis": "Pre-contractual measures under Article 6(1)b of the GDPR (in the case of enquiries from natural persons) or legitimate interest (conclusion of transactions) under Article 6(1)f of the GDPR (for enquiries from legal persons).",
+  "privacy.inquiry.detail.userCategories": "Website hosting provider, email provider.",
+  "privacy.inquiry.detail.storagePeriod": "Until revoked or an objection is made.",
+
+  "privacy.newsletter.title": "If you subscribe to our newsletter",
+  "privacy.newsletter.p1": "We would be delighted if you subscribe to our newsletter. Since we also hate spam, we promise to try and send you only e-news and offers that you will find useful and be happy to read. We will also try to send you the newsletter as optimally as possible, so as not to clutter up your inbox unnecessarily.",
+  "privacy.newsletter.p2": "As we only send newsletters if you have given us your personal consent to do so, you can unsubscribe (withdraw your consent) at any time by clicking on the link in the emails you receive. If you have given us permission to send you offers that we consider to be of interest to you, our assumptions will be based on your enquiries and on any purchases you have made with us.",
+  "privacy.newsletter.detail.legalBasis": "Personal consent under Article 6(1)a GDPR.",
+  "privacy.newsletter.detail.userCategories": "Website hosting provider, email provider, ERP provider. The users process personal data solely according to the instructions and under the supervision of the controller.",
+  "privacy.newsletter.detail.storagePeriod": "Until revoked.",
+  "privacy.newsletter.detail.unsubscribe": "From the newsletter at any time by clicking on the link in the e-mails you receive.",
+  "privacy.newsletter.detail.complaint": "You can lodge a complaint with the Information Commissioner of the Republic of Slovenia against the controller's personal data protection practices.",
+
+  "privacy.job.title": "If you apply for a (vacant) position",
+  "privacy.job.p1": "When we are looking for new employees, we publish the vacancy on our website, through which you can submit your application. The processing of personal data in the event of a job application is carried out on the basis of — as the GDPR calls it — the implementation of measures at the request of the individual before a contract is agreed.",
+  "privacy.job.p2": "If we identify you as a good candidate but are not yet able to offer you a position, we may ask you to provide your personal consent for us to keep your personal data for a longer period of time in the event of a vacancy opening after the selection process has been completed. This is a completely voluntary decision that you can revoke at any time.",
+  "privacy.job.p3": "You can send us your details even if we don't have a current vacancy. In this case, we will process your personal data based on your consent. If you do not wish to disclose your personal data to us, we will not be able to employ you.",
+  "privacy.job.detail.legalBasis": "The implementation of measures at the request of an individual before the conclusion of a contract under Article 6(1)b of the GDPR. Personal consent obtained after the selection procedure and in cases where applications are sent outside the scope of the procedures (Article 6(1)a of the GDPR).",
+  "privacy.job.detail.userCategories": "Website hosting provider.",
+  "privacy.job.detail.storagePeriod": "60 days from the end of the selection procedure for candidates who were not selected. Selected candidates will receive additional information during the proposal of an employment contract. In case of additional personal consent: until revoked or 1 year (whichever comes first).",
+
+  "privacy.analytics.title": "Web analytics and marketing",
+  "privacy.analytics.p1": "We perform web analytics and marketing on websites through cookies and solely on the basis of your explicit consent. We also market our services on the basis of your consent — again, only if you have given us your consent to use marketing cookies. Information about cookies and their settings can be found on this page.",
+  "privacy.analytics.detail.legalBasis": "Personal consent (Article 6(1)a GDPR).",
+  "privacy.analytics.detail.userCategories": "Website hosting provider, ad service providers (in case of marketing consent).",
+  "privacy.analytics.detail.storagePeriod": "Until cancellation of the downloading (use) of cookies."
+}

@@ -1,0 +1,29 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="problem">
+  <div class="wrap">
+    <div class="problem-head reveal">
+      <p class="eyebrow">{t('problem.eyebrow')}</p>
+      <h2 class="h-section">{t('problem.h2a')} <em>{t('problem.h2em')}</em></h2>
+    </div>
+    <div class="cc">
+      <div class="day-col reveal">
+        <div class="col-head"><span class="stage-label">{t('problem.dayLabel')}</span></div>
+        <ul class="log-list">
+          {t('problem.daily').map((s: string, i: number) => (<li><span class="tick">{String(i + 1).padStart(2, '0')}</span><span>{s}</span></li>))}
+        </ul>
+      </div>
+      <div class="cost-col reveal">
+        <div class="cost-rail"></div>
+        <div class="col-head"><span class="cause" aria-hidden="true">→</span><span class="stage-label">{t('problem.costLabel')}</span></div>
+        <ul class="cost-list">
+          {t('problem.cost').map((s: string) => (<li><span class="cost-flag"></span><span>{s}</span></li>))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

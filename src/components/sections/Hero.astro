@@ -1,0 +1,33 @@
+---
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="hero-eyebrow"><span class="dot"></span><span class="eyebrow">{t('hero.eyebrow')}</span></span>
+        <h1>
+          <span class="l1">{t('hero.h1l1')}</span>
+          <span class="l2">{t('hero.h1l2')}</span>
+        </h1>
+        <p class="lede">{t('hero.lede')}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href={localizePath('/', lang) + '#helps'}>{t('hero.cta')} <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <svg class="bp" id="hero-bp" role="img" aria-label="Wireframe blueprint of a building being estimated by Gradvera"></svg>
+        <div class="hero-hud" aria-hidden="true">
+          <div class="hud-row"><span class="hud-spark">✦</span><span class="hud-label">Gradvera · estimating offer</span></div>
+          <div class="hud-val"><span class="hud-cur">€</span><span id="hud-num">1.24</span><span class="hud-m">M</span></div>
+          <div class="hud-bar"><span id="hud-fill"></span></div>
+          <div class="hud-foot"><span id="hud-status">Estimate ready</span><span class="hud-conf" id="hud-conf">✦ 87% confidence</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><span class="ln"></span></div>
+  </div>
+</section>

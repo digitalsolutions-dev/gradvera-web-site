@@ -1,0 +1,26 @@
+{
+  "cap3.h2": "Catch costly risks that deadlines make easy to miss.",
+  "cap3.lede": "When deadlines are tight, it's easy to miss something important. Before an offer is finalized, Gradvera highlights unusual prices, subcontractor cost changes, and other risks that deserve a second look—helping estimators catch issues before they affect profitability.",
+  "cap3.eyebrow": "Price & cost check against company history",
+  "cap3.p1.pt": "Critical",
+  "cap3.p1.pd": "Large difference in pricing or costs.",
+  "cap3.p2.pt": "Significant",
+  "cap3.p2.pd": "Notable change in pricing, costs, or supplier data.",
+  "cap3.p3.pt": "Mild",
+  "cap3.p3.pd": "Small variation in pricing or costs.",
+  "cap3.p4.pt": "No issues",
+  "cap3.p4.pd": "Pricing and costs are consistent with previous projects.",
+  "cap3.foot": "Every flagged item is confirmed before the offer reaches the client.",
+
+  "cap4.h2": "See how subcontractor prices compare before you decide.",
+  "cap4.lede": "When subcontractor prices arrive, it's not always obvious whether a quote is competitive or how it compares to previous projects. Gradvera keeps subcontractor pricing in one place, making it easy to compare suppliers, review historical prices for the same BoQ items, and request new quotes directly through Gradvera.",
+  "cap4.flow": "Request quotations directly through Gradvera and receive responses back into the estimating workflow.",
+  "cap4.p1.pt": "Compare subcontractors' prices",
+  "cap4.p1.pd": "See how different subcontractors price the same work — compare them in one place, before deciding.",
+  "cap4.p2.pt": "Compare against previous prices",
+  "cap4.p2.pd": "Know if the subcontractor's current quote is higher or lower than what the company paid before.",
+  "cap4.p3.pt": "Build a reusable price record",
+  "cap4.p3.pd": "Every subcontractor quote is saved, building a record of real prices to draw on for future work.",
+  "cap4.p4.pt": "Get subcontractors' prices directly",
+  "cap4.p4.pd": "Subcontractors price through a secure link, so every quote lands in one place — not scattered across email threads."
+}

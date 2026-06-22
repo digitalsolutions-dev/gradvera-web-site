@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Gradvera — Construction estimating software">
+  <rect width="1200" height="630" fill="#0A1020"/>
+  <g transform="translate(140 199) scale(3.8125)">
+    <path d="M 40 16 L 16 16 L 16 48 L 44 48 L 48 44 L 48 28 L 32 28 L 32 34 L 42 34 L 42 42 L 22 42 L 22 22 L 40 22 Z" fill="#E8901C"/>
+    <rect x="53" y="9" width="3" height="3" fill="#E8901C"/>
+  </g>
+  <text x="436" y="300" font-family="'IBM Plex Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-2" fill="#EEF2FA">Gradvera</text>
+  <rect x="438" y="334" width="120" height="4" rx="2" fill="#E8901C"/>
+  <text x="436" y="392" font-family="'IBM Plex Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="400" letter-spacing="0.5" fill="#97A6C0">Construction estimating software</text>
+</svg>

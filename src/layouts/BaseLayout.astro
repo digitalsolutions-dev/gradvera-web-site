@@ -1,0 +1,95 @@
+---
+// Self-hosted IBM Plex (matches the design's --font-sans / --font-mono stacks).
+// Self-hosting avoids the Google Fonts hotlink (GDPR) and a render-blocking request.
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import SEO from '../components/seo/SEO.astro';
+import Header from '../components/layout/Header.astro';
+import MobileNav from '../components/layout/MobileNav.astro';
+import Footer from '../components/layout/Footer.astro';
+import CookieConsent from '../components/marketing/CookieConsent.astro';
+import Analytics from '../components/marketing/Analytics.astro';
+import { useTranslations, LOCALE_META, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+  /** Canonical, locale-stripped path for canonical/hreflang, e.g. '/', '/book-a-demo/'. */
+  path: string;
+  title?: string;
+  description?: string;
+  ogType?: string;
+  image?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  lang = 'en',
+  path,
+  title,
+  description,
+  ogType,
+  image,
+  noindex,
+  jsonLd,
+} = Astro.props;
+
+const t = useTranslations(lang);
+const htmlLang = LOCALE_META[lang].htmlLang;
+---
+<!doctype html>
+<html lang={htmlLang} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO
+      lang={lang}
+      path={path}
+      title={title}
+      description={description}
+      ogType={ogType}
+      image={image}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
+    <link rel="stylesheet" href="/assets/gradvera-tokens.css" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/cap1-screens.css" />
+    <link rel="stylesheet" href="/assets/cap-screens.css" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('a11y.skipToContent')}</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <Header lang={lang} path={path} />
+    <MobileNav lang={lang} path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <CookieConsent lang={lang} />
+    <Analytics />
+    <script is:inline src="/assets/site.js"></script>
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    background: var(--brand-primary, #2563eb);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 0 0 8px 0;
+    font: 500 14px/1.2 system-ui, sans-serif;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+</style>

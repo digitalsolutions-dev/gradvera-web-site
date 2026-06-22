@@ -1,0 +1,103 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="cap shade">
+  <div class="wrap">
+    <div class="cap-head reveal">
+      <span class="cap-num">CAPABILITY 04</span>
+      <div>
+        <h2>{t('cap4.h2')}</h2>
+        <p>{t('cap4.lede')}</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cap4-vis">
+        <div class="gv-panelwrap">
+          <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="">Gradvera · Subcontractor comparison</span></div>
+          <div class="gv-holder">
+            <div class="gv-screen solo pnl" style="--gw:560px">
+              <div class="sc-head">
+                <div><div class="st">Reinforcement steel — supply &amp; fix</div><div class="ssub tnum">BoQ 03.2 · 9.6 t · 4 quotations received</div></div>
+                <span class="best">Best value</span>
+              </div>
+              <div class="sc-th"><span>Subcontractor</span><span>Quoted price</span><span>Valid until</span><span>Risk</span><span></span></div>
+              <div class="sc-tr win">
+                <span class="sc-co"><span class="lg" style="background:#1F7A4D">A</span><span><span class="cn">Subcontractor A</span><span class="cm">6× before</span></span></span>
+                <span class="sc-price tnum">€1,180<small class="lo">▼ 4% vs prev</small></span>
+                <span class="sc-meta tnum">12 Aug</span>
+                <span class="sc-risk chip-green">Low</span>
+                <span class="sc-pick on">Selected</span>
+              </div>
+              <div class="sc-tr">
+                <span class="sc-co"><span class="lg" style="background:#2A6FDB">B</span><span><span class="cn">Subcontractor B</span><span class="cm">2× before</span></span></span>
+                <span class="sc-price tnum">€1,240<small class="hi">▲ 1% vs prev</small></span>
+                <span class="sc-meta tnum">9 Aug</span>
+                <span class="sc-risk chip-green">Low</span>
+                <span class="sc-pick off">Pick</span>
+              </div>
+              <div class="sc-tr">
+                <span class="sc-co"><span class="lg" style="background:#7C3AED">C</span><span><span class="cn">Subcontractor C</span><span class="cm"></span></span></span>
+                <span class="sc-price tnum">€1,295<small class="cur" style="color:var(--fg3)">no history</small></span>
+                <span class="sc-meta tnum">15 Aug</span>
+                <span class="sc-risk chip-amber">Medium</span>
+                <span class="sc-pick off">Pick</span>
+              </div>
+              <div class="sc-tr">
+                <span class="sc-co"><span class="lg" style="background:#B45309">D</span><span><span class="cn">Subcontractor D</span><span class="cm">1× before</span></span></span>
+                <span class="sc-price tnum">€1,410<small class="hi">▲ 11% vs prev</small></span>
+                <span class="sc-meta tnum">6 Aug</span>
+                <span class="sc-risk chip-amber">Medium</span>
+                <span class="sc-pick off">Pick</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exchange">
+          <div class="ex-line"></div>
+          <div class="ex-ic" style="margin:10px 0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <div class="ex-line"></div>
+        </div>
+        <div class="portal-wrap">
+          <span class="portal-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Subcontractor Portal</span>
+          <div class="gv-panelwrap">
+            <div class="winbar web"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span></div>
+            <div class="gv-holder">
+              <div class="gv-screen solo pnl" style="--gw:430px">
+                <div class="po-tagrow"><span class="po-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Subcontractor A</span></div>
+                <div class="po-body">
+                  <div class="po-h">Price request — Sidewalk &amp; access, Phase 2<small>Requested by Gradvera · respond by 12 Aug</small></div>
+                  <div class="po-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Each subcontractor gets a direct inquiry for just their line items.</div>
+                  <div class="po-item">
+                    <div><div class="pin">Reinforcement steel — supply &amp; fix</div><div class="pim tnum">BoQ 03.2 · 9.6 t</div></div>
+                    <div class="pinp done"><span>€1,180</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+                  </div>
+                  <div class="po-item">
+                    <div><div class="pin">Mesh reinforcement Q257</div><div class="pim tnum">BoQ 03.4 · 380 m²</div></div>
+                    <div class="pinp"><span class="cur">€</span><span>7.00</span><span class="cur">/ m²</span></div>
+                  </div>
+                  <div class="po-item locked">
+                    <div><div class="pin">Concrete C25/30</div><div class="pim">Not assigned to you</div></div>
+                    <div class="pinp"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hidden</div>
+                  </div>
+                  <div class="po-foot"><span class="po-submit">Submit prices</span><span class="po-prog">1 of 2 priced</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="cap4-flow" style="margin-top:24px">{t('cap4.flow')}</p>
+      <div class="pointgrid">
+        <div class="point"><span class="pic pic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="5"/></svg></span><div class="pt">{t('cap4.p1.pt')}</div><div class="pd">{t('cap4.p1.pd')}</div></div>
+        <div class="point"><span class="pic pic-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="pt">{t('cap4.p2.pt')}</div><div class="pd">{t('cap4.p2.pd')}</div></div>
+        <div class="point"><span class="pic pic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="pt">{t('cap4.p3.pt')}</div><div class="pd">{t('cap4.p3.pd')}</div></div>
+        <div class="point"><span class="pic pic-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><div class="pt">{t('cap4.p4.pt')}</div><div class="pd">{t('cap4.p4.pd')}</div></div>
+      </div>
+    </div>
+  </div>
+</section>

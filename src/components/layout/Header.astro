@@ -1,0 +1,63 @@
+---
+import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const switchPath = path ?? '/';
+// On the home page use bare same-page anchors (`#helps`) so site.js's scrollspy
+// (`.nav a[href^="#"]`) matches; on subpages prefix the localized home path.
+const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', lang)) + hash;
+---
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href={localizePath('/', lang)} aria-label={t('a11y.home')}>
+      <span class="mono-tile"><img class="mono" src="/assets/monogram.svg" alt=""></span>
+      <span class="wm">Gradvera</span>
+    </a>
+    <nav class="nav">
+      <a href={homeHref('#helps')}>{t('nav.helps')}</a>
+      <a href={homeHref('#works')}>{t('nav.works')}</a>
+      <a href={homeHref('#outcomes')}>{t('nav.outcomes')}</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label={t('a11y.language')}>
+        {LOCALES.map((loc) => (
+          <a href={localizePath(switchPath, loc)} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
+        ))}
+      </div>
+      <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
+      <button class="btn menu-btn" aria-label={t('a11y.openMenu')} aria-controls="mobile-nav" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style is:global>
+  .lang-switch { display: inline-flex; align-items: center; gap: 8px; }
+  .lang-switch a {
+    font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--on-ink-2);
+    text-decoration: none;
+  }
+  .lang-switch a[aria-current] { color: var(--amber); }
+  .hdr.solid .lang-switch a { color: var(--fg2); }
+  .hdr.solid .lang-switch a[aria-current] { color: var(--brand-primary-pressed); }
+</style>
+
+<script is:inline>
+  /* Keep the menu button's aria-expanded in sync with the mobile nav open state
+     (site.js toggles the .open class; this only mirrors it for assistive tech). */
+  (function () {
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('mobile-nav');
+    if (!btn || !nav) return;
+    function sync() { btn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false'); }
+    btn.addEventListener('click', function () { requestAnimationFrame(sync); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) requestAnimationFrame(sync); });
+    sync();
+  })();
+</script>

@@ -1,0 +1,19 @@
+---
+import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const switchPath = path ?? '/';
+const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', lang)) + hash;
+---
+<nav class="mobile-nav" id="mobile-nav">
+  <a href={homeHref('#helps')}>{t('nav.helps')}</a>
+  <a href={homeHref('#works')}>{t('nav.works')}</a>
+  <a href={homeHref('#outcomes')}>{t('nav.outcomes')}</a>
+  <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
+  <div class="lang-switch" role="group" aria-label={t('a11y.language')}>
+    {LOCALES.map((loc) => (
+      <a href={localizePath(switchPath, loc)} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
+    ))}
+  </div>
+</nav>

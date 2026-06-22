@@ -1,0 +1,46 @@
+---
+import { LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><img class="mono" src="/assets/monogram.svg" alt="" style="width:28px;height:28px"><span class="wm">Gradvera</span></div>
+        <h5>{t('footer.about.title')}</h5>
+        <p>{t('footer.about.body')}</p>
+      </div>
+      <div class="foot-col">
+        <h5>{t('footer.explore.title')}</h5>
+        <ul class="foot-links">
+          <li><a href={localizePath('/', lang) + '#helps'}>{t('footer.explore.helps')}</a></li>
+          <li><a href={localizePath('/', lang) + '#works'}>{t('footer.explore.works')}</a></li>
+          <li><a href={localizePath('/', lang) + '#outcomes'}>{t('footer.explore.outcomes')}</a></li>
+          <li><a href={localizePath('/book-a-demo/', lang)}>{t('footer.explore.bookDemo')}</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <div class="data-col">
+          <h5>{t('footer.data.title')}</h5>
+          <p>{t('footer.data.body')}</p>
+          <span class="gdpr"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>{t('footer.data.gdpr')}</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>{t('footer.contact.title')}</h5>
+        <ul class="contact-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg><a href="mailto:info@digitalsolutions.si">info@digitalsolutions.si</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+38640328355">+386 40 328 355</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>{t('footer.contact.location')}</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/company/digital-solutions-eu/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="cc">{t('footer.bottom.copyright')}</span>
+      <span class="legal"><a href={localizePath('/privacy-policy/', lang)}>{t('footer.bottom.privacy')}</a></span>
+    </div>
+  </div>
+</footer>

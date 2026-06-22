@@ -1,0 +1,15 @@
+---
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="cta1">
+  <div class="wrap reveal">
+    <div class="c1copy">
+      <span class="c1eyebrow"><span>✦</span>{t('cta1.eyebrow')}</span>
+      <p class="c1t">{t('cta1.ta')} <span class="amber">{t('cta1.tAmber')}</span> {t('cta1.tb')}</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href={localizePath('/book-a-demo/', lang)}>{t('cta1.cta')} <span class="arr">→</span></a>
+  </div>
+</section>

@@ -1,0 +1,120 @@
+/* ============================================================
+   Gradvera — Colors + Type
+   Companion to tokens.css. Use this when you want only the
+   base color + type variables (no spacing, motion, layout, etc).
+   ============================================================ */
+
+/* Google Fonts @import removed — IBM Plex is self-hosted via @fontsource (GDPR + performance). */
+
+:root {
+  /* ---- Brand color (v1.2 — burnished amber + warm anthracite) ---- */
+  --brand-primary: #E8901C;          /* burnished safety amber */
+  --brand-primary-hover: #C77713;
+  --brand-primary-pressed: #9C5C0E;
+  --brand-primary-soft: #FBF1DA;
+  --brand-primary-soft-border: #F4D69A;
+  --brand-primary-soft-text: #7A4708;
+  --brand-on-primary: #1A1916;       /* warm near-black on amber fill */
+  --brand-anthracite: #23211E;       /* warm charcoal plate */
+  --brand-blue: #1E3A8A;             /* blueprint navy — link / accent */
+  --brand-blue-soft: #EEF2FF;
+  --brand-deck-navy: #1E3A8A;        /* deck / print only */
+
+  /* ---- Foreground / background scale ---- */
+  --fg1: #0F172A; /* text-primary — headings, body, currency */
+  --fg2: #475569; /* text-secondary — descriptions, meta */
+  --fg3: #94A3B8; /* text-tertiary — placeholders, helpers */
+  --fg-label: #64748B; /* uppercase tracked labels */
+  --fg-disabled: #CBD5E1;
+
+  --bg1: #FFFFFF;   /* surface */
+  --bg2: #F7F8FA;   /* page */
+  --bg3: #F3F4F6;   /* sunken */
+  --bg-hover: #F9FAFB;
+  --bg-overlay: rgba(15, 23, 42, 0.45);
+
+  --border1: #EEF0F2; /* subtle (in-table rows) */
+  --border2: #E5E7EB; /* default (cards, inputs) */
+  --border3: #D1D5DB; /* strong */
+
+  /* ---- Sidebar — always dark, both themes ---- */
+  --sidebar-bg: #1A1815;
+  --sidebar-bg-hover: #2A2724;
+  --sidebar-bg-active: #38322A;
+  --sidebar-text: #F1EDE7;
+  --sidebar-text-muted: #A6A099;
+  --sidebar-text-section: #6B655E;
+
+  /* ---- Semantic ---- */
+  --info: #1E3A8A;            /* blueprint navy */
+  --info-soft: #EEF2FF;
+  --info-soft-text: #3730A3;
+  --info-soft-border: #C7D2FE;
+
+  --success: #15803D;         /* verified / cleared */
+  --success-soft: #DCFCE7;
+  --success-soft-text: #166534;
+  --success-soft-border: #BBF7D0;
+
+  --warning: #EA580C;         /* cone orange */
+  --warning-soft: #FFF7ED;
+  --warning-soft-text: #9A3412;
+  --warning-soft-border: #FED7AA;
+
+  --danger: #B91C1C;          /* stop-sign red */
+  --danger-soft: #FEE2E2;
+  --danger-soft-text: #991B1B;
+  --danger-soft-border: #FECACA;
+
+  --neutral: #57534E;         /* concrete / stone */
+  --neutral-soft: #F5F5F4;
+  --neutral-soft-text: #44403C;
+  --neutral-soft-border: #E7E5E4;
+
+  /* ---- Typography stacks ---- */
+  --font-sans: "IBM Plex Sans", "Inter", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ---- Semantic type roles ---- */
+  --type-display:      600 32px/40px var(--font-sans);  /* KPI big numbers */
+  --type-h1:           600 28px/36px var(--font-sans);  /* Page titles */
+  --type-h2:           600 20px/28px var(--font-sans);  /* Section titles */
+  --type-h3:           600 16px/24px var(--font-sans);  /* Drawer / modal titles */
+  --type-body:         400 14px/20px var(--font-sans);
+  --type-body-strong:  500 14px/20px var(--font-sans);
+  --type-meta:         400 13px/18px var(--font-sans);  /* Captions, helpers */
+  --type-label:        500 11px/16px var(--font-sans);  /* uppercase, tracked */
+  --type-pill:         500 12px/16px var(--font-sans);
+  --type-mono:         400 13px/18px var(--font-mono);
+
+  --letter-spacing-label: 0.04em;
+  --tabular-nums: "tnum" 1, "lnum" 1;
+}
+
+/* ---- Semantic mappings (use these element-level selectors when
+        building product chrome — they apply the right type role
+        without needing every developer to remember tokens) ---- */
+
+html { font: var(--type-body); color: var(--fg1); background: var(--bg2); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { margin: 0; font-feature-settings: "cv02","cv03","cv04","cv11"; }
+
+h1, .h1 { font: var(--type-h1); color: var(--fg1); margin: 0; }
+h2, .h2 { font: var(--type-h2); color: var(--fg1); margin: 0; }
+h3, .h3 { font: var(--type-h3); color: var(--fg1); margin: 0; }
+.display { font: var(--type-display); color: var(--fg1); font-feature-settings: var(--tabular-nums); }
+p, .body { font: var(--type-body); color: var(--fg1); margin: 0; }
+.body-strong { font: var(--type-body-strong); color: var(--fg1); }
+.meta { font: var(--type-meta); color: var(--fg2); }
+.label { font: var(--type-label); color: var(--fg-label); text-transform: uppercase; letter-spacing: var(--letter-spacing-label); }
+.pill-label { font: var(--type-pill); }
+code, kbd, .mono { font: var(--type-mono); }
+
+.tnum, td.numeric, .currency, .qty {
+  font-feature-settings: var(--tabular-nums);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+a { color: var(--brand-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+*:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--brand-primary-soft); color: var(--brand-primary-pressed); }
