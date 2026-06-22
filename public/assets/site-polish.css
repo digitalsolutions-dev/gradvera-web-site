@@ -1,0 +1,57 @@
+/* ============================================================================
+   Mobile-polish layer — loaded AFTER the verbatim design CSS (gradvera-tokens /
+   site / cap1-screens / cap-screens). Corrections that would otherwise require
+   editing the vendored design stylesheets live here, so provenance of the
+   originals stays intact. Added 2026-06 (responsiveness + language picker pass).
+   ============================================================================ */
+
+/* --- Product-screen panel overflow on phones --------------------------------
+   The vector "app screen" mockups are authored at a fixed width (--gw 620/800px)
+   and only VISUALLY scaled by site.js (CSS transform). A transform doesn't shrink
+   the layout box, so the fixed-width child blows out its CSS-grid 1fr track
+   (default min-width:auto == min-content == 620px) and pushes the page to ~642px
+   wide on a 375px viewport. min-width:0 lets the track + wrappers shrink below the
+   child's intrinsic width; the existing overflow:hidden on .gv-holder /
+   .gv-panelwrap then clips the scaled panel cleanly. */
+.fig,
+.cap1-steps,
+.cap1-step,
+.cap1-bridge,
+.capx,
+.capx.rev,
+.cap2-stage,
+.cap2-col,
+.cap2-panel,
+.cap4-vis,
+.exchange,
+.portal-wrap,
+.capx-vis,
+.capx-points,
+.gv-panelwrap,
+.gv-holder,
+.gv-screen {
+  min-width: 0;
+}
+.cap1-step,
+.cap1-bridge,
+.portal-wrap,
+.capx-vis,
+.gv-panelwrap,
+.gv-holder {
+  max-width: 100%;
+}
+.cap1-bridge,
+.gv-panelwrap,
+.gv-holder {
+  overflow: hidden;
+}
+.cap1-bridge-ln {
+  min-width: 0;
+}
+
+/* Safety net: a stray wide descendant can never produce a horizontal scrollbar.
+   (site.css already sets body overflow-x:hidden; clip is the modern equivalent
+   that doesn't establish a scroll container for position:fixed descendants.) */
+html {
+  overflow-x: clip;
+}
