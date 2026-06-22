@@ -3,10 +3,11 @@ import { GTM_ID } from '../../consts';
 
 const gtmId = GTM_ID;
 
-// GTM loader body, parameterized with the literal id so it can run off the main
-// thread via Partytown. `+ gtmId` is injected at build time; the script string
-// itself is executed inside the Partytown worker.
-const partytownLoader = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`;
+// Standard Google Tag Manager loader: async, on the main thread. It runs AFTER
+// the Consent Mode v2 default below, on the same dataLayer, so consent gating is
+// reliable and every GTM/GA4 tag works. `${gtmId}` is injected at build time;
+// `j.async=true` keeps it off the critical rendering path.
+const gtmLoader = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`;
 ---
 {
   gtmId && (
@@ -39,8 +40,8 @@ const partytownLoader = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.star
         })();
       </script>
 
-      {/* 2) GTM loader, off-thread via Partytown. */}
-      <script type="text/partytown" is:inline set:html={partytownLoader} />
+      {/* 2) GTM loader — async, main thread (reliable Consent Mode + all tags work). */}
+      <script is:inline set:html={gtmLoader} />
 
       {/* GTM <noscript> fallback. */}
       <noscript>
