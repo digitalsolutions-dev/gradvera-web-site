@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrivacyBody from '../../components/sections/PrivacyBody.astro';
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+const lang: Locale = 'en';
+const t = useTranslations(lang);
+---
+<BaseLayout lang={lang} path="/privacy-policy/" title={t('seo.privacy.title')} description={t('seo.privacy.desc')} noindex={false}>
+  <PrivacyBody lang={lang} />
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="cap plain">
+  <div class="wrap">
+    <div class="cap-head reveal">
+      <span class="cap-num">CAPABILITY 03</span>
+      <div>
+        <h2>{t('cap3.h2')}</h2>
+        <p>{t('cap3.lede')}</p>
+      </div>
+    </div>
+    <div class="capx rev reveal">
+      <div class="capx-points">
+        <div class="capx-eyebrow">{t('cap3.eyebrow')}</div>
+        <div class="point">
+          <span class="pic pic-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <div><div class="pt">{t('cap3.p1.pt')}</div><div class="pd">{t('cap3.p1.pd')}</div></div>
+        </div>
+        <div class="point">
+          <span class="pic pic-amber" style="background:var(--warning-soft);color:var(--warning)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <div><div class="pt">{t('cap3.p2.pt')}</div><div class="pd">{t('cap3.p2.pd')}</div></div>
+        </div>
+        <div class="point">
+          <span class="pic" style="background:#FEF3C7;color:#A16207"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+          <div><div class="pt">{t('cap3.p3.pt')}</div><div class="pd">{t('cap3.p3.pd')}</div></div>
+        </div>
+        <div class="point">
+          <span class="pic pic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+          <div><div class="pt">{t('cap3.p4.pt')}</div><div class="pd">{t('cap3.p4.pd')}</div></div>
+        </div>
+      </div>
+      <div class="capx-vis">
+        <div class="gv-panelwrap">
+          <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="">Gradvera · Risk review</span></div>
+          <div class="gv-holder">
+            <div class="gv-screen solo pnl" style="--gw:680px">
+              <div class="rk-banner">
+                <span class="bi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div><div class="bt">7 items need review before submission</div><div class="bs">Gradvera flagged unusual prices and cost changes across this offer.</div></div>
+                <span class="bcta">Review all</span>
+              </div>
+              <div class="rk-sev">
+                <div class="rk-card sev-red sel"><div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="rc-n">2</span></div><div class="rc-l">Critical</div></div>
+                <div class="rk-card sev-amber"><div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="rc-n">3</span></div><div class="rc-l">Significant</div></div>
+                <div class="rk-card sev-yellow"><div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><span class="rc-n">2</span></div><div class="rc-l">Mild</div></div>
+                <div class="rk-card sev-green"><div class="rc-top"><span class="rc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span><span class="rc-n">41</span></div><div class="rc-l">No issues</div></div>
+              </div>
+              <div class="rk-tbl">
+                <div class="rk-th"><span></span><span>Line item</span><span>Proposed</span><span>vs. history</span><span>Severity</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">Asphalt wearing course<small>Surfacing · ~90 t</small></span><span class="val tnum">€115<small>/ t</small></span><span><span class="rk-delta up">▲ +34%</span></span><span class="rk-chip chip-red">Critical</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">Excavation — rock<small>Earthworks · 640 m³</small></span><span class="val tnum">€38.00<small>/ m³</small></span><span><span class="rk-delta up">▲ +28%</span></span><span class="rk-chip chip-red">Critical</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--warning)"></span><span class="it">Granular sub-base<small>Earthworks · 820 m²</small></span><span class="val tnum">€21.50<small>/ m²</small></span><span><span class="rk-delta up">▲ +12%</span></span><span class="rk-chip chip-amber">Significant</span></div>
+                <div class="rk-tr"><span class="sv" style="background:#EAB308"></span><span class="it">Concrete C25/30<small>Foundations · 320 m³</small></span><span class="val tnum">€170.00<small>/ m³</small></span><span><span class="rk-delta flat">≈ +3%</span></span><span class="rk-chip chip-yellow">Mild</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="capx-foot"><span class="gv-spark">✦</span>{t('cap3.foot')}</div>
+      </div>
+    </div>
+  </div>
+</section>

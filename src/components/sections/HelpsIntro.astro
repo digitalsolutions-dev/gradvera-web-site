@@ -1,0 +1,15 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="helps" id="helps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{t('helps.eyebrow')}</p>
+      <h2>{t('helps.h2a')} <span class="amber">{t('helps.h2Amber')}</span></h2>
+      <p class="lede" style="margin-top:24px;max-width:740px">{t('helps.lede')}</p>
+    </div>
+  </div>
+</section>

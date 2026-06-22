@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeSections from '../components/pages/HomeSections.astro';
+import { useTranslations, localizePath, absoluteUrl } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Gradvera',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      description: 'Book a demo',
+    },
+    description: t('seo.home.desc'),
+    provider: { '@type': 'Organization', name: 'DIGITAL SOLUTIONS d.o.o.' },
+    inLanguage: lang,
+    url: absoluteUrl(localizePath('/', lang), Astro.site),
+  },
+];
+---
+<BaseLayout lang={lang} path="/" title={t('seo.home.title')} description={t('seo.home.desc')} jsonLd={jsonLd}>
+  <HomeSections lang={lang} />
+</BaseLayout>

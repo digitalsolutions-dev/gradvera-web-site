@@ -1,0 +1,27 @@
+{
+  "name": "gradvera-web-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Gradvera — construction estimating software. Marketing website (Astro, trilingual EN/SL/HR).",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/vercel": "^8.2.7",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@fontsource/ibm-plex-sans": "^5.2.6",
+    "astro": "^5.13.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}

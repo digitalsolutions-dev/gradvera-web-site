@@ -1,0 +1,90 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; path?: string }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<form class="form-card" id="gv-demo-form" data-err={t('demo.form.error')}>
+  <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+  <input type="hidden" name="locale" value={lang}>
+  <input type="hidden" name="page" value="book-a-demo">
+  <div class="field-row">
+    <div class="field"><label for="fn">{t('demo.form.fullName')}</label><input id="fn" name="fullName" type="text" placeholder={t('demo.form.fullNamePlaceholder')} required></div>
+    <div class="field"><label for="co">{t('demo.form.company')}</label><input id="co" name="company" type="text" placeholder={t('demo.form.companyPlaceholder')} required></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label for="em">{t('demo.form.email')}</label><input id="em" name="email" type="email" placeholder={t('demo.form.emailPlaceholder')} required></div>
+    <div class="field"><label for="ph">{t('demo.form.phone')}</label><input id="ph" name="phone" type="tel" placeholder={t('demo.form.phonePlaceholder')} required></div>
+  </div>
+  <div class="field">
+    <label for="rl">{t('demo.form.role')}</label>
+    <select id="rl" name="role">
+      <option>{t('demo.form.roleEstimator')}</option>
+      <option>{t('demo.form.roleCommercialManager')}</option>
+      <option>{t('demo.form.roleHeadOfEstimating')}</option>
+      <option>{t('demo.form.roleOperationsManager')}</option>
+      <option>{t('demo.form.roleCompanyDirector')}</option>
+      <option>{t('demo.form.roleOther')}</option>
+    </select>
+  </div>
+  <div class="field"><label for="ms">{t('demo.form.message')}</label><textarea id="ms" name="message" rows="3" placeholder={t('demo.form.messagePlaceholder')} required></textarea></div>
+  <button type="submit" class="btn btn-primary">{t('demo.form.submit')} <span class="arr">→</span></button>
+</form>
+<div class="form-ok" role="status" aria-live="polite" tabindex="-1">
+  <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+  <h3>{t('demo.success.h3')}</h3>
+  <p>{t('demo.success.p')}</p>
+</div>
+
+<style is:global>
+  .form-err{color:var(--danger);font-size:13px;margin-top:10px}
+</style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('gv-demo-form');
+    if (!form) return;
+    var ok = form.parentNode.querySelector('.form-ok');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var errMsg = form.getAttribute('data-err') || 'Something went wrong. Please try again.';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var honeypot = form.querySelector('input[name="company_website"]');
+      if (honeypot && honeypot.value) return;
+
+      var existingErr = form.querySelector('.form-err');
+      if (existingErr) existingErr.remove();
+
+      var data = {};
+      var fields = form.querySelectorAll('input, select, textarea');
+      for (var i = 0; i < fields.length; i++) {
+        var f = fields[i];
+        if (!f.name) continue;
+        data[f.name] = f.value;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('request failed');
+          form.style.display = 'none';
+          if (ok) { ok.classList.add('show'); ok.focus(); }
+        })
+        .catch(function () {
+          if (submitBtn) submitBtn.disabled = false;
+          var p = document.createElement('p');
+          p.className = 'form-err';
+          p.setAttribute('role', 'alert');
+          p.textContent = errMsg;
+          form.appendChild(p);
+        });
+    });
+  })();
+</script>

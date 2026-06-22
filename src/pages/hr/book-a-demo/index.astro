@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DemoForm from '../../../components/forms/DemoForm.astro';
+import { useTranslations, localizePath, absoluteUrl, type Locale } from '../../../i18n/utils';
+
+const lang: Locale = 'hr';
+const t = useTranslations(lang);
+const site = Astro.site;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: t('nav.home'),
+      item: absoluteUrl(localizePath('/', lang), site),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t('demo.page.eyebrow'),
+      item: absoluteUrl(localizePath('/book-a-demo/', lang), site),
+    },
+  ],
+};
+---
+<BaseLayout
+  lang={lang}
+  path="/book-a-demo/"
+  title={t('seo.demo.title')}
+  description={t('seo.demo.desc')}
+  jsonLd={[breadcrumbLd]}
+>
+  <section class="demo standalone" id="demo">
+    <div class="wrap">
+      <div class="demo-grid">
+        <div>
+          <a class="back-link" href={localizePath('/', lang) + '#top'}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>{t('demo.page.back')}</a>
+          <p class="eyebrow">{t('demo.page.eyebrow')}</p>
+          <h1 style="margin-top:16px">{t('demo.page.h2')}</h1>
+          <p>{t('demo.page.intro')}</p>
+          <ul class="pts">
+            {t('demo.page.pts').map((s: string) => (<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>{s}</li>))}
+          </ul>
+        </div>
+        <div>
+          <DemoForm lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .demo.standalone { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; }
+  .demo .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--on-ink-2);
+    font: 500 13px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 26px; }
+  .demo .back-link:hover { color: var(--amber); }
+  .demo .back-link svg { width: 15px; height: 15px; }
+</style>
