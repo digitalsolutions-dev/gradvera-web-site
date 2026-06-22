@@ -30,6 +30,23 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: { en: 'en', sl: 'sl', hr: 'hr' },
       },
+      // Stamp every entry with the deploy time — the static site is fully
+      // regenerated on each deploy, so this is an honest freshness signal.
+      lastmod: new Date(),
+      changefreq: 'monthly',
+      serialize(item) {
+        // Per-page priority. (Google ignores priority/changefreq, but they are
+        // conventional and read by Bing / SEO-audit tools.)
+        const path = new URL(item.url).pathname.replace(/^\/(?:sl|hr)\//, '/');
+        item.priority = path === '/' ? 1.0 : path.startsWith('/privacy') ? 0.3 : 0.8;
+        // Complete the hreflang set with x-default → the English/default URL.
+        // The i18n integration has already populated item.links with en/sl/hr.
+        const en = item.links?.find((l) => l.lang === 'en');
+        if (en && !item.links?.some((l) => l.lang === 'x-default')) {
+          item.links?.push({ lang: 'x-default', url: en.url });
+        }
+        return item;
+      },
     }),
   ],
   build: { inlineStylesheets: 'auto' },
