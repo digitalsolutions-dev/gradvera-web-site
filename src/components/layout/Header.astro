@@ -34,18 +34,78 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
 </header>
 
 <style is:global>
-  .lang-switch { display: inline-flex; align-items: center; gap: 8px; }
-  .lang-switch a {
-    font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--on-ink-2);
-    text-decoration: none;
+  /* Language picker — a segmented pill control. Active locale = filled amber
+     (state shown by fill, not colour alone). Used in the desktop header and,
+     full-width + touch-sized, inside the mobile menu. */
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
+    border-radius: 999px;
   }
-  .lang-switch a[aria-current] { color: var(--amber); }
-  .hdr.solid .lang-switch a { color: var(--fg2); }
-  .hdr.solid .lang-switch a[aria-current] { color: var(--brand-primary-pressed); }
+  .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    padding: 7px 11px;
+    font: 600 12px/1 var(--font-mono, 'IBM Plex Mono', monospace);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--on-ink-2, #97a6c0);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .lang-switch a:hover {
+    color: var(--on-ink, #eef2fa);
+  }
+  .lang-switch a[aria-current] {
+    background: var(--amber, #e8901c);
+    color: #1a1208;
+  }
+  .lang-switch a:focus-visible {
+    outline: 2px solid var(--amber, #e8901c);
+    outline-offset: 2px;
+  }
+
+  /* The header is dark in both rest + scrolled (.solid) states, so the picker
+     keeps light text throughout (the old .solid override used dark-mode greys
+     that vanished on the navy bar). */
+  .hdr.solid .lang-switch {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Declutter the cramped mobile header — the picker moves into the menu. */
+  @media (max-width: 940px) {
+    .hdr .lang-switch {
+      display: none;
+    }
+  }
+
+  /* Mobile menu: full-width, touch-sized (≥44px) segmented control. */
+  .mobile-nav .lang-switch {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .mobile-nav .lang-switch a {
+    min-height: 46px;
+    font-size: 14px;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lang-switch a {
+      transition: none;
+    }
+  }
 </style>
 
 <script is:inline>
