@@ -70,3 +70,22 @@ html {
     max-width: none;
   }
 }
+
+/* --- Active nav link (scrollspy) --------------------------------------------
+   site.css:538 styles .nav a.active as a CREAM pill (--brand-primary-soft, for a
+   light surface) — but the header bar is dark, so it clashed with the amber lang
+   picker + CTA once scrollspy started applying .active (re-enabled in the mobile
+   pass). Bring it into the amber accent family: amber text on a subtle
+   amber-tinted pill, consistent over both the transparent and .solid bar. */
+.nav a.active {
+  color: var(--amber, #e8901c);
+  background: rgba(232, 144, 28, 0.14);
+}
+.hdr.solid .nav a.active {
+  background: rgba(232, 144, 28, 0.16);
+}
+
+/* A touch more breathing room between the nav buttons (design had gap:2px). */
+.nav {
+  gap: 8px;
+}
