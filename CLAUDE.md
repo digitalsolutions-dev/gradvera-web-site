@@ -23,7 +23,7 @@ to Vercel. Production domain: `gradvera.com`.
 - `npm run build` — production build (`astro build`)
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
-- `npm run test:e2e` — **opt-in** Playwright browser checks (see below); not the gate
+- `npm run test:e2e` — Playwright browser checks (see below); runs in CI, but `astro check` is the gate
 
 **`npm run check` is the verification gate — run it before pushing; CI enforces
 it** (see _Branches, CI & deploy_). To type-check a single file, still run `npm
@@ -31,12 +31,13 @@ run check` (astro check is project-wide; there is no per-file test runner).
 
 There is no unit-test framework. For behaviour that `astro check` and static
 HTML greps can't prove — interaction, focus management, computed layout,
-responsive overflow, runtime console errors — there is an **opt-in** Playwright
-harness under `tests/e2e/` (`npm run test:e2e`; one-time `npx playwright install
+responsive overflow, runtime console errors — there is a Playwright harness
+under `tests/e2e/` (`npm run test:e2e`; one-time `npx playwright install
 chromium`). It builds the site and runs the specs against the real `dist/client`
-output. It is **not** part of CI and does **not** replace `astro check` — see
-`tests/e2e/README.md` for how to run it and add checks. `tests/` is excluded
-from `tsconfig` so the harness never feeds the `astro check` gate.
+output. It runs in CI as a separate **e2e** job (alongside the `astro check`
+gate) and does **not** replace `astro check` — see `tests/e2e/README.md` for how
+to run it locally and add checks. `tests/` is excluded from `tsconfig` so the
+harness never feeds the `astro check` gate.
 
 ## Layout
 
@@ -79,10 +80,13 @@ Non-production deploys (Vercel Preview / staging) emit `noindex`.
 deploy. Vercel runs `astro build` but **not** `astro check`, so a type error
 passes the build and would ship silently.
 
-**CI (`.github/workflows/ci.yml`).** A single `astro check` job closes that gap.
-Runs on every PR and on pushes to `main` / `staging`. Build + deploy stay
-Vercel's job — CI is type-check only. Run `npm run check` locally before
-pushing; CI is the enforcing copy.
+**CI (`.github/workflows/ci.yml`).** Two jobs run on every PR and on pushes to
+`main` / `staging`: **`astro check`** (the type-safety gate that closes the
+Vercel-doesn't-type-check gap) and **`e2e`** (the Playwright harness — installs
+Chromium, builds, runs the browser specs; uploads the HTML report as an artifact
+on failure). Build + deploy stay Vercel's job. Run `npm run check` (and, for
+UI/behaviour changes, `npm run test:e2e`) locally before pushing; CI is the
+enforcing copy.
 
 **Branch flow.** Work lands via short-lived `feat/*` / `fix/*` / `docs/*` /
 `ci/*` / `chore/*` branches → PR → CI green → merge to `main` (squash for a
