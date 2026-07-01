@@ -15,42 +15,42 @@ const t = useTranslations(lang);
     </div>
     <div class="reveal">
       <div class="cap4-vis">
-        <div class="gv-panelwrap">
+        <div class="gv-panelwrap" aria-hidden="true">
           <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="">Gradvera · Subcontractor comparison</span></div>
           <div class="gv-holder">
             <div class="gv-screen solo pnl" style="--gw:560px">
               <div class="sc-head">
                 <div><div class="st">Reinforcement steel — supply &amp; fix</div><div class="ssub tnum">BoQ 03.2 · 9.6 t · 4 quotations received</div></div>
-                <span class="best">Best value</span>
+                <span class="best">{t('mock.bestValue')}</span>
               </div>
-              <div class="sc-th"><span>Subcontractor</span><span>Quoted price</span><span>Valid until</span><span>Risk</span><span></span></div>
+              <div class="sc-th"><span>{t('mock.subcontractor')}</span><span>{t('mock.quotedPrice')}</span><span>{t('mock.validUntil')}</span><span>{t('mock.risk')}</span><span></span></div>
               <div class="sc-tr win">
                 <span class="sc-co"><span class="lg" style="background:#1F7A4D">A</span><span><span class="cn">Subcontractor A</span><span class="cm">6× before</span></span></span>
                 <span class="sc-price tnum">€1,180<small class="lo">▼ 4% vs prev</small></span>
                 <span class="sc-meta tnum">12 Aug</span>
-                <span class="sc-risk chip-green">Low</span>
-                <span class="sc-pick on">Selected</span>
+                <span class="sc-risk chip-green">{t('mock.low')}</span>
+                <span class="sc-pick on">{t('mock.selected')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#2A6FDB">B</span><span><span class="cn">Subcontractor B</span><span class="cm">2× before</span></span></span>
                 <span class="sc-price tnum">€1,240<small class="hi">▲ 1% vs prev</small></span>
                 <span class="sc-meta tnum">9 Aug</span>
-                <span class="sc-risk chip-green">Low</span>
-                <span class="sc-pick off">Pick</span>
+                <span class="sc-risk chip-green">{t('mock.low')}</span>
+                <span class="sc-pick off">{t('mock.pick')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#7C3AED">C</span><span><span class="cn">Subcontractor C</span><span class="cm"></span></span></span>
                 <span class="sc-price tnum">€1,295<small class="cur" style="color:var(--fg3)">no history</small></span>
                 <span class="sc-meta tnum">15 Aug</span>
-                <span class="sc-risk chip-amber">Medium</span>
-                <span class="sc-pick off">Pick</span>
+                <span class="sc-risk chip-amber">{t('mock.medium')}</span>
+                <span class="sc-pick off">{t('mock.pick')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#B45309">D</span><span><span class="cn">Subcontractor D</span><span class="cm">1× before</span></span></span>
                 <span class="sc-price tnum">€1,410<small class="hi">▲ 11% vs prev</small></span>
                 <span class="sc-meta tnum">6 Aug</span>
-                <span class="sc-risk chip-amber">Medium</span>
-                <span class="sc-pick off">Pick</span>
+                <span class="sc-risk chip-amber">{t('mock.medium')}</span>
+                <span class="sc-pick off">{t('mock.pick')}</span>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ const t = useTranslations(lang);
         </div>
         <div class="portal-wrap">
           <span class="portal-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Subcontractor Portal</span>
-          <div class="gv-panelwrap">
+          <div class="gv-panelwrap" aria-hidden="true">
             <div class="winbar web"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span></div>
             <div class="gv-holder">
               <div class="gv-screen solo pnl" style="--gw:430px">
@@ -82,9 +82,9 @@ const t = useTranslations(lang);
                   </div>
                   <div class="po-item locked">
                     <div><div class="pin">Concrete C25/30</div><div class="pim">Not assigned to you</div></div>
-                    <div class="pinp"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hidden</div>
+                    <div class="pinp"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>{t('mock.hidden')}</div>
                   </div>
-                  <div class="po-foot"><span class="po-submit">Submit prices</span><span class="po-prog">1 of 2 priced</span></div>
+                  <div class="po-foot"><span class="po-submit">{t('mock.submitPrices')}</span><span class="po-prog">1 of 2 priced</span></div>
                 </div>
               </div>
             </div>

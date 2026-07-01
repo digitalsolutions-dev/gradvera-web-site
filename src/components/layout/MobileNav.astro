@@ -6,6 +6,7 @@ const t = useTranslations(lang);
 const switchPath = path ?? '/';
 const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', lang)) + hash;
 ---
+<div class="mobile-scrim" hidden></div>
 <nav class="mobile-nav" id="mobile-nav">
   <a href={homeHref('#helps')}>{t('nav.helps')}</a>
   <a href={homeHref('#works')}>{t('nav.works')}</a>
@@ -17,3 +18,75 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
     ))}
   </div>
 </nav>
+
+<style is:global>
+  /* Dismiss scrim behind the open mobile menu. The header sits above it
+     (z-index 60 > 54), so the toggle stays clickable to close. Body scroll
+     locks while the menu is open. */
+  .mobile-scrim { position: fixed; inset: 0; z-index: 54; background: rgba(10, 16, 32, 0.55); }
+  .mobile-scrim[hidden] { display: none; }
+  body.nav-open { overflow: hidden; }
+</style>
+
+<script is:inline>
+  /* Mobile-menu accessibility. site.js owns the .open toggle (menu button +
+     link clicks); this observes that state instead of adding a second click
+     handler (no double-toggle), then layers on: aria-expanded/label sync, focus
+     into the menu on open, a focus trap, Escape-to-close, a dismiss scrim, body
+     scroll-lock, and auto-close when the viewport grows past the mobile
+     breakpoint (the toggle becomes display:none). */
+  (function () {
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('mobile-nav');
+    if (!btn || !nav) return;
+    var scrim = document.querySelector('.mobile-scrim');
+    var openLabel = btn.getAttribute('aria-label') || 'Open menu';
+    var closeLabel = btn.getAttribute('data-close-label') || openLabel;
+
+    function isOpen() { return nav.classList.contains('open'); }
+    function focusables() { return nav.querySelectorAll('a[href], button:not([disabled])'); }
+
+    function sync() {
+      var open = isOpen();
+      document.body.classList.toggle('nav-open', open);
+      if (scrim) scrim.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? closeLabel : openLabel);
+      if (open) {
+        var f = focusables();
+        if (f.length && !nav.contains(document.activeElement)) f[0].focus();
+      }
+    }
+
+    function close(returnFocus) {
+      nav.classList.remove('open');
+      sync();
+      if (returnFocus) btn.focus();
+    }
+
+    if (window.MutationObserver) {
+      new MutationObserver(sync).observe(nav, { attributes: true, attributeFilter: ['class'] });
+    } else {
+      btn.addEventListener('click', function () { requestAnimationFrame(sync); });
+    }
+    if (scrim) scrim.addEventListener('click', function () { close(true); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(true); return; }
+      if (e.key === 'Tab') {
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (isOpen() && btn.offsetParent === null) close(false);
+    });
+
+    sync();
+  })();
+</script>

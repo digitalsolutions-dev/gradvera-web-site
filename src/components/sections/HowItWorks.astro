@@ -10,20 +10,20 @@ const t = useTranslations(lang);
       <p class="eyebrow">{t('works.eyebrow')}</p>
       <h2 class="h-section" style="margin-top:16px">{t('works.h2')}</h2>
     </div>
-    <div class="works-steps">
-      <div class="wstep reveal">
+    <ol class="works-steps">
+      <li class="wstep reveal">
         <div class="wn"><span class="num">01</span><span class="lab">{t('works.s1lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s1h3')}</h3>
           <p>{t('works.s1p')}</p>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">02</span><span class="lab">{t('works.s2lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s2h3')}</h3>
           <p>{t('works.s2p')}</p>
-          <div class="group-viz">
+          <div class="group-viz" aria-hidden="true">
             <div class="descs">
               <div class="desc-chip">Concrete foundation C25/30, 150 mm</div>
               <div class="desc-chip">Concrete base slab C25/30, 15 cm</div>
@@ -37,13 +37,13 @@ const t = useTranslations(lang);
             <div class="same-item"><div class="si-k">{t('works.s2resolves')}</div><div class="si-v">{t('works.s2same')}</div></div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">03</span><span class="lab">{t('works.s3lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s3h3')}</h3>
           <p>{t('works.s3p')}</p>
-          <div class="ref-hub">
+          <div class="ref-hub" aria-hidden="true">
             <div class="ref-core">
               <div class="spark">✦</div>
               <div class="rk">Line item</div>
@@ -59,26 +59,26 @@ const t = useTranslations(lang);
             </div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">04</span><span class="lab">{t('works.s4lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s4h3')}</h3>
           <p>{t('works.s4p')}</p>
-          <div class="est-viz">
+          <div class="est-viz" aria-hidden="true">
             <div class="est-row"><span class="en">Concrete foundation C25/30</span><span class="ep">✦ €170 / m³</span><span class="ec"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div>
             <div class="est-row"><span class="en">Excavation — rock</span><span class="ep">✦ €38 / m³</span><span class="ec"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div>
-            <div class="est-row pending"><span class="en">Structural steel S355</span><span class="erow"><span class="epstack"><small class="eprop">Proposed price</small><span class="ep">✦ €2,180 / t</span></span><span class="acc">Accept</span><span class="adj">Adjust</span></span></div>
+            <div class="est-row pending"><span class="en">Structural steel S355</span><span class="erow"><span class="epstack"><small class="eprop">{t('mock.proposedPrice')}</small><span class="ep">✦ €2,180 / t</span></span><span class="acc">{t('mock.accept')}</span><span class="adj">{t('mock.adjust')}</span></span></div>
             <div class="est-total"><span class="tk">Estimate in progress</span><span class="tv"></span></div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">05</span><span class="lab">{t('works.s5lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s5h3')}</h3>
           <p>{t('works.s5p')}</p>
-          <div class="loop-viz">
+          <div class="loop-viz" aria-hidden="true">
             <div class="loop-chips">
               <div class="loop-chip">{t('works.s5loopa')}</div>
               <div class="loop-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -89,7 +89,14 @@ const t = useTranslations(lang);
             <div class="loop-return"><span class="rl"></span><span class="rc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span><span class="rl"></span></div>
           </div>
         </div>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
+
+<style is:global>
+  /* The five steps are an ordered process, marked up as <ol>/<li> so screen
+     readers announce "list, 5 items" and the sequence. Reset the UA list chrome;
+     the .works-steps / .wstep layout styles are class-based and unchanged. */
+  ol.works-steps { list-style: none; margin: 0; padding: 0; }
+</style>

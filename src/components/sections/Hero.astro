@@ -15,7 +15,7 @@ const t = useTranslations(lang);
         </h1>
         <p class="lede">{t('hero.lede')}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href={localizePath('/', lang) + '#helps'}>{t('hero.cta')} <span class="arr">→</span></a>
+          <a class="btn btn-primary btn-lg" href={localizePath('/', lang) + '#helps'}>{t('hero.cta')} <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="hero-visual reveal">
