@@ -136,3 +136,15 @@ html {
 
 /* (b3) low-contrast grey on the light Outcomes panels -> --fg2 (7.6:1) */
 .sky-panel .sp-n { color: var(--fg2); }
+
+/* --- HowItWorks step-4 est-viz overflow on narrow phones ---------------------
+   The "pending" estimate row (label + proposed price + Accept/Adjust) sat in a
+   grid whose columns wouldn't shrink (default min-width:auto), so at ~320-360px
+   it overflowed the est-viz box (overflow:hidden) and clipped. Let every row
+   column shrink, and on very narrow phones stack the pending row and let its
+   price/buttons wrap so nothing is cut off. */
+.est-row > * { min-width: 0; }
+@media (max-width: 420px) {
+  .est-row.pending { grid-template-columns: 1fr; gap: 10px; }
+  .est-row.pending .erow { flex-wrap: wrap; align-items: center; justify-content: flex-start; }
+}
