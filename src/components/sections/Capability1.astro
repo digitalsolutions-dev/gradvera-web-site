@@ -14,10 +14,10 @@ const t = useTranslations(lang);
       </div>
     </div>
     <div class="fig reveal">
-      <div class="cap1-steps">
-        <div class="cap1-step">
+      <div class="cap1-steps" role="list">
+        <div class="cap1-step" role="listitem">
           <div class="cap1-text">
-            <span class="cap1-badge">1</span>
+            <span class="cap1-badge" aria-hidden="true">1</span>
             <div class="cap1-stepk">Step 1</div>
             <h3 class="cap1-steph">{t('cap1.step1h')}</h3>
             <p class="cap1-stepd">{t('cap1.step1d')}</p>
@@ -48,14 +48,14 @@ const t = useTranslations(lang);
             </div>
           </div>
         </div>
-        <div class="cap1-bridge">
+        <div class="cap1-bridge" aria-hidden="true">
           <span class="cap1-bridge-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6z"/></svg></span>
           <span class="cap1-bridge-t">Gradvera analyzes similar completed projects</span>
           <span class="cap1-bridge-ln"></span>
         </div>
-        <div class="cap1-step rev">
+        <div class="cap1-step rev" role="listitem">
           <div class="cap1-text">
-            <span class="cap1-badge">2</span>
+            <span class="cap1-badge" aria-hidden="true">2</span>
             <div class="cap1-stepk">Step 2</div>
             <h3 class="cap1-steph">{t('cap1.step2h')}</h3>
             <p class="cap1-stepd">{t('cap1.step2d')}</p>

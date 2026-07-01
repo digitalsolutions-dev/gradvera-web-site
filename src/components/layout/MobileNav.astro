@@ -26,6 +26,9 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
   .mobile-scrim { position: fixed; inset: 0; z-index: 54; background: rgba(10, 16, 32, 0.55); }
   .mobile-scrim[hidden] { display: none; }
   body.nav-open { overflow: hidden; }
+  /* The header shrinks 74px -> 64px on scroll (.solid); keep the dropdown menu
+     flush against it so no page strip shows in the gap. */
+  .hdr.solid ~ .mobile-nav { top: 64px; }
 </style>
 
 <script is:inline>

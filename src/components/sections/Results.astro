@@ -3,6 +3,11 @@ import { useTranslations, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+// Split the "4.5 days → 0.8 days" proof stat so screen readers hear a word
+// ("to") instead of the bare arrow glyph read literally.
+const m1sParts: string[] = t('results.m1s').split('→');
+const m1sFrom = (m1sParts[0] || '').trim();
+const m1sTo = (m1sParts[1] || '').trim();
 ---
 <section class="results">
   <div class="wrap">
@@ -15,7 +20,7 @@ const t = useTranslations(lang);
       <div class="metric">
         <div class="mv">82%</div>
         <div class="ml">{t('results.m1l')}</div>
-        <div class="ms">{t('results.m1s')}</div>
+        <div class="ms">{m1sFrom} <span class="results-to">{t('a11y.to')} </span><span aria-hidden="true">→</span> {m1sTo}</div>
       </div>
       <div class="metric">
         <div class="mv">5×</div>
@@ -28,3 +33,10 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<style is:global>
+  /* Visually-hidden connector: the "4.5 days → 0.8 days" proof line now reads
+     as "4.5 days to 0.8 days" to a screen reader; the arrow stays visual only. */
+  .results-to { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+</style>
