@@ -7,9 +7,9 @@ const t = useTranslations(lang);
 <section class="cta1">
   <div class="wrap reveal">
     <div class="c1copy">
-      <span class="c1eyebrow"><span>✦</span>{t('cta1.eyebrow')}</span>
+      <span class="c1eyebrow"><span aria-hidden="true">✦</span>{t('cta1.eyebrow')}</span>
       <p class="c1t">{t('cta1.ta')} <span class="amber">{t('cta1.tAmber')}</span> {t('cta1.tb')}</p>
     </div>
-    <a class="btn btn-primary btn-lg" href={localizePath('/book-a-demo/', lang)}>{t('cta1.cta')} <span class="arr">→</span></a>
+    <a class="btn btn-primary btn-lg" href={localizePath('/book-a-demo/', lang)}>{t('cta1.cta')} <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>

@@ -2,6 +2,7 @@
   "a11y.home": "Gradvera home",
   "a11y.language": "Language",
   "a11y.openMenu": "Open menu",
+  "a11y.closeMenu": "Close menu",
   "a11y.skipToContent": "Skip to content",
   "cap1.h2": "Tell Gradvera the project type, and it proposes the line items similar projects usually need.",
   "cap1.p": "When you start a new estimate, Gradvera recognizes the project type and proposes the sections, materials, labor and subcontracted work typically required. The suggestions come from your firm's own past projects—not from a generic template.",
