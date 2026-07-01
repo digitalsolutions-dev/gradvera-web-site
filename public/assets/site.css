@@ -490,7 +490,6 @@ a { color: inherit; text-decoration: none; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--amber); }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-card .btn { width: 100%; justify-content: center; margin-top: 6px; }
-.form-card .fine { margin-top: 16px; font-size: 12.5px; color: var(--on-ink-3); line-height: 1.5; text-align: center; }
 .form-ok { display: none; text-align: center; padding: 20px 0; }
 .form-ok.show { display: block; }
 .form-ok .ok-ic { width: 56px; height: 56px; border-radius: 50%; background: rgba(232,144,28,0.14); color: var(--amber); display: grid; place-items: center; margin: 0 auto 18px; }
