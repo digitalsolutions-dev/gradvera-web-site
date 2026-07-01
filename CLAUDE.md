@@ -23,11 +23,20 @@ to Vercel. Production domain: `gradvera.com`.
 - `npm run build` — production build (`astro build`)
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
+- `npm run test:e2e` — **opt-in** Playwright browser checks (see below); not the gate
 
-There are no unit tests. **`npm run check` is the verification gate — run it
-before pushing; CI enforces it** (see _Branches, CI & deploy_). To type-check a
-single file, still run `npm run check` (astro check is project-wide; there is no
-per-file test runner).
+**`npm run check` is the verification gate — run it before pushing; CI enforces
+it** (see _Branches, CI & deploy_). To type-check a single file, still run `npm
+run check` (astro check is project-wide; there is no per-file test runner).
+
+There is no unit-test framework. For behaviour that `astro check` and static
+HTML greps can't prove — interaction, focus management, computed layout,
+responsive overflow, runtime console errors — there is an **opt-in** Playwright
+harness under `tests/e2e/` (`npm run test:e2e`; one-time `npx playwright install
+chromium`). It builds the site and runs the specs against the real `dist/client`
+output. It is **not** part of CI and does **not** replace `astro check` — see
+`tests/e2e/README.md` for how to run it and add checks. `tests/` is excluded
+from `tsconfig` so the harness never feeds the `astro check` gate.
 
 ## Layout
 
