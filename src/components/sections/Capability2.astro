@@ -48,13 +48,13 @@ const t = useTranslations(lang);
               <div class="pp-body">
                 <div class="pp-row1">
                   <div>
-                    <div class="pp-k">Proposed price</div>
+                    <div class="pp-k">{t('mock.proposedPrice')}</div>
                     <div class="pp-price tnum">€170.00 <span class="pp-unit">/ m³</span></div>
                     <div class="pp-calc tnum">Material <b>€110</b> · Labor <b>€38</b> · Equipment <b>€12</b> · Margin <b>€10</b></div>
                   </div>
                   <div class="pp-conf" id="c2-conf">
-                    <div class="ck">Confidence</div>
-                    <div class="cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>High · 87%</div>
+                    <div class="ck">{t('mock.confidence')}</div>
+                    <div class="cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>{t('mock.high')} · 87%</div>
                     <div class="cd">Based on 14 matching projects within ±10%.</div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ const t = useTranslations(lang);
                     <div class="bar"></div>
                     <div class="mk" style="left:18%"><span class="lab">MIN €148</span></div>
                     <div class="mk" style="left:50%"><span class="lab">MEDIAN €165</span></div>
-                    <div class="mk prop" style="left:69%"><span class="dot"></span><span class="lab">€170.00</span><span class="sublab">Proposed price</span></div>
+                    <div class="mk prop" style="left:69%"><span class="dot"></span><span class="lab">€170.00</span><span class="sublab">{t('mock.proposedPrice')}</span></div>
                     <div class="mk" style="left:88%"><span class="lab">MAX €198</span></div>
                   </div>
                   <div class="pp-scale"><span>Lower</span><span>Company range</span><span>Higher</span></div>
@@ -89,8 +89,8 @@ const t = useTranslations(lang);
                 </div>
               </div>
               <div class="pp-foot" id="c2-foot">
-                <span class="pp-btn primary"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Accept price</span>
-                <span class="pp-btn ghost">Adjust…</span>
+                <span class="pp-btn primary"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>{t('mock.acceptPrice')}</span>
+                <span class="pp-btn ghost">{t('mock.adjust')}</span>
                 <span class="teach"><span class="gv-spark">✦</span>Edits teach Gradvera</span>
               </div>
             </div>
