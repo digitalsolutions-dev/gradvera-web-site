@@ -26,7 +26,7 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
         ))}
       </div>
       <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
-      <button class="btn menu-btn" aria-label={t('a11y.openMenu')} aria-controls="mobile-nav" aria-expanded="false">
+      <button class="btn menu-btn" aria-label={t('a11y.openMenu')} data-close-label={t('a11y.closeMenu')} aria-controls="mobile-nav" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -107,17 +107,3 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
     }
   }
 </style>
-
-<script is:inline>
-  /* Keep the menu button's aria-expanded in sync with the mobile nav open state
-     (site.js toggles the .open class; this only mirrors it for assistive tech). */
-  (function () {
-    var btn = document.querySelector('.menu-btn');
-    var nav = document.getElementById('mobile-nav');
-    if (!btn || !nav) return;
-    function sync() { btn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false'); }
-    btn.addEventListener('click', function () { requestAnimationFrame(sync); });
-    nav.addEventListener('click', function (e) { if (e.target.closest('a')) requestAnimationFrame(sync); });
-    sync();
-  })();
-</script>

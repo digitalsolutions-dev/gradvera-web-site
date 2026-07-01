@@ -2,6 +2,7 @@
   "a11y.home": "Gradvera početna",
   "a11y.language": "Jezik",
   "a11y.openMenu": "Otvori izbornik",
+  "a11y.closeMenu": "Zatvori izbornik",
   "a11y.skipToContent": "Preskoči na sadržaj",
   "cap1.h2": "Recite Gradveri o kojoj se vrsti projekta radi, a ona predlaže stavke koje slični projekti obično zahtijevaju.",
   "cap1.p": "Kada započnete novi troškovnik, Gradvera prepoznaje vrstu projekta i predlaže odjeljke, materijale, rad i podizvođačke radove koji su uobičajeno potrebni. Prijedlozi dolaze iz prošlih projekata vaše tvrtke, a ne iz generičkog predloška.",
