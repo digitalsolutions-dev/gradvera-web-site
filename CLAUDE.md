@@ -24,9 +24,10 @@ to Vercel. Production domain: `gradvera.com`.
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
 
-There are no unit tests. **`npm run check` is the CI/verification gate — run it
-before every commit.** To type-check a single file, still run `npm run check`
-(astro check is project-wide; there is no per-file test runner).
+There are no unit tests. **`npm run check` is the verification gate — run it
+before pushing; CI enforces it** (see _Branches, CI & deploy_). To type-check a
+single file, still run `npm run check` (astro check is project-wide; there is no
+per-file test runner).
 
 ## Layout
 
@@ -62,12 +63,28 @@ full contract in `docs/lead-integration.md`.
 Google Tag Manager + Google Consent Mode, gated by `CookieConsent.astro` (GDPR).
 Non-production deploys (Vercel Preview / staging) emit `noindex`.
 
-## Branches & deploy
+## Branches, CI & deploy
 
-- `main` → production (`gradvera.com`).
-- `staging` → `staging.gradvera.com` (Vercel preview). Keep it synced with `main`
-  (merge `main` into `staging`, then push).
-- Work lands via `feat/*` / `fix/*` / `docs/*` branches → PR → merge to `main`.
+**Deploy (Vercel).** `main` → production (`gradvera.com`). `staging` →
+`staging.gradvera.com` (Vercel preview). Every PR also gets a Vercel Preview
+deploy. Vercel runs `astro build` but **not** `astro check`, so a type error
+passes the build and would ship silently.
+
+**CI (`.github/workflows/ci.yml`).** A single `astro check` job closes that gap.
+Runs on every PR and on pushes to `main` / `staging`. Build + deploy stay
+Vercel's job — CI is type-check only. Run `npm run check` locally before
+pushing; CI is the enforcing copy.
+
+**Branch flow.** Work lands via short-lived `feat/*` / `fix/*` / `docs/*` /
+`ci/*` / `chore/*` branches → PR → CI green → merge to `main` (squash for a
+single-commit change, merge-commit otherwise). GitHub auto-deletes the head
+branch on merge; delete the local copy too (`git branch -d <name>`). Only `main`
+and `staging` are long-lived.
+
+**Keeping staging current.** After merging to `main`, sync staging:
+`git checkout staging && git merge main && git push`, then `git checkout main`.
+The pushed merge triggers a staging Vercel deploy and a CI run — so `staging`
+must itself carry `ci.yml` for its own push events to be checked.
 
 ## Design source of truth
 
