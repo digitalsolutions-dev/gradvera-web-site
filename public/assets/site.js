@@ -385,7 +385,7 @@
       if (heroPulse) {
         var pc = ((now / 2600) % 1);
         var py = easeOut(clamp01(pc / 0.9));
-        heroPulse.setAttribute('transform', 'translateY(' + (py * 236).toFixed(1) + ')');
+        heroPulse.setAttribute('transform', 'translate(0 ' + (py * 236).toFixed(1) + ')');
         heroPulse.setAttribute('opacity', (pc < 0.08 ? pc / 0.08 : pc > 0.92 ? (1 - pc) / 0.08 : 1).toFixed(2));
       }
 
@@ -465,7 +465,7 @@
       var t = spyTargets[i];
       if (t && t.offsetTop <= mid) active = i;
     }
-    navLinks.forEach(function (a, i) { a.classList.toggle('active', i === active); });
+    navLinks.forEach(function (a, i) { var on = i === active; a.classList.toggle('active', on); if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); } });
     var sc = document.querySelector('.hero-scroll');
     if (sc) sc.style.opacity = Math.max(0, 1 - y / 220);
   }

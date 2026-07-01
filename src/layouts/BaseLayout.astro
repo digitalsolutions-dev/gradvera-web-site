@@ -68,7 +68,7 @@ const htmlLang = LOCALE_META[lang].htmlLang;
     <div class="scroll-progress" aria-hidden="true"></div>
     <Header lang={lang} path={path} />
     <MobileNav lang={lang} path={path} />
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer lang={lang} />
