@@ -92,6 +92,18 @@
   "demo.page.eyebrow": "Rezervirajte predstavitev",
   "demo.page.h2": "Oglejte si Gradvero na vaših lastnih ponudbah.",
   "demo.page.intro": "Skupaj bomo pregledali, kako se Gradvera prilega načinu dela vaše ekipe za ocenjevanje, ob uporabi vaših zgodovinskih cen, ne splošne predloge.",
+  "demo.page.stepsTitle": "Kaj sledi",
+  "demo.page.steps": [
+    "Izpolnite obrazec — imejte v mislih nekaj svojih nedavnih ponudb.",
+    "Pripravimo delovno sejo na vaših lastnih cenah in podatkih.",
+    "Opazujete, kako Gradvera pripravi ponudbo, nato se odločite. Brez obveznosti."
+  ],
+  "demo.page.reassure": [
+    "Brez obveznosti",
+    "Na vaših lastnih ponudbah",
+    "Odgovori oseba, ne bot"
+  ],
+  "demo.page.contactPrefix": "Nas želite kontaktirati neposredno?",
   "demo.page.pts": [
     "Hitrejša priprava ponudb",
     "Boljše cenovne odločitve",
