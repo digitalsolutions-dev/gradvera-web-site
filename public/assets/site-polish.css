@@ -100,3 +100,39 @@ html {
 .field textarea::placeholder {
   color: #8290AA;
 }
+
+/* --- WCAG AA contrast pass (homepage audit) ---------------------------------
+   Layered here to keep vendored site.css intact; each selector matches an
+   original so the later load order wins. Two root causes:
+   (a) amber #E8901C used as TEXT on the light sections (.helps / .cap / .works)
+       scores ~2.2-2.5:1 — below AA. Swap to the darker amber text token
+       --brand-primary-soft-text (#7A4708): 7.7:1 on white, 6.8:1 on the cream
+       pill. Dark sections keep amber (~7.6:1 on --ink) untouched.
+   (b) muted greys (--on-ink-3 on dark, --fg3 on light) used for small labels
+       fall below 4.5:1. Raise one step: --on-ink-2 (>=7:1) / --fg2 (7.6:1). */
+
+/* (a) amber text on the three light sections */
+.helps .eyebrow,
+.cap .eyebrow,
+.works .eyebrow,
+.helps .amber,
+.cap .amber,
+.works .amber { color: var(--brand-primary-soft-text); }
+.cap-num { color: var(--brand-primary-soft-text); }
+.cap1-stepk { color: var(--brand-primary-soft-text); }
+
+/* (b1) hero primary CTA: white-on-amber (2.49:1) -> accessible near-black token */
+.hero-actions .btn-primary { color: var(--brand-on-primary); }
+
+/* (b2) low-contrast greys on dark sections -> --on-ink-2 (>=7:1) */
+.stage-label,
+.log-list .tick,
+.metric .ms,
+.foot-col h5,
+.foot-bottom a,
+.foot-bottom .cc,
+.hero-scroll { color: var(--on-ink-2); }
+.foot-bottom a:hover { color: var(--amber); }
+
+/* (b3) low-contrast grey on the light Outcomes panels -> --fg2 (7.6:1) */
+.sky-panel .sp-n { color: var(--fg2); }
