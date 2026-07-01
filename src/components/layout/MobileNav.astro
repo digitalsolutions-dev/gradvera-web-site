@@ -14,7 +14,7 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
   <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
   <div class="lang-switch" role="group" aria-label={t('a11y.language')}>
     {LOCALES.map((loc) => (
-      <a href={localizePath(switchPath, loc)} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
+      <a href={localizePath(switchPath, loc)} hreflang={LOCALE_META[loc].htmlLang} aria-label={LOCALE_META[loc].label} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
     ))}
   </div>
 </nav>
