@@ -12,15 +12,15 @@ const t = useTranslations(lang);
     </div>
     <div class="cc">
       <div class="day-col reveal">
-        <div class="col-head"><span class="stage-label">{t('problem.dayLabel')}</span></div>
-        <ul class="log-list">
-          {t('problem.daily').map((s: string, i: number) => (<li><span class="tick">{String(i + 1).padStart(2, '0')}</span><span>{s}</span></li>))}
+        <div class="col-head"><span class="stage-label" id="problem-day-label">{t('problem.dayLabel')}</span></div>
+        <ul class="log-list" aria-labelledby="problem-day-label">
+          {t('problem.daily').map((s: string, i: number) => (<li><span class="tick" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><span>{s}</span></li>))}
         </ul>
       </div>
       <div class="cost-col reveal">
         <div class="cost-rail"></div>
-        <div class="col-head"><span class="cause" aria-hidden="true">→</span><span class="stage-label">{t('problem.costLabel')}</span></div>
-        <ul class="cost-list">
+        <div class="col-head"><span class="cause" aria-hidden="true">→</span><span class="stage-label" id="problem-cost-label">{t('problem.costLabel')}</span></div>
+        <ul class="cost-list" aria-labelledby="problem-cost-label">
           {t('problem.cost').map((s: string) => (<li><span class="cost-flag"></span><span>{s}</span></li>))}
         </ul>
       </div>
