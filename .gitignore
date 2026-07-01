@@ -25,3 +25,9 @@ npm-debug.log*
 
 # staged design source (not served)
 .source/
+
+# playwright e2e (browsers, reports, run artifacts — harness code IS committed)
+test-results/
+playwright-report/
+.playwright/
+tests/e2e/screenshots/
