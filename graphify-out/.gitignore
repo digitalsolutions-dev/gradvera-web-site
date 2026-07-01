@@ -1,0 +1,16 @@
+# graphify: ignore machine-local + regenerable artifacts, commit the graph outputs
+cache/
+.graphify_python
+.graphify_root
+.needs_update
+# transient pipeline temp files (present only mid-build, cleaned up after)
+.graphify_detect.json
+.graphify_extract.json
+.graphify_ast.json
+.graphify_semantic.json
+.graphify_semantic_new.json
+.graphify_cached.json
+.graphify_analysis.json
+.graphify_deep_edges.json
+.graphify_chunk_*.json
+.graphify_uncached.txt
