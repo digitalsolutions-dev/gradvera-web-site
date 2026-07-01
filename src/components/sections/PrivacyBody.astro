@@ -7,7 +7,6 @@ const t = useTranslations(lang);
 <style is:global>
   .legal-page { background: var(--bg2); padding-top: 120px; }
   .legal-hero { background: var(--ink); color: var(--on-ink); padding: clamp(96px,14vh,176px) 0 clamp(40px,6vh,72px); }
-  .legal-hero .eyebrow { margin-bottom: 16px; }
   .legal-hero h1 { font-weight: 600; font-size: clamp(34px,5vw,60px); line-height: 1.04; letter-spacing: -0.025em; color: var(--on-ink); margin: 0; }
   .legal-hero p.sub { color: var(--on-ink-2); font-size: 16px; line-height: 1.6; margin: 20px 0 0; max-width: 640px; }
   .legal-body { max-width: 800px; margin: 0 auto; padding: clamp(48px,7vh,88px) var(--pad) clamp(64px,9vh,120px); }
@@ -18,7 +17,7 @@ const t = useTranslations(lang);
     color: var(--fg1); margin: 30px 0 12px; }
   .legal-body p { font-size: 15.5px; line-height: 1.68; color: var(--fg2); margin: 0 0 16px; max-width: 70ch; text-wrap: pretty; }
   .legal-body a { color: var(--brand-blue); }
-  .legal-body a:hover { color: var(--amber); text-decoration: none; }
+  .legal-body a:hover { color: var(--brand-primary-soft-text); text-decoration: underline; }
   .legal-body ul { margin: 0 0 18px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; }
   .legal-body li { font-size: 15.5px; line-height: 1.55; color: var(--fg2); }
   .legal-body li::marker { color: var(--amber); }
@@ -32,7 +31,7 @@ const t = useTranslations(lang);
   .legal-details dt { font: 500 11px/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-label); white-space: nowrap; }
   .legal-details dd { margin: 0; font-size: 14px; line-height: 1.55; color: var(--fg2); }
   @media (max-width: 600px){ .legal-details dl { grid-template-columns: 1fr; gap: 3px 0; } .legal-details dd { margin-bottom: 12px; } }
-  .legal-updated { font: 500 13px/1.5 var(--font-mono); color: var(--fg3); margin-top: 8px; }
+  .legal-updated { font: 500 13px/1.5 var(--font-mono); color: var(--fg2); margin: 0 0 clamp(28px,4vh,44px); }
 </style>
 
 <!-- ============ HERO ============ -->
@@ -46,6 +45,7 @@ const t = useTranslations(lang);
 <div class="legal-page">
   <div class="legal-body">
 
+    <p class="legal-updated">{t('privacy.updated')}</p>
     <h2>{t('privacy.basic.title')}</h2>
     <p>{t('privacy.basic.controller')}</p>
     <p><strong>{t('privacy.basic.gdprLabel')}</strong> {t('privacy.basic.gdpr')}</p>
@@ -64,7 +64,7 @@ const t = useTranslations(lang);
     <p>{t('privacy.visit.p1')}</p>
     <p>{t('privacy.visit.p2')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.visit.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.visit.detail.userCategories')}</dd>
@@ -76,7 +76,7 @@ const t = useTranslations(lang);
     <h3>{t('privacy.contact.title')}</h3>
     <p>{t('privacy.contact.p1')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.contact.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.contact.detail.userCategories')}</dd>
@@ -88,7 +88,7 @@ const t = useTranslations(lang);
     <p>{t('privacy.inquiry.p1')}</p>
     <p>{t('privacy.inquiry.p2')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.inquiry.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.inquiry.detail.userCategories')}</dd>
@@ -100,7 +100,7 @@ const t = useTranslations(lang);
     <p>{t('privacy.newsletter.p1')}</p>
     <p>{t('privacy.newsletter.p2')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.newsletter.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.newsletter.detail.userCategories')}</dd>
@@ -115,7 +115,7 @@ const t = useTranslations(lang);
     <p>{t('privacy.job.p2')}</p>
     <p>{t('privacy.job.p3')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.job.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.job.detail.userCategories')}</dd>
@@ -126,7 +126,7 @@ const t = useTranslations(lang);
     <h2>{t('privacy.analytics.title')}</h2>
     <p>{t('privacy.analytics.p1')}</p>
     <div class="legal-details">
-      <span class="dh"><span class="gv-spark">✦</span>{t('privacy.detailsLabel')}</span>
+      <span class="dh"><span class="gv-spark" aria-hidden="true">✦</span>{t('privacy.detailsLabel')}</span>
       <dl>
         <dt>{t('privacy.term.legalBasis')}</dt><dd>{t('privacy.analytics.detail.legalBasis')}</dd>
         <dt>{t('privacy.term.userCategories')}</dt><dd>{t('privacy.analytics.detail.userCategories')}</dd>
