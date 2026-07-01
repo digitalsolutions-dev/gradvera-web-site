@@ -1,34 +1,80 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// Role options. Value === translated label to preserve the exact string the
+// lead endpoint (and downstream D365) already receives — no contract change.
+const roles: string[] = [
+  t('demo.form.roleEstimator'),
+  t('demo.form.roleCommercialManager'),
+  t('demo.form.roleHeadOfEstimating'),
+  t('demo.form.roleOperationsManager'),
+  t('demo.form.roleCompanyDirector'),
+  t('demo.form.roleOther'),
+];
+const privacyHref = localizePath('/privacy-policy/', lang);
 ---
-<form class="form-card" id="gv-demo-form" data-err={t('demo.form.error')}>
+<form
+  class="form-card"
+  id="gv-demo-form"
+  novalidate
+  data-err={t('demo.form.error')}
+  data-err-required={t('demo.form.errRequired')}
+  data-err-email={t('demo.form.errEmail')}
+  data-sending={t('demo.form.sending')}
+>
   <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="locale" value={lang}>
   <input type="hidden" name="page" value="book-a-demo">
   <div class="field-row">
-    <div class="field"><label for="fn">{t('demo.form.fullName')}</label><input id="fn" name="fullName" type="text" placeholder={t('demo.form.fullNamePlaceholder')} required></div>
-    <div class="field"><label for="co">{t('demo.form.company')}</label><input id="co" name="company" type="text" placeholder={t('demo.form.companyPlaceholder')} required></div>
+    <div class="field">
+      <label for="fn">{t('demo.form.fullName')} <span class="req" aria-hidden="true">*</span></label>
+      <input id="fn" name="fullName" type="text" autocomplete="name" placeholder={t('demo.form.fullNamePlaceholder')} required aria-required="true" aria-describedby="err-fn">
+      <p class="field-error" id="err-fn" role="alert" hidden></p>
+    </div>
+    <div class="field">
+      <label for="co">{t('demo.form.company')} <span class="req" aria-hidden="true">*</span></label>
+      <input id="co" name="company" type="text" autocomplete="organization" placeholder={t('demo.form.companyPlaceholder')} required aria-required="true" aria-describedby="err-co">
+      <p class="field-error" id="err-co" role="alert" hidden></p>
+    </div>
   </div>
   <div class="field-row">
-    <div class="field"><label for="em">{t('demo.form.email')}</label><input id="em" name="email" type="email" placeholder={t('demo.form.emailPlaceholder')} required></div>
-    <div class="field"><label for="ph">{t('demo.form.phone')}</label><input id="ph" name="phone" type="tel" placeholder={t('demo.form.phonePlaceholder')} required></div>
+    <div class="field">
+      <label for="em">{t('demo.form.email')} <span class="req" aria-hidden="true">*</span></label>
+      <input id="em" name="email" type="email" inputmode="email" autocomplete="email" placeholder={t('demo.form.emailPlaceholder')} required aria-required="true" aria-describedby="err-em">
+      <p class="field-error" id="err-em" role="alert" hidden></p>
+    </div>
+    <div class="field">
+      <label for="ph">{t('demo.form.phone')} <span class="opt">({t('demo.form.optional')})</span></label>
+      <input id="ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder={t('demo.form.phonePlaceholder')}>
+    </div>
   </div>
+  <fieldset class="field role-field">
+    <legend>{t('demo.form.role')} <span class="opt">({t('demo.form.optional')})</span></legend>
+    <div class="chips">
+      {roles.map((r: string) => (
+        <label class="chip">
+          <input type="radio" name="role" value={r}>
+          <span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span class="chip-lbl">{r}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
   <div class="field">
-    <label for="rl">{t('demo.form.role')}</label>
-    <select id="rl" name="role">
-      <option>{t('demo.form.roleEstimator')}</option>
-      <option>{t('demo.form.roleCommercialManager')}</option>
-      <option>{t('demo.form.roleHeadOfEstimating')}</option>
-      <option>{t('demo.form.roleOperationsManager')}</option>
-      <option>{t('demo.form.roleCompanyDirector')}</option>
-      <option>{t('demo.form.roleOther')}</option>
-    </select>
+    <label for="ms">{t('demo.form.message')} <span class="req" aria-hidden="true">*</span></label>
+    <textarea id="ms" name="message" rows="3" placeholder={t('demo.form.messagePlaceholder')} required aria-required="true" aria-describedby="err-ms"></textarea>
+    <p class="field-error" id="err-ms" role="alert" hidden></p>
   </div>
-  <div class="field"><label for="ms">{t('demo.form.message')}</label><textarea id="ms" name="message" rows="3" placeholder={t('demo.form.messagePlaceholder')} required></textarea></div>
-  <button type="submit" class="btn btn-primary">{t('demo.form.submit')} <span class="arr">→</span></button>
+  <button type="submit" class="btn btn-primary">
+    <span class="btn-label">{t('demo.form.submit')}</span>
+    <span class="arr" aria-hidden="true">→</span>
+    <span class="spin" aria-hidden="true"></span>
+  </button>
+  <p class="consent">{t('demo.form.consent')}</p>
+  <p class="consent-link"><a href={privacyHref}>{t('footer.bottom.privacy')} →</a></p>
 </form>
 <div class="form-ok" role="status" aria-live="polite" tabindex="-1">
   <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -37,7 +83,56 @@ const t = useTranslations(lang);
 </div>
 
 <style is:global>
-  .form-err{color:var(--danger);font-size:13px;margin-top:10px}
+  /* ---- required / optional field markers ---- */
+  .form-card .req { color: var(--amber); font-weight: 600; }
+  .form-card .opt { color: var(--on-ink-3); font: 400 12px/1 var(--font-sans); text-transform: none; letter-spacing: 0; }
+
+  /* ---- role chips (replaces the native <select> so the OPEN control stays
+          on-brand; a native radiogroup keeps arrow-key + no-JS behaviour) ---- */
+  .role-field { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+  .role-field legend { padding: 0; display: block; font: 500 12px/1 var(--font-mono);
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-2); margin-bottom: 11px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; }
+  .chip { position: relative; display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 14px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
+    background: var(--ink); color: var(--on-ink); font: 500 14px/1 var(--font-sans);
+    cursor: pointer; user-select: none;
+    transition: border-color 140ms, background 140ms, color 140ms; }
+  .chip input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
+  .chip:hover { border-color: var(--on-ink-2); }
+  .chip-tick { display: inline-flex; width: 0; overflow: hidden; opacity: 0;
+    transition: width 140ms, opacity 140ms; }
+  .chip:has(input:checked) { background: var(--amber); border-color: var(--amber); color: var(--brand-on-primary); }
+  .chip:has(input:checked) .chip-tick { width: 13px; opacity: 1; }
+  .chip:has(input:focus-visible) { outline: 2px solid var(--amber); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .chip, .chip-tick { transition: none; }
+  }
+
+  /* ---- inline field validation ---- */
+  .field-error { color: #FCA5A5; font: 400 12.5px/1.4 var(--font-sans); margin-top: 7px; }
+  .field-error[hidden] { display: none; }
+  .field input.invalid, .field textarea.invalid { border-color: rgba(248,113,113,0.75); }
+
+  /* ---- submit loading state ---- */
+  .form-card .btn.is-loading { cursor: default; }
+  .form-card .btn .spin { display: none; width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid rgba(26,25,22,0.30); border-top-color: var(--brand-on-primary);
+    animation: gv-spin 0.7s linear infinite; }
+  .form-card .btn.is-loading .arr { display: none; }
+  .form-card .btn.is-loading .spin { display: inline-block; }
+  @keyframes gv-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .form-card .btn .spin { animation: none; } }
+
+  /* ---- consent microcopy (contrast-safe on the dark card: --on-ink-2 = 6.7:1) ---- */
+  .form-card .consent { margin-top: 18px; font: 400 12.5px/1.55 var(--font-sans); color: var(--on-ink-2); }
+  .form-card .consent-link { margin-top: 5px; font: 500 12.5px/1.4 var(--font-mono);
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-card .consent-link a { color: var(--on-ink-2); }
+  .form-card .consent-link a:hover { color: var(--amber); text-decoration: none; }
+
+  /* ---- network error (fetch failure), appended after submit ---- */
+  .form-net-err { color: #FCA5A5; font-size: 13px; margin-top: 12px; }
 </style>
 
 <script is:inline>
@@ -46,7 +141,61 @@ const t = useTranslations(lang);
     if (!form) return;
     var ok = form.parentNode.querySelector('.form-ok');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+
     var errMsg = form.getAttribute('data-err') || 'Something went wrong. Please try again.';
+    var reqMsg = form.getAttribute('data-err-required') || 'This field is required.';
+    var emailMsg = form.getAttribute('data-err-email') || 'Please enter a valid email address.';
+    var sendingMsg = form.getAttribute('data-sending') || 'Sending…';
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Required set mirrors the server (src/pages/api/lead.ts): name, company,
+    // email, message. Phone + role are optional there, so they aren't validated.
+    var REQUIRED = ['fullName', 'company', 'email', 'message'];
+    var ERR_ID = { fullName: 'err-fn', company: 'err-co', email: 'err-em', message: 'err-ms' };
+
+    function fieldEl(name) { return form.querySelector('[name="' + name + '"]'); }
+    function errEl(name) { return document.getElementById(ERR_ID[name]); }
+
+    function setError(name, msg) {
+      var el = errEl(name), input = fieldEl(name);
+      if (el) { el.textContent = msg; el.hidden = false; }
+      if (input) { input.setAttribute('aria-invalid', 'true'); input.classList.add('invalid'); }
+    }
+    function clearError(name) {
+      var el = errEl(name), input = fieldEl(name);
+      if (el) { el.textContent = ''; el.hidden = true; }
+      if (input) { input.removeAttribute('aria-invalid'); input.classList.remove('invalid'); }
+    }
+    function validateField(name) {
+      var input = fieldEl(name);
+      if (!input) return true;
+      var v = (input.value || '').trim();
+      if (!v) { setError(name, reqMsg); return false; }
+      if (name === 'email' && !EMAIL_RE.test(v)) { setError(name, emailMsg); return false; }
+      clearError(name);
+      return true;
+    }
+
+    // Validate on blur; once a field is flagged, re-check live on input.
+    for (var k = 0; k < REQUIRED.length; k++) {
+      (function (name) {
+        var input = fieldEl(name);
+        if (!input) return;
+        input.addEventListener('blur', function () { validateField(name); });
+        input.addEventListener('input', function () {
+          if (input.getAttribute('aria-invalid')) validateField(name);
+        });
+      })(REQUIRED[k]);
+    }
+
+    function setLoading(on) {
+      if (!submitBtn) return;
+      submitBtn.disabled = on;
+      submitBtn.classList.toggle('is-loading', on);
+      if (btnLabel && on) { btnLabel.setAttribute('data-label', btnLabel.textContent); btnLabel.textContent = sendingMsg; }
+      else if (btnLabel && btnLabel.getAttribute('data-label')) { btnLabel.textContent = btnLabel.getAttribute('data-label'); }
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -54,18 +203,27 @@ const t = useTranslations(lang);
       var honeypot = form.querySelector('input[name="company_website"]');
       if (honeypot && honeypot.value) return;
 
-      var existingErr = form.querySelector('.form-err');
-      if (existingErr) existingErr.remove();
+      // ---- Client-side validation: block submit, focus first invalid ----
+      var firstInvalid = null, allOk = true;
+      for (var r = 0; r < REQUIRED.length; r++) {
+        if (!validateField(REQUIRED[r])) { allOk = false; if (!firstInvalid) firstInvalid = fieldEl(REQUIRED[r]); }
+      }
+      if (!allOk) { if (firstInvalid) firstInvalid.focus(); return; }
 
+      var staleErr = form.querySelector('.form-net-err');
+      if (staleErr) staleErr.remove();
+
+      // ---- Harvest (skip unchecked radios/checkboxes so `role` is the picked one) ----
       var data = {};
       var fields = form.querySelectorAll('input, select, textarea');
       for (var i = 0; i < fields.length; i++) {
         var f = fields[i];
         if (!f.name) continue;
+        if ((f.type === 'radio' || f.type === 'checkbox') && !f.checked) continue;
         data[f.name] = f.value;
       }
 
-      if (submitBtn) submitBtn.disabled = true;
+      setLoading(true);
 
       fetch('/api/lead', {
         method: 'POST',
@@ -78,9 +236,9 @@ const t = useTranslations(lang);
           if (ok) { ok.classList.add('show'); ok.focus(); }
         })
         .catch(function () {
-          if (submitBtn) submitBtn.disabled = false;
+          setLoading(false);
           var p = document.createElement('p');
-          p.className = 'form-err';
+          p.className = 'form-net-err';
           p.setAttribute('role', 'alert');
           p.textContent = errMsg;
           form.appendChild(p);
