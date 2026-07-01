@@ -89,3 +89,14 @@ html {
 .nav {
   gap: 8px;
 }
+
+/* --- Demo-form placeholder contrast ----------------------------------------
+   site.css:489 sets input/textarea placeholders to --on-ink-3 (#5E6E8C),
+   which is only 3.69:1 on the --ink input surface — below WCAG AA (4.5:1) for
+   text. Bump to a dedicated placeholder tone that clears AA on both the input
+   (--ink, 5.9:1) and the card (--ink-2, 5.2:1) while staying visibly dimmer
+   than the real input text (--on-ink). */
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #8290AA;
+}
