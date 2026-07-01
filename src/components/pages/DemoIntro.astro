@@ -1,0 +1,74 @@
+---
+// Left "trust" column of the Book-a-demo page. Extracted here so the three
+// locale pages (en / sl / hr) share one source instead of triplicating the
+// markup. Renders inside <section class="demo standalone">, so the existing
+// .demo / .back-link / .eyebrow / .pts styles in site.css still apply.
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+import { COMPANY } from '../../consts';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const steps: string[] = t('demo.page.steps');
+const reassure: string[] = t('demo.page.reassure');
+---
+<div class="demo-intro">
+  <a class="back-link" href={localizePath('/', lang) + '#top'}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>{t('demo.page.back')}</a>
+  <p class="eyebrow">{t('demo.page.eyebrow')}</p>
+  <h1 style="margin-top:16px">{t('demo.page.h2')}</h1>
+  <p>{t('demo.page.intro')}</p>
+  <ul class="pts">
+    {t('demo.page.pts').map((s: string) => (<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>{s}</li>))}
+  </ul>
+
+  <div class="demo-steps">
+    <p class="steps-title">{t('demo.page.stepsTitle')}</p>
+    <ol>
+      {steps.map((s: string, i: number) => (
+        <li><span class="step-n" aria-hidden="true">{i + 1}</span><span>{s}</span></li>
+      ))}
+    </ol>
+  </div>
+
+  <ul class="reassure">
+    {reassure.map((s: string) => (
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>{s}</li>
+    ))}
+  </ul>
+
+  <p class="demo-contact">
+    <span>{t('demo.page.contactPrefix')}</span>
+    <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
+    <span class="sep" aria-hidden="true">·</span>
+    <a href={COMPANY.phoneHref}>{COMPANY.phoneDisplay}</a>
+  </p>
+</div>
+
+<style is:global>
+  /* "What happens next" — numbered process, amber count badges */
+  .demo .demo-steps { margin-top: 34px; }
+  .demo .steps-title { font: 500 12px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--on-ink-2); margin: 0 0 16px; max-width: none; }
+  .demo .demo-steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .demo .demo-steps li { display: flex; gap: 13px; align-items: flex-start;
+    color: var(--on-ink); font-size: 15px; line-height: 1.5; max-width: 400px; }
+  .demo .step-n { flex: none; width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(232,144,28,0.14);
+    color: var(--amber); font: 600 13px/1 var(--font-mono); margin-top: 1px;
+    font-feature-settings: var(--tabular-nums); }
+
+  /* Reassurance pills */
+  .demo .reassure { list-style: none; margin: 30px 0 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 8px; }
+  .demo .reassure li { display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 12px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
+    font: 500 12.5px/1 var(--font-sans); color: var(--on-ink-2); }
+  .demo .reassure svg { color: var(--amber); flex: none; }
+
+  /* Direct-contact fallback (facts from consts, not hardcoded) */
+  .demo .demo-contact { margin-top: 30px; max-width: none;
+    font: 400 13.5px/1.5 var(--font-sans); color: var(--on-ink-2);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .demo .demo-contact a { color: var(--on-ink); font: 500 13.5px/1.5 var(--font-mono); }
+  .demo .demo-contact a:hover { color: var(--amber); text-decoration: none; }
+  .demo .demo-contact .sep { color: var(--on-ink-3); }
+</style>

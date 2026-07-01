@@ -69,6 +69,11 @@
   "demo.form.email": "Poslovna e-pošta",
   "demo.form.emailPlaceholder": "ime@tvrtka.hr",
   "demo.form.error": "Nešto je pošlo po zlu. Pokušajte ponovno ili pišite na info@digitalsolutions.si.",
+  "demo.form.optional": "nije obavezno",
+  "demo.form.sending": "Slanje…",
+  "demo.form.errRequired": "Ovo polje je obavezno.",
+  "demo.form.errEmail": "Unesite valjanu e-mail adresu.",
+  "demo.form.consent": "Vaše podatke koristimo isključivo za dogovor o demonstraciji — nikada za neželjeni marketing.",
   "demo.form.fullName": "Ime i prezime",
   "demo.form.fullNamePlaceholder": "Ana Horvat",
   "demo.form.message": "Što biste željeli vidjeti?",
@@ -87,6 +92,18 @@
   "demo.page.eyebrow": "Rezervirajte demonstraciju",
   "demo.page.h2": "Vidite Gradveru na vlastitim ponudama.",
   "demo.page.intro": "Provest ćemo vas kroz to kako se Gradvera uklapa u način na koji vaš tim za izradu troškovnika već radi — koristeći vaše povijesne cijene, a ne generički predložak.",
+  "demo.page.stepsTitle": "Što slijedi",
+  "demo.page.steps": [
+    "Ispunite obrazac — imajte na umu nekoliko svojih nedavnih ponuda.",
+    "Pripremimo radnu sesiju na vašim vlastitim cijenama i podacima.",
+    "Gledate kako Gradvera izrađuje ponudu, zatim odlučite. Bez obveze."
+  ],
+  "demo.page.reassure": [
+    "Bez obveze",
+    "Na vašim vlastitim ponudama",
+    "Odgovara osoba, ne bot"
+  ],
+  "demo.page.contactPrefix": "Želite nas kontaktirati izravno?",
   "demo.page.pts": [
     "Brža priprema ponuda",
     "Bolje odluke o cijenama",

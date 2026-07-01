@@ -69,6 +69,11 @@
   "demo.form.email": "Work email",
   "demo.form.emailPlaceholder": "jane@company.si",
   "demo.form.error": "Something went wrong. Please try again, or email info@digitalsolutions.si.",
+  "demo.form.optional": "optional",
+  "demo.form.sending": "Sending…",
+  "demo.form.errRequired": "This field is required.",
+  "demo.form.errEmail": "Please enter a valid email address.",
+  "demo.form.consent": "We use your details only to arrange your demo — never for unsolicited marketing.",
   "demo.form.fullName": "Full name",
   "demo.form.fullNamePlaceholder": "Jane Novak",
   "demo.form.message": "What would you like to see?",
@@ -87,6 +92,18 @@
   "demo.page.eyebrow": "Book a demo",
   "demo.page.h2": "See Gradvera on your own offers.",
   "demo.page.intro": "We'll walk through how Gradvera fits the way your estimating team already works — using your historical pricing, not a generic template.",
+  "demo.page.stepsTitle": "What happens next",
+  "demo.page.steps": [
+    "Send the form — have a couple of your recent offers in mind.",
+    "We set up a working session on your own pricing and data.",
+    "You watch Gradvera build an offer, then decide. No obligation."
+  ],
+  "demo.page.reassure": [
+    "No obligation",
+    "On your own offers",
+    "A person replies, not a bot"
+  ],
+  "demo.page.contactPrefix": "Prefer to reach us directly?",
   "demo.page.pts": [
     "Faster offer preparation",
     "Better pricing decisions",
