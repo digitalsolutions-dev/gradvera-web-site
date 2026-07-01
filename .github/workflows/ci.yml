@@ -1,0 +1,31 @@
+name: CI
+
+# Type-safety gate. `astro build` (run by Vercel on every deploy) does NOT
+# type-check, so a TS / .astro template error can ship silently. `astro check`
+# closes that gap. Build + deploy stay Vercel's job — this is check-only.
+
+on:
+  pull_request:
+  push:
+    branches: [main, staging]
+
+# One run per ref; cancel superseded runs (e.g. rapid pushes to a PR branch).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: astro check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run check
