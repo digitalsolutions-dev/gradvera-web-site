@@ -12,8 +12,14 @@
       "output_tokens": 0,
       "files": 4,
       "note": "deep re-run: doc->code edges"
+    },
+    {
+      "date": "2026-07-01T11:42:48.226698+00:00",
+      "input_tokens": 0,
+      "output_tokens": 40208,
+      "files": 23
     }
   ],
   "total_input_tokens": 167014,
-  "total_output_tokens": 0
+  "total_output_tokens": 40208
 }
