@@ -10,15 +10,15 @@ const t = useTranslations(lang);
       <p class="eyebrow">{t('works.eyebrow')}</p>
       <h2 class="h-section" style="margin-top:16px">{t('works.h2')}</h2>
     </div>
-    <div class="works-steps">
-      <div class="wstep reveal">
+    <ol class="works-steps">
+      <li class="wstep reveal">
         <div class="wn"><span class="num">01</span><span class="lab">{t('works.s1lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s1h3')}</h3>
           <p>{t('works.s1p')}</p>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">02</span><span class="lab">{t('works.s2lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s2h3')}</h3>
@@ -37,8 +37,8 @@ const t = useTranslations(lang);
             <div class="same-item"><div class="si-k">{t('works.s2resolves')}</div><div class="si-v">{t('works.s2same')}</div></div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">03</span><span class="lab">{t('works.s3lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s3h3')}</h3>
@@ -59,8 +59,8 @@ const t = useTranslations(lang);
             </div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">04</span><span class="lab">{t('works.s4lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s4h3')}</h3>
@@ -72,8 +72,8 @@ const t = useTranslations(lang);
             <div class="est-total"><span class="tk">Estimate in progress</span><span class="tv"></span></div>
           </div>
         </div>
-      </div>
-      <div class="wstep reveal">
+      </li>
+      <li class="wstep reveal">
         <div class="wn"><span class="num">05</span><span class="lab">{t('works.s5lab')}</span></div>
         <div class="wc">
           <h3>{t('works.s5h3')}</h3>
@@ -89,7 +89,14 @@ const t = useTranslations(lang);
             <div class="loop-return"><span class="rl"></span><span class="rc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span><span class="rl"></span></div>
           </div>
         </div>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
+
+<style is:global>
+  /* The five steps are an ordered process, marked up as <ol>/<li> so screen
+     readers announce "list, 5 items" and the sequence. Reset the UA list chrome;
+     the .works-steps / .wstep layout styles are class-based and unchanged. */
+  ol.works-steps { list-style: none; margin: 0; padding: 0; }
+</style>
