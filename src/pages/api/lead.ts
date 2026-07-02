@@ -125,6 +125,17 @@ export const POST: APIRoute = async ({ request }) => {
   const secret = import.meta.env.GTM_LEAD_SECRET;
 
   if (endpoint) {
+    // Endpoint configured but no signing secret: the receiver requires a valid
+    // HMAC and 401s every unsigned request, so the lead is silently dropped.
+    // Surface this loudly — a missing/blank GTM_LEAD_SECRET in prod is the most
+    // likely cause of a stream of forwarded:false, and it is otherwise invisible.
+    if (!secret) {
+      console.error(
+        '[lead] GTM_LEAD_ENDPOINT is set but GTM_LEAD_SECRET is missing — the ' +
+          'forward will be rejected (401 invalid_signature) and the lead dropped. ' +
+          'Set GTM_LEAD_SECRET to the receiver’s shared secret.',
+      );
+    }
     // Sign the EXACT bytes we send so the receiver can verify them verbatim.
     const payload = JSON.stringify(lead);
     const sig = secret
