@@ -10,10 +10,13 @@
  *   2. Validate the required marketing fields.
  *   3. Normalize into a stable lead object.
  *   4. If GTM_LEAD_ENDPOINT is configured, forward it to the gtm-toolkit
- *      inbound-lead service, HMAC-SHA256 signed over the exact JSON body.
- *      Forwarding failures are logged but never surfaced to the visitor — we
- *      always return 200 so the lead UX (the success card) is never broken.
- *      A soft `forwarded` flag tells the caller whether the hand-off succeeded.
+ *      inbound-lead service, HMAC-SHA256 signed over the exact JSON body, with
+ *      a bounded timeout. Forwarding failures — a network/DNS error, the
+ *      timeout aborting, or a non-2xx status (the toolkit rejecting the lead) —
+ *      are logged but never surfaced to the visitor: we always return 200 so
+ *      the lead UX (the success card) is never broken. A soft `forwarded` flag
+ *      tells the caller whether the hand-off actually succeeded (2xx), so
+ *      monitoring can catch dropped leads.
  *   5. If no endpoint is configured we just log the lead server-side.
  *
  * Dependency-free, fully typed (the request body is narrowed from
@@ -25,6 +28,9 @@ import crypto from 'node:crypto';
 export const prerender = false;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Max time to wait on the downstream hand-off before aborting it (ms). */
+const FORWARD_TIMEOUT_MS = 5_000;
 
 /** A normalized, downstream-stable lead. Mirrors docs/lead-integration.md. */
 interface Lead {
@@ -125,18 +131,36 @@ export const POST: APIRoute = async ({ request }) => {
       ? crypto.createHmac('sha256', secret).update(payload).digest('hex')
       : '';
     try {
-      await fetch(endpoint, {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
           ...(sig ? { 'x-gradvera-signature': 'sha256=' + sig } : {}),
         },
         body: payload,
+        // Bound the hand-off: the visitor waits on this response synchronously,
+        // and the toolkit returns fast (it only enqueues). Abort a slow/hung
+        // receiver so we never stall the request up to the function timeout.
+        signal: AbortSignal.timeout(FORWARD_TIMEOUT_MS),
       });
+      // `fetch` resolves for ANY HTTP status — a 4xx/5xx means the toolkit
+      // *rejected* the lead (bad HMAC → 401, contract fail → 422, outage → 5xx),
+      // not that it accepted it. Only a 2xx is a real hand-off; anything else is
+      // a dropped lead we must flag, not paper over with forwarded:true.
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        console.error(
+          '[lead] forward to GTM_LEAD_ENDPOINT rejected',
+          res.status,
+          detail.slice(0, 500),
+        );
+        return json({ ok: true, forwarded: false }, 200);
+      }
       return json({ ok: true, forwarded: true }, 200);
     } catch (err) {
-      // Never lose the lead UX: log server-side, still 200 the visitor, but
-      // flag the soft failure so ops/monitoring can pick up the dropped hand-off.
+      // Network failure, DNS, or the timeout aborting the request. Never lose
+      // the lead UX: log server-side, still 200 the visitor, but flag the soft
+      // failure so ops/monitoring can pick up the dropped hand-off.
       console.error('[lead] forward to GTM_LEAD_ENDPOINT failed', err);
       return json({ ok: true, forwarded: false }, 200);
     }

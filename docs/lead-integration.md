@@ -56,20 +56,35 @@ HTTP 400
 
 ### Responses
 
-| Situation                                   | Status | Body                                |
-| ------------------------------------------- | ------ | ----------------------------------- |
-| Valid lead, forwarded OK                     | 200    | `{ "ok": true, "forwarded": true }`  |
-| Valid lead, forward threw (logged server-side) | 200  | `{ "ok": true, "forwarded": false }` |
+| Situation                                    | Status | Body                                 |
+| -------------------------------------------- | ------ | ------------------------------------ |
+| Valid lead, toolkit accepted (2xx)           | 200    | `{ "ok": true, "forwarded": true }`  |
+| Valid lead, toolkit rejected (non-2xx)       | 200    | `{ "ok": true, "forwarded": false }` |
+| Valid lead, forward threw / timed out        | 200    | `{ "ok": true, "forwarded": false }` |
 | Valid lead, no endpoint configured (logged)  | 200    | `{ "ok": true, "forwarded": false }` |
-| Honeypot tripped                             | 200    | `{ "ok": true }`                    |
-| Missing/invalid field, or unparseable body   | 400    | `{ "ok": false, "error": "invalid" }`|
+| Honeypot tripped                             | 200    | `{ "ok": true }`                     |
+| Payload over 16 KB                           | 413    | `{ "ok": false, "error": "too_large" }` |
+| Non-JSON `Content-Type`                      | 415    | `{ "ok": false, "error": "unsupported_media_type" }` |
+| Missing/invalid field, or unparseable body   | 400    | `{ "ok": false, "error": "invalid" }` |
 | `GET /api/lead`                              | 405    | `{ "error": "method not allowed" }`  |
 
 `forwarded` is a **soft flag** for monitoring. The visitor always sees success
 (HTTP 200) once the lead is valid, even if the downstream hand-off failed — we
-never break the success UX over a transient toolkit outage. A `forwarded:false`
-that should have been `true` indicates the toolkit was unreachable; check the
-website function logs for `[lead] forward to GTM_LEAD_ENDPOINT failed`.
+never break the success UX over a transient toolkit outage. `forwarded:true`
+means the toolkit answered **2xx** (it enqueued the lead); it does **not** by
+itself prove the lead reached D365 — that happens later in the consumer (see
+below). A `forwarded:false` that should have been `true` means one of:
+
+- **the toolkit rejected it** (non-2xx — e.g. `401` bad/absent HMAC, `413` too
+  large, `422` failed the lead contract, `5xx` outage): logged as
+  `[lead] forward to GTM_LEAD_ENDPOINT rejected <status> <body-snippet>`;
+- **the request never completed** (network/DNS error, or the **5 s timeout**
+  aborting a hung receiver): logged as
+  `[lead] forward to GTM_LEAD_ENDPOINT failed <err>`.
+
+The forward is bounded by a **5 s timeout** (`AbortSignal.timeout`) so a slow or
+hung receiver can never stall the visitor's request up to the function timeout.
+Check the website function logs for the two lines above to tell the cases apart.
 
 The front-end (`DemoForm.astro`) only checks `res.ok` (the HTTP status), so any
 200 shows the success card.
