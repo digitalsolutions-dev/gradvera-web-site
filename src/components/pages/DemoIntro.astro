@@ -4,7 +4,6 @@
 // markup. Renders inside <section class="demo standalone">, so the existing
 // .demo / .back-link / .eyebrow / .pts styles in site.css still apply.
 import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
-import { COMPANY } from '../../consts';
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -34,13 +33,6 @@ const reassure: string[] = t('demo.page.reassure');
       <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>{s}</li>
     ))}
   </ul>
-
-  <p class="demo-contact">
-    <span>{t('demo.page.contactPrefix')}</span>
-    <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
-    <span class="sep" aria-hidden="true">·</span>
-    <a href={COMPANY.phoneHref}>{COMPANY.phoneDisplay}</a>
-  </p>
 </div>
 
 <style is:global>
@@ -63,12 +55,4 @@ const reassure: string[] = t('demo.page.reassure');
     padding: 7px 12px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
     font: 500 12.5px/1 var(--font-sans); color: var(--on-ink-2); }
   .demo .reassure svg { color: var(--amber); flex: none; }
-
-  /* Direct-contact fallback (facts from consts, not hardcoded) */
-  .demo .demo-contact { margin-top: 30px; max-width: none;
-    font: 400 13.5px/1.5 var(--font-sans); color: var(--on-ink-2);
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-  .demo .demo-contact a { color: var(--on-ink); font: 500 13.5px/1.5 var(--font-mono); }
-  .demo .demo-contact a:hover { color: var(--amber); text-decoration: none; }
-  .demo .demo-contact .sep { color: var(--on-ink-3); }
 </style>
