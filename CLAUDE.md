@@ -142,6 +142,12 @@ only what changed and rewrite `graph.json` + `GRAPH_REPORT.md`. Machine-local
 state (`graphify-out/cache/`, `.graphify_python`, `.graphify_root`, transient
 temp files) is git-ignored; only the portable outputs are committed.
 
+**Fold the graph update into the same PR as the change that caused it** — the
+`/graphify --update` output rides along with the structural edit in one commit
+(or at least one PR), so the graph moves with the code. Do **not** raise
+standalone `chore(graphify)` commits/PRs after the fact; they add history noise
+and let the committed graph drift behind `main`.
+
 ## Notes
 
 - `.idea/` is WebStorm editor state, not application code.
