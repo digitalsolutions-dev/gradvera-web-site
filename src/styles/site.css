@@ -184,8 +184,12 @@ a { color: inherit; text-decoration: none; }
 .cost-col { position: relative; background: var(--ink-2); border: 1px solid var(--ink-hair-2);
   border-radius: var(--radius-lg, 12px); padding: clamp(22px, 3vw, 38px) clamp(22px, 3vw, 36px) clamp(10px, 1.4vw, 18px);
   overflow: hidden; }
-.cost-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--amber);
-  box-shadow: 0 0 30px rgba(232,144,28,0.45); }
+/* Amber roofline, not a left side-stripe: a >1px colored bar hugging a card's left
+   edge is a banned accent pattern. This reuses the page's own roofline motif
+   (.sky-panel::before) so the flagged "consequence" panel is marked the same way the
+   Outcomes skyline is — and no glow, per the glow-signals-life rule. */
+.cost-rail { position: absolute; top: 0; left: clamp(22px, 3vw, 38px); height: 3px; width: 88px;
+  background: var(--amber); border-radius: 0 0 3px 3px; }
 .cost-col .col-head .stage-label { color: var(--amber); }
 .cost-list { list-style: none; margin: 0; padding: 0; }
 .cost-list li { position: relative; padding: 18px 0; border-top: 1px solid var(--ink-hair-2);
@@ -437,10 +441,9 @@ a { color: inherit; text-decoration: none; }
   background: var(--amber); border-radius: 0 0 3px 3px; }
 .sky-panel:nth-child(1){ --roof: 34px; } .sky-panel:nth-child(2){ --roof: 56px; } .sky-panel:nth-child(3){ --roof: 82px; }
 .sky-panel:nth-child(4){ --roof: 46px; } .sky-panel:nth-child(5){ --roof: 68px; } .sky-panel:nth-child(6){ --roof: 30px; }
-.sky-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.sky-top { display: flex; align-items: center; margin-bottom: 22px; } /* single child since the decorative 01–06 index was dropped */
 .sky-ic { width: 46px; height: 46px; border-radius: 12px; background: var(--brand-primary-soft); color: var(--brand-primary-pressed); display: grid; place-items: center; }
 .sky-ic svg { width: 22px; height: 22px; }
-.sky-panel .sp-n { font: 500 12px/1 var(--font-mono); color: var(--fg3); }
 .sky-panel p { font-weight: 600; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.32; letter-spacing: -0.01em; color: var(--fg1); margin: 0; text-wrap: pretty; }
 @media (max-width: 900px){ .sky-row { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .sky-row { grid-template-columns: 1fr; } }
@@ -544,9 +547,9 @@ a { color: inherit; text-decoration: none; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 180px; z-index: 1; pointer-events: none;
   background: linear-gradient(to bottom, transparent, rgba(10,16,32,0.6)); }
 .hero-eyebrow .eyebrow { font-size: 13px; letter-spacing: 0.15em; }
-.hero-eyebrow .dot { animation: none; } /* [quieter/polish] "live-data" pulse on a static label removed */
-@keyframes pulseDot { 0%,100% { box-shadow: 0 0 0 4px rgba(232,144,28,0.18); } 50% { box-shadow: 0 0 0 7px rgba(232,144,28,0.05); } }
-@media (prefers-reduced-motion: reduce) { .hero-eyebrow .dot { animation: none; } }
+/* The eyebrow dot is a static marker. Its "live-data" pulse was removed in the
+   quieter pass; the orphaned pulseDot keyframe and its reduced-motion guard went
+   with it (nothing animates the dot now). */
 
 /* primary button: subtle inner highlight (still flat, no bloom) */
 .btn-primary { box-shadow: inset 0 1px 0 rgba(255,255,255,0.18); }
@@ -596,9 +599,9 @@ a { color: inherit; text-decoration: none; }
 .hero-copy { position: relative; }
 .hero-copy::before { content: ""; position: absolute; left: -16%; top: -10%; width: 130%; height: 130%; z-index: -1;
   background: radial-gradient(46% 50% at 30% 38%, rgba(232,144,28,0.08), transparent 70%); pointer-events: none; }
-/* [quieter] amber underline removed — it doubled the accent on the headline line
-   and added a competing lit element; the amber text already carries the emphasis. */
-.hero h1 .l2 { position: relative; }
+/* [quieter] the amber underline (.l2::after) was removed — it doubled the accent on
+   the headline line; the amber text already carries the emphasis. The rule that
+   positioned it is gone too. */
 /* scroll cue */
 .hero-scroll { position: absolute; left: var(--pad); bottom: 24px; z-index: 3; display: inline-flex; align-items: center; gap: 12px;
   color: var(--on-ink-3); font: 500 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.2em; }
@@ -625,7 +628,9 @@ a { color: inherit; text-decoration: none; }
 .hud-bar { margin-top: 12px; height: 3px; border-radius: 3px; background: var(--ink-hair-2); overflow: hidden; }
 .hud-bar span { display: block; height: 100%; width: 100%; background: var(--amber); box-shadow: 0 0 10px rgba(232,144,28,0.6); border-radius: 3px; }
 .hud-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 11px; }
-#hud-status { font: 500 9.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-3); }
+/* --on-ink-2, not --on-ink-3: 9.5px uppercase mono at ~3.7:1 was the least legible
+   text in the hero. Same one-step lift the polish layer applies to dim dark-surface text. */
+#hud-status { font: 500 9.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-2); }
 .hud-conf { font: 600 9.5px/1 var(--font-mono); color: var(--amber); background: rgba(232,144,28,0.12);
   border: 1px solid var(--amber-line); border-radius: 999px; padding: 4px 7px; white-space: nowrap; }
 @media (max-width: 920px) { .hero-hud { width: 184px; top: 8px; left: 8px; padding: 12px 13px; } #hud-num { font-size: 25px; } }

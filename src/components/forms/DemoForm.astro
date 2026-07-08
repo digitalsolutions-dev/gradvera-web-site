@@ -97,7 +97,8 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   .role-field legend { padding: 0; display: block; font: 500 12px/1 var(--font-mono);
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-2); margin-bottom: 11px; }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; }
-  .chip { position: relative; display: inline-flex; align-items: center; gap: 6px;
+  /* min-height 44px: these are real radio controls — they were 35px, below the touch bar. */
+  .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
     padding: 9px 14px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
     background: var(--ink); color: var(--on-ink); font: 500 14px/1 var(--font-sans);
     cursor: pointer; user-select: none;
@@ -114,9 +115,12 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   }
 
   /* ---- inline field validation ---- */
-  .field-error { color: #F87171; font: 400 12.5px/1.4 var(--font-sans); margin-top: 7px; }
-  .field-error[hidden] { display: none; }
-  .field input.invalid, .field textarea.invalid { border-color: rgba(248,113,113,0.75); }
+  /* .form-card scope (0,2,0) is required: site.css:483 `.demo p` is (0,1,1) and was
+     silently winning, so validation errors rendered in grey --on-ink-2 at 16px instead
+     of red. Scoping to the form outranks the section rule without !important. */
+  .form-card .field-error { color: var(--danger-on-ink); font: 400 12.5px/1.4 var(--font-sans); margin-top: 7px; max-width: none; }
+  .form-card .field-error[hidden] { display: none; }
+  .field input.invalid, .field textarea.invalid { border-color: var(--danger-on-ink-border); }
 
   /* ---- submit loading state ---- */
   .form-card .btn.is-loading { cursor: default; }
@@ -136,7 +140,8 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   .form-card .consent-link a:hover { color: var(--amber); text-decoration: none; }
 
   /* ---- network error (fetch failure), appended after submit ---- */
-  .form-net-err { color: #F87171; font-size: 13px; margin-top: 12px; }
+  /* same specificity trap as .field-error above — .demo p (0,1,1) was greying this out */
+  .form-card .form-net-err { color: var(--danger-on-ink); font-size: 13px; margin-top: 12px; max-width: none; }
 </style>
 
 <script is:inline>
