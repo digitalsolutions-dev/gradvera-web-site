@@ -214,3 +214,18 @@ html {
 .foot-bottom a,
 .demo .back-link { display: inline-flex; align-items: center; min-height: 24px; }
 .gv-consent__btn { min-height: 44px; }
+
+/* [Responsive / trilingual parity] site.css:129 pinned the hero's setup line to
+   `white-space: nowrap` at clamp(22px, 2.7vw, 36px). It only unpins below 1001px,
+   so the failure lives exclusively on desktop — which is why every mobile sweep
+   missed it. Measured on prod: HR's line needs 630px inside a 536px column and
+   painted 62px over the blueprint at 1440; EN had already eaten 11px of its 32px
+   gutter. Two independent guards, because copy outlives geometry:
+     1. a 30px ceiling, so the longest locale fits the column by arithmetic;
+     2. wrapping restored, so a longer future translation folds instead of spilling.
+   `nowrap` cannot be left in place — it is what converts an overrun into overpaint. */
+.hero h1 .l1 {
+  font-size: clamp(22px, 2.4vw, 30px);
+  white-space: normal;
+  text-wrap: balance;
+}
