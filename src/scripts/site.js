@@ -370,6 +370,18 @@
     if (!svg || reduce) return; // reduced motion: no scan, no ghosts — a crisp, resolved drawing
     var NS = SVGNS;
     var tol = setupTolerance();
+
+    // Localized chip labels + number format ride in on data-* (this script has no i18n).
+    var hudFmt = document.querySelector('.hero-hud');
+    var DEC = (hudFmt && hudFmt.getAttribute('data-dec')) || '.';
+    var GRP = (hudFmt && hudFmt.getAttribute('data-group')) || ',';
+    var CHIP_LABELS = (function () {
+      try {
+        var a = JSON.parse(svg.getAttribute('data-chip-labels') || 'null');
+        return (Array.isArray(a) && a.length === 4) ? a : null;
+      } catch (e) { return null; }
+    })();
+    function groupNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, GRP); }
     var gy = 640, fx0 = 418, fx1 = 660, topY = 142;
     var scanSpan = gy - topY;
 
@@ -403,25 +415,40 @@
     }
 
     // AI price tags that pop on as the beam passes — the estimating story
+    // Only the descriptive noun is translated. C25/30 (EN 206), B500B (EN 10080), the
+    // units, and the drafting marks on the drawing are international designations.
     var chipDefs = [
-      { ay: 566, side: 'r', label: 'Earthworks',         price: '€15 / m³' },
-      { ay: 452, side: 'l', label: 'Concrete C25/30',     price: '€170 / m³' },
-      { ay: 330, side: 'r', label: 'Reinf. steel B500B',  price: '€1,500 / t' },
-      { ay: 224, side: 'l', label: 'Façade system',       price: '€280 / m²' }
+      { ay: 566, side: 'r', label: 'Earthworks',          amount: 15,   unit: 'm³' },
+      { ay: 452, side: 'l', label: 'Concrete C25/30',     amount: 170,  unit: 'm³' },
+      { ay: 330, side: 'r', label: 'Reinf. steel B500B',  amount: 1500, unit: 't'  },
+      { ay: 224, side: 'l', label: 'Façade system',       amount: 280,  unit: 'm²' }
     ];
-    var chips = chipDefs.map(function (d) {
-      var W = 172, H = 40, anchorX = d.side === 'r' ? fx1 : fx0;
-      var boxX = d.side === 'r' ? anchorX + 30 : anchorX - 30 - W;
-      var leadX2 = d.side === 'r' ? boxX : boxX + W;
+    var chips = chipDefs.map(function (d, i) {
+      var H = 40, anchorX = d.side === 'r' ? fx1 : fx0;
       var g = mk('g', { opacity: 0 });
-      var lead = mk('line', { x1: anchorX, y1: d.ay, x2: leadX2, y2: d.ay, stroke: 'var(--amber)', 'stroke-width': 1, 'stroke-opacity': 0.7 });
+      var lead = mk('line', { y1: d.ay, y2: d.ay, stroke: 'var(--amber)', 'stroke-width': 1, 'stroke-opacity': 0.7 });
       var dot = mk('circle', { cx: anchorX, cy: d.ay, r: 3, fill: 'var(--amber)' });
-      var box = mk('rect', { x: boxX, y: d.ay - H / 2, width: W, height: H, rx: 9, fill: 'rgba(10,16,32,0.9)', stroke: 'var(--amber)', 'stroke-opacity': 0.55, 'stroke-width': 1 });
-      var spk = mk('text', { x: boxX + 13, y: d.ay - 4, fill: 'var(--amber)', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 12 }); spk.textContent = '✦';
-      var lab = mk('text', { x: boxX + 27, y: d.ay - 3, fill: '#EEF2FA', 'font-family': 'IBM Plex Sans, sans-serif', 'font-size': 12.5, 'font-weight': 600 }); lab.textContent = d.label;
-      var pr = mk('text', { x: boxX + 27, y: d.ay + 13, fill: 'var(--amber)', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 11.5, 'letter-spacing': '0.02em' }); pr.textContent = d.price;
+      var box = mk('rect', { y: d.ay - H / 2, height: H, rx: 9, fill: 'rgba(10,16,32,0.9)', stroke: 'var(--amber)', 'stroke-opacity': 0.55, 'stroke-width': 1 });
+      var spk = mk('text', { fill: 'var(--amber)', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 12 }); spk.textContent = '✦';
+      var lab = mk('text', { fill: '#EEF2FA', 'font-family': 'IBM Plex Sans, sans-serif', 'font-size': 12.5, 'font-weight': 600 });
+      lab.textContent = (CHIP_LABELS && CHIP_LABELS[i]) || d.label;
+      var pr = mk('text', { fill: 'var(--amber)', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 11.5, 'letter-spacing': '0.02em' });
+      pr.textContent = '€' + groupNum(d.amount) + ' / ' + d.unit;
       g.appendChild(lead); g.appendChild(dot); g.appendChild(box); g.appendChild(spk); g.appendChild(lab); g.appendChild(pr);
-      gScan.appendChild(g);
+      gScan.appendChild(g); // must be in the DOM before its text can be measured
+
+      // Size the chip to its content. SVG <text> does not wrap: the Slovene/Croatian
+      // labels are longer than the 172px the English ones needed and would simply run
+      // outside the box. 172 stays the floor so the English layout is unchanged.
+      var textW = 0;
+      try { textW = Math.max(lab.getComputedTextLength(), pr.getComputedTextLength()); } catch (e) { textW = 118; }
+      var W = Math.max(172, Math.ceil(27 + textW + 14));
+      var boxX = d.side === 'r' ? anchorX + 30 : anchorX - 30 - W;
+      lead.setAttribute('x1', anchorX); lead.setAttribute('x2', d.side === 'r' ? boxX : boxX + W);
+      box.setAttribute('x', boxX); box.setAttribute('width', W);
+      spk.setAttribute('x', boxX + 13); spk.setAttribute('y', d.ay - 4);
+      lab.setAttribute('x', boxX + 27); lab.setAttribute('y', d.ay - 3);
+      pr.setAttribute('x', boxX + 27); pr.setAttribute('y', d.ay + 13);
       return { g: g, ay: d.ay, on: 0 };
     });
 
@@ -490,7 +517,7 @@
       // structure whose tolerance envelope has collapsed. The number and the drawing
       // are the same measurement.
       var val = er * TOTAL;
-      if (hudNum) hudNum.textContent = val.toFixed(2);
+      if (hudNum) hudNum.textContent = val.toFixed(2).replace('.', DEC);
       if (hudFill) hudFill.style.width = (er * 100).toFixed(1) + '%';
       var introEnv = clamp01((now - start) / 520);
       if (hud) hud.style.opacity = introEnv.toFixed(3);
