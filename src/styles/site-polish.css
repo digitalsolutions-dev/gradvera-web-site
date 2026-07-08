@@ -135,8 +135,8 @@ html {
 .hero-scroll { color: var(--on-ink-2); }
 .foot-bottom a:hover { color: var(--amber); }
 
-/* (b3) low-contrast grey on the light Outcomes panels -> --fg2 (7.6:1) */
-.sky-panel .sp-n { color: var(--fg2); }
+/* (b3) the low-contrast .sp-n index this darkened was removed from Outcomes
+   (decorative numbering on a non-sequential grid); rule dropped as dead. */
 
 /* --- HowItWorks step-4 est-viz overflow on narrow phones ---------------------
    The "pending" estimate row (label + proposed price + Accept/Adjust) sat in a
@@ -169,6 +169,12 @@ html {
   --radius-lg: 12px;
   --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.10);
+
+  /* [polish] Dark-surface danger. The system's --danger (#B91C1C) is tuned for light
+     surfaces and is unreadable on the ink form card, so DemoForm hardcoded a lighter
+     red. That is a missing token, not a one-off: name it here and use it there. */
+  --danger-on-ink: #F87171;
+  --danger-on-ink-border: rgba(248, 113, 113, 0.75);
 }
 
 /* [A11y] Amber-as-TEXT on light sections the earlier pass missed. The HelpsIntro

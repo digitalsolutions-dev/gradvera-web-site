@@ -102,7 +102,7 @@
     var xL = fx0, xR = fx1, xN = 505;                    // left edge / right edge / near (closest) corner, left-of-centre for a dynamic 3/4 tilt
     var lTop = 144, lBot = 632, nTop = 80, nBot = 656, rTop = 120, rBot = 640;
     var FL = 12, i, t, j;
-    var gBldg = mk('g', { transform: 'translate(1078 0) scale(-1 1)' }); gMain.appendChild(gBldg); // horizontal mirror about x=539 (building only; text/cranes/callouts untouched)
+    var gBldg = mk('g', { id: 'bp-bldg', transform: 'translate(1078 0) scale(-1 1)' }); gMain.appendChild(gBldg); // horizontal mirror about x=539 (building only; text/cranes/callouts untouched)
     function lp(a, bb, k) { return a + (bb - a) * k; }
     function yL(k) { return lp(lBot, lTop, k); }
     function yN(k) { return lp(nBot, nTop, k); }
@@ -261,10 +261,115 @@
      pulse rings on structural nodes, the crane hook sway + load pulse, and a HUD
      that counts the offer value up. Purely additive over the always-visible
      building; a timer fallback forces the finished state if rAF is frozen. */
+  /* ---------------- Tolerance: uncertainty as a material property ----------------
+     Every line of the building being estimated is born inside a hatched ± envelope —
+     the band the true geometry has not settled into yet. As the survey beam passes an
+     element, that element's envelope collapses onto its line. It never collapses
+     completely: the topmost ~13% of the structure (the façade, the least certain thing
+     in any real takeoff) stays in tolerance forever. So the HUD's "87% confidence" and
+     the drawing's line quality are the same fact, read two ways.
+
+     Scoped to #bp-bldg only — you take off the building, not the cranes, the ground
+     plane or the annotations. That keeps the paint cost bounded on the LCP fold. */
+  var TOL_CONFIDENCE = 0.87;
+  function setupTolerance() {
+    var bldg = document.getElementById('bp-bldg');
+    if (!bldg || typeof bldg.getBBox !== 'function') return null;
+    var src = [].slice.call(bldg.querySelectorAll('line, path')); // capture before cloning
+    if (!src.length) return null;
+
+    var gTol = mk('g', { id: 'bp-tol' });
+    bldg.insertBefore(gTol, bldg.firstChild); // behind the true geometry, inside the mirror
+
+    var ghosts = [];
+    src.forEach(function (el) {
+      var topOf;
+      // Key on the element's TOP, not its centre: a full-height column is not certain
+      // until the survey has passed its highest point. Centre-keying made long verticals
+      // snap crisp while their upper half was still unsurveyed.
+      try { var b = el.getBBox(); topOf = b.y; } catch (e) { return; }
+      var g = el.cloneNode(false);
+      g.removeAttribute('pathLength');
+      var w = parseFloat(el.getAttribute('stroke-width')) || 1;
+      var env = w * 3.0 + 2.0;         // the ± envelope the true line lives inside
+      g.setAttribute('stroke-width', env.toFixed(2));
+      g.setAttribute('stroke-opacity', '0.15');
+      // No dasharray: at render scale a dashed wide stroke reads as serration across the
+      // line, not as a band around it. A soft, wide, low-opacity envelope reads as "the
+      // line is somewhere in here" — and dense structure blurs into unresolved mass.
+      g.setAttribute('stroke-linecap', 'round');
+      gTol.appendChild(g);
+      ghosts.push({ el: g, y: topOf, env: env });
+    });
+    if (!ghosts.length) return null;
+
+    ghosts.sort(function (a, b) { return b.y - a.y; }); // ground-up: the beam's own order
+    var N = ghosts.length;
+    var resolvable = Math.round(N * TOL_CONFIDENCE);    // the top (N - resolvable) never resolve
+
+    // One composited group-opacity breathe beats N per-element paint animations.
+    if (gTol.animate) {
+      try {
+        gTol.animate([{ opacity: 0.66 }, { opacity: 1 }, { opacity: 0.66 }],
+          { duration: 3200, iterations: Infinity, easing: 'ease-in-out' });
+      } catch (e) {}
+    }
+
+    var ptr = 0, resolved = 0;
+    function collapse(gh) {
+      resolved++;
+      if (gh.el.animate) {
+        try {
+          gh.el.animate([{ strokeWidth: String(gh.env), strokeOpacity: 0.15 },
+                         { strokeWidth: '0', strokeOpacity: 0 }],
+            { duration: 560, easing: EASE, fill: 'forwards' });
+          return;
+        } catch (e) {}
+      }
+      gh.el.setAttribute('stroke-opacity', '0');
+    }
+    return {
+      total: N,
+      // Ghosts are sorted along the beam's path, so this is amortised O(1) per frame.
+      onBeam: function (scanY) {
+        while (ptr < N && scanY <= ghosts[ptr].y) {
+          var gh = ghosts[ptr++];
+          if (ptr > resolvable) continue; // the façade keeps its tolerance
+          collapse(gh);
+        }
+      },
+      // The beam retires at topY, but a little geometry sits above it. When the survey
+      // completes, resolve everything the survey was meant to resolve — otherwise the
+      // confidence figure under-fills and stops matching the drawing.
+      //
+      // Then PROMOTE the residual. Once the other 87% has snapped crisp, sixteen thin
+      // ghosts are far too faint to read, and an unreadable 13% turns the confidence
+      // figure back into a claim. The façade that never resolved becomes a visibly
+      // hatched tolerance band — a provisional line, which is what it is.
+      finish: function () {
+        while (ptr < resolvable) collapse(ghosts[ptr++]);
+        for (var i = resolvable; i < N; i++) {
+          var r = ghosts[i];
+          r.el.setAttribute('stroke-dasharray', '2.4 3.6');
+          if (r.el.animate) {
+            try {
+              r.el.animate([{ strokeOpacity: 0.15 }, { strokeOpacity: 0.38 }],
+                { duration: 900, easing: EASE, fill: 'forwards' });
+              continue;
+            } catch (e) {}
+          }
+          r.el.setAttribute('stroke-opacity', '0.38');
+        }
+      },
+      confidence: function () { return Math.round(resolved / N * 100); }
+    };
+  }
+
   function setupHeroScan() {
     var svg = document.getElementById('hero-bp');
-    if (!svg || reduce) return;
+    if (!svg || reduce) return; // reduced motion: no scan, no ghosts — a crisp, resolved drawing
     var NS = SVGNS;
+    var tol = setupTolerance();
     var gy = 640, fx0 = 418, fx1 = 660, topY = 142;
     var scanSpan = gy - topY;
 
@@ -331,18 +436,20 @@
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
     function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
-    var T = 8200, ranOnce = false, start = null;
+    var T = 6400, ranOnce = false, start = null, tolDone = false;
     function frame(now) {
       ranOnce = true;
       if (start == null) start = now;
-      var c = ((now - start) % T) / T;           // 0..1 cycle
-      var rise = clamp01(c / 0.6);                // beam rises in first 60%
+      // One pass, then settle. This clock used to loop forever, so the fold never came
+      // to rest. The survey now completes once and the residual tolerance — the 13% the
+      // envelope never gives up — is what you are left looking at.
+      var c = clamp01((now - start) / T);
+      var rise = clamp01(c / 0.78);
       var er = easeOut(rise);
-      var fade = c > 0.86 ? clamp01(1 - (c - 0.86) / 0.14) : 1; // fade everything out at cycle end
       var scanY = gy - er * scanSpan;
 
-      // beam + band
-      var beamLit = (c < 0.62 ? 1 : clamp01(1 - (c - 0.62) / 0.12)) * 1;
+      // beam + band — the beam retires once its pass is done; the drawing stays
+      var beamLit = c < 0.80 ? 1 : clamp01(1 - (c - 0.80) / 0.20);
       beam.setAttribute('y1', scanY); beam.setAttribute('y2', scanY);
       beam.setAttribute('stroke-opacity', (0.9 * beamLit).toFixed(3));
       band.setAttribute('y', scanY - 56); band.setAttribute('opacity', (beamLit).toFixed(3));
@@ -358,24 +465,32 @@
         var rg = rings[r]; rg.t += 0.045;
         if (rg.t >= 1) { rg.el.remove(); rings.splice(r, 1); continue; }
         rg.el.setAttribute('r', (2 + rg.t * 16).toFixed(1));
-        rg.el.setAttribute('stroke-opacity', (0.9 * (1 - rg.t) * fade).toFixed(3));
+        rg.el.setAttribute('stroke-opacity', (0.9 * (1 - rg.t)).toFixed(3));
       }
 
-      // chips pop on as beam passes (accumulate), all fade at cycle end
+      // chips pop on as the beam passes and stay — the estimate is not undone
       chips.forEach(function (ch) {
         var target = scanY <= ch.ay ? 1 : 0;
         ch.on += (target - ch.on) * 0.16;
-        ch.g.setAttribute('opacity', (ch.on * fade).toFixed(3));
+        ch.g.setAttribute('opacity', ch.on.toFixed(3));
       });
 
-      // HUD readout
+      // collapse each element's tolerance envelope as the beam passes it
+      if (tol) { tol.onBeam(scanY); if (rise >= 0.999 && !tolDone) { tolDone = true; tol.finish(); } }
+
+      // HUD readout. The confidence figure is not decoration: it is the share of the
+      // structure whose tolerance envelope has collapsed. The number and the drawing
+      // are the same measurement.
       var val = er * TOTAL;
       if (hudNum) hudNum.textContent = val.toFixed(2);
       if (hudFill) hudFill.style.width = (er * 100).toFixed(1) + '%';
       var introEnv = clamp01((now - start) / 520);
-      if (hud) hud.style.opacity = (fade * introEnv).toFixed(3);
-      if (hudStatus) hudStatus.textContent = rise < 0.98 ? 'Analyzing structure' : 'Estimate ready';
-      if (hudConf) hudConf.style.opacity = rise > 0.9 ? '1' : '0';
+      if (hud) hud.style.opacity = introEnv.toFixed(3);
+      if (hudStatus) hudStatus.textContent = rise < 0.995 ? 'Analyzing structure' : 'Estimate ready';
+      if (hudConf) {
+        hudConf.style.opacity = rise > 0.5 ? '1' : '0';
+        if (tol) hudConf.textContent = '✦ ' + tol.confidence() + '% confidence';
+      }
 
       // crane hook sway + load pulse (folded into the same clock)
       if (hookGroup) {
@@ -397,6 +512,7 @@
     setTimeout(function () {
       if (ranOnce) return;
       chips.forEach(function (ch) { ch.g.setAttribute('opacity', '1'); });
+      if (tol) { tol.finish(); if (hudConf) hudConf.textContent = '✦ ' + tol.confidence() + '% confidence'; }
       if (hud) hud.style.opacity = '1';
       if (hudConf) hudConf.style.opacity = '1';
       if (hudFill) hudFill.style.width = '100%';
