@@ -433,6 +433,14 @@
     var hudConf = document.getElementById('hud-conf');
     var TOTAL = 1.24;
 
+    // This script has no i18n access, so Hero.astro hands the localized HUD copy in on
+    // data-* attributes (the pattern DemoForm uses for validation messages). English
+    // fallbacks keep the readout sane if the attributes ever go missing.
+    var TXT_ANALYZING = (hud && hud.getAttribute('data-analyzing')) || 'Analyzing structure';
+    var TXT_READY = (hud && hud.getAttribute('data-ready')) || 'Estimate ready';
+    var TXT_CONF = (hud && hud.getAttribute('data-confidence')) || '{pct}% confidence';
+    function confText(pct) { return '✦ ' + TXT_CONF.replace('{pct}', pct); }
+
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
     function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
@@ -486,10 +494,10 @@
       if (hudFill) hudFill.style.width = (er * 100).toFixed(1) + '%';
       var introEnv = clamp01((now - start) / 520);
       if (hud) hud.style.opacity = introEnv.toFixed(3);
-      if (hudStatus) hudStatus.textContent = rise < 0.995 ? 'Analyzing structure' : 'Estimate ready';
+      if (hudStatus) hudStatus.textContent = rise < 0.995 ? TXT_ANALYZING : TXT_READY;
       if (hudConf) {
         hudConf.style.opacity = rise > 0.5 ? '1' : '0';
-        if (tol) hudConf.textContent = '✦ ' + tol.confidence() + '% confidence';
+        if (tol) hudConf.textContent = confText(tol.confidence());
       }
 
       // crane hook sway + load pulse (folded into the same clock)
@@ -512,7 +520,8 @@
     setTimeout(function () {
       if (ranOnce) return;
       chips.forEach(function (ch) { ch.g.setAttribute('opacity', '1'); });
-      if (tol) { tol.finish(); if (hudConf) hudConf.textContent = '✦ ' + tol.confidence() + '% confidence'; }
+      if (tol) { tol.finish(); if (hudConf) hudConf.textContent = confText(tol.confidence()); }
+      if (hudStatus) hudStatus.textContent = TXT_READY;
       if (hud) hud.style.opacity = '1';
       if (hudConf) hudConf.style.opacity = '1';
       if (hudFill) hudFill.style.width = '100%';

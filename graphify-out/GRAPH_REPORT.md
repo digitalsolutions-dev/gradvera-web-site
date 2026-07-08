@@ -1,12 +1,12 @@
 # Graph Report - /Users/katarov/WebstormProjects/WEB APPs/gradvera-web-site  (2026-07-08)
 
 ## Corpus Check
-- 4 files · ~42,622 words
+- 6 files · ~42,826 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 236 nodes · 312 edges · 25 communities (19 shown, 6 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.89)
+- 236 nodes · 311 edges · 25 communities (19 shown, 6 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 34 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -63,24 +63,24 @@
 ## Communities (25 total, 6 thin omitted)
 
 ### Community 0 - "Pages, Layout & i18n Routing"
-Cohesion: 0.07
-Nodes (31): t(), localizePath(), t, absoluteUrl(), alternates(), DICTS, getLocaleFromPath(), isEmpty() (+23 more)
+Cohesion: 0.08
+Nodes (25): t, absoluteUrl(), alternates(), DICTS, getLocaleFromPath(), isEmpty(), isLocale(), LOCALE_META (+17 more)
 
 ### Community 1 - "Brand & Design System (Lit Blueprint)"
 Cohesion: 0.11
 Nodes (27): astro check CI verification gate, Astro 5 static-first architecture, /design-sync workflow (DesignSync MCP), Design context (impeccable): PRODUCT.md + DESIGN.md, The Amber-Never-As-Body-Text Rule, Blueprint Navy (#1E3A8A) link/info accent, Burnished Amber accent (#E8901C), Hero Blueprint + Estimate HUD (signature object) (+19 more)
 
 ### Community 2 - "Package Manifest & Scripts"
+Cohesion: 0.09
+Nodes (21): @fontsource/ibm-plex-sans/400.css, @fontsource/ibm-plex-sans/500.css, @fontsource/ibm-plex-sans/600.css, @fontsource/ibm-plex-sans/700.css, Locale, t, t, t (+13 more)
+
+### Community 3 - "Site Interactions (site.js)"
 Cohesion: 0.08
 Nodes (24): dependencies, astro, @astrojs/sitemap, @astrojs/vercel, @fontsource/ibm-plex-mono, @fontsource/ibm-plex-sans, description, devDependencies (+16 more)
 
-### Community 3 - "Site Interactions (site.js)"
+### Community 4 - "Homepage Sections"
 Cohesion: 0.18
 Nodes (16): buildHero(), cross(), delayFor(), drawConnectors(), init(), line(), mk(), node() (+8 more)
-
-### Community 4 - "Homepage Sections"
-Cohesion: 0.11
-Nodes (17): @fontsource/ibm-plex-sans/400.css, @fontsource/ibm-plex-sans/500.css, @fontsource/ibm-plex-sans/600.css, @fontsource/ibm-plex-sans/700.css, t, ../components/layout/Footer.astro, ../components/layout/Header.astro, ../components/layout/MobileNav.astro (+9 more)
 
 ### Community 5 - "Lead Integration (D365 / HMAC)"
 Cohesion: 0.13
@@ -136,15 +136,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `../../components/pages/HomeSections.astro` connect `Lead Integration (D365 / HMAC)` to `Pages, Layout & i18n Routing`?**
   _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `useTranslations()` connect `Pages, Layout & i18n Routing` to `Package Manifest & Scripts`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `Design context (impeccable): PRODUCT.md + DESIGN.md` connect `Brand & Design System (Lit Blueprint)` to `Product Purpose & Users`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `name`, `type`, `version` to the rest of the system?**
   _96 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Pages, Layout & i18n Routing` be split into smaller, more focused modules?**
-  _Cohesion score 0.07123034227567067 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0796221322537112 - nodes in this community are weakly interconnected._
 - **Should `Brand & Design System (Lit Blueprint)` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `Package Manifest & Scripts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `Homepage Sections` be split into smaller, more focused modules?**
-  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08923076923076922 - nodes in this community are weakly interconnected._
