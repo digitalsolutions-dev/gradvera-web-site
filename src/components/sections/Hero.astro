@@ -15,13 +15,21 @@ const t = useTranslations(lang);
         </h1>
         <p class="lede">{t('hero.lede')}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href={localizePath('/', lang) + '#helps'}>{t('hero.cta')} <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-primary btn-lg" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')} <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost-ink btn-lg" href={localizePath('/', lang) + '#helps'}>{t('hero.cta')}</a>
+        </div>
+        {/* Compact proof for phones, where the full estimate HUD is hidden. Decorative
+            (aria-hidden), mirroring the desktop HUD; the real proof lives in the sections below. */}
+        <div class="hero-proof-m" aria-hidden="true">
+          <span class="hpm-spark">✦</span>
+          <span class="hpm-val"><span class="hpm-cur">€</span>1.24M</span>
+          <span class="hpm-meta">sample estimate · 87% confidence</span>
         </div>
       </div>
       <div class="hero-visual reveal">
         <svg class="bp" id="hero-bp" role="img" aria-label="Wireframe blueprint of a building being estimated by Gradvera"></svg>
         <div class="hero-hud" aria-hidden="true">
-          <div class="hud-row"><span class="hud-spark">✦</span><span class="hud-label">Gradvera · estimating offer</span></div>
+          <div class="hud-row"><span class="hud-spark">✦</span><span class="hud-label">Gradvera · sample estimate</span></div>
           <div class="hud-val"><span class="hud-cur">€</span><span id="hud-num">1.24</span><span class="hud-m">M</span></div>
           <div class="hud-bar"><span id="hud-fill"></span></div>
           <div class="hud-foot"><span id="hud-status">Estimate ready</span><span class="hud-conf" id="hud-conf">✦ 87% confidence</span></div>
