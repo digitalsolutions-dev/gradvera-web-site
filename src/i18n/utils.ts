@@ -17,13 +17,18 @@ export const LOCALES = ['en', 'sl', 'hr'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
+/**
+ * `decimal` / `group` are locale config, not copy, so they live here rather than in the
+ * dictionaries. SI and HR write 1.500 and 1,24 — rendering "1.24" there reads as a
+ * thousands separator, i.e. one hundred twenty-four.
+ */
 export const LOCALE_META: Record<
   Locale,
-  { label: string; htmlLang: string; ogLocale: string }
+  { label: string; htmlLang: string; ogLocale: string; decimal: string; group: string }
 > = {
-  en: { label: 'English', htmlLang: 'en', ogLocale: 'en_US' },
-  sl: { label: 'Slovenščina', htmlLang: 'sl', ogLocale: 'sl_SI' },
-  hr: { label: 'Hrvatski', htmlLang: 'hr', ogLocale: 'hr_HR' },
+  en: { label: 'English', htmlLang: 'en', ogLocale: 'en_US', decimal: '.', group: ',' },
+  sl: { label: 'Slovenščina', htmlLang: 'sl', ogLocale: 'sl_SI', decimal: ',', group: '.' },
+  hr: { label: 'Hrvatski', htmlLang: 'hr', ogLocale: 'hr_HR', decimal: ',', group: '.' },
 };
 
 const DICTS: Record<Locale, Record<string, unknown>> = {

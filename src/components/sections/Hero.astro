@@ -1,5 +1,5 @@
 ---
-import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+import { useTranslations, localizePath, LOCALE_META, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -7,6 +7,18 @@ const t = useTranslations(lang);
 // The HUD markup ships the SETTLED reading: that is exactly what reduced-motion and
 // no-JS visitors are left with. site.js overwrites it while the survey is running.
 const hudConfSettled: string = t('hero.hud.confidence').replace('{pct}', '87');
+
+// Blueprint price-chip labels, in the order site.js draws them (ground up). Only the
+// descriptive nouns are translated — C25/30 (EN 206) and B500B (EN 10080) are
+// international designations, as are the units and the drafting marks on the drawing.
+const chipLabels: string[] = [
+  t('hero.chips.earthworks'),
+  t('hero.chips.concrete'),
+  t('hero.chips.rebar'),
+  t('hero.chips.facade'),
+];
+const { decimal, group } = LOCALE_META[lang];
+const hudTotal = `1${decimal}24`;
 ---
 <section class="hero" id="top">
   <div class="wrap">
@@ -26,12 +38,12 @@ const hudConfSettled: string = t('hero.hud.confidence').replace('{pct}', '87');
             (aria-hidden), mirroring the desktop HUD; the real proof lives in the sections below. */}
         <div class="hero-proof-m" aria-hidden="true">
           <span class="hpm-spark">✦</span>
-          <span class="hpm-val"><span class="hpm-cur">€</span>1.24M</span>
+          <span class="hpm-val"><span class="hpm-cur">€</span>{hudTotal}M</span>
           <span class="hpm-meta">{t('hero.proof.meta')}</span>
         </div>
       </div>
       <div class="hero-visual reveal">
-        <svg class="bp" id="hero-bp" role="img" aria-label="Wireframe blueprint of a building being estimated by Gradvera"></svg>
+        <svg class="bp" id="hero-bp" role="img" aria-label="Wireframe blueprint of a building being estimated by Gradvera" data-chip-labels={JSON.stringify(chipLabels)}></svg>
         {/* data-* carry the localized strings into site.js, which has no i18n access —
             the same pattern DemoForm uses for its validation messages. */}
         <div
@@ -40,9 +52,11 @@ const hudConfSettled: string = t('hero.hud.confidence').replace('{pct}', '87');
           data-analyzing={t('hero.hud.analyzing')}
           data-ready={t('hero.hud.ready')}
           data-confidence={t('hero.hud.confidence')}
+          data-dec={decimal}
+          data-group={group}
         >
           <div class="hud-row"><span class="hud-spark">✦</span><span class="hud-label">{t('hero.hud.label')}</span></div>
-          <div class="hud-val"><span class="hud-cur">€</span><span id="hud-num">1.24</span><span class="hud-m">M</span></div>
+          <div class="hud-val"><span class="hud-cur">€</span><span id="hud-num">{hudTotal}</span><span class="hud-m">M</span></div>
           <div class="hud-bar"><span id="hud-fill"></span></div>
           <div class="hud-foot"><span id="hud-status">{t('hero.hud.ready')}</span><span class="hud-conf" id="hud-conf">✦ {hudConfSettled}</span></div>
         </div>
