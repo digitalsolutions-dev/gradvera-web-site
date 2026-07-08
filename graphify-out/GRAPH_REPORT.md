@@ -1,13 +1,13 @@
 # Graph Report - /Users/katarov/WebstormProjects/WEB APPs/gradvera-web-site  (2026-07-08)
 
 ## Corpus Check
-- 12 files · ~40,076 words
+- 4 files · ~42,622 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 234 nodes · 306 edges · 25 communities (19 shown, 6 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 34 edges (avg confidence: 0.9)
-- Token cost: 0 input · 76,296 output
+- 236 nodes · 312 edges · 25 communities (19 shown, 6 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.89)
+- Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Pages, Layout & i18n Routing|Pages, Layout & i18n Routing]]
@@ -38,10 +38,10 @@
 2. `useTranslations()` - 11 edges
 3. `scripts` - 9 edges
 4. `Design context (impeccable): PRODUCT.md + DESIGN.md` - 9 edges
-5. `localizePath()` - 8 edges
-6. `mk()` - 8 edges
-7. `buildHero()` - 8 edges
-8. `The Lit Blueprint (Creative North Star)` - 8 edges
+5. `mk()` - 9 edges
+6. `localizePath()` - 8 edges
+7. `The Lit Blueprint (Creative North Star)` - 8 edges
+8. `buildHero()` - 8 edges
 9. `Locale` - 7 edges
 10. `absoluteUrl()` - 7 edges
 
@@ -60,16 +60,11 @@
 ## Import Cycles
 - None detected.
 
-## Hyperedges (group relationships)
-- **The Lit Blueprint visual system** — design_lit_blueprint, design_burnished_amber, design_blueprint_navy, design_ibm_plex_typography, design_one_light_rule, design_hero_estimate_hud [EXTRACTED 0.90]
-- **The five Gradvera design principles** — product_principle_restraint, product_principle_show_the_work, product_principle_credibility_conversion, product_principle_trilingual_parity, product_principle_speed [EXTRACTED 0.95]
-- **Lead-capture to Dynamics 365 conversion flow** — claude_lead_capture, readme_lead_capture_hmac, product_purpose [INFERRED 0.85]
-
 ## Communities (25 total, 6 thin omitted)
 
 ### Community 0 - "Pages, Layout & i18n Routing"
-Cohesion: 0.06
-Nodes (40): @fontsource/ibm-plex-sans/400.css, @fontsource/ibm-plex-sans/500.css, @fontsource/ibm-plex-sans/600.css, @fontsource/ibm-plex-sans/700.css, t, absoluteUrl(), alternates(), isEmpty() (+32 more)
+Cohesion: 0.07
+Nodes (31): t(), localizePath(), t, absoluteUrl(), alternates(), DICTS, getLocaleFromPath(), isEmpty() (+23 more)
 
 ### Community 1 - "Brand & Design System (Lit Blueprint)"
 Cohesion: 0.11
@@ -80,28 +75,28 @@ Cohesion: 0.08
 Nodes (24): dependencies, astro, @astrojs/sitemap, @astrojs/vercel, @fontsource/ibm-plex-mono, @fontsource/ibm-plex-sans, description, devDependencies (+16 more)
 
 ### Community 3 - "Site Interactions (site.js)"
-Cohesion: 0.19
-Nodes (15): buildHero(), cross(), delayFor(), drawConnectors(), init(), line(), mk(), node() (+7 more)
+Cohesion: 0.18
+Nodes (16): buildHero(), cross(), delayFor(), drawConnectors(), init(), line(), mk(), node() (+8 more)
 
 ### Community 4 - "Homepage Sections"
-Cohesion: 0.12
-Nodes (7): ../../components/pages/HomeSections.astro, t, t, [], m1sFrom, m1sTo, t
+Cohesion: 0.11
+Nodes (17): @fontsource/ibm-plex-sans/400.css, @fontsource/ibm-plex-sans/500.css, @fontsource/ibm-plex-sans/600.css, @fontsource/ibm-plex-sans/700.css, t, ../components/layout/Footer.astro, ../components/layout/Header.astro, ../components/layout/MobileNav.astro (+9 more)
 
 ### Community 5 - "Lead Integration (D365 / HMAC)"
+Cohesion: 0.13
+Nodes (7): ../../components/pages/HomeSections.astro, t, t, [], m1sFrom, m1sTo, t
+
+### Community 6 - "TypeScript Config"
 Cohesion: 0.27
 Nodes (10): D365 Account + Lead write path, Decoupled queue + consumer, 5s forward timeout (AbortSignal.timeout), forwarded soft flag, gtm-toolkit inbound-lead receiver (POST /website/lead), HMAC-SHA256 signature (x-gradvera-signature), Honeypot (company_website), Idempotent processed-key ledger (+2 more)
 
-### Community 6 - "TypeScript Config"
+### Community 7 - "Favicons"
 Cohesion: 0.20
 Nodes (9): compilerOptions, allowJs, baseUrl, paths, resolveJsonModule, exclude, extends, include (+1 more)
 
-### Community 7 - "Favicons"
+### Community 8 - "i18n Locale Helpers"
 Cohesion: 0.52
 Nodes (7): Gradvera 'G' brand mark, Android Chrome icon 192x192, Gradvera 'G' brand mark, Android Chrome icon 512x512, Gradvera 'G' brand mark, Apple touch icon, Gradvera 'G' brand mark, browser favicon 16x16, Gradvera 'G' brand mark, browser favicon 32x32, Gradvera 'G' brand mark, browser favicon 48x48, Gradvera 'G' brand mark: angular amber square-spiral G on dark charcoal with orange corner accent
-
-### Community 8 - "i18n Locale Helpers"
-Cohesion: 0.38
-Nodes (6): DICTS, getLocaleFromPath(), isLocale(), LOCALE_META, LOCALES, stripLocale()
 
 ### Community 9 - "CI & E2E Harness Docs"
 Cohesion: 0.33
@@ -139,17 +134,17 @@ Nodes (3): Gradvera monogram (on dark tile), Gradvera monogram (plain, transpare
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `../../components/pages/HomeSections.astro` connect `Homepage Sections` to `Pages, Layout & i18n Routing`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Why does `useTranslations()` connect `Pages, Layout & i18n Routing` to `i18n Locale Helpers`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `../../components/pages/HomeSections.astro` connect `Lead Integration (D365 / HMAC)` to `Pages, Layout & i18n Routing`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
 - **Why does `Design context (impeccable): PRODUCT.md + DESIGN.md` connect `Brand & Design System (Lit Blueprint)` to `Product Purpose & Users`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `name`, `type`, `version` to the rest of the system?**
   _96 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Pages, Layout & i18n Routing` be split into smaller, more focused modules?**
-  _Cohesion score 0.05649350649350649 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07123034227567067 - nodes in this community are weakly interconnected._
 - **Should `Brand & Design System (Lit Blueprint)` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `Package Manifest & Scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Homepage Sections` be split into smaller, more focused modules?**
+  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
