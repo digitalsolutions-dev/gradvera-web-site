@@ -32,6 +32,25 @@ test.describe('Homepage a11y + layout regressions', () => {
     expect(ld).not.toContain('"price"');
   });
 
+  test('hero CTA text clears WCAG AA on its amber fill (no white-on-amber regression)', async ({ page }) => {
+    await gotoClean(page, '/');
+    const ratio = await page.evaluate(() => {
+      const btn = document.querySelector('.hero-actions .btn-primary');
+      if (!btn) return null;
+      const parse = (s) => { const m = s.match(/rgba?\(([^)]+)\)/); return m ? m[1].split(',').map(Number) : null; };
+      const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+      const L = (v) => 0.2126 * lin(v[0]) + 0.7152 * lin(v[1]) + 0.0722 * lin(v[2]);
+      const fg = parse(getComputedStyle(btn).color);
+      let el = btn, bg = null;
+      while (el) { const c = parse(getComputedStyle(el).backgroundColor); if (c && (c[3] === undefined || c[3] > 0)) { bg = c; break; } el = el.parentElement; }
+      if (!fg || !bg) return null;
+      const l1 = L(fg), l2 = L(bg), [hi, lo] = l1 > l2 ? [l1, l2] : [l2, l1];
+      return (hi + 0.05) / (lo + 0.05);
+    });
+    expect(ratio, 'hero CTA computed contrast ratio').not.toBeNull();
+    expect(ratio).toBeGreaterThanOrEqual(4.5);
+  });
+
   test('hero pulse circle uses a valid SVG translate() (no translateY console error)', async ({ page }) => {
     const errors = [];
     page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
