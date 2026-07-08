@@ -121,8 +121,9 @@ html {
 .cap-num { color: var(--brand-primary-soft-text); }
 .cap1-stepk { color: var(--brand-primary-soft-text); }
 
-/* (b1) hero primary CTA: white-on-amber (2.49:1) -> accessible near-black token */
-.hero-actions .btn-primary { color: var(--brand-on-primary); }
+/* (b1) hero primary CTA white-on-amber fix now lives at SOURCE (site.css:127,
+   color: var(--brand-on-primary)); the redundant load-order override was removed
+   and the fix is pinned by an e2e contrast assertion. */
 
 /* (b2) low-contrast greys on dark sections -> --on-ink-2 (>=7:1) */
 .stage-label,
@@ -148,3 +149,62 @@ html {
   .est-row.pending { grid-template-columns: 1fr; gap: 10px; }
   .est-row.pending .erow { flex-wrap: wrap; align-items: center; justify-content: flex-start; }
 }
+
+/* ============================================================================
+   Audit-fix pass (2026-07, /impeccable audit) — corrections layered here per
+   the vendored-intact convention above. Each rooted in the audit findings.
+   ============================================================================ */
+
+/* [Theming] Define the token families site.css/cap-screens reference only via
+   fallbacks — grep found ZERO :root definitions of these. Defining them applies
+   the intended ease-out curve to ~20 transitions and, critically, REPAIRS two
+   box-shadow uses that had NO fallback (site.css:313/:316), which were computing
+   to box-shadow:none (Cap4 portal pill + exchange icon rendered flat). The
+   radius/shadow values equal the inline fallbacks already in use — no visual
+   change there; only the phantom layer becomes real. */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.10);
+}
+
+/* [A11y] Amber-as-TEXT on light sections the earlier pass missed. The HelpsIntro
+   headline half rendered #E8901C @ 2.49:1 because site.css:213 `.helps h2 .amber`
+   (specificity 0,2,1) out-ranked the earlier `.helps .amber` (0,2,0) fix. Match
+   the specificity here (site-polish loads last, so equal specificity wins), and
+   add the two bespoke amber-text classes the hand-matched pass never covered
+   (.capx-eyebrow, the HowItWorks step numbers). All -> #7A4708 (>=4.5:1). */
+.helps h2 .amber,
+.cap h2 .amber,
+.works h2 .amber,
+.capx-eyebrow,
+.wstep .wn .num { color: var(--brand-primary-soft-text); }
+
+/* [Theming] Retire the off-palette violet (#6D28D9/#EDE9FE) that leaked into
+   REAL chrome (Cap2/Cap4 point-4 icon badges) — it has no token and breaks the
+   single-accent rule. Bring it into the blueprint-navy info family, matching its
+   green/blue/red siblings. (cap-screens.css is deferred now but keeps its DOM
+   position before this file, so this override still wins.) */
+.ic-violet,
+.pic-violet { background: var(--info-soft); color: var(--info); }
+
+/* [Perf] The .solid header re-blurred a full-width backdrop every scroll frame
+   (blur 14px) — the most expensive continuous composite on the page. Raise the
+   plate opacity and halve the blur so it stays frosted but cheap. */
+.hdr.solid {
+  background: rgba(10, 16, 32, 0.92);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+/* [Responsive / WCAG 2.2 SC 2.5.8] Small utility links + buttons had 15-20px tap
+   heights on mobile. Raise interactive hit areas to >=24px (consent primary
+   actions to 44px) without ballooning the footer layout. */
+.foot-links a,
+.contact-list a,
+.foot-bottom a,
+.demo .back-link { display: inline-flex; align-items: center; min-height: 24px; }
+.gv-consent__btn { min-height: 44px; }

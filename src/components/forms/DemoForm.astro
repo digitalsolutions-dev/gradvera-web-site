@@ -78,14 +78,18 @@ const privacyHref = localizePath('/privacy-policy/', lang);
 </form>
 <div class="form-ok" role="status" aria-live="polite" tabindex="-1">
   <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
-  <h3>{t('demo.success.h3')}</h3>
+  <h2>{t('demo.success.h3')}</h2>
   <p>{t('demo.success.p')}</p>
 </div>
 
 <style is:global>
   /* ---- required / optional field markers ---- */
   .form-card .req { color: var(--amber); font-weight: 600; }
-  .form-card .opt { color: var(--on-ink-3); font: 400 12px/1 var(--font-sans); text-transform: none; letter-spacing: 0; }
+  /* --on-ink-2 (>=6.7:1 on the ink-2 card) — --on-ink-3 was 3.23:1, below AA. */
+  .form-card .opt { color: var(--on-ink-2); font: 400 12px/1 var(--font-sans); text-transform: none; letter-spacing: 0; }
+  /* Success heading retagged h3 -> h2 to remove the h1(page)->h3 heading skip;
+     restate the vendored .form-ok h3 look so the visual is unchanged. */
+  .form-ok h2 { color: var(--on-ink); font-weight: 600; font-size: 22px; line-height: 1.2; margin: 0 0 10px; }
 
   /* ---- role chips (replaces the native <select> so the OPEN control stays
           on-brand; a native radiogroup keeps arrow-key + no-JS behaviour) ---- */

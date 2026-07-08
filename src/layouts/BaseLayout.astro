@@ -7,6 +7,15 @@ import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/ibm-plex-sans/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
+// Site stylesheets — imported (not linked from public/) so Vite bundles,
+// minifies, and fingerprints them for immutable caching. IMPORT ORDER IS THE
+// CASCADE: tokens -> site -> cap1 -> cap -> site-polish (the corrections layer
+// must load last so its overrides win).
+import '../styles/gradvera-tokens.css';
+import '../styles/site.css';
+import '../styles/cap1-screens.css';
+import '../styles/cap-screens.css';
+import '../styles/site-polish.css';
 import SEO from '../components/seo/SEO.astro';
 import Header from '../components/layout/Header.astro';
 import MobileNav from '../components/layout/MobileNav.astro';
@@ -56,11 +65,7 @@ const htmlLang = LOCALE_META[lang].htmlLang;
       noindex={noindex}
       jsonLd={jsonLd}
     />
-    <link rel="stylesheet" href="/assets/gradvera-tokens.css" />
-    <link rel="stylesheet" href="/assets/site.css" />
-    <link rel="stylesheet" href="/assets/cap1-screens.css" />
-    <link rel="stylesheet" href="/assets/cap-screens.css" />
-    <link rel="stylesheet" href="/assets/site-polish.css" />
+    {/* Site CSS is imported in the frontmatter above (Vite-bundled + hashed). */}
     <slot name="head" />
   </head>
   <body>
@@ -74,7 +79,10 @@ const htmlLang = LOCALE_META[lang].htmlLang;
     <Footer lang={lang} />
     <CookieConsent lang={lang} />
     <Analytics />
-    <script is:inline src="/assets/site.js"></script>
+    <script>
+      // Bundled + minified + fingerprinted by Astro/Vite (was public/assets/site.js).
+      import '../scripts/site.js';
+    </script>
   </body>
 </html>
 
@@ -85,7 +93,7 @@ const htmlLang = LOCALE_META[lang].htmlLang;
     top: 0;
     z-index: 1000;
     background: var(--brand-primary, #2563eb);
-    color: #fff;
+    color: var(--brand-on-primary, #1A1916);
     padding: 10px 16px;
     border-radius: 0 0 8px 0;
     font: 500 14px/1.2 system-ui, sans-serif;
