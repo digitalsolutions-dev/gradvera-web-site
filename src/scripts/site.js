@@ -452,24 +452,32 @@
   var progress = document.querySelector('.scroll-progress');
   var navLinks = [].slice.call(document.querySelectorAll('.nav a[href^="#"]'));
   var spyTargets = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-  function onScroll() {
+  var heroScroll = document.querySelector('.hero-scroll');
+  var scrollTicking = false;
+  function applyScroll() {
+    scrollTicking = false;
     var y = window.scrollY || window.pageYOffset;
-    if (hdr) hdr.classList.toggle('solid', y > 40);
-    if (progress) {
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
-    }
-    // scrollspy
-    var mid = y + window.innerHeight * 0.35, active = -1;
+    var vh = window.innerHeight;
+    // ---- reads first: batch all layout reads before any write so a scroll
+    //      tick no longer forces two synchronous reflows (read-after-write). ----
+    var docH = document.documentElement.scrollHeight;
+    var mid = y + vh * 0.35, active = -1;
     for (var i = 0; i < spyTargets.length; i++) {
       var t = spyTargets[i];
       if (t && t.offsetTop <= mid) active = i;
     }
+    // ---- writes ----
+    if (hdr) hdr.classList.toggle('solid', y > 40);
+    if (progress) {
+      var h = docH - vh;
+      progress.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
+    }
     navLinks.forEach(function (a, i) { var on = i === active; a.classList.toggle('active', on); if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); } });
-    var sc = document.querySelector('.hero-scroll');
-    if (sc) sc.style.opacity = Math.max(0, 1 - y / 220);
+    if (heroScroll) heroScroll.style.opacity = Math.max(0, 1 - y / 220);
   }
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  // rAF-coalesce: at most one layout pass per frame instead of per scroll event.
+  function onScroll() { if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(applyScroll); } }
+  window.addEventListener('scroll', onScroll, { passive: true }); applyScroll();
 
   /* ---------------- Mobile menu ---------------- */
   var mb = document.querySelector('.menu-btn'), mn = document.querySelector('.mobile-nav');

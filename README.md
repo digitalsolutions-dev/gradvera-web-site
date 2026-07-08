@@ -83,11 +83,15 @@ See `.env.example` for the authoritative list and inline notes.
 
 ## Design-asset provenance
 
-The files under `public/assets/*` —
-`gradvera-tokens.css`, `site.css`, `cap1-screens.css`, `cap-screens.css`,
-`site.js`, and the SVG monograms — came **verbatim** from the Claude Design
-project. The canonical design markup lives in `.source/*.html` (staged, not
-served) and the components reproduce it exactly.
+The design-origin stylesheets (`gradvera-tokens.css`, `site.css`,
+`cap1-screens.css`, `cap-screens.css`) and `site.js` came **verbatim** from the
+Claude Design project. They now live under `src/styles/` and `src/scripts/`
+(moved out of `public/assets/` so Astro/Vite bundles, minifies, and fingerprints
+them for immutable caching — one hashed `<link>`/`<script>` instead of six raw
+files). `site-polish.css` is the local corrections layer, imported **last** so
+its overrides win. `public/assets/` keeps only the SVG monograms. The canonical
+design markup lives in `.source/*.html` (staged, not served) and the components
+reproduce it exactly.
 
 **Fidelity rules** (see `CLAUDE.md`): preserve every class, id, `data-*`,
 inline `style=""` and inline `<svg>` exactly. Do not rename, add, drop, or
@@ -141,9 +145,11 @@ contract and the gtm-toolkit receiver spec: **`docs/lead-integration.md`**.
 
 ```
 .source/             Canonical design HTML (staged, not served)
-public/assets/        Verbatim design CSS/JS/SVG from the Claude Design project
+public/assets/        SVG monograms (static images)
 public/og/            Open Graph image(s)
 src/
+  styles/            Design-origin CSS (Vite-bundled): tokens, site, cap*, site-polish
+  scripts/           site.js — interactions (Vite-bundled)
   components/         Sections, layout, forms, marketing, seo
   i18n/               en/sl/hr.json + _parts/*.en.json + utils.ts
   layouts/            BaseLayout.astro

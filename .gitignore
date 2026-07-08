@@ -26,6 +26,10 @@ npm-debug.log*
 # staged design source (not served)
 .source/
 
+# impeccable — commit config.json + design.json, ignore machine-local cache/journals
+.impeccable/live/sessions/
+.impeccable/hook.cache.json
+
 # playwright e2e (browsers, reports, run artifacts — harness code IS committed)
 test-results/
 playwright-report/

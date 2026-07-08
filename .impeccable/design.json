@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-07T00:00:00Z",
+  "title": "Design System: Gradvera",
+  "extensions": {
+    "colorMeta": {
+      "amber": { "role": "primary", "displayName": "Burnished Amber", "canonical": "#E8901C", "tonalRamp": ["#3A2405", "#5A390A", "#7A4708", "#9C5C0E", "#C77713", "#E8901C", "#F2B45C", "#FBF1DA"] },
+      "blueprint-navy": { "role": "secondary", "displayName": "Blueprint Navy", "canonical": "#1E3A8A", "tonalRamp": ["#0F1D45", "#152A63", "#1E3A8A", "#2C4CA8", "#4363BE", "#6A85D0", "#9DB0E3", "#D3DCF4"] },
+      "ink": { "role": "neutral", "displayName": "Ink (Blueprint Ground)", "canonical": "#0A1020", "tonalRamp": ["#0A1020", "#0E1525", "#141E33", "#1B2740", "#2A3A5C", "#4A5E88", "#7A8BB0", "#C3CDE0"] },
+      "slate-ink": { "role": "neutral", "displayName": "Slate Ink", "canonical": "#0F172A", "tonalRamp": ["#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8", "#CBD5E1", "#F1F5F9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero and top-of-page statements only. Ceiling 82px." },
+      "label": { "displayName": "Label / Eyebrow", "purpose": "IBM Plex Mono, uppercase, tracked. Annotation only — never prose." }
+    },
+    "shadows": [
+      { "name": "ambient-rest", "value": "0 2px 10px rgba(15,23,42,0.06)", "purpose": "Light cards at rest." },
+      { "name": "ambient-raised", "value": "0 8px 30px rgba(15,23,42,0.10)", "purpose": "Product shots and default lifted panels." },
+      { "name": "ambient-hover", "value": "0 14px 34px rgba(15,23,42,0.12)", "purpose": "Interactive lift on cards and figures (deepens to 0 24px 60px rgba(15,23,42,0.18))." },
+      { "name": "amber-glow", "value": "0 0 30px rgba(232,144,28,0.45)", "purpose": "Signal only — live progress bars, active markers, CTA edge-light. Never a depth cue." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for state transitions and hover lifts." },
+      { "name": "dur-fast", "value": "140ms", "purpose": "Input border, nav link color." },
+      { "name": "dur-base", "value": "240ms", "purpose": "Header solidify, card lift." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Content is always visible; animate only already-visible elements. Provide instant/crossfade fallback." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-nav", "value": "940px" },
+      { "name": "form-stack", "value": "820px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single amber CTA. Trailing arrow slides on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a demo <svg class=\"ds-arr\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h11M9 4l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 9px; background: #E8901C; color: #fff; font: 600 16px/1 'IBM Plex Sans', system-ui, sans-serif; padding: 17px 28px; border-radius: 8px; border: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,0.18); text-decoration: none; transition: background 160ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #C77713; } .ds-btn-primary:focus-visible { outline: 2px solid #E8901C; outline-offset: 2px; } .ds-btn-primary .ds-arr { transition: transform 200ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover .ds-arr { transform: translateX(4px); }"
+    },
+    {
+      "name": "Ghost Button (on ink)",
+      "kind": "button",
+      "refersTo": "button-ghost-ink",
+      "description": "Secondary action on the dark chrome. Hairline border brightens on hover.",
+      "html": "<a class=\"ds-btn-ghost-ink\" href=\"#\">See how it works</a>",
+      "css": ".ds-btn-ghost-ink { display: inline-flex; align-items: center; gap: 9px; background: transparent; color: #EEF2FA; font: 600 15px/1 'IBM Plex Sans', system-ui, sans-serif; padding: 14px 22px; border-radius: 8px; border: 1px solid rgba(151,166,192,0.26); text-decoration: none; transition: border-color 160ms, background 160ms; } .ds-btn-ghost-ink:hover { border-color: #97A6C0; background: rgba(255,255,255,0.03); } .ds-btn-ghost-ink:focus-visible { outline: 2px solid #E8901C; outline-offset: 2px; }"
+    },
+    {
+      "name": "Dark Input Field",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Demo-form field on the dark chrome. Mono label, amber focus border, AA-safe placeholder.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Work email</span><input class=\"ds-field-input\" type=\"email\" placeholder=\"you@company.com\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field-label { display: block; font: 500 12px/1 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #97A6C0; margin-bottom: 9px; } .ds-field-input { width: 100%; background: #0A1020; border: 1px solid rgba(151,166,192,0.26); border-radius: 8px; padding: 13px 14px; color: #EEF2FA; font: 400 15px/1.4 'IBM Plex Sans', system-ui, sans-serif; transition: border-color 140ms; } .ds-field-input::placeholder { color: #8290AA; } .ds-field-input:focus { outline: none; border-color: #E8901C; }"
+    },
+    {
+      "name": "Light Feature Card",
+      "kind": "card",
+      "refersTo": "card-light",
+      "description": "Card on a light reading section. Flat at rest, lifts on hover.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Price from your own history</h3><p class=\"ds-card-body\">Reuse rates from past jobs so every line item is grounded in what work actually cost you.</p></article>",
+      "css": ".ds-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: clamp(22px,3vw,38px); box-shadow: 0 2px 10px rgba(15,23,42,0.06); transition: box-shadow 260ms cubic-bezier(0.22,1,0.36,1), border-color 260ms, transform 260ms cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { transform: translateY(-3px); border-color: #D1D5DB; box-shadow: 0 14px 34px rgba(15,23,42,0.12); } .ds-card-title { margin: 0 0 8px; font: 600 clamp(22px,2.6vw,32px)/1.12 'IBM Plex Sans', system-ui, sans-serif; letter-spacing: -0.015em; color: #0F172A; } .ds-card-body { margin: 0; font: 400 16px/1.6 'IBM Plex Sans', system-ui, sans-serif; color: #475569; max-width: 68ch; }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Mono amber uppercase kicker with a lit dot. Use sparingly — not above every section.",
+      "html": "<span class=\"ds-eyebrow\"><span class=\"ds-eyebrow-dot\"></span><span class=\"ds-eyebrow-text\">How Gradvera helps</span></span>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 9px; } .ds-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #E8901C; box-shadow: 0 0 0 4px rgba(232,144,28,0.18); } .ds-eyebrow-text { font: 500 12px/1.4 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.18em; color: #E8901C; }"
+    },
+    {
+      "name": "Estimate HUD",
+      "kind": "custom",
+      "refersTo": "form-card",
+      "description": "Signature object: a floating panel that shows a live estimate. The system's thesis — show the product, don't claim it.",
+      "html": "<div class=\"ds-hud\"><div class=\"ds-hud-row\"><span class=\"ds-hud-spark\">✦</span><span class=\"ds-hud-label\">Gradvera · estimating offer</span></div><div class=\"ds-hud-val\"><span class=\"ds-hud-cur\">€</span>1.24<span class=\"ds-hud-m\">M</span></div><div class=\"ds-hud-bar\"><span></span></div><div class=\"ds-hud-foot\"><span>Estimate ready</span><span class=\"ds-hud-conf\">✦ 87% confidence</span></div></div>",
+      "css": ".ds-hud { background: #141E33; border: 1px solid rgba(151,166,192,0.14); border-radius: 12px; padding: 18px 20px; color: #EEF2FA; box-shadow: 0 18px 44px rgba(0,0,0,0.34); font-family: 'IBM Plex Sans', system-ui, sans-serif; max-width: 320px; } .ds-hud-row { display: flex; align-items: center; gap: 8px; } .ds-hud-spark { color: #E8901C; } .ds-hud-label { font: 500 11.5px/1 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.12em; color: #97A6C0; } .ds-hud-val { margin: 12px 0 14px; font: 600 40px/1 'IBM Plex Sans', system-ui, sans-serif; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; } .ds-hud-cur { color: #97A6C0; margin-right: 4px; } .ds-hud-m { color: #97A6C0; font-size: 24px; margin-left: 2px; } .ds-hud-bar { height: 6px; border-radius: 3px; background: rgba(151,166,192,0.14); overflow: hidden; } .ds-hud-bar span { display: block; height: 100%; width: 87%; background: #E8901C; box-shadow: 0 0 10px rgba(232,144,28,0.6); } .ds-hud-foot { display: flex; justify-content: space-between; margin-top: 12px; font: 500 11.5px/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: 0.04em; color: #97A6C0; } .ds-hud-conf { color: #E8901C; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lit Blueprint",
+    "overview": "Gradvera is a dark drafting table seen under a single work lamp. The ground is deep blueprint navy; one burnished-amber light picks out exactly what matters — a number, a confidence score, a call to book a demo — and nothing competes with it. Around that light, the interface annotates itself in IBM Plex Mono, the way a quantity surveyor marks up a drawing: small, precise, uppercase callouts that report rather than sell. The voice is calm, precise, and anti-hype: sentence-case headings, no exclamation marks, no superlatives. Credibility is shown, not claimed — the hero renders a live estimate (€1.24M · 87% confidence) instead of asserting accuracy in adjectives. This system explicitly rejects the generic SaaS template and sterile corporate blue; warmth and trust come from the amber accent, the technical type voice, and real product visuals, never from decoration.",
+    "keyCharacteristics": [
+      "Dark blueprint-navy chrome (hero, header, footer, forms); light slate-on-white for the reading body between.",
+      "A single accent — burnished amber #E8901C — used as a work-light, sparingly.",
+      "Two IBM Plex faces: Sans for everything readable, Mono for technical annotation only.",
+      "Precision motifs (blueprint wireframe, estimate HUD) that demonstrate the product.",
+      "Content is always visible; motion animates only already-visible elements (reduced-motion safe)."
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "Amber is the only accent, and it behaves like a single work-lamp: one clearly dominant amber element per fold. If a screen has amber in three competing places, dim two of them.", "section": "colors" },
+      { "name": "The Amber-Never-As-Body-Text Rule", "body": "#E8901C is a fill and a marker, not a text color on light surfaces. Amber-toned words on white/cream must use Amber Ink #7A4708. Enforced in site-polish.css.", "section": "colors" },
+      { "name": "The Sentence-Case Rule", "body": "Headings are sentence case. No Title Case, no ALL-CAPS headlines, no exclamation marks. Caps are reserved for short mono labels only.", "section": "typography" },
+      { "name": "The Mono-Is-Annotation Rule", "body": "IBM Plex Mono is for callouts that report — labels, tags, HUD readouts, code. Never set a sentence of marketing prose in mono.", "section": "typography" },
+      { "name": "The Glow-Signals-Life Rule", "body": "Slate shadow = elevation. Amber glow = live data or focus. Never use amber glow to fake depth, and never use a slate drop-shadow on the dark chrome.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep amber to one dominant element per fold (The One Light Rule).",
+      "Do use Amber Ink #7A4708 for any amber-colored text on light surfaces; verify body text ≥4.5:1, large text ≥3:1 (WCAG 2.1 AA).",
+      "Do write headings in sentence case with no exclamation marks.",
+      "Do reserve IBM Plex Mono for labels, tags, and HUD readouts — annotation, not prose.",
+      "Do convey depth on dark chrome with tonal Ink plates, and reserve amber glow for live-data signal.",
+      "Do keep content visible by default and animate only already-visible elements; ship a reduced-motion path.",
+      "Do test headings in EN, SL, and HR at every breakpoint — the longest translation is part of the design."
+    ],
+    "donts": [
+      "Don't ship the generic SaaS template: no cream/gradient-mesh backgrounds, hero-metric card templates, identical icon-card grids, purple gradient buttons, or gradient text.",
+      "Don't drift into sterile corporate blue: no stock-photo handshakes, no faceless navy-and-gray walls of body copy.",
+      "Don't use #E8901C as body text on light surfaces (fails AA) — use Amber Ink.",
+      "Don't set the display heading above 82px or letter-spacing tighter than −0.04em.",
+      "Don't add a second competing accent color; blueprint navy is for links/info only.",
+      "Don't gate content visibility on a scroll/reveal class — a suspended timeline would strand it hidden.",
+      "Don't use amber glow to fake elevation, or slate drop-shadows on the dark chrome."
+    ]
+  }
+}

@@ -55,8 +55,12 @@ harness never feeds the `astro check` gate.
   is authored in parts and assembled). `utils.ts` = translation helpers.
 - `src/consts.ts` — brand/company facts, site metadata, analytics ids, nav.
   Marketing copy lives in `src/i18n/*.json`, not here.
-- `public/assets/` — design-origin CSS + `site.js`; `gradvera-tokens.css` holds
-  the design tokens.
+- `src/styles/` — design-origin CSS, imported in cascade order by
+  `BaseLayout.astro` so Vite bundles + minifies + fingerprints them (immutable
+  caching): `gradvera-tokens` (design tokens) → `site` → `cap1-screens` →
+  `cap-screens` → `site-polish` (the local corrections layer, must stay last).
+  `src/scripts/site.js` — interactions, bundled the same way.
+- `public/assets/` — static images only (SVG monograms); `public/og/` — OG image.
 
 ## Lead capture
 
@@ -98,6 +102,25 @@ and `staging` are long-lived.
 `git checkout staging && git merge main && git push`, then `git checkout main`.
 The pushed merge triggers a staging Vercel deploy and a CI run — so `staging`
 must itself carry `ci.yml` for its own push events to be checked.
+
+## Design context (impeccable)
+
+Strategic + visual design context lives in two root files, consumed by the
+**`/impeccable`** skill (and useful for any agent touching UI):
+
+- **`PRODUCT.md`** — register (`brand`), users, purpose, brand personality
+  (calm · precise · anti-hype), anti-references, 5 design principles, WCAG 2.1 AA
+  target.
+- **`DESIGN.md`** (+ `.impeccable/design.json` sidecar) — the visual system.
+  North Star **"The Lit Blueprint"**: dark blueprint-navy chrome + a single
+  burnished-amber accent (`#E8901C`), IBM Plex Sans/Mono, blueprint/estimate
+  motifs.
+
+The 5 principles that guide UI work: (1) earn trust through restraint;
+(2) show the work, don't claim it; (3) credibility is the conversion (one path —
+book a demo); (4) trilingual parity (EN/SL/HR equal at every breakpoint);
+(5) speed is part of the promise. Read `PRODUCT.md` / `DESIGN.md` before UI
+changes; run `/impeccable document --update` if the visual system drifts.
 
 ## Design source of truth
 
