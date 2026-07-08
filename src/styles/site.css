@@ -627,9 +627,16 @@ a { color: inherit; text-decoration: none; }
 .hud-m { font-size: 18px; color: var(--on-ink-2); margin-left: 1px; }
 .hud-bar { margin-top: 12px; height: 3px; border-radius: 3px; background: var(--ink-hair-2); overflow: hidden; }
 .hud-bar span { display: block; height: 100%; width: 100%; background: var(--amber); box-shadow: 0 0 10px rgba(232,144,28,0.6); border-radius: 3px; }
-.hud-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 11px; }
+/* flex-wrap: the confidence pill is white-space:nowrap, so in a 215px (184px under
+   920px) HUD it spilled outside the panel — in English too, not just the longer
+   Slovene/Croatian strings. Let the row wrap so the pill drops to its own line only
+   when it genuinely cannot fit beside the status. */
+.hud-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
 /* --on-ink-2, not --on-ink-3: 9.5px uppercase mono at ~3.7:1 was the least legible
-   text in the hero. Same one-step lift the polish layer applies to dim dark-surface text. */
+   text in the hero. Same one-step lift the polish layer applies to dim dark-surface text.
+   No flex-grow here: growing the status hogs the line and pushes the pill down even
+   when both would fit. Flexbox decides wrapping on max-content before it shrinks, so
+   "status wraps, pill stays beside" is unreachable at 184px — the pill drops instead. */
 #hud-status { font: 500 9.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-2); }
 .hud-conf { font: 600 9.5px/1 var(--font-mono); color: var(--amber); background: rgba(232,144,28,0.12);
   border: 1px solid var(--amber-line); border-radius: 999px; padding: 4px 7px; white-space: nowrap; }

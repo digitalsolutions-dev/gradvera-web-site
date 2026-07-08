@@ -5,6 +5,12 @@
   "hero.lede": "Every offer involves costs, subcontractors, and deadlines. Turning them into a reliable price takes time.",
   "hero.cta": "See how Gradvera simplifies estimating",
 
+  "hero.hud.label": "Gradvera · sample estimate",
+  "hero.hud.analyzing": "Analyzing structure",
+  "hero.hud.ready": "Estimate ready",
+  "hero.hud.confidence": "{pct}% confidence",
+  "hero.proof.meta": "sample estimate · 87% confidence",
+
   "problem.eyebrow": "The problem",
   "problem.h2a": "Why does estimating construction take so much",
   "problem.h2em": "effort?",
