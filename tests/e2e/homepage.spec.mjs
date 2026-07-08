@@ -61,6 +61,39 @@ test.describe('Homepage a11y + layout regressions', () => {
   });
 });
 
+// The hero's setup line was pinned to `white-space: nowrap` above 1000px, so a
+// long translation could not fold — it overran the copy column and painted over
+// the blueprint (HR: 630px of text in a 536px column, 62px over the drawing at
+// 1440). `document.scrollWidth` stayed 0 the whole time because `.hero` is
+// `overflow: hidden`, which is why every earlier sweep called it clean. Assert on
+// the ELEMENT's own scrollWidth, and on the painted edge vs the visual column.
+test.describe('Hero setup line never overruns its column (desktop)', () => {
+  for (const locale of ['/', '/sl/', '/hr/']) {
+    for (const vp of [VIEWPORTS.desktopNarrow, VIEWPORTS.desktop, VIEWPORTS.wide]) {
+      test(`${locale} @ ${vp.width}px`, async ({ page }) => {
+        await page.setViewportSize(vp);
+        await gotoClean(page, locale);
+        const m = await page.evaluate(() => {
+          const l1 = document.querySelector('.hero h1 .l1');
+          if (!l1) return null;
+          const vis = document.querySelector('.hero-visual').getBoundingClientRect();
+          const copy = document.querySelector('.hero-copy').getBoundingClientRect();
+          return {
+            spill: l1.scrollWidth - l1.clientWidth,
+            gutter: Math.round(vis.left - copy.right),
+            text: l1.textContent.trim(),
+          };
+        });
+        expect(m, '.hero h1 .l1 present').toBeTruthy();
+        expect(m.spill, `"${m.text}" overruns its column by ${m.spill}px`).toBeLessThanOrEqual(0);
+        // Even a spill the gutter happens to absorb is a latent overpaint bug.
+        expect(m.spill, `spill would cross the ${m.gutter}px gutter into the blueprint`)
+          .toBeLessThan(m.gutter);
+      });
+    }
+  }
+});
+
 test.describe('Capability 2 foot never overlaps the annotation cards (desktop)', () => {
   for (const locale of ['/', '/sl/', '/hr/']) {
     for (const vp of [VIEWPORTS.desktopNarrow, VIEWPORTS.desktop, VIEWPORTS.wide]) {
