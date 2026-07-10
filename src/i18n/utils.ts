@@ -107,6 +107,6 @@ export function alternates(
 
 /** Absolute URL from a path against the configured site origin. */
 export function absoluteUrl(path: string, siteOrigin: string | URL | undefined): string {
-  const origin = (siteOrigin ? String(siteOrigin) : 'https://www.gradvera.com').replace(/\/$/, '');
+  const origin = (siteOrigin ? String(siteOrigin) : 'https://gradvera.com').replace(/\/$/, '');
   return origin + (path.startsWith('/') ? path : '/' + path);
 }

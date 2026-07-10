@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+const t = useTranslations('en');
+
+// Static hosting serves ONE 404.html for every unknown URL, including /sl/*
+// and /hr/*, so SL/HR copy is inlined at build time (from the dictionaries,
+// not duplicated) and swapped client-side from the URL prefix. Header/Footer
+// stay EN — accepted limitation of the single static 404.
+const strings = (lang: Locale) => {
+  const tl = useTranslations(lang);
+  return {
+    title: tl('notfound.title'),
+    h1: tl('notfound.h1'),
+    p: tl('notfound.p'),
+    cta: tl('notfound.cta'),
+    home: `/${lang}/`,
+  };
+};
+const l10n = { sl: strings('sl'), hr: strings('hr') };
+---
+<BaseLayout
+  path="/404/"
+  title={t('notfound.title')}
+  description={t('notfound.p')}
+  noindex={true}
+>
+  <section class="notfound">
+    <div class="wrap">
+      <p class="eyebrow">404</p>
+      <h1 id="nf-h1">{t('notfound.h1')}</h1>
+      <p class="nf-lede" id="nf-p">{t('notfound.p')}</p>
+      <a class="btn btn-primary btn-lg" id="nf-cta" href="/">{t('notfound.cta')}</a>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ l10n }}>
+    // '/sl' and '/sl/anything' both localize; anything else stays EN. Own-key
+    // check so prototype-chain segments (/constructor, /toString) can't match.
+    const seg = location.pathname.split('/')[1];
+    const d = Object.hasOwn(l10n, seg) ? l10n[seg] : undefined;
+    if (d) {
+      document.documentElement.lang = seg;
+      document.title = d.title;
+      const h1 = document.getElementById('nf-h1');
+      if (h1) h1.textContent = d.h1;
+      const p = document.getElementById('nf-p');
+      if (p) p.textContent = d.p;
+      const cta = document.getElementById('nf-cta');
+      if (cta) {
+        cta.textContent = d.cta;
+        cta.setAttribute('href', d.home);
+      }
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .notfound { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center;
+    background: var(--ink); color: var(--on-ink); padding: 140px 0 90px; text-align: center; }
+  .notfound .eyebrow { margin-bottom: 18px; }
+  .notfound h1 { font-weight: 600; font-size: clamp(32px, 5vw, 54px); line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--on-ink); margin: 0 auto 18px; max-width: 18ch; }
+  .notfound .nf-lede { font-size: 17px; line-height: 1.65; color: var(--on-ink-2);
+    margin: 0 auto 34px; max-width: 52ch; }
+</style>

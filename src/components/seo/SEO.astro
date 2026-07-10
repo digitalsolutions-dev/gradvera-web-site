@@ -4,6 +4,7 @@ import {
   localizePath,
   alternates,
   absoluteUrl,
+  useTranslations,
   LOCALE_META,
   type Locale,
 } from '../../i18n/utils';
@@ -42,8 +43,17 @@ const siteOrigin = site ? String(site).replace(/\/$/, '') : SITE.url;
 const vercelEnv = process.env.VERCEL_ENV;
 const robotsNoindex = noindex || (vercelEnv !== undefined && vercelEnv !== 'production');
 
+const t = useTranslations(lang);
+
+// Default OG image per locale (localized tagline); an explicit `image` prop wins.
+const OG_IMAGE_DEFAULTS: Record<Locale, string> = {
+  en: SITE.ogImage,
+  sl: '/og/gradvera-og-sl.png',
+  hr: '/og/gradvera-og-hr.png',
+};
+
 const canonical = absoluteUrl(localizePath(path, lang), site);
-const ogImage = absoluteUrl(image ?? SITE.ogImage, site);
+const ogImage = absoluteUrl(image ?? OG_IMAGE_DEFAULTS[lang], site);
 const alts = alternates(path).map((a) => ({ ...a, href: absoluteUrl(a.path, site) }));
 const ogLocale = LOCALE_META[lang].ogLocale;
 const ogAltLocales = (Object.keys(LOCALE_META) as Locale[])
@@ -81,7 +91,12 @@ const structuredData = [organizationLd, webSiteLd, ...jsonLd];
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+{/* A page that is noindex by design (the 404) must not emit canonical /
+    hreflang — they would point at routes that don't exist and contradict the
+    noindex. Gate on the `noindex` prop only, NOT robotsNoindex: preview and
+    staging deploys force robotsNoindex but must keep emitting canonical and
+    hreflang exactly as production does. */}
+{!noindex && <link rel="canonical" href={canonical} />}
 {
   robotsNoindex ? (
     <meta name="robots" content="noindex, nofollow" />
@@ -94,7 +109,7 @@ const structuredData = [organizationLd, webSiteLd, ...jsonLd];
 }
 
 {/* hreflang alternates (incl. x-default) */}
-{alts.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+{!noindex && alts.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
 
 {/* Open Graph */}
 <meta property="og:type" content={ogType} />
@@ -105,7 +120,7 @@ const structuredData = [organizationLd, webSiteLd, ...jsonLd];
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content={`${COMPANY.brand} — ${COMPANY.tagline}`} />
+<meta property="og:image:alt" content={t('seo.ogAlt')} />
 <meta property="og:locale" content={ogLocale} />
 {ogAltLocales.map((l) => <meta property="og:locale:alternate" content={l} />)}
 
