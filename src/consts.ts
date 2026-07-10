@@ -22,7 +22,6 @@ export const SITE = {
   /** Canonical origin. astro.config sets Astro.site from PUBLIC_SITE_URL; we mirror the fallback here. */
   url: import.meta.env.PUBLIC_SITE_URL || 'https://gradvera.com',
   defaultTitle: 'Gradvera — Construction estimating software',
-  titleTemplate: '%s — Gradvera',
   defaultDescription:
     'Gradvera is construction estimating software that helps teams prepare bids faster, price with confidence from their own historical data, and catch costly risks before offers reach the client.',
   ogImage: '/og/gradvera-og.png',

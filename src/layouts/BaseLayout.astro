@@ -7,6 +7,12 @@ import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/ibm-plex-sans/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
+// Preload the hero-h1 sans weights (.l1 = 500, .l2 = 600) so the largest text
+// paints without a swap. SL/HR headlines need latin-ext for č š ž.
+import plexSans500 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2?url';
+import plexSans600 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2?url';
+import plexSansExt500 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-500-normal.woff2?url';
+import plexSansExt600 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-600-normal.woff2?url';
 // Site stylesheets — imported (not linked from public/) so Vite bundles,
 // minifies, and fingerprints them for immutable caching. IMPORT ORDER IS THE
 // CASCADE: tokens -> site -> cap1 -> cap -> site-polish (the corrections layer
@@ -49,12 +55,20 @@ const {
 
 const t = useTranslations(lang);
 const htmlLang = LOCALE_META[lang].htmlLang;
+
+const fontPreloads =
+  lang === 'en'
+    ? [plexSans500, plexSans600]
+    : [plexSans500, plexSans600, plexSansExt500, plexSansExt600];
 ---
 <!doctype html>
 <html lang={htmlLang} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {fontPreloads.map((href) => (
+      <link rel="preload" as="font" type="font/woff2" crossorigin href={href} />
+    ))}
     <SEO
       lang={lang}
       path={path}

@@ -35,7 +35,15 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'content-type': TYPES[extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
     res.end(body);
   } catch {
-    res.writeHead(404, { 'content-type': 'text/plain' });
-    res.end('404 Not Found');
+    // Mirror Vercel static hosting: unknown paths get the built 404 page (status
+    // 404) when it exists, so the e2e specs can exercise it.
+    try {
+      const body = await readFile(join(ROOT, '404.html'));
+      res.writeHead(404, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
+      res.end(body);
+    } catch {
+      res.writeHead(404, { 'content-type': 'text/plain' });
+      res.end('404 Not Found');
+    }
   }
 }).listen(PORT, () => console.log(`[serve-dist] http://localhost:${PORT}  ->  ${ROOT}`));
