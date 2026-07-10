@@ -146,7 +146,8 @@ contract and the gtm-toolkit receiver spec: **`docs/lead-integration.md`**.
 ```
 .source/             Canonical design HTML (staged, not served)
 public/assets/        SVG monograms (static images)
-public/og/            Open Graph image(s)
+public/og/            Open Graph images (EN + per-locale SL/HR SVG→PNG)
+scripts/             render-og.mjs — regenerates the OG PNGs from the SVGs
 src/
   styles/            Design-origin CSS (Vite-bundled): tokens, site, cap*, site-polish
   scripts/           site.js — interactions (Vite-bundled)
@@ -175,7 +176,8 @@ docs/
       `docs/lead-integration.md`. Until then leads are log-only.
 - [ ] **Legal review of the SL / HR privacy copy** (and all translated strings)
       by a native speaker.
-- [x] **OG image** — `public/og/gradvera-og.png` (1200×630, referenced by
-      `src/consts.ts`) is generated from `public/og/gradvera-og.svg`. Regenerate
-      after brand changes with any SVG→PNG rasteriser (e.g. `@resvg/resvg-js`).
+- [x] **OG images** — `public/og/gradvera-og{,-sl,-hr}.png` (1200×630; EN
+      referenced by `src/consts.ts`, SL/HR wired per locale in `SEO.astro`) are
+      generated from the sibling SVGs. Regenerate after brand/tagline changes
+      with `node scripts/render-og.mjs` (Playwright Chromium + real IBM Plex).
 - [ ] Run `npm run check` and a production `npm run build` clean.

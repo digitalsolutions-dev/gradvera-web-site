@@ -26,6 +26,10 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // The 404 page is noindex; keep it out of the sitemap. @astrojs/sitemap
+      // already excludes status-code pages by itself — this exact-path filter
+      // is belt-and-braces (and won't swallow a future /404-guide/ page).
+      filter: (page) => new URL(page).pathname !== '/404/',
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en', sl: 'sl', hr: 'hr' },

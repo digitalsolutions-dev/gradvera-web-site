@@ -31,10 +31,11 @@ checks run against the exact artifact Vercel ships, not `astro dev`.
 | file | purpose |
 |------|---------|
 | `playwright.config.mjs` | config + `webServer` that builds & serves `dist/client` |
-| `serve-dist.mjs` | zero-dep static server (serves `/`, `/sl/`, `/hr/`, assets) |
+| `serve-dist.mjs` | zero-dep static server (serves `/`, `/sl/`, `/hr/`, assets; unknown paths get `404.html` with status 404, mirroring Vercel) |
 | `helpers.mjs` | reusable bits: `VIEWPORTS`, `gotoClean` (drops the consent banner), `boxOf`, `rectsOverlap` |
 | `mobile-nav.spec.mjs` | MobileNav a11y: open state, focus trap, Escape, scrim, scroll-lock, breakpoint auto-close |
 | `homepage.spec.mjs` | one-`h1`, mockups `aria-hidden`, no h-scroll @375, no JSON-LD price, no hero SVG console error, Cap2 no-overlap across locales × widths |
+| `seo.spec.mjs` | 404 page (status 404, noindex, client-side SL/HR localization), per-locale OG image + localized `og:image:alt`, hero font preloads (latin / latin-ext), canonical host stays apex |
 
 ## Adding a check
 

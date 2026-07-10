@@ -60,7 +60,9 @@ harness never feeds the `astro check` gate.
   caching): `gradvera-tokens` (design tokens) → `site` → `cap1-screens` →
   `cap-screens` → `site-polish` (the local corrections layer, must stay last).
   `src/scripts/site.js` — interactions, bundled the same way.
-- `public/assets/` — static images only (SVG monograms); `public/og/` — OG image.
+- `public/assets/` — static images only (SVG monograms); `public/og/` — OG
+  images, one per locale (`gradvera-og{,-sl,-hr}.png`), regenerated from the
+  sibling SVGs with `node scripts/render-og.mjs`.
 
 ## Lead capture
 
