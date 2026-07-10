@@ -180,4 +180,9 @@ docs/
       referenced by `src/consts.ts`, SL/HR wired per locale in `SEO.astro`) are
       generated from the sibling SVGs. Regenerate after brand/tagline changes
       with `node scripts/render-og.mjs` (Playwright Chromium + real IBM Plex).
+- [ ] **Make the www → apex redirect permanent** — Vercel currently answers
+      `www.gradvera.com` with a **307 (temporary)** redirect to `gradvera.com`
+      (verified 2026-07-10). In Vercel → Project → Settings → Domains, set the
+      `www` redirect to **permanent (308)** so search engines consolidate the
+      canonical host instead of re-checking it.
 - [ ] Run `npm run check` and a production `npm run build` clean.
