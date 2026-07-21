@@ -1,6 +1,6 @@
 {
   "astro.config.mjs": {
-    "mtime": 1783675798.6637506,
+    "mtime": 1783676682.2154675,
     "ast_hash": "2e7029904bf48c8cf009818676b10874",
     "semantic_hash": "2e7029904bf48c8cf009818676b10874"
   },
@@ -20,14 +20,14 @@
     "semantic_hash": "d1e643f348ae5f3b497caec1922046c1"
   },
   "src/components/layout/Header.astro": {
-    "mtime": 1782907092.374785,
-    "ast_hash": "514484e378354b901d2a7a95f248e57f",
-    "semantic_hash": "514484e378354b901d2a7a95f248e57f"
+    "mtime": 1784632221.108775,
+    "ast_hash": "0200a2b589d000926da048af3a590266",
+    "semantic_hash": "0200a2b589d000926da048af3a590266"
   },
   "src/components/layout/MobileNav.astro": {
-    "mtime": 1782908904.0675006,
-    "ast_hash": "32917032487ba262ff6a2037b313d0c6",
-    "semantic_hash": "32917032487ba262ff6a2037b313d0c6"
+    "mtime": 1784632227.897349,
+    "ast_hash": "88d189205d0c2ea92e9784c4eb4c35e5",
+    "semantic_hash": "88d189205d0c2ea92e9784c4eb4c35e5"
   },
   "src/components/marketing/Analytics.astro": {
     "mtime": 1782141089.5345066,
@@ -110,12 +110,12 @@
     "semantic_hash": "288a0f106740fd5c5c837ac07f9c02aa"
   },
   "src/components/seo/SEO.astro": {
-    "mtime": 1783675811.218291,
+    "mtime": 1783676682.2200823,
     "ast_hash": "2594f3b5f313e7124df510cc0bc94aca",
     "semantic_hash": "2594f3b5f313e7124df510cc0bc94aca"
   },
   "src/consts.ts": {
-    "mtime": 1783674766.6457367,
+    "mtime": 1783676682.22024,
     "ast_hash": "9fce55abe864b28b339ff5ad9e99799a",
     "semantic_hash": "9fce55abe864b28b339ff5ad9e99799a"
   },
@@ -135,12 +135,12 @@
     "semantic_hash": "c75d90e620ff07cdc4260e8f55ee09f3"
   },
   "src/i18n/_parts/intro.en.json": {
-    "mtime": 1783674672.2250655,
+    "mtime": 1783676682.2204134,
     "ast_hash": "d8245adcbcb3d10cf4ea7ff76eda5fbe",
     "semantic_hash": "d8245adcbcb3d10cf4ea7ff76eda5fbe"
   },
   "src/i18n/_parts/layout.en.json": {
-    "mtime": 1783674670.8469036,
+    "mtime": 1783676682.220566,
     "ast_hash": "12594f627e1f5bfa091f04716817798b",
     "semantic_hash": "12594f627e1f5bfa091f04716817798b"
   },
@@ -155,27 +155,27 @@
     "semantic_hash": "12deed0001b78cc853473af9d96d86fb"
   },
   "src/i18n/en.json": {
-    "mtime": 1783674691.554664,
+    "mtime": 1783676682.2207623,
     "ast_hash": "df79bc5494372fa5cfe8787d9123c0d2",
     "semantic_hash": "df79bc5494372fa5cfe8787d9123c0d2"
   },
   "src/i18n/hr.json": {
-    "mtime": 1783674701.8992937,
+    "mtime": 1783676682.220975,
     "ast_hash": "bf54cca079712494c5a3d9af17700d69",
     "semantic_hash": "bf54cca079712494c5a3d9af17700d69"
   },
   "src/i18n/sl.json": {
-    "mtime": 1783674696.7164588,
+    "mtime": 1783676682.2211792,
     "ast_hash": "b5b9d3a227bb2dc4b0d46164daa7e45e",
     "semantic_hash": "b5b9d3a227bb2dc4b0d46164daa7e45e"
   },
   "src/i18n/utils.ts": {
-    "mtime": 1783674646.4277003,
+    "mtime": 1783676682.22142,
     "ast_hash": "47008f1f41e0fb19d87966f4425bc9a1",
     "semantic_hash": "47008f1f41e0fb19d87966f4425bc9a1"
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1783674871.7902527,
+    "mtime": 1783676682.221746,
     "ast_hash": "2e1f24aec1400b055b5b64a9b59ea95b",
     "semantic_hash": "2e1f24aec1400b055b5b64a9b59ea95b"
   },
@@ -245,14 +245,14 @@
     "semantic_hash": "77e967ceef61579c6d5071239ae844fd"
   },
   "CLAUDE.md": {
-    "mtime": 1783675351.1497858,
+    "mtime": 1783676682.2150521,
     "ast_hash": "96d3bdb88f201b795e3ccf24cde96dfa",
     "semantic_hash": "96d3bdb88f201b795e3ccf24cde96dfa"
   },
   "README.md": {
-    "mtime": 1783675349.1538517,
-    "ast_hash": "dc7a423c302e6df295c1994e95723764",
-    "semantic_hash": "dc7a423c302e6df295c1994e95723764"
+    "mtime": 1783677873.4992511,
+    "ast_hash": "3462cb89e0703d8f17c107cc5eb0d9a4",
+    "semantic_hash": "3462cb89e0703d8f17c107cc5eb0d9a4"
   },
   "docs/lead-integration.md": {
     "mtime": 1783006885.3565385,
@@ -305,7 +305,7 @@
     "semantic_hash": "268eb128e163ba058e26e5b94ec1ab79"
   },
   "public/og/gradvera-og.png": {
-    "mtime": 1783675830.0368094,
+    "mtime": 1783676682.219604,
     "ast_hash": "8a4ca40e03c510ab68710f641993b30a",
     "semantic_hash": "8a4ca40e03c510ab68710f641993b30a"
   },
@@ -340,12 +340,12 @@
     "semantic_hash": "a75668a35a98ca1b0fc7bd2cb89127c0"
   },
   "tests/e2e/serve-dist.mjs": {
-    "mtime": 1783674588.4173603,
+    "mtime": 1783676682.2227488,
     "ast_hash": "3349df4ec2c945a6b77f1da85ae9921b",
     "semantic_hash": "3349df4ec2c945a6b77f1da85ae9921b"
   },
   "tests/e2e/README.md": {
-    "mtime": 1783675329.9069335,
+    "mtime": 1783676682.222256,
     "ast_hash": "b18ba2aae45322fcbd68262c6011d62d",
     "semantic_hash": "b18ba2aae45322fcbd68262c6011d62d"
   },
@@ -385,38 +385,48 @@
     "semantic_hash": "fe27e2e18bc79fd5feddbbb50dc531cb"
   },
   "scripts/render-og.mjs": {
-    "mtime": 1783675823.162848,
+    "mtime": 1783676682.2198122,
     "ast_hash": "42280277244a0a07d1309eaa4f3f0bd2",
     "semantic_hash": "42280277244a0a07d1309eaa4f3f0bd2"
   },
   "src/pages/404.astro": {
-    "mtime": 1783675782.114649,
+    "mtime": 1783676682.22204,
     "ast_hash": "4e3485d1f308d4c33b3b91cc01a5332d",
     "semantic_hash": "4e3485d1f308d4c33b3b91cc01a5332d"
   },
   "tests/e2e/seo.spec.mjs": {
-    "mtime": 1783675862.8942542,
+    "mtime": 1783676682.222455,
     "ast_hash": "804a6ddff9b0ececb96aa31f5d0980d4",
     "semantic_hash": "804a6ddff9b0ececb96aa31f5d0980d4"
   },
   "public/og/gradvera-og-hr.png": {
-    "mtime": 1783675829.938967,
+    "mtime": 1783676682.2177567,
     "ast_hash": "ddb42e7033c070ec93d95aee7b457d0a",
     "semantic_hash": "ddb42e7033c070ec93d95aee7b457d0a"
   },
   "public/og/gradvera-og-hr.svg": {
-    "mtime": 1783674786.7816622,
+    "mtime": 1783676682.2180958,
     "ast_hash": "41dcc960605449978970c85df2b68828",
     "semantic_hash": "41dcc960605449978970c85df2b68828"
   },
   "public/og/gradvera-og-sl.png": {
-    "mtime": 1783675829.9862247,
+    "mtime": 1783676682.2184713,
     "ast_hash": "c1636c49252f6ba37e536863c629ead1",
     "semantic_hash": "c1636c49252f6ba37e536863c629ead1"
   },
   "public/og/gradvera-og-sl.svg": {
-    "mtime": 1783674781.6146235,
+    "mtime": 1783676682.2186022,
     "ast_hash": "4bcfd9cd0e549d127d5d6df689da2dcb",
     "semantic_hash": "4bcfd9cd0e549d127d5d6df689da2dcb"
+  },
+  "src/components/layout/LangSwitch.astro": {
+    "mtime": 1784633009.4271727,
+    "ast_hash": "970816015bb1b38939dfbf1271c82b0e",
+    "semantic_hash": "970816015bb1b38939dfbf1271c82b0e"
+  },
+  "tests/e2e/lang-picker.spec.mjs": {
+    "mtime": 1784633016.972268,
+    "ast_hash": "1823b8cffac992c1302427b086cf45bb",
+    "semantic_hash": "1823b8cffac992c1302427b086cf45bb"
   }
 }
