@@ -39,6 +39,13 @@
   "works.s5loopa": "Your pricing decision",
   "works.s5loopb": "Gradvera adapts",
   "works.s5loopc": "Sharper next suggestion",
+  "works.viz.line1": "Concrete foundation C25/30, 150 mm",
+  "works.viz.line2": "Concrete base slab C25/30, 15 cm",
+  "works.viz.line3": "Reinforced concrete foundation layer",
+  "works.viz.itemName": "Concrete Foundation",
+  "works.viz.row1": "Concrete foundation C25/30",
+  "works.viz.row3": "Structural steel S355",
+  "works.viz.progress": "Estimate in progress",
 
   "outcomes.badge": "The difference after Gradvera",
   "outcomes.h2": "What changes for your business.",
