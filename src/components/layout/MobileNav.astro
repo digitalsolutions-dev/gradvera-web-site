@@ -1,5 +1,6 @@
 ---
-import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import { localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import LangSwitch from './LangSwitch.astro';
 interface Props { lang: Locale; path?: string }
 const { lang, path } = Astro.props;
 const t = useTranslations(lang);
@@ -12,11 +13,7 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
   <a href={homeHref('#works')}>{t('nav.works')}</a>
   <a href={homeHref('#outcomes')}>{t('nav.outcomes')}</a>
   <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
-  <div class="lang-switch" role="group" aria-label={t('a11y.language')}>
-    {LOCALES.map((loc) => (
-      <a href={localizePath(switchPath, loc)} hreflang={LOCALE_META[loc].htmlLang} aria-label={LOCALE_META[loc].label} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
-    ))}
-  </div>
+  <LangSwitch lang={lang} path={switchPath} variant="menu" />
 </nav>
 
 <style is:global>

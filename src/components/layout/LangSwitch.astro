@@ -1,0 +1,148 @@
+---
+import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+
+/**
+ * Segmented locale switcher, one markup source for both placements:
+ * `header` — compact ISO codes in the desktop header (endonym via title/aria);
+ * `menu`   — full-width touch cells in the mobile menu, code eyebrow + endonym.
+ */
+interface Props { lang: Locale; path?: string; variant?: 'header' | 'menu' }
+const { lang, path, variant = 'header' } = Astro.props;
+const t = useTranslations(lang);
+const switchPath = path ?? '/';
+---
+<div class:list={['lang-switch', variant === 'menu' && 'lang-switch--menu']} role="group" aria-label={t('a11y.language')}>
+  {LOCALES.map((loc) => (
+    <a
+      href={localizePath(switchPath, loc)}
+      hreflang={LOCALE_META[loc].htmlLang}
+      lang={LOCALE_META[loc].htmlLang}
+      title={variant === 'header' ? LOCALE_META[loc].label : undefined}
+      aria-label={LOCALE_META[loc].label}
+      aria-current={loc === lang ? 'page' : undefined}
+    >
+      <span class="lang-switch__code" aria-hidden="true">{LOCALE_META[loc].htmlLang.toUpperCase()}</span>
+      {variant === 'menu' && <span class="lang-switch__name" aria-hidden="true">{LOCALE_META[loc].label}</span>}
+    </a>
+  ))}
+</div>
+
+<style is:global>
+  /* Language picker — a segmented control in the site's drafting geometry
+     (8px frame / 6px segments, like .btn and the chips; the old pill was the
+     one rounded outlier). Active locale = filled amber — state shown by fill,
+     not colour alone. */
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
+    border-radius: 8px;
+  }
+  .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    padding: 7px 11px;
+    font: 600 12px/1 var(--font-mono, 'IBM Plex Mono', monospace);
+    letter-spacing: 0.06em;
+    color: var(--on-ink-2, #97a6c0);
+    border-radius: 6px;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+  /* Hover/press are state layers (background), not colour-only changes. */
+  .lang-switch a:hover {
+    color: var(--on-ink, #eef2fa);
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .lang-switch a:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .lang-switch a[aria-current] {
+    background: var(--amber, #e8901c);
+    /* --brand-on-primary (gradvera-tokens.css): warm near-black for text on
+       amber fills. No literal fallback — the value is not in DESIGN.md's
+       palette list, and the tokens sheet loads first in the cascade anyway. */
+    color: var(--brand-on-primary);
+  }
+  .lang-switch a[aria-current]:active {
+    background: var(--brand-primary-pressed, #9c5c0e);
+  }
+  .lang-switch a:focus-visible {
+    outline: 2px solid var(--amber, #e8901c);
+    outline-offset: 2px;
+  }
+
+  /* The header is dark in both rest + scrolled (.solid) states, so the picker
+     keeps light text throughout (the old .solid override used dark-mode greys
+     that vanished on the navy bar). */
+  .hdr.solid .lang-switch {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Declutter the cramped mobile header — the picker moves into the menu. */
+  @media (max-width: 940px) {
+    .hdr .lang-switch {
+      display: none;
+    }
+  }
+
+  /* Menu variant: full-width, touch-sized cells. Two lines per cell — mono ISO
+     eyebrow + the language's own name (endonym), so a reader who doesn't map
+     "SL" still finds Slovenščina. Selectors carry the .mobile-nav context so
+     they outrank site.css's `.mobile-nav a` (17px / 13px 0 / hairline border),
+     which ties bare one-class selectors on specificity. */
+  .mobile-nav .lang-switch--menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 12px;
+  }
+  .mobile-nav .lang-switch--menu a {
+    flex-direction: column;
+    gap: 4px;
+    min-height: 56px;
+    padding: 10px 4px;
+    border-radius: 8px;
+    border-bottom: 0;
+    font-size: 12px;
+    color: var(--on-ink-2, #97a6c0);
+  }
+  /* Re-declare hover at this specificity — the base .lang-switch a:hover ties
+     the block above at (0,2,1) and loses on source order. */
+  .mobile-nav .lang-switch--menu a:hover {
+    color: var(--on-ink, #eef2fa);
+  }
+  .mobile-nav .lang-switch--menu a[aria-current] {
+    color: var(--brand-on-primary);
+  }
+  .mobile-nav .lang-switch--menu .lang-switch__code {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+  }
+  .mobile-nav .lang-switch--menu .lang-switch__name {
+    font-family: var(--font-sans, 'IBM Plex Sans', system-ui, sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.2;
+    color: var(--on-ink, #eef2fa);
+  }
+  .mobile-nav .lang-switch--menu a[aria-current] .lang-switch__name {
+    color: var(--brand-on-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lang-switch a {
+      transition: none;
+    }
+  }
+</style>
