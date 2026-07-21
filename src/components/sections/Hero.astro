@@ -43,7 +43,7 @@ const hudTotal = `1${decimal}24`;
         </div>
       </div>
       <div class="hero-visual reveal">
-        <svg class="bp" id="hero-bp" role="img" aria-label="Wireframe blueprint of a building being estimated by Gradvera" data-chip-labels={JSON.stringify(chipLabels)}></svg>
+        <svg class="bp" id="hero-bp" role="img" aria-label={t('hero.blueprintAlt')} data-chip-labels={JSON.stringify(chipLabels)}></svg>
         {/* data-* carry the localized strings into site.js, which has no i18n access —
             the same pattern DemoForm uses for its validation messages. */}
         <div
@@ -62,6 +62,6 @@ const hudTotal = `1${decimal}24`;
         </div>
       </div>
     </div>
-    <div class="hero-scroll"><span>Scroll</span><span class="ln"></span></div>
+    <div class="hero-scroll"><span>{t('hero.scrollCue')}</span><span class="ln"></span></div>
   </div>
 </section>
