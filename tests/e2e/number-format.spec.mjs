@@ -21,7 +21,7 @@ const NBSP = ' ';
 test('EN keeps EN separators and tight percent', async ({ page }) => {
   await gotoClean(page, '/');
   const text = await pageText(page);
-  for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%']) {
+  for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%', '±10%']) {
     expect(text, `EN page should contain "${s}"`).toContain(s);
   }
 });
@@ -30,10 +30,10 @@ for (const locale of ['sl', 'hr']) {
   test(`/${locale}/ mock screens use local separators and spaced percent`, async ({ page }) => {
     await gotoClean(page, `/${locale}/`);
     const text = await pageText(page);
-    for (const s of ['€11.014,11', '427,66', '9,6 t', '€1.180', '€2.180', `98${NBSP}%`, `+34${NBSP}%`, `87${NBSP}%`, `82${NBSP}%`]) {
+    for (const s of ['€11.014,11', '427,66', '9,6 t', '€1.180', '€2.180', `98${NBSP}%`, `+34${NBSP}%`, `87${NBSP}%`, `82${NBSP}%`, `±10${NBSP}%`]) {
       expect(text, `/${locale}/ should contain "${s}"`).toContain(s);
     }
-    for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%']) {
+    for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%', '±10 %', '87 %']) {
       expect(text, `/${locale}/ should not contain "${s}"`).not.toContain(s);
     }
   });
