@@ -9,7 +9,7 @@
       "source_file": "package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "package.json",
       "id": "package"
     },
@@ -19,7 +19,7 @@
       "source_file": "package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "name",
       "id": "package_name"
     },
@@ -29,7 +29,7 @@
       "source_file": "package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "type",
       "id": "package_type"
     },
@@ -39,7 +39,7 @@
       "source_file": "package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "version",
       "id": "package_version"
     },
@@ -49,7 +49,7 @@
       "source_file": "package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "private",
       "id": "package_private"
     },
@@ -59,7 +59,7 @@
       "source_file": "package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "description",
       "id": "package_description"
     },
@@ -69,7 +69,7 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "scripts",
       "id": "package_scripts"
     },
@@ -79,7 +79,7 @@
       "source_file": "package.json",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "dev",
       "id": "package_scripts_dev"
     },
@@ -89,7 +89,7 @@
       "source_file": "package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "start",
       "id": "package_scripts_start"
     },
@@ -99,7 +99,7 @@
       "source_file": "package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "build",
       "id": "package_scripts_build"
     },
@@ -109,7 +109,7 @@
       "source_file": "package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "preview",
       "id": "package_scripts_preview"
     },
@@ -119,7 +119,7 @@
       "source_file": "package.json",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "check",
       "id": "package_scripts_check"
     },
@@ -129,7 +129,7 @@
       "source_file": "package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "test:e2e",
       "id": "package_scripts_test_e2e"
     },
@@ -139,7 +139,7 @@
       "source_file": "package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "test:e2e:report",
       "id": "package_scripts_test_e2e_report"
     },
@@ -149,7 +149,7 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "astro",
       "id": "package_scripts_astro"
     },
@@ -159,7 +159,7 @@
       "source_file": "package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "dependencies",
       "id": "package_dependencies"
     },
@@ -169,7 +169,7 @@
       "source_file": "package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/sitemap",
       "id": "package_dependencies_astrojs_sitemap"
     },
@@ -179,7 +179,7 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/vercel",
       "id": "package_dependencies_astrojs_vercel"
     },
@@ -189,7 +189,7 @@
       "source_file": "package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@fontsource/ibm-plex-mono",
       "id": "package_dependencies_fontsource_ibm_plex_mono"
     },
@@ -199,7 +199,7 @@
       "source_file": "package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@fontsource/ibm-plex-sans",
       "id": "package_dependencies_fontsource_ibm_plex_sans"
     },
@@ -209,7 +209,7 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "astro",
       "id": "package_dependencies_astro"
     },
@@ -219,7 +219,7 @@
       "source_file": "package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "devdependencies",
       "id": "package_devdependencies"
     },
@@ -229,7 +229,7 @@
       "source_file": "package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/check",
       "id": "package_devdependencies_astrojs_check"
     },
@@ -239,7 +239,7 @@
       "source_file": "package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@playwright/test",
       "id": "package_devdependencies_playwright_test"
     },
@@ -249,7 +249,7 @@
       "source_file": "package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "typescript",
       "id": "package_devdependencies_typescript"
     },
@@ -1174,7 +1174,7 @@
       "source_file": "src/components/sections/Outcomes.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "outcomes.astro",
       "id": "src_components_sections_outcomes"
     },
@@ -1184,7 +1184,7 @@
       "source_file": "src/components/sections/Outcomes.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "t",
       "id": "src_components_sections_outcomes_t"
     },
@@ -1198,7 +1198,7 @@
       "author": null,
       "contributor": null,
       "rationale": "A dark drafting table under one work lamp: deep blueprint navy ground, one burnished-amber light picking out what matters. Credibility is shown not claimed (hero renders a live estimate rather than asserting accuracy). Explicitly rejects the generic SaaS template and sterile corporate blue.",
-      "community": 6,
+      "community": 5,
       "norm_label": "the lit blueprint (creative north star)",
       "id": "design_lit_blueprint"
     },
@@ -1212,7 +1212,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The single brand accent used like a work-light; hover deepens to Amber Ember #C77713, pressed to Amber Kiln #9C5C0E; Amber Ink #7A4708 is the text tone on light.",
-      "community": 6,
+      "community": 5,
       "norm_label": "burnished amber accent (#e8901c)",
       "id": "design_burnished_amber"
     },
@@ -1226,7 +1226,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Drafting-ink blue for inline links and info states only; never a second brand color competing with amber.",
-      "community": 6,
+      "community": 5,
       "norm_label": "blueprint navy (#1e3a8a) link/info accent",
       "id": "design_blueprint_navy"
     },
@@ -1240,7 +1240,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Amber is the only accent and behaves like a single work-lamp: one dominant amber element per fold. Its rarity is what makes it read as important.",
-      "community": 6,
+      "community": 5,
       "norm_label": "the one light rule",
       "id": "design_one_light_rule"
     },
@@ -1254,7 +1254,7 @@
       "author": null,
       "contributor": null,
       "rationale": "#E8901C scores ~2.2-2.5:1 as text on light (below AA), so amber-toned words on light use Amber Ink #7A4708 (7.7:1 on white). Enforced in site-polish.css; do not undo it.",
-      "community": 6,
+      "community": 5,
       "norm_label": "the amber-never-as-body-text rule",
       "id": "design_amber_never_body_text_rule"
     },
@@ -1268,7 +1268,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Headings are sentence case: no Title Case, no ALL-CAPS headlines, no exclamation marks; caps reserved for short mono labels only.",
-      "community": 6,
+      "community": 5,
       "norm_label": "the sentence-case rule",
       "id": "design_sentence_case_rule"
     },
@@ -1282,7 +1282,7 @@
       "author": null,
       "contributor": null,
       "rationale": "IBM Plex Mono is for callouts that report (labels, tags, HUD readouts, code); never set a sentence of marketing prose in mono.",
-      "community": 6,
+      "community": 5,
       "norm_label": "the mono-is-annotation rule",
       "id": "design_mono_is_annotation_rule"
     },
@@ -1310,7 +1310,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One humanist-industrial sans (Plex Sans) for every readable word; Plex Mono only for technical annotation. Tabular numerals for currency/quantities. Display ceiling 82px, letter-spacing floor -0.04em.",
-      "community": 6,
+      "community": 5,
       "norm_label": "ibm plex sans/mono typography system",
       "id": "design_ibm_plex_typography"
     },
@@ -1324,7 +1324,7 @@
       "author": null,
       "contributor": null,
       "rationale": "SVG building wireframe plus a floating HUD reading a live estimate (EUR 1.24M, filling amber bar, Estimate ready 87% confidence): the system's thesis object that shows the product working instead of describing it. Motion only animates already-visible elements.",
-      "community": 6,
+      "community": 5,
       "norm_label": "hero blueprint + estimate hud (signature object)",
       "id": "design_hero_estimate_hud"
     },
@@ -1338,7 +1338,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Color / typography / spacing / radius / component tokens defined in the DESIGN.md frontmatter and materialized as gradvera-tokens.css.",
-      "community": 6,
+      "community": 5,
       "norm_label": "design tokens (gradvera-tokens)",
       "id": "design_tokens"
     },
@@ -1379,7 +1379,7 @@
       "author": null,
       "contributor": null,
       "rationale": "SME contractor firms across SI/HR/EU; high-stakes deadline-bound bidding; arrive skeptical of marketing, evaluating whether the tool is serious enough to trust with real numbers.",
-      "community": 5,
+      "community": 7,
       "norm_label": "users: construction estimators / quantity surveyors / bid teams",
       "id": "product_users"
     },
@@ -1393,7 +1393,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Book-a-demo is the only conversion that matters (lead capture -> Dynamics 365); success is qualified demo bookings from organic/outbound across three language markets, not traffic.",
-      "community": 5,
+      "community": 7,
       "norm_label": "product purpose: convert qualified interest into a booked demo (to d365)",
       "id": "product_purpose"
     },
@@ -1407,7 +1407,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Measured professional voice: sentence-case headings, no exclamation marks, no superlatives, no 'revolutionary AI'. The name Gradvera is never translated. Confidence shown through precision and proof, not volume.",
-      "community": 6,
+      "community": 5,
       "norm_label": "brand personality: calm / precise / anti-hype",
       "id": "product_brand_personality"
     },
@@ -1421,7 +1421,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Cream/gradient-mesh backgrounds, hero-metric cards, repeated icon+heading+text grids, purple gradient buttons, gradient text: the flooded AI-landing look, the fastest way to read as untrustworthy to this buyer.",
-      "community": 6,
+      "community": 5,
       "norm_label": "anti-reference: generic saas template",
       "id": "product_anti_ref_generic_saas"
     },
@@ -1435,7 +1435,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Stock-photo handshakes, navy-and-gray walls of body copy, faceless big-vendor feel. Credibility comes from showing the actual product and its precision, not from looking like an incumbent.",
-      "community": 6,
+      "community": 5,
       "norm_label": "anti-reference: sterile corporate blue",
       "id": "product_anti_ref_corporate_blue"
     },
@@ -1449,7 +1449,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The buyer distrusts marketing noise; calm confidence converts where hype repels. Restraint must be intentional and distinctive, never timid or generic.",
-      "community": 6,
+      "community": 5,
       "norm_label": "principle 1: earn trust through restraint",
       "id": "product_principle_restraint"
     },
@@ -1463,7 +1463,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Demonstrate precision with blueprint and live-estimate motifs (hero HUD reading EUR 1.24M, 87% confidence) rather than asserting it in adjectives. Proof over promise.",
-      "community": 6,
+      "community": 5,
       "norm_label": "principle 2: show the work, don't claim it",
       "id": "product_principle_show_the_work"
     },
@@ -1477,7 +1477,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One unambiguous path (book a demo). Every section accrues proof and lowers risk; it never applies pressure or urgency.",
-      "community": 5,
+      "community": 7,
       "norm_label": "principle 3: credibility is the conversion",
       "id": "product_principle_credibility_conversion"
     },
@@ -1491,7 +1491,7 @@
       "author": null,
       "contributor": null,
       "rationale": "EN/SL/HR are equal citizens; layout, headings, and copy must breathe in all three at every breakpoint, never English-first with translations bolted on and overflowing.",
-      "community": 3,
+      "community": 1,
       "norm_label": "principle 4: trilingual parity (en/sl/hr)",
       "id": "product_principle_trilingual_parity"
     },
@@ -1519,7 +1519,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Body text contrast >=4.5:1, large text >=3:1; full keyboard operability with visible :focus-visible amber outlines; prefers-reduced-motion honored; amber-on-navy contrast-checked per use.",
-      "community": 6,
+      "community": 5,
       "norm_label": "accessibility target: wcag 2.1 aa",
       "id": "product_wcag_2_1_aa"
     },
@@ -1879,7 +1879,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "seo.astro",
       "id": "src_components_seo_seo"
     },
@@ -1889,7 +1889,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L46",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "t",
       "id": "src_components_seo_seo_t"
     },
@@ -1899,7 +1899,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "string",
       "id": "src_components_seo_seo_string"
     },
@@ -1909,7 +1909,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "canonical",
       "id": "src_components_seo_seo_canonical"
     },
@@ -1919,7 +1919,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "ogimage",
       "id": "src_components_seo_seo_ogimage"
     },
@@ -1929,7 +1929,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L57",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "alts",
       "id": "src_components_seo_seo_alts"
     },
@@ -1939,7 +1939,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "ogaltlocales",
       "id": "src_components_seo_seo_ogaltlocales"
     },
@@ -1949,7 +1949,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L64",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "organizationld",
       "id": "src_components_seo_seo_organizationld"
     },
@@ -1959,7 +1959,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L81",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "websiteld",
       "id": "src_components_seo_seo_websiteld"
     },
@@ -1969,7 +1969,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L90",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "structureddata",
       "id": "src_components_seo_seo_structureddata"
     },
@@ -1979,7 +1979,7 @@
       "source_file": "src/consts",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "../../consts",
       "id": "src_consts"
     },
@@ -1989,7 +1989,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "utils.ts",
       "id": "src_i18n_utils"
     },
@@ -1999,7 +1999,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "locales",
       "id": "src_i18n_utils_locales"
     },
@@ -2019,7 +2019,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "locale_meta",
       "id": "src_i18n_utils_locale_meta"
     },
@@ -2029,7 +2029,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "dicts",
       "id": "src_i18n_utils_dicts"
     },
@@ -2039,7 +2039,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L40",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "islocale()",
       "id": "src_i18n_utils_islocale"
     },
@@ -2069,7 +2069,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L68",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "getlocalefrompath()",
       "id": "src_i18n_utils_getlocalefrompath"
     },
@@ -2079,7 +2079,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L74",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "striplocale()",
       "id": "src_i18n_utils_striplocale"
     },
@@ -2393,7 +2393,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Trilingual (EN/SL/HR), SEO-first, static marketing site for Gradvera construction-estimating software by DIGITAL SOLUTIONS d.o.o.; production domain gradvera.com.",
-      "community": 3,
+      "community": 1,
       "norm_label": "gradvera marketing website",
       "id": "claude_gradvera_project"
     },
@@ -2407,7 +2407,7 @@
       "author": null,
       "contributor": null,
       "rationale": "output:'static' with @astrojs/vercel so every page is prerendered HTML for SEO and Core Web Vitals; only /api/lead opts into on-demand rendering via prerender=false. TypeScript astro/tsconfigs/strict, no any, alias @/* -> src/*.",
-      "community": 3,
+      "community": 7,
       "norm_label": "astro 5 static stack",
       "id": "claude_astro_static_stack"
     },
@@ -2421,7 +2421,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The site's only non-static route; DemoForm POSTs JSON; honeypot silently drops bots; valid leads forwarded HMAC-SHA256-signed to gtm-toolkit -> Dynamics 365; always returns 200 so success UX never breaks on downstream outage.",
-      "community": 5,
+      "community": 7,
       "norm_label": "lead capture (/api/lead)",
       "id": "claude_lead_capture"
     },
@@ -2435,7 +2435,7 @@
       "author": null,
       "contributor": null,
       "rationale": "npm run check is the type-safety gate; CI enforces it to close the gap where Vercel runs astro build but not astro check, so a type error would otherwise ship silently. astro check is project-wide; there is no per-file test runner.",
-      "community": 3,
+      "community": 7,
       "norm_label": "astro check verification gate",
       "id": "claude_astro_check_gate"
     },
@@ -2449,7 +2449,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Under tests/; covers behaviour astro check and HTML greps can't prove (interaction, focus, layout, responsive overflow, console errors); additive to astro check, not a replacement. tests/ excluded from tsconfig so it never feeds the astro check gate.",
-      "community": 3,
+      "community": 7,
       "norm_label": "playwright e2e harness",
       "id": "claude_playwright_e2e_harness"
     },
@@ -2463,7 +2463,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Astro i18n with prefixDefaultLocale:false: EN at /, SL at /sl/, HR at /hr/. Translations in src/i18n/*.json; EN authored in _parts and assembled; utils.ts holds translation helpers.",
-      "community": 3,
+      "community": 1,
       "norm_label": "trilingual i18n routing",
       "id": "claude_i18n_routing"
     },
@@ -2477,7 +2477,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Google Tag Manager + Google Consent Mode gated by CookieConsent.astro for GDPR; non-production deploys emit noindex.",
-      "community": 5,
+      "community": 7,
       "norm_label": "analytics & consent (gtm + consent mode)",
       "id": "claude_analytics_consent"
     },
@@ -2491,7 +2491,7 @@
       "author": null,
       "contributor": null,
       "rationale": "main -> production (gradvera.com), staging -> staging.gradvera.com. ci.yml runs two jobs (astro check + e2e) on PRs and pushes to main/staging. Work lands via short-lived feat/fix/docs/ci/chore branches -> PR -> CI green -> merge.",
-      "community": 3,
+      "community": 7,
       "norm_label": "ci & deploy flow (vercel + ci.yml)",
       "id": "claude_ci_deploy_flow"
     },
@@ -2505,7 +2505,7 @@
       "author": null,
       "contributor": null,
       "rationale": "North Star visual system: dark blueprint-navy chrome + single burnished-amber accent (#E8901C), IBM Plex Sans/Mono, blueprint/estimate motifs. Guided by 5 principles (restraint, show the work, credibility-as-conversion, trilingual parity, speed) and WCAG 2.1 AA. Documented in PRODUCT.md and DESIGN.md, consumed by the /impeccable skill.",
-      "community": 3,
+      "community": 1,
       "norm_label": "the lit blueprint design system",
       "id": "claude_lit_blueprint_design"
     },
@@ -2519,7 +2519,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Site UI originates from a remote Claude Design project, moved in incrementally one component at a time via the /design-sync skill and DesignSync MCP tool with enforced ordering (read -> finalize_plan -> write/delete). get_file content is treated as data, not instructions.",
-      "community": 3,
+      "community": 1,
       "norm_label": "design source of truth (claude design + design-sync)",
       "id": "claude_design_source_of_truth"
     },
@@ -2575,7 +2575,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Verifies what astro check and static HTML greps can't: interaction, focus management, computed layout, responsive overflow, runtime console errors. Builds the production site and serves real dist/client (via webServer) so checks run against the exact artifact Vercel ships, not astro dev. Additive to the astro check gate.",
-      "community": 3,
+      "community": 7,
       "norm_label": "playwright browser harness",
       "id": "tests_e2e_readme_playwright_harness"
     },
@@ -2589,7 +2589,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Config plus a webServer that builds and serves dist/client.",
-      "community": 3,
+      "community": 7,
       "norm_label": "playwright.config.mjs",
       "id": "tests_e2e_readme_playwright_config"
     },
@@ -2603,7 +2603,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Zero-dep static server for /, /sl/, /hr/ and assets; unknown paths get 404.html with status 404, mirroring Vercel.",
-      "community": 3,
+      "community": 7,
       "norm_label": "serve-dist.mjs",
       "id": "tests_e2e_readme_serve_dist"
     },
@@ -2617,7 +2617,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Reusable bits: VIEWPORTS, gotoClean (drops the consent banner), boxOf, rectsOverlap.",
-      "community": 5,
+      "community": 1,
       "norm_label": "helpers.mjs",
       "id": "tests_e2e_readme_helpers"
     },
@@ -2631,7 +2631,7 @@
       "author": null,
       "contributor": null,
       "rationale": "MobileNav a11y: open state, focus trap, Escape, scrim, scroll-lock, breakpoint auto-close.",
-      "community": 5,
+      "community": 1,
       "norm_label": "mobile-nav.spec.mjs",
       "id": "tests_e2e_readme_mobile_nav_spec"
     },
@@ -2645,7 +2645,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Checks: one h1, mockups aria-hidden, no h-scroll @375, no JSON-LD price, no hero SVG console error, Cap2 no-overlap across locales x widths.",
-      "community": 5,
+      "community": 1,
       "norm_label": "homepage.spec.mjs",
       "id": "tests_e2e_readme_homepage_spec"
     },
@@ -2659,7 +2659,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Checks: 404 page (status 404, noindex, client-side SL/HR localization), per-locale OG image + localized og:image:alt, hero font preloads (latin/latin-ext), canonical host stays apex.",
-      "community": 5,
+      "community": 1,
       "norm_label": "seo.spec.mjs",
       "id": "tests_e2e_readme_seo_spec"
     },
@@ -2673,7 +2673,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Wired into .github/workflows/ci.yml as the e2e job beside astro check on every PR and pushes to main/staging: npx playwright install --with-deps chromium -> npm run test:e2e with CI=1 (retry + HTML report). On failure playwright-report/ is uploaded as an artifact. astro check remains the type-safety gate; this job is additive.",
-      "community": 3,
+      "community": 7,
       "norm_label": "e2e ci job",
       "id": "tests_e2e_readme_e2e_ci_job"
     },
@@ -2865,7 +2865,7 @@
       "source_file": "src/components/sections/Capability1.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "capability1.astro",
       "id": "src_components_sections_capability1"
     },
@@ -2875,7 +2875,7 @@
       "source_file": "src/components/sections/Capability2.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "capability2.astro",
       "id": "src_components_sections_capability2"
     },
@@ -2885,7 +2885,7 @@
       "source_file": "src/components/sections/Capability3.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "capability3.astro",
       "id": "src_components_sections_capability3"
     },
@@ -2895,7 +2895,7 @@
       "source_file": "src/components/sections/Capability4.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "capability4.astro",
       "id": "src_components_sections_capability4"
     },
@@ -2905,7 +2905,7 @@
       "source_file": "src/components/sections/Hero.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "hero.astro",
       "id": "src_components_sections_hero"
     },
@@ -2915,7 +2915,7 @@
       "source_file": "src/components/sections/Hero.astro",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "localizepath()",
       "id": "src_components_sections_hero_localizepath"
     },
@@ -2925,7 +2925,7 @@
       "source_file": "src/components/sections/HowItWorks.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "howitworks.astro",
       "id": "src_components_sections_howitworks"
     },
@@ -2935,7 +2935,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "index.astro",
       "id": "src_pages_hr_index"
     },
@@ -2945,7 +2945,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "t",
       "id": "src_pages_hr_index_t"
     },
@@ -2955,7 +2955,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "jsonld",
       "id": "src_pages_hr_index_jsonld"
     },
@@ -2965,7 +2965,7 @@
       "source_file": "src/layouts/BaseLayout.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "../../layouts/baselayout.astro",
       "id": "src_layouts_baselayout"
     },
@@ -2975,7 +2975,7 @@
       "source_file": "src/components/pages/HomeSections.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "../../components/pages/homesections.astro",
       "id": "src_components_pages_homesections"
     },
@@ -2985,7 +2985,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "index.astro",
       "id": "src_pages_sl_index"
     },
@@ -2995,7 +2995,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "t",
       "id": "src_pages_sl_index_t"
     },
@@ -3005,7 +3005,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "jsonld",
       "id": "src_pages_sl_index_jsonld"
     },
@@ -3078,7 +3078,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "gradvera marketing website",
       "id": "readme_gradvera_site"
     },
@@ -3091,7 +3091,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "astro 5 framework",
       "id": "readme_astro"
     },
@@ -3104,7 +3104,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "typescript (astro/tsconfigs/strict)",
       "id": "readme_typescript"
     },
@@ -3117,7 +3117,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "astro i18n routing (en/sl/hr)",
       "id": "readme_i18n_routing"
     },
@@ -3130,7 +3130,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "vercel hosting (@astrojs/vercel)",
       "id": "readme_vercel"
     },
@@ -3144,7 +3144,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Google Fonts hotlink stripped in favour of self-hosted IBM Plex via @fontsource for privacy, performance, and no third-party request on first paint.",
-      "community": 3,
+      "community": 1,
       "norm_label": "self-hosted ibm plex fonts",
       "id": "readme_ibm_plex_fonts"
     },
@@ -3157,7 +3157,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "google tag manager (ga4 inside gtm)",
       "id": "readme_gtm"
     },
@@ -3171,7 +3171,7 @@
       "author": null,
       "contributor": null,
       "rationale": "GTM runs off the main thread via Partytown (forward: ['dataLayer.push','gtag']) to protect Core Web Vitals.",
-      "community": 5,
+      "community": 1,
       "norm_label": "partytown off-thread analytics loading",
       "id": "readme_partytown"
     },
@@ -3184,7 +3184,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "@astrojs/sitemap (i18n-aware)",
       "id": "readme_sitemap"
     },
@@ -3212,7 +3212,7 @@
       "author": null,
       "contributor": null,
       "rationale": "English is assembled from per-section _parts/*.en.json; missing SL/HR strings degrade gracefully by falling back to English then the raw key.",
-      "community": 3,
+      "community": 1,
       "norm_label": "i18n model (flat-keyed json dictionaries)",
       "id": "readme_i18n_model"
     },
@@ -3225,7 +3225,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "i18n helpers (src/i18n/utils.ts)",
       "id": "readme_i18n_utils"
     },
@@ -3238,7 +3238,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "usetranslations(lang) helper",
       "id": "readme_use_translations"
     },
@@ -3251,7 +3251,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "localizepath(path, lang) helper",
       "id": "readme_localize_path"
     },
@@ -3265,7 +3265,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Design-origin CSS/JS came verbatim from the Claude Design project and were moved into src/ so Astro/Vite bundles, minifies and fingerprints them for immutable caching instead of serving six raw files.",
-      "community": 3,
+      "community": 1,
       "norm_label": "design-asset provenance",
       "id": "readme_design_provenance"
     },
@@ -3278,7 +3278,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "claude design project (design origin)",
       "id": "readme_claude_design_project"
     },
@@ -3292,7 +3292,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Imported last so its overrides win over the verbatim design-origin stylesheets.",
-      "community": 3,
+      "community": 1,
       "norm_label": "site-polish.css local corrections layer",
       "id": "readme_site_polish"
     },
@@ -3306,7 +3306,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Defaults ads + analytics storage to denied before GTM loads; only functionality_storage and security_storage are granted.",
-      "community": 5,
+      "community": 1,
       "norm_label": "google consent mode v2",
       "id": "readme_consent_mode"
     },
@@ -3320,7 +3320,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Stores the visitor's choice in a gv-consent cookie and replays it via gtag('consent','update',\u2026) on the next visit.",
-      "community": 5,
+      "community": 1,
       "norm_label": "cookieconsent banner",
       "id": "readme_cookie_consent"
     },
@@ -3333,7 +3333,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "analytics.astro component",
       "id": "readme_analytics_component"
     },
@@ -3429,7 +3429,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Preserve every class, id, data-*, inline style and inline svg exactly; the CSS/JS target the design's exact selectors so any drift breaks the layout or interactive blueprint screens.",
-      "community": 3,
+      "community": 1,
       "norm_label": "design fidelity rules",
       "id": "readme_fidelity_rules"
     },
@@ -3443,7 +3443,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Vercel currently answers www.gradvera.com with a 307 (temporary) redirect; set it to permanent (308) so search engines consolidate the canonical host instead of re-checking it.",
-      "community": 5,
+      "community": 1,
       "norm_label": "www -> apex permanent redirect (307->308)",
       "id": "readme_www_apex_redirect"
     },
@@ -3496,7 +3496,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Output is static; every page ships pre-rendered HTML for SEO and Core Web Vitals, and only individual routes opt into on-demand rendering with prerender = false.",
-      "community": 5,
+      "community": 1,
       "norm_label": "static-first / prerender rationale",
       "id": "readme_static_first"
     },
@@ -3520,7 +3520,7 @@
       "source_file": "src/components/layout/Footer.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "footer.astro",
       "id": "src_components_layout_footer"
     },
@@ -3530,7 +3530,7 @@
       "source_file": "src/components/layout/Header.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "header.astro",
       "id": "src_components_layout_header"
     },
@@ -3540,7 +3540,7 @@
       "source_file": "src/components/layout/Header.astro",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "localizepath()",
       "id": "src_components_layout_header_localizepath"
     },
@@ -3550,7 +3550,7 @@
       "source_file": "src/components/layout/MobileNav.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 2,
       "norm_label": "mobilenav.astro",
       "id": "src_components_layout_mobilenav"
     },
@@ -3570,7 +3570,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "company",
       "id": "src_consts_company"
     },
@@ -3580,7 +3580,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "site",
       "id": "src_consts_site"
     },
@@ -3590,7 +3590,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 7,
+      "community": 6,
       "norm_label": "nav_items",
       "id": "src_consts_nav_items"
     },
@@ -3601,18 +3601,38 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_layout_langswitch",
-      "community": 1,
+      "community": 2,
       "norm_label": "langswitch.astro"
     },
     {
       "label": "t",
       "file_type": "code",
       "source_file": "src/components/layout/LangSwitch.astro",
-      "source_location": "L13",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "src_components_layout_langswitch_t",
-      "community": 1,
+      "community": 2,
       "norm_label": "t"
+    },
+    {
+      "label": "string",
+      "file_type": "code",
+      "source_file": "src/components/layout/LangSwitch.astro",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "src_components_layout_langswitch_string",
+      "community": 2,
+      "norm_label": "string"
+    },
+    {
+      "label": "flagSvg()",
+      "file_type": "code",
+      "source_file": "src/components/layout/LangSwitch.astro",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "src_components_layout_langswitch_flagsvg",
+      "community": 2,
+      "norm_label": "flagsvg()"
     },
     {
       "label": "header-responsive.spec.mjs",
@@ -7351,7 +7371,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/layout/LangSwitch.astro",
-      "source_location": "L13",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "src_components_layout_langswitch",
+      "target": "src_components_layout_langswitch_flagsvg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/layout/LangSwitch.astro",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_components_layout_langswitch",
+      "target": "src_components_layout_langswitch_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/layout/LangSwitch.astro",
+      "source_location": "L15",
       "weight": 1.0,
       "source": "src_components_layout_langswitch",
       "target": "src_components_layout_langswitch_t",
@@ -7389,5 +7429,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "74a123d1295c3993657c1875b72bc5a5cb49ef73"
+  "built_at_commit": "d12ff2536c569c27abe2d192d0ed262a9ac104ee"
 }
