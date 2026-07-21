@@ -1,23 +1,23 @@
 # Graph Report - .  (2026-07-21)
 
 ## Corpus Check
-- 3 files · ~50,340 words
+- 3 files · ~50,669 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 323 nodes · 368 edges · 54 communities (29 shown, 25 thin omitted)
+- 325 nodes · 370 edges · 54 communities (29 shown, 25 thin omitted)
 - Extraction: 87% EXTRACTED · 13% INFERRED · 0% AMBIGUOUS · INFERRED: 49 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Sections, Forms & i18n Copy|Sections, Forms & i18n Copy]]
+- [[_COMMUNITY_Brand & Analytics Conventions|Brand & Analytics Conventions]]
 - [[_COMMUNITY_Layout Components & Language Dropdown|Layout Components & Language Dropdown]]
 - [[_COMMUNITY_Package Dependencies|Package Dependencies]]
-- [[_COMMUNITY_Delivery & CI Conventions|Delivery & CI Conventions]]
 - [[_COMMUNITY_site.js Interactions|site.js Interactions]]
-- [[_COMMUNITY_Brand & Analytics Conventions|Brand & Analytics Conventions]]
 - [[_COMMUNITY_Lit Blueprint Design System|Lit Blueprint Design System]]
 - [[_COMMUNITY_SEO Component & JSON-LD|SEO Component & JSON-LD]]
+- [[_COMMUNITY_Delivery & CI Conventions|Delivery & CI Conventions]]
 - [[_COMMUNITY_OG Branding (HR) & Taglines|OG Branding (HR) & Taglines]]
 - [[_COMMUNITY_Lead Integration Doc|Lead Integration Doc]]
 - [[_COMMUNITY_TypeScript Config|TypeScript Config]]
@@ -79,9 +79,9 @@
   PRODUCT.md → DESIGN.md
 - `Principle 2: Show the work, don't claim it` --conceptually_related_to--> `The Lit Blueprint (Creative North Star)`  [INFERRED]
   PRODUCT.md → DESIGN.md
+- `Analytics & Consent (GTM + Consent Mode)` --conceptually_related_to--> `Google Consent Mode v2`  [INFERRED]
+  CLAUDE.md → README.md
 - `The Lit Blueprint (Creative North Star)` --references--> `Anti-reference: Sterile corporate blue`  [EXTRACTED]
-  DESIGN.md → PRODUCT.md
-- `The Lit Blueprint (Creative North Star)` --references--> `Anti-reference: Generic SaaS template`  [EXTRACTED]
   DESIGN.md → PRODUCT.md
 
 ## Import Cycles
@@ -93,33 +93,33 @@
 Cohesion: 0.10
 Nodes (20): absoluteUrl(), alternates(), isEmpty(), Locale, localizePath(), useTranslations(), l10n, strings() (+12 more)
 
-### Community 1 - "Layout Components & Language Dropdown"
-Cohesion: 0.08
-Nodes (13): t, ../../components/pages/HomeSections.astro, t, DICTS, getLocaleFromPath(), isLocale(), LOCALES, stripLocale() (+5 more)
+### Community 1 - "Brand & Analytics Conventions"
+Cohesion: 0.07
+Nodes (31): Design Source of Truth (Claude Design + design-sync), Gradvera Marketing Website, Trilingual i18n Routing, The Lit Blueprint Design System, Principle 4: Trilingual parity (EN/SL/HR), Analytics.astro component, Astro 5 framework, Claude Design project (design origin) (+23 more)
 
-### Community 2 - "Package Dependencies"
+### Community 2 - "Layout Components & Language Dropdown"
+Cohesion: 0.08
+Nodes (14): string, t, ../../components/pages/HomeSections.astro, t, DICTS, getLocaleFromPath(), isLocale(), LOCALES (+6 more)
+
+### Community 3 - "Package Dependencies"
 Cohesion: 0.08
 Nodes (24): dependencies, astro, @astrojs/sitemap, @astrojs/vercel, @fontsource/ibm-plex-mono, @fontsource/ibm-plex-sans, description, devDependencies (+16 more)
-
-### Community 3 - "Delivery & CI Conventions"
-Cohesion: 0.09
-Nodes (23): astro check Verification Gate, Astro 5 Static Stack, CI & Deploy Flow (Vercel + ci.yml), Design Source of Truth (Claude Design + design-sync), Gradvera Marketing Website, Trilingual i18n Routing, The Lit Blueprint Design System, Playwright E2E Harness (+15 more)
 
 ### Community 4 - "site.js Interactions"
 Cohesion: 0.18
 Nodes (16): buildHero(), cross(), delayFor(), drawConnectors(), init(), line(), mk(), node() (+8 more)
 
-### Community 5 - "Brand & Analytics Conventions"
-Cohesion: 0.11
-Nodes (21): Analytics & Consent (GTM + Consent Mode), Lead Capture (/api/lead), Principle 3: Credibility is the conversion, Product purpose: convert qualified interest into a booked demo (to D365), Users: construction estimators / quantity surveyors / bid teams, Analytics.astro component, Astro 5 framework, Google Consent Mode v2 (+13 more)
-
-### Community 6 - "Lit Blueprint Design System"
+### Community 5 - "Lit Blueprint Design System"
 Cohesion: 0.17
 Nodes (16): The Amber-Never-As-Body-Text Rule, Blueprint Navy (#1E3A8A) link/info accent, Burnished Amber accent (#E8901C), Hero Blueprint + Estimate HUD (signature object), IBM Plex Sans/Mono typography system, The Lit Blueprint (Creative North Star), The Mono-Is-Annotation Rule, The One Light Rule (+8 more)
 
-### Community 7 - "SEO Component & JSON-LD"
+### Community 6 - "SEO Component & JSON-LD"
 Cohesion: 0.13
 Nodes (14): alts, canonical, ogAltLocales, ogImage, organizationLd, string, structuredData, t (+6 more)
+
+### Community 7 - "Delivery & CI Conventions"
+Cohesion: 0.18
+Nodes (13): Analytics & Consent (GTM + Consent Mode), astro check Verification Gate, Astro 5 Static Stack, CI & Deploy Flow (Vercel + ci.yml), Lead Capture (/api/lead), Playwright E2E Harness, Principle 3: Credibility is the conversion, Product purpose: convert qualified interest into a booked demo (to D365) (+5 more)
 
 ### Community 8 - "OG Branding (HR) & Taglines"
 Cohesion: 0.22
@@ -186,15 +186,13 @@ Cohesion: 0.67
 Nodes (3): consts.ts (brand facts, integration ids), Open Graph images / render-og.mjs, SEO.astro component
 
 ## Knowledge Gaps
-- **126 isolated node(s):** `name`, `type`, `version`, `private`, `description` (+121 more)
+- **127 isolated node(s):** `name`, `type`, `version`, `private`, `description` (+122 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Gradvera marketing website` connect `Brand & Analytics Conventions` to `Delivery & CI Conventions`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Why does `useTranslations()` connect `Sections, Forms & i18n Copy` to `Layout Components & Language Dropdown`, `SEO Component & JSON-LD`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **Why does `Astro 5 Static Stack` connect `Delivery & CI Conventions` to `Brand & Analytics Conventions`?**
@@ -202,8 +200,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 2 inferred relationships involving `Gradvera marketing website` (e.g. with `Static-first / prerender rationale` and `www -> apex permanent redirect (307->308)`) actually correct?**
   _`Gradvera marketing website` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `type`, `version` to the rest of the system?**
-  _137 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _138 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Sections, Forms & i18n Copy` be split into smaller, more focused modules?**
   _Cohesion score 0.09659090909090909 - nodes in this community are weakly interconnected._
+- **Should `Brand & Analytics Conventions` be split into smaller, more focused modules?**
+  _Cohesion score 0.07311827956989247 - nodes in this community are weakly interconnected._
 - **Should `Layout Components & Language Dropdown` be split into smaller, more focused modules?**
-  _Cohesion score 0.08374384236453201 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07741935483870968 - nodes in this community are weakly interconnected._

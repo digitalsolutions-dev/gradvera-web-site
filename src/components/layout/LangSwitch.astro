@@ -3,8 +3,10 @@ import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from
 
 /**
  * Locale switcher, one source for both placements:
- * `header` — a <details>-based dropdown (globe + current ISO code trigger,
- *   popover of code + endonym options). Native disclosure semantics, so it
+ * `header` — a <details>-based dropdown (current-locale flag trigger, popover
+ *   of flag + endonym options). Flags are inline SVGs, not emoji — Windows
+ *   renders no flag-emoji font, so emoji would fall back to bare letter pairs.
+ *   Native disclosure semantics, so it
  *   opens without JS; the inline script adds Escape / outside-click / arrow keys.
  * `menu`   — full-width touch cells in the mobile menu, code eyebrow + endonym.
  */
@@ -12,12 +14,20 @@ interface Props { lang: Locale; path?: string; variant?: 'header' | 'menu' }
 const { lang, path, variant = 'header' } = Astro.props;
 const t = useTranslations(lang);
 const switchPath = path ?? '/';
+
+/* Simplified flags (24x16). EN uses the Union Jack by convention. */
+const FLAG_ART: Record<Locale, string> = {
+  en: '<rect width="24" height="16" fill="#012169"/><path d="M0 0 24 16M24 0 0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5.2"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="2.8"/>',
+  sl: '<rect width="24" height="16" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#005DA4"/><rect y="10.67" width="24" height="5.33" fill="#ED1C24"/><path d="M4.3 2.6h3.8v2.9c0 1.7-1.9 2.4-1.9 2.4s-1.9-.7-1.9-2.4z" fill="#005DA4"/><path d="M4.9 5.1l1-1.3.5.6.5-.8 1.1 1.5-.9 1H5.7z" fill="#fff"/>',
+  hr: '<rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#E8112D"/><rect y="10.67" width="24" height="5.33" fill="#171796"/><path d="M9.6 4.4h4.8v3.2c0 1.9-2.4 2.8-2.4 2.8s-2.4-.9-2.4-2.8z" fill="#fff"/><rect x="9.6" y="4.4" width="1.6" height="1.6" fill="#E8112D"/><rect x="12.8" y="4.4" width="1.6" height="1.6" fill="#E8112D"/><rect x="11.2" y="6" width="1.6" height="1.6" fill="#E8112D"/><rect x="9.65" y="7.6" width="1.55" height="1.5" fill="#E8112D"/><rect x="12.8" y="7.6" width="1.55" height="1.5" fill="#E8112D"/>',
+};
+const flagSvg = (loc: Locale, cls: string): string =>
+  `<svg class="${cls}" viewBox="0 0 24 16" aria-hidden="true">${FLAG_ART[loc]}</svg>`;
 ---
 {variant === 'header' ? (
   <details class="lang-menu">
     <summary aria-label={`${t('a11y.language')} — ${LOCALE_META[lang].label}`}>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span class="lang-menu__code">{LOCALE_META[lang].htmlLang.toUpperCase()}</span>
+      <Fragment set:html={flagSvg(lang, `lang-menu__flag lang-menu__flag--${LOCALE_META[lang].htmlLang}`)} />
       <svg class="lang-menu__chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </summary>
     <ul class="lang-menu__list">
@@ -29,7 +39,7 @@ const switchPath = path ?? '/';
             lang={LOCALE_META[loc].htmlLang}
             aria-current={loc === lang ? 'page' : undefined}
           >
-            <span class="lang-menu__opt-code" aria-hidden="true">{LOCALE_META[loc].htmlLang.toUpperCase()}</span>
+            <Fragment set:html={flagSvg(loc, `lang-menu__flag lang-menu__flag--${LOCALE_META[loc].htmlLang}`)} />
             <span class="lang-menu__opt-name">{LOCALE_META[loc].label}</span>
             {loc === lang && (
               <svg class="lang-menu__check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
@@ -107,8 +117,8 @@ const switchPath = path ?? '/';
     border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
     border-radius: 8px;
     color: var(--on-ink-2, #97a6c0);
-    font: 600 12px/1 var(--font-mono, 'IBM Plex Mono', monospace);
-    letter-spacing: 0.06em;
+    -webkit-user-select: none;
+    user-select: none;
     touch-action: manipulation;
     transition: background-color 0.15s ease, color 0.15s ease;
   }
@@ -144,6 +154,8 @@ const switchPath = path ?? '/';
     border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
     border-radius: 8px;
     box-shadow: 0 18px 40px rgba(4, 8, 20, 0.55);
+    -webkit-user-select: none;
+    user-select: none;
   }
   .lang-menu__list a {
     display: flex;
@@ -161,11 +173,19 @@ const switchPath = path ?? '/';
     outline: 2px solid var(--amber, #e8901c);
     outline-offset: -2px;
   }
-  .lang-menu__opt-code {
-    min-width: 22px;
-    font: 500 10px/1 var(--font-mono, 'IBM Plex Mono', monospace);
-    letter-spacing: 0.18em;
-    color: var(--on-ink-2, #97a6c0);
+  /* Inline-SVG flags. svg overflow:hidden + border-radius clips the stroke
+     overshoot at the corners; the hairline ring separates the white stripes
+     from the popover surface. */
+  .lang-menu__flag {
+    flex: none;
+    width: 20px;
+    height: 13.33px;
+    border-radius: 2.5px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+  }
+  .lang-menu__list .lang-menu__flag {
+    width: 21px;
+    height: 14px;
   }
   .lang-menu__opt-name {
     font: 500 14px/1.2 var(--font-sans, 'IBM Plex Sans', system-ui, sans-serif);

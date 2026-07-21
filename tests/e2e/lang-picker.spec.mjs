@@ -1,6 +1,6 @@
 // Language switcher — the behaviour astro check and static greps can't prove.
-// Desktop header: a <details>-based dropdown (globe + current code trigger,
-// popover of code+endonym options) — open/close semantics, keyboard support,
+// Desktop header: a <details>-based dropdown (current-locale SVG-flag trigger,
+// popover of flag+endonym options) — open/close semantics, keyboard support,
 // cross-locale href wiring, aria-current. Mobile menu: full-width segmented
 // cells (unchanged variant) — touch sizing and endonym labels.
 import { test, expect } from '@playwright/test';
@@ -11,18 +11,27 @@ const ENDONYMS = { en: 'English', sl: 'Slovenščina', hr: 'Hrvatski' };
 test.describe('Language dropdown — desktop header', () => {
   test.use({ viewport: VIEWPORTS.desktop });
 
-  test('trigger shows the current code; popover lists all three locales', async ({ page }) => {
+  test('trigger shows the current flag (SVG, no text); popover lists all three locales', async ({ page }) => {
     await gotoClean(page, '/sl/');
     const menu = page.locator('.hdr .lang-menu');
-    await expect(menu.locator('summary .lang-menu__code')).toHaveText('SL');
+    await expect(menu.locator('summary .lang-menu__flag--sl')).toBeVisible();
+    expect((await menu.locator('summary').innerText()).trim(), 'no visible code text in the trigger').toBe('');
     await expect(menu.locator('.lang-menu__list a')).toHaveCount(3);
     await menu.locator('summary').click();
     for (const code of ['en', 'sl', 'hr']) {
       const opt = menu.locator(`.lang-menu__list a[hreflang="${code}"]`);
       await expect(opt).toBeVisible();
       await expect(opt).toHaveAttribute('lang', code);
+      await expect(opt.locator(`.lang-menu__flag--${code}`)).toBeVisible();
       await expect(opt.locator('.lang-menu__opt-name')).toHaveText(ENDONYMS[code]);
     }
+  });
+
+  test('trigger and popover text are unselectable', async ({ page }) => {
+    await gotoClean(page, '/');
+    const menu = page.locator('.hdr .lang-menu');
+    expect(await menu.locator('summary').evaluate((el) => getComputedStyle(el).userSelect)).toBe('none');
+    expect(await menu.locator('.lang-menu__list').evaluate((el) => getComputedStyle(el).userSelect)).toBe('none');
   });
 
   test('current locale carries aria-current="page" and a check mark, not colour alone', async ({ page }) => {
@@ -31,7 +40,7 @@ test.describe('Language dropdown — desktop header', () => {
     const current = page.locator('.hdr .lang-menu .lang-menu__list a[aria-current="page"]');
     await expect(current).toHaveCount(1);
     await expect(current).toHaveAttribute('hreflang', 'sl');
-    await expect(current.locator('svg')).toBeVisible();
+    await expect(current.locator('.lang-menu__check')).toBeVisible();
   });
 
   test('subpage switch preserves the path across locales', async ({ page }) => {
