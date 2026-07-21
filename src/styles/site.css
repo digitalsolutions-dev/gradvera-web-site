@@ -97,12 +97,12 @@ a { color: inherit; text-decoration: none; }
 .nav-cta .btn-primary { padding: 11px 18px; font-size: 14.5px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.18); white-space: nowrap; }
 .menu-btn { display: none; background: rgba(255,255,255,0.04); border: 1px solid var(--ink-hair); border-radius: 10px; color: var(--on-ink); cursor: pointer; padding: 9px; transition: background 140ms, border-color 140ms; }
 .menu-btn:hover { background: rgba(255,255,255,0.08); border-color: var(--ink-hair-2); }
-/* The full desktop header (brand + nav + picker + CTA) only fits every locale
-   from ~1214px up (HR is the widest; EN ~944, SL ~1174) — below that the row
-   overflowed .wrap and body{overflow-x:hidden} clipped the CTA. 941-1219px is
-   a middle band: burger nav, but the primary CTA stays in the header (one
-   conversion path). Below 941px the burger alone remains, as before. */
-@media (max-width: 1219px) {
+/* The full desktop header (brand + nav + language dropdown + CTA) only fits
+   every locale from ~1100px up (HR is the widest; EN ~969, SL ~1051) — below
+   that the row overflowed .wrap and body{overflow-x:hidden} clipped the CTA.
+   941-1199px is a middle band: burger nav, but the primary CTA stays in the
+   header (one conversion path). Below 941px the burger alone remains. */
+@media (max-width: 1199px) {
   .nav { display: none; }
   .menu-btn { display: inline-flex; }
 }

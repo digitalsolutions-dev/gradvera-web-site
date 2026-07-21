@@ -1,9 +1,12 @@
 // Header responsive integrity — the defect this pins: between the old 940px
 // mobile breakpoint and the width where the full desktop header actually fits,
 // the row overflowed .hdr .wrap and body{overflow-x:hidden} clipped the CTA
-// (EN fits from ~944px, SL ~1174px, HR ~1214px — measured on the built site).
-// Contract: ≤940 burger only; 941–1219 burger + visible CTA; ≥1220 full
-// desktop header, in ALL three locales.
+// (with the language dropdown: EN fits from ~969px, SL ~1051px, HR ~1100px —
+// measured on the built site).
+// Contract: ≤940 burger only; 941–1199 burger + visible CTA; ≥1200 full
+// desktop header, in ALL three locales. Clip checks compare against
+// documentElement.clientWidth (the layout viewport), so reserved-scrollbar
+// environments (Linux CI) are held to the same bar as overlay-scrollbar macOS.
 import { test, expect } from '@playwright/test';
 import { gotoClean } from './helpers.mjs';
 
@@ -15,7 +18,7 @@ async function headerState(page) {
     const nav = document.querySelector('.hdr .nav');
     const btn = document.querySelector('.menu-btn');
     const cta = document.querySelector('.nav-cta .btn-primary');
-    const picker = document.querySelector('.hdr .lang-switch');
+    const picker = document.querySelector('.hdr .lang-menu');
     const wrap = document.querySelector('.hdr .wrap');
     const right = Math.max(...[...wrap.querySelectorAll('*')].map((el) => el.getBoundingClientRect().right));
     return {
@@ -25,35 +28,35 @@ async function headerState(page) {
       picker: vis(picker),
       ctaRight: cta ? cta.getBoundingClientRect().right : null,
       contentRight: right,
-      viewport: window.innerWidth,
+      layoutWidth: document.documentElement.clientWidth,
     };
   });
 }
 
 for (const locale of LOCALES) {
   test.describe(`header @ ${locale}`, () => {
-    test('941–1219px: burger + CTA, nothing clipped', async ({ page }) => {
+    test('941–1199px: burger + CTA, nothing clipped', async ({ page }) => {
       await gotoClean(page, locale);
-      for (const width of [941, 1000, 1018, 1120, 1219]) {
+      for (const width of [941, 1000, 1018, 1120, 1199]) {
         await page.setViewportSize({ width, height: 800 });
         const s = await headerState(page);
         expect(s.nav, `${width}px: inline nav hidden`).toBe(false);
         expect(s.burger, `${width}px: burger visible`).toBe(true);
         expect(s.cta, `${width}px: CTA visible`).toBe(true);
-        expect(s.ctaRight, `${width}px: CTA inside viewport`).toBeLessThanOrEqual(width);
-        expect(s.contentRight, `${width}px: no header content clipped`).toBeLessThanOrEqual(width);
+        expect(s.ctaRight, `${width}px: CTA inside layout viewport`).toBeLessThanOrEqual(s.layoutWidth);
+        expect(s.contentRight, `${width}px: no header content clipped`).toBeLessThanOrEqual(s.layoutWidth);
       }
     });
 
-    test('≥1220px: full desktop header fits', async ({ page }) => {
+    test('≥1200px: full desktop header fits', async ({ page }) => {
       await gotoClean(page, locale);
-      for (const width of [1220, 1280, 1440]) {
+      for (const width of [1200, 1280, 1440]) {
         await page.setViewportSize({ width, height: 800 });
         const s = await headerState(page);
         expect(s.nav, `${width}px: inline nav visible`).toBe(true);
-        expect(s.picker, `${width}px: language picker visible`).toBe(true);
+        expect(s.picker, `${width}px: language dropdown visible`).toBe(true);
         expect(s.burger, `${width}px: burger hidden`).toBe(false);
-        expect(s.contentRight, `${width}px: no header content clipped`).toBeLessThanOrEqual(width);
+        expect(s.contentRight, `${width}px: no header content clipped`).toBeLessThanOrEqual(s.layoutWidth);
       }
     });
 
