@@ -7,7 +7,7 @@ export const COMPANY = {
   brand: 'Gradvera',
   legalName: 'DIGITAL SOLUTIONS d.o.o.',
   tagline: 'Construction estimating software',
-  email: 'info@digitalsolutions.si',
+  email: 'info@gradvera.com',
   phoneDisplay: '+386 40 328 355',
   phoneHref: 'tel:+38640328355',
   linkedin: 'https://www.linkedin.com/company/digital-solutions-eu/',
