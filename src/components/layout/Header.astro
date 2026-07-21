@@ -1,5 +1,6 @@
 ---
-import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import { localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import LangSwitch from './LangSwitch.astro';
 interface Props { lang: Locale; path?: string }
 const { lang, path } = Astro.props;
 const t = useTranslations(lang);
@@ -20,11 +21,7 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
       <a href={homeHref('#outcomes')}>{t('nav.outcomes')}</a>
     </nav>
     <div class="nav-cta">
-      <div class="lang-switch" role="group" aria-label={t('a11y.language')}>
-        {LOCALES.map((loc) => (
-          <a href={localizePath(switchPath, loc)} hreflang={LOCALE_META[loc].htmlLang} aria-label={LOCALE_META[loc].label} aria-current={loc === lang ? 'true' : undefined}>{LOCALE_META[loc].htmlLang.toUpperCase()}</a>
-        ))}
-      </div>
+      <LangSwitch lang={lang} path={switchPath} />
       <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
       <button class="btn menu-btn" aria-label={t('a11y.openMenu')} data-close-label={t('a11y.closeMenu')} aria-controls="mobile-nav" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -33,77 +30,3 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
   </div>
 </header>
 
-<style is:global>
-  /* Language picker — a segmented pill control. Active locale = filled amber
-     (state shown by fill, not colour alone). Used in the desktop header and,
-     full-width + touch-sized, inside the mobile menu. */
-  .lang-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    padding: 3px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
-    border-radius: 999px;
-  }
-  .lang-switch a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    padding: 7px 11px;
-    font: 600 12px/1 var(--font-mono, 'IBM Plex Mono', monospace);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--on-ink-2, #97a6c0);
-    border-radius: 999px;
-    text-decoration: none;
-    transition: color 0.15s ease, background 0.15s ease;
-  }
-  .lang-switch a:hover {
-    color: var(--on-ink, #eef2fa);
-  }
-  .lang-switch a[aria-current] {
-    background: var(--amber, #e8901c);
-    color: #1a1208;
-  }
-  .lang-switch a:focus-visible {
-    outline: 2px solid var(--amber, #e8901c);
-    outline-offset: 2px;
-  }
-
-  /* The header is dark in both rest + scrolled (.solid) states, so the picker
-     keeps light text throughout (the old .solid override used dark-mode greys
-     that vanished on the navy bar). */
-  .hdr.solid .lang-switch {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  /* Declutter the cramped mobile header — the picker moves into the menu. */
-  @media (max-width: 940px) {
-    .hdr .lang-switch {
-      display: none;
-    }
-  }
-
-  /* Mobile menu: full-width, touch-sized (≥44px) segmented control. */
-  .mobile-nav .lang-switch {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    width: 100%;
-    margin-top: 20px;
-  }
-  .mobile-nav .lang-switch a {
-    min-height: 46px;
-    font-size: 14px;
-    padding: 0;
-    border-bottom: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .lang-switch a {
-      transition: none;
-    }
-  }
-</style>
