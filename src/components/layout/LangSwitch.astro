@@ -2,8 +2,10 @@
 import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
 
 /**
- * Segmented locale switcher, one markup source for both placements:
- * `header` — compact ISO codes in the desktop header (endonym via title/aria);
+ * Locale switcher, one source for both placements:
+ * `header` — a <details>-based dropdown (globe + current ISO code trigger,
+ *   popover of code + endonym options). Native disclosure semantics, so it
+ *   opens without JS; the inline script adds Escape / outside-click / arrow keys.
  * `menu`   — full-width touch cells in the mobile menu, code eyebrow + endonym.
  */
 interface Props { lang: Locale; path?: string; variant?: 'header' | 'menu' }
@@ -11,27 +13,183 @@ const { lang, path, variant = 'header' } = Astro.props;
 const t = useTranslations(lang);
 const switchPath = path ?? '/';
 ---
-<div class:list={['lang-switch', variant === 'menu' && 'lang-switch--menu']} role="group" aria-label={t('a11y.language')}>
-  {LOCALES.map((loc) => (
-    <a
-      href={localizePath(switchPath, loc)}
-      hreflang={LOCALE_META[loc].htmlLang}
-      lang={LOCALE_META[loc].htmlLang}
-      title={variant === 'header' ? LOCALE_META[loc].label : undefined}
-      aria-label={LOCALE_META[loc].label}
-      aria-current={loc === lang ? 'page' : undefined}
-    >
-      <span class="lang-switch__code" aria-hidden="true">{LOCALE_META[loc].htmlLang.toUpperCase()}</span>
-      {variant === 'menu' && <span class="lang-switch__name" aria-hidden="true">{LOCALE_META[loc].label}</span>}
-    </a>
-  ))}
-</div>
+{variant === 'header' ? (
+  <details class="lang-menu">
+    <summary aria-label={`${t('a11y.language')} — ${LOCALE_META[lang].label}`}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="lang-menu__code">{LOCALE_META[lang].htmlLang.toUpperCase()}</span>
+      <svg class="lang-menu__chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <ul class="lang-menu__list">
+      {LOCALES.map((loc) => (
+        <li>
+          <a
+            href={localizePath(switchPath, loc)}
+            hreflang={LOCALE_META[loc].htmlLang}
+            lang={LOCALE_META[loc].htmlLang}
+            aria-current={loc === lang ? 'page' : undefined}
+          >
+            <span class="lang-menu__opt-code" aria-hidden="true">{LOCALE_META[loc].htmlLang.toUpperCase()}</span>
+            <span class="lang-menu__opt-name">{LOCALE_META[loc].label}</span>
+            {loc === lang && (
+              <svg class="lang-menu__check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </details>
+
+  <script is:inline>
+    /* Dropdown niceties on top of native <details>: close on outside click,
+       Escape-to-close with focus returned to the trigger, ArrowUp/Down cycling
+       through the options. */
+    (function () {
+      var root = document.querySelector('.hdr .lang-menu');
+      if (!root) return;
+      var sum = root.querySelector('summary');
+      /* If the viewport narrows into the burger band while the popover is
+         open, the media query hides it but `open` would persist — close it so
+         the document-level handlers disarm and it doesn't reappear pre-opened
+         when the viewport grows back. */
+      window.matchMedia('(max-width: 1199px)').addEventListener('change', function (ev) {
+        if (ev.matches) root.open = false;
+      });
+      document.addEventListener('click', function (e) {
+        if (root.open && !root.contains(e.target)) root.open = false;
+      });
+      document.addEventListener('keydown', function (e) {
+        if (!root.open || !root.offsetParent) return;
+        if (e.key === 'Escape') { e.preventDefault(); root.open = false; sum.focus(); return; }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          var links = root.querySelectorAll('.lang-menu__list a');
+          if (!links.length) return;
+          e.preventDefault();
+          var idx = Array.prototype.indexOf.call(links, document.activeElement);
+          var next = e.key === 'ArrowDown'
+            ? (idx + 1) % links.length
+            : (idx - 1 + links.length) % links.length;
+          links[next].focus();
+        }
+      });
+    })();
+  </script>
+) : (
+  <div class="lang-switch lang-switch--menu" role="group" aria-label={t('a11y.language')}>
+    {LOCALES.map((loc) => (
+      <a
+        href={localizePath(switchPath, loc)}
+        hreflang={LOCALE_META[loc].htmlLang}
+        lang={LOCALE_META[loc].htmlLang}
+        aria-label={LOCALE_META[loc].label}
+        aria-current={loc === lang ? 'page' : undefined}
+      >
+        <span class="lang-switch__code" aria-hidden="true">{LOCALE_META[loc].htmlLang.toUpperCase()}</span>
+        <span class="lang-switch__name" aria-hidden="true">{LOCALE_META[loc].label}</span>
+      </a>
+    ))}
+  </div>
+)}
 
 <style is:global>
-  /* Language picker — a segmented control in the site's drafting geometry
-     (8px frame / 6px segments, like .btn and the chips; the old pill was the
-     one rounded outlier). Active locale = filled amber — state shown by fill,
-     not colour alone. */
+  /* ---- Header dropdown ---------------------------------------------------- */
+  .lang-menu {
+    position: relative;
+  }
+  .lang-menu summary {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
+    border-radius: 8px;
+    color: var(--on-ink-2, #97a6c0);
+    font: 600 12px/1 var(--font-mono, 'IBM Plex Mono', monospace);
+    letter-spacing: 0.06em;
+    touch-action: manipulation;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .lang-menu summary::-webkit-details-marker {
+    display: none;
+  }
+  .lang-menu summary:hover,
+  .lang-menu[open] summary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--on-ink, #eef2fa);
+  }
+  .lang-menu summary:focus-visible {
+    outline: 2px solid var(--amber, #e8901c);
+    outline-offset: 2px;
+  }
+  .lang-menu__chev {
+    transition: transform 0.15s ease;
+  }
+  .lang-menu[open] .lang-menu__chev {
+    transform: rotate(180deg);
+  }
+  /* Popover panel. z-index 70 clears the header (60) and the menu scrim (54). */
+  .lang-menu__list {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 70;
+    min-width: 200px;
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    background: var(--ink-2, #141e33);
+    border: 1px solid var(--ink-hair, rgba(151, 166, 192, 0.16));
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(4, 8, 20, 0.55);
+  }
+  .lang-menu__list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--on-ink, #eef2fa);
+  }
+  .lang-menu__list a:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .lang-menu__list a:focus-visible {
+    outline: 2px solid var(--amber, #e8901c);
+    outline-offset: -2px;
+  }
+  .lang-menu__opt-code {
+    min-width: 22px;
+    font: 500 10px/1 var(--font-mono, 'IBM Plex Mono', monospace);
+    letter-spacing: 0.18em;
+    color: var(--on-ink-2, #97a6c0);
+  }
+  .lang-menu__opt-name {
+    font: 500 14px/1.2 var(--font-sans, 'IBM Plex Sans', system-ui, sans-serif);
+  }
+  /* Current locale: amber-tinted row + check — state shown by mark, not colour
+     alone. Same tint family as .hdr.solid .nav a.active (site-polish.css). */
+  .lang-menu__list a[aria-current] {
+    background: rgba(232, 144, 28, 0.14);
+  }
+  .lang-menu__check {
+    margin-left: auto;
+    color: var(--amber, #e8901c);
+  }
+
+  /* Below the full-desktop-header width the switcher moves into the mobile
+     menu (see the header media band in site.css). */
+  @media (max-width: 1199px) {
+    .hdr .lang-menu {
+      display: none;
+    }
+  }
+
+  /* ---- Mobile-menu segmented cells ---------------------------------------- */
+  /* Active locale = filled amber; drafting geometry (8px/6px radii). */
   .lang-switch {
     display: inline-flex;
     align-items: center;
@@ -76,20 +234,6 @@ const switchPath = path ?? '/';
   .lang-switch a:focus-visible {
     outline: 2px solid var(--amber, #e8901c);
     outline-offset: 2px;
-  }
-
-  /* The header is dark in both rest + scrolled (.solid) states, so the picker
-     keeps light text throughout (the old .solid override used dark-mode greys
-     that vanished on the navy bar). */
-  .hdr.solid .lang-switch {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  /* Declutter the cramped mobile header — the picker moves into the menu. */
-  @media (max-width: 940px) {
-    .hdr .lang-switch {
-      display: none;
-    }
   }
 
   /* Menu variant: full-width, touch-sized cells. Two lines per cell — mono ISO
@@ -141,7 +285,9 @@ const switchPath = path ?? '/';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lang-switch a {
+    .lang-switch a,
+    .lang-menu summary,
+    .lang-menu__chev {
       transition: none;
     }
   }
