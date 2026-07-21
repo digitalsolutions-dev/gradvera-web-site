@@ -1,8 +1,9 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useTranslations, useNumberFormat, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { num, pct } = useNumberFormat(lang);
 ---
 <section class="cap plain">
   <div class="wrap">
@@ -51,10 +52,10 @@ const t = useTranslations(lang);
               </div>
               <div class="rk-tbl">
                 <div class="rk-th"><span></span><span>{t('mock.lineItem')}</span><span>{t('mock.proposed')}</span><span>{t('mock.vsHistory')}</span><span>{t('mock.severity')}</span></div>
-                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">{t('cap3.screen.item1')}<small>{t('cap3.screen.item1cat')} · ~90 t</small></span><span class="val tnum">€115<small>/ t</small></span><span><span class="rk-delta up">▲ +34%</span></span><span class="rk-chip chip-red">{t('mock.critical')}</span></div>
-                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">{t('cap3.screen.item2')}<small>{t('cap1.screen.itemEarth')} · 640 m³</small></span><span class="val tnum">€38.00<small>/ m³</small></span><span><span class="rk-delta up">▲ +28%</span></span><span class="rk-chip chip-red">{t('mock.critical')}</span></div>
-                <div class="rk-tr"><span class="sv" style="background:var(--warning)"></span><span class="it">{t('cap3.screen.item3')}<small>{t('cap1.screen.itemEarth')} · 820 m²</small></span><span class="val tnum">€21.50<small>/ m²</small></span><span><span class="rk-delta up">▲ +12%</span></span><span class="rk-chip chip-amber">{t('mock.significant')}</span></div>
-                <div class="rk-tr"><span class="sv" style="background:#EAB308"></span><span class="it">{t('cap3.screen.item4')}<small>{t('cap2.screen.bcFoundations')} · 320 m³</small></span><span class="val tnum">€170.00<small>/ m³</small></span><span><span class="rk-delta flat">≈ +3%</span></span><span class="rk-chip chip-yellow">{t('mock.mild')}</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">{t('cap3.screen.item1')}<small>{t('cap3.screen.item1cat')} · ~90 t</small></span><span class="val tnum">€115<small>/ t</small></span><span><span class="rk-delta up">▲ {pct('+34')}</span></span><span class="rk-chip chip-red">{t('mock.critical')}</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--danger)"></span><span class="it">{t('cap3.screen.item2')}<small>{t('cap1.screen.itemEarth')} · 640 m³</small></span><span class="val tnum">€{num(38, 2)}<small>/ m³</small></span><span><span class="rk-delta up">▲ {pct('+28')}</span></span><span class="rk-chip chip-red">{t('mock.critical')}</span></div>
+                <div class="rk-tr"><span class="sv" style="background:var(--warning)"></span><span class="it">{t('cap3.screen.item3')}<small>{t('cap1.screen.itemEarth')} · 820 m²</small></span><span class="val tnum">€{num(21.5, 2)}<small>/ m²</small></span><span><span class="rk-delta up">▲ {pct('+12')}</span></span><span class="rk-chip chip-amber">{t('mock.significant')}</span></div>
+                <div class="rk-tr"><span class="sv" style="background:#EAB308"></span><span class="it">{t('cap3.screen.item4')}<small>{t('cap2.screen.bcFoundations')} · 320 m³</small></span><span class="val tnum">€{num(170, 2)}<small>/ m³</small></span><span><span class="rk-delta flat">≈ {pct('+3')}</span></span><span class="rk-chip chip-yellow">{t('mock.mild')}</span></div>
               </div>
             </div>
           </div>

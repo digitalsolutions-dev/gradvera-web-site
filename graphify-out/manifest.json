@@ -45,24 +45,24 @@
     "semantic_hash": "8aae9c62924949e50ff88a7f30fe653c"
   },
   "src/components/sections/Capability1.astro": {
-    "mtime": 1784637919.3291595,
-    "ast_hash": "36f72a56a299eb92e9f183983ab18b60",
-    "semantic_hash": "36f72a56a299eb92e9f183983ab18b60"
+    "mtime": 1784642402.866583,
+    "ast_hash": "af5754b16fa6d3da69f00fe2d7f0df53",
+    "semantic_hash": "af5754b16fa6d3da69f00fe2d7f0df53"
   },
   "src/components/sections/Capability2.astro": {
-    "mtime": 1784637919.3295255,
-    "ast_hash": "da2af065aef9d5718d8c578b614da95a",
-    "semantic_hash": "da2af065aef9d5718d8c578b614da95a"
+    "mtime": 1784642949.575413,
+    "ast_hash": "9e9c5492ba1500259c7ffefe0558f436",
+    "semantic_hash": "9e9c5492ba1500259c7ffefe0558f436"
   },
   "src/components/sections/Capability3.astro": {
-    "mtime": 1784637919.3299587,
-    "ast_hash": "634cd217eb6fb149dc105793925715c9",
-    "semantic_hash": "634cd217eb6fb149dc105793925715c9"
+    "mtime": 1784642102.5337389,
+    "ast_hash": "26f180227db02a79438a6a22d6b73882",
+    "semantic_hash": "26f180227db02a79438a6a22d6b73882"
   },
   "src/components/sections/Capability4.astro": {
-    "mtime": 1784637919.3302257,
-    "ast_hash": "c3b9d7fb4c3e8ac42d9bffb09a816847",
-    "semantic_hash": "c3b9d7fb4c3e8ac42d9bffb09a816847"
+    "mtime": 1784642320.3960755,
+    "ast_hash": "b9ac78640cfaf42aeea10430b3a931e6",
+    "semantic_hash": "b9ac78640cfaf42aeea10430b3a931e6"
   },
   "src/components/sections/Cta1.astro": {
     "mtime": 1782905603.273456,
@@ -85,9 +85,9 @@
     "semantic_hash": "4beb91ae92e1d375d5ea7ddfcbbafe4b"
   },
   "src/components/sections/HowItWorks.astro": {
-    "mtime": 1784637919.330719,
-    "ast_hash": "a061f38edd68f125c5d7d9336e696ef7",
-    "semantic_hash": "a061f38edd68f125c5d7d9336e696ef7"
+    "mtime": 1784642402.8671675,
+    "ast_hash": "7d321566496e28887c154ad791a43860",
+    "semantic_hash": "7d321566496e28887c154ad791a43860"
   },
   "src/components/sections/Outcomes.astro": {
     "mtime": 1783499506.6282945,
@@ -105,9 +105,9 @@
     "semantic_hash": "07f83e9d84791b2fd705c447c78e3719"
   },
   "src/components/sections/Results.astro": {
-    "mtime": 1782908904.0679133,
-    "ast_hash": "288a0f106740fd5c5c837ac07f9c02aa",
-    "semantic_hash": "288a0f106740fd5c5c837ac07f9c02aa"
+    "mtime": 1784642949.5760412,
+    "ast_hash": "60c671a67125a6ad38218eb77f11e790",
+    "semantic_hash": "60c671a67125a6ad38218eb77f11e790"
   },
   "src/components/seo/SEO.astro": {
     "mtime": 1783676682.2200823,
@@ -170,9 +170,9 @@
     "semantic_hash": "d7b49bbbd6c7fb1c707638f1a851aa1e"
   },
   "src/i18n/utils.ts": {
-    "mtime": 1783676682.22142,
-    "ast_hash": "47008f1f41e0fb19d87966f4425bc9a1",
-    "semantic_hash": "47008f1f41e0fb19d87966f4425bc9a1"
+    "mtime": 1784641915.723048,
+    "ast_hash": "a5276ce3e2f13be86f33d603e28cd96d",
+    "semantic_hash": "a5276ce3e2f13be86f33d603e28cd96d"
   },
   "src/layouts/BaseLayout.astro": {
     "mtime": 1783676682.221746,
@@ -425,18 +425,23 @@
     "semantic_hash": "3cbfae388039065e6e6cea9dda2a7691"
   },
   "src/components/layout/LangSwitch.astro": {
-    "mtime": 1784640703.3937604,
-    "ast_hash": "d6cd2c31cbb16ad2e970bab265711491",
-    "semantic_hash": "d6cd2c31cbb16ad2e970bab265711491"
+    "mtime": 1784641405.063386,
+    "ast_hash": "a2e6defeedd3c3c81fc3e70463ec2c26",
+    "semantic_hash": "a2e6defeedd3c3c81fc3e70463ec2c26"
   },
   "tests/e2e/lang-picker.spec.mjs": {
-    "mtime": 1784640735.0912356,
-    "ast_hash": "aed1023541dde5bd05aaabb875af39aa",
-    "semantic_hash": "aed1023541dde5bd05aaabb875af39aa"
+    "mtime": 1784641405.0636382,
+    "ast_hash": "2ef37c38f4e426ae2e6ca1727ff0866a",
+    "semantic_hash": "2ef37c38f4e426ae2e6ca1727ff0866a"
   },
   "tests/e2e/header-responsive.spec.mjs": {
     "mtime": 1784640358.6141195,
     "ast_hash": "7ffc8087bf548c276d023acb0ffcacce",
     "semantic_hash": "7ffc8087bf548c276d023acb0ffcacce"
+  },
+  "tests/e2e/number-format.spec.mjs": {
+    "mtime": 1784643025.649031,
+    "ast_hash": "9cf4907062fb41bb1bf1cac548a44728",
+    "semantic_hash": "9cf4907062fb41bb1bf1cac548a44728"
   }
 }
