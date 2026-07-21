@@ -1,8 +1,9 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useTranslations, useNumberFormat, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { num } = useNumberFormat(lang);
 ---
 <section class="cap plain">
   <div class="wrap">
@@ -101,10 +102,10 @@ const t = useTranslations(lang);
                     <span class="pstat">{t('mock.lineItems')}<b>402</b></span>
                     <span class="adj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>{t('cap1.screen.adjustMatching')}</span>
                   </div>
-                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si1')}</div><div class="isub">{t('cap1.screen.si1sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">1.00 kpl</div><div class="ip">€11,014.11<span style="font-weight:400;color:var(--fg3)">/kpl</span></div></div><span class="gv-conf h">{t('mock.high')}</span></div>
-                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si2')}</div><div class="isub">{t('cap1.screen.si1sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">1.00 kpl</div><div class="ip">€5,410.35<span style="font-weight:400;color:var(--fg3)">/kpl</span></div></div><span class="gv-conf h">{t('mock.high')}</span></div>
-                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si3')}</div><div class="isub">{t('cap1.screen.si3sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">427.66 m³</div><div class="ip">€10.44<span style="font-weight:400;color:var(--fg3)">/m³</span></div></div><span class="gv-conf m">{t('mock.medium')}</span></div>
-                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si4')}</div><div class="isub">{t('cap1.screen.si4sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">615.33 m³</div><div class="ip">€28.22<span style="font-weight:400;color:var(--fg3)">/m³</span></div></div><span class="gv-conf l">{t('mock.low')}</span></div>
+                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si1')}</div><div class="isub">{t('cap1.screen.si1sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">{num(1, 2)} kpl</div><div class="ip">€{num(11014.11, 2)}<span style="font-weight:400;color:var(--fg3)">/kpl</span></div></div><span class="gv-conf h">{t('mock.high')}</span></div>
+                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si2')}</div><div class="isub">{t('cap1.screen.si1sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">{num(1, 2)} kpl</div><div class="ip">€{num(5410.35, 2)}<span style="font-weight:400;color:var(--fg3)">/kpl</span></div></div><span class="gv-conf h">{t('mock.high')}</span></div>
+                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si3')}</div><div class="isub">{t('cap1.screen.si3sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">{num(427.66, 2)} m³</div><div class="ip">€{num(10.44, 2)}<span style="font-weight:400;color:var(--fg3)">/m³</span></div></div><span class="gv-conf m">{t('mock.medium')}</span></div>
+                  <div class="gv-irow"><div><div class="inm">{t('cap1.screen.si4')}</div><div class="isub">{t('cap1.screen.si4sub')} <span class="ai"><span class="gv-spark">✦</span>{t('cap2.screen.aiTag')}</span></div></div><div class="ir"><div class="iq">{num(615.33, 2)} m³</div><div class="ip">€{num(28.22, 2)}<span style="font-weight:400;color:var(--fg3)">/m³</span></div></div><span class="gv-conf l">{t('mock.low')}</span></div>
                 </div>
                 <div class="gv-foot"><span class="ft">{t('cap1.screen.footPre')} <b style="color:var(--fg2)">{t('cap1.screen.footAwaiting')}</b>{t('cap1.screen.footPost')}</span><span class="r"><span class="gv-btn ghost">{t('mock.cancel')}</span><span class="gv-btn">{t('cap1.screen.add18')}</span></span></div>
               </div>

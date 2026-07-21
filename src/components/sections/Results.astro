@@ -1,8 +1,9 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useNumberFormat, useTranslations, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { pct } = useNumberFormat(lang);
 // Split the "4.5 days → 0.8 days" proof stat so screen readers hear a word
 // ("to") instead of the bare arrow glyph read literally.
 const m1sParts: string[] = t('results.m1s').split('→');
@@ -18,7 +19,7 @@ const m1sTo = (m1sParts[1] || '').trim();
     </div>
     <div class="metrics reveal">
       <div class="metric">
-        <div class="mv">82%</div>
+        <div class="mv">{pct(82)}</div>
         <div class="ml">{t('results.m1l')}</div>
         <div class="ms">{m1sFrom} <span class="results-to">{t('a11y.to')} </span><span aria-hidden="true">→</span> {m1sTo}</div>
       </div>
@@ -27,7 +28,7 @@ const m1sTo = (m1sParts[1] || '').trim();
         <div class="ml">{t('results.m2l')}</div>
       </div>
       <div class="metric">
-        <div class="mv">95%</div>
+        <div class="mv">{pct(95)}</div>
         <div class="ml">{t('results.m3l')}</div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useTranslations, useNumberFormat, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { num, pct } = useNumberFormat(lang);
 ---
 <section class="cap shade">
   <div class="wrap">
@@ -20,34 +21,34 @@ const t = useTranslations(lang);
           <div class="gv-holder">
             <div class="gv-screen solo pnl" style="--gw:560px">
               <div class="sc-head">
-                <div><div class="st">{t('cap4.screen.itemH')}</div><div class="ssub tnum">BoQ 03.2 · 9.6 t · {t('cap4.screen.received')}</div></div>
+                <div><div class="st">{t('cap4.screen.itemH')}</div><div class="ssub tnum">BoQ 03.2 · {num(9.6, 1)} t · {t('cap4.screen.received')}</div></div>
                 <span class="best">{t('mock.bestValue')}</span>
               </div>
               <div class="sc-th"><span>{t('mock.subcontractor')}</span><span>{t('mock.quotedPrice')}</span><span>{t('mock.validUntil')}</span><span>{t('mock.risk')}</span><span></span></div>
               <div class="sc-tr win">
                 <span class="sc-co"><span class="lg" style="background:#1F7A4D">A</span><span><span class="cn">{t('mock.subcontractor')} A</span><span class="cm">6× {t('cap4.screen.before')}</span></span></span>
-                <span class="sc-price tnum">€1,180<small class="lo">▼ 4% {t('cap4.screen.vsPrev')}</small></span>
+                <span class="sc-price tnum">€{num(1180)}<small class="lo">▼ {pct(4)} {t('cap4.screen.vsPrev')}</small></span>
                 <span class="sc-meta tnum">{t('cap4.screen.d12aug')}</span>
                 <span class="sc-risk chip-green">{t('mock.low')}</span>
                 <span class="sc-pick on">{t('mock.selected')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#2A6FDB">B</span><span><span class="cn">{t('mock.subcontractor')} B</span><span class="cm">2× {t('cap4.screen.before')}</span></span></span>
-                <span class="sc-price tnum">€1,240<small class="hi">▲ 1% {t('cap4.screen.vsPrev')}</small></span>
+                <span class="sc-price tnum">€{num(1240)}<small class="hi">▲ {pct(1)} {t('cap4.screen.vsPrev')}</small></span>
                 <span class="sc-meta tnum">{t('cap4.screen.d9aug')}</span>
                 <span class="sc-risk chip-green">{t('mock.low')}</span>
                 <span class="sc-pick off">{t('mock.pick')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#7C3AED">C</span><span><span class="cn">{t('mock.subcontractor')} C</span><span class="cm"></span></span></span>
-                <span class="sc-price tnum">€1,295<small class="cur" style="color:var(--fg3)">{t('cap4.screen.noHistory')}</small></span>
+                <span class="sc-price tnum">€{num(1295)}<small class="cur" style="color:var(--fg3)">{t('cap4.screen.noHistory')}</small></span>
                 <span class="sc-meta tnum">{t('cap4.screen.d15aug')}</span>
                 <span class="sc-risk chip-amber">{t('mock.medium')}</span>
                 <span class="sc-pick off">{t('mock.pick')}</span>
               </div>
               <div class="sc-tr">
                 <span class="sc-co"><span class="lg" style="background:#B45309">D</span><span><span class="cn">{t('mock.subcontractor')} D</span><span class="cm">1× {t('cap4.screen.before')}</span></span></span>
-                <span class="sc-price tnum">€1,410<small class="hi">▲ 11% {t('cap4.screen.vsPrev')}</small></span>
+                <span class="sc-price tnum">€{num(1410)}<small class="hi">▲ {pct(11)} {t('cap4.screen.vsPrev')}</small></span>
                 <span class="sc-meta tnum">{t('cap4.screen.d6aug')}</span>
                 <span class="sc-risk chip-amber">{t('mock.medium')}</span>
                 <span class="sc-pick off">{t('mock.pick')}</span>
@@ -73,12 +74,12 @@ const t = useTranslations(lang);
                   <div class="po-h">{t('cap4.screen.request')}<small>{t('cap4.screen.requestSub')}</small></div>
                   <div class="po-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>{t('cap4.screen.portalNote')}</div>
                   <div class="po-item">
-                    <div><div class="pin">{t('cap4.screen.itemH')}</div><div class="pim tnum">BoQ 03.2 · 9.6 t</div></div>
-                    <div class="pinp done"><span>€1,180</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+                    <div><div class="pin">{t('cap4.screen.itemH')}</div><div class="pim tnum">BoQ 03.2 · {num(9.6, 1)} t</div></div>
+                    <div class="pinp done"><span>€{num(1180)}</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
                   </div>
                   <div class="po-item">
                     <div><div class="pin">{t('cap4.screen.mesh')}</div><div class="pim tnum">BoQ 03.4 · 380 m²</div></div>
-                    <div class="pinp"><span class="cur">€</span><span>7.00</span><span class="cur">/ m²</span></div>
+                    <div class="pinp"><span class="cur">€</span><span>{num(7, 2)}</span><span class="cur">/ m²</span></div>
                   </div>
                   <div class="po-item locked">
                     <div><div class="pin">{t('cap3.screen.item4')}</div><div class="pim">{t('cap4.screen.notAssigned')}</div></div>

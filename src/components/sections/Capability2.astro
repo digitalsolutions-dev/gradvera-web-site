@@ -1,8 +1,9 @@
 ---
-import { useTranslations, type Locale } from '../../i18n/utils';
+import { useTranslations, useNumberFormat, type Locale } from '../../i18n/utils';
 interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { num, pct } = useNumberFormat(lang);
 ---
 <section class="cap shade">
   <div class="wrap">
@@ -49,12 +50,12 @@ const t = useTranslations(lang);
                 <div class="pp-row1">
                   <div>
                     <div class="pp-k">{t('mock.proposedPrice')}</div>
-                    <div class="pp-price tnum">€170.00 <span class="pp-unit">/ m³</span></div>
+                    <div class="pp-price tnum">€{num(170, 2)} <span class="pp-unit">/ m³</span></div>
                     <div class="pp-calc tnum">{t('cap2.screen.costMaterial')} <b>€110</b> · {t('cap2.screen.costLabor')} <b>€38</b> · {t('cap2.screen.costEquipment')} <b>€12</b> · {t('cap2.screen.costMargin')} <b>€10</b></div>
                   </div>
                   <div class="pp-conf" id="c2-conf">
                     <div class="ck">{t('mock.confidence')}</div>
-                    <div class="cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>{t('mock.high')} · 87%</div>
+                    <div class="cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>{t('mock.high')} · {pct(87)}</div>
                     <div class="cd">{t('cap2.screen.basedOn')}</div>
                   </div>
                 </div>
@@ -64,7 +65,7 @@ const t = useTranslations(lang);
                     <div class="bar"></div>
                     <div class="mk" style="left:18%"><span class="lab">MIN €148</span></div>
                     <div class="mk" style="left:50%"><span class="lab">{t('cap2.screen.median')} €165</span></div>
-                    <div class="mk prop" style="left:69%"><span class="dot"></span><span class="lab">€170.00</span><span class="sublab">{t('mock.proposedPrice')}</span></div>
+                    <div class="mk prop" style="left:69%"><span class="dot"></span><span class="lab">€{num(170, 2)}</span><span class="sublab">{t('mock.proposedPrice')}</span></div>
                     <div class="mk" style="left:88%"><span class="lab">MAX €198</span></div>
                   </div>
                   <div class="pp-scale"><span>{t('cap2.screen.scaleLower')}</span><span>{t('cap2.screen.scaleRange')}</span><span>{t('cap2.screen.scaleHigher')}</span></div>
@@ -74,17 +75,17 @@ const t = useTranslations(lang);
                   <div class="pp-proj">
                     <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
                     <div><div class="pj-nm">{t('cap2.screen.proj1')}</div><div class="pj-meta tnum">2024 · 320 m³ · C25/30</div></div>
-                    <div style="text-align:right"><div class="pj-val tnum">€167.40</div><div class="pj-match">98% {t('cap2.screen.match')}</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€{num(167.4, 2)}</div><div class="pj-match">{pct(98)} {t('cap2.screen.match')}</div></div>
                   </div>
                   <div class="pp-proj">
                     <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
                     <div><div class="pj-nm">{t('cap2.screen.proj2')}</div><div class="pj-meta tnum">2023 · 540 m³ · C25/30</div></div>
-                    <div style="text-align:right"><div class="pj-val tnum">€172.10</div><div class="pj-match">95% {t('cap2.screen.match')}</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€{num(172.1, 2)}</div><div class="pj-match">{pct(95)} {t('cap2.screen.match')}</div></div>
                   </div>
                   <div class="pp-proj">
                     <span class="pj-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
                     <div><div class="pj-nm">{t('cap2.screen.proj3')}</div><div class="pj-meta tnum">2023 · 180 m³ · C25/30</div></div>
-                    <div style="text-align:right"><div class="pj-val tnum">€168.00</div><div class="pj-match">92% {t('cap2.screen.match')}</div></div>
+                    <div style="text-align:right"><div class="pj-val tnum">€{num(168, 2)}</div><div class="pj-match">{pct(92)} {t('cap2.screen.match')}</div></div>
                   </div>
                 </div>
               </div>
