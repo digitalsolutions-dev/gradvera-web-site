@@ -64,6 +64,24 @@ export function useTranslations(lang: Locale) {
   };
 }
 
+/**
+ * Locale-aware number rendering for the mock screens. Separators come from
+ * LOCALE_META (SI and HR write 1.500 and 1,24); percent follows SL/HR
+ * orthography (non-breaking space before %). The currency symbol stays BEFORE
+ * the number in every locale — site-wide convention set by the hero chips.
+ */
+export function useNumberFormat(lang: Locale) {
+  const { decimal, group } = LOCALE_META[lang];
+  const num = (value: number, decimals = 0): string => {
+    const [int, frac] = value.toFixed(decimals).split('.');
+    const grouped = int.replace(/\B(?=(\d{3})+(?!\d))/g, group);
+    return frac !== undefined ? grouped + decimal + frac : grouped;
+  };
+  const pct = (value: number | string): string =>
+    lang === 'en' ? `${value}%` : `${value}\u00A0%`;
+  return { num, pct };
+}
+
 /** Detect the active locale from a URL pathname. */
 export function getLocaleFromPath(pathname: string): Locale {
   const seg = pathname.replace(/^\/+/, '').split('/')[0];
