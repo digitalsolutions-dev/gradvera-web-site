@@ -85,8 +85,9 @@ const switchPath = path ?? '/';
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* Declutter the cramped mobile header — the picker moves into the menu. */
-  @media (max-width: 940px) {
+  /* Below the full-desktop-header width (1220px, where the widest locale
+     fits — see site.css header media) the picker moves into the menu. */
+  @media (max-width: 1219px) {
     .hdr .lang-switch {
       display: none;
     }
