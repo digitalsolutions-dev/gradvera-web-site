@@ -425,18 +425,18 @@
     "semantic_hash": "3cbfae388039065e6e6cea9dda2a7691"
   },
   "src/components/layout/LangSwitch.astro": {
-    "mtime": 1784639534.894682,
-    "ast_hash": "e7ea554d5f5f7c7904275aaf37a613e5",
-    "semantic_hash": "e7ea554d5f5f7c7904275aaf37a613e5"
+    "mtime": 1784640703.3937604,
+    "ast_hash": "d6cd2c31cbb16ad2e970bab265711491",
+    "semantic_hash": "d6cd2c31cbb16ad2e970bab265711491"
   },
   "tests/e2e/lang-picker.spec.mjs": {
-    "mtime": 1784639453.0066116,
-    "ast_hash": "15de7aa86361f4c3b22d3e58d2a3a51b",
-    "semantic_hash": "15de7aa86361f4c3b22d3e58d2a3a51b"
+    "mtime": 1784640735.0912356,
+    "ast_hash": "aed1023541dde5bd05aaabb875af39aa",
+    "semantic_hash": "aed1023541dde5bd05aaabb875af39aa"
   },
   "tests/e2e/header-responsive.spec.mjs": {
-    "mtime": 1784639551.5557997,
-    "ast_hash": "2057c7aa28a466110a232b65ed1e8a4e",
-    "semantic_hash": "2057c7aa28a466110a232b65ed1e8a4e"
+    "mtime": 1784640358.6141195,
+    "ast_hash": "7ffc8087bf548c276d023acb0ffcacce",
+    "semantic_hash": "7ffc8087bf548c276d023acb0ffcacce"
   }
 }
