@@ -12,6 +12,7 @@
 import en from './en.json';
 import sl from './sl.json';
 import hr from './hr.json';
+import { SLUGS, REVERSE } from './slugs';
 
 export const LOCALES = ['en', 'sl', 'hr'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -88,27 +89,37 @@ export function getLocaleFromPath(pathname: string): Locale {
   return isLocale(seg) ? seg : DEFAULT_LOCALE;
 }
 
-/** Strip the locale prefix → canonical, locale-independent path (leading + trailing slash). */
+/** Strip the locale prefix → canonical path, reverse-translating slug segments. */
 export function stripLocale(pathname: string): string {
-  let p = pathname;
-  const seg = p.replace(/^\/+/, '').split('/')[0];
-  if (isLocale(seg) && seg !== DEFAULT_LOCALE) {
-    p = '/' + p.replace(/^\/+/, '').split('/').slice(1).join('/');
+  let p = pathname.startsWith('/') ? pathname : '/' + pathname;
+  const first = p.replace(/^\/+/, '').split('/')[0];
+  if (isLocale(first) && first !== DEFAULT_LOCALE) {
+    const lang = first as 'sl' | 'hr';
+    const rest = p.replace(/^\/+/, '').split('/').slice(1);
+    const segs = rest.filter(Boolean).map((s) => REVERSE[lang][s] ?? s);
+    p = '/' + segs.join('/');
   }
   if (!p.startsWith('/')) p = '/' + p;
   if (!p.endsWith('/')) {
-    // keep file-like paths (with extension) and hash/query intact
     if (!/[.#?]/.test(p.split('/').pop() || '')) p += '/';
   }
   return p === '//' ? '/' : p;
 }
 
-/** Build a localized URL path from a canonical path. */
+/** Build a localized URL path from a canonical path, translating slug segments. */
 export function localizePath(canonicalPath: string, lang: Locale): string {
   let p = canonicalPath.startsWith('/') ? canonicalPath : '/' + canonicalPath;
   if (lang === DEFAULT_LOCALE) return p;
-  if (p === '/') return `/${lang}/`;
-  return `/${lang}${p}`;
+  const l = lang as 'sl' | 'hr';
+  // Split off #hash / ?query so segment mapping never touches them (hardening —
+  // today all callers append hashes AFTER localizePath).
+  const cut = p.search(/[#?]/);
+  const suffix = cut === -1 ? '' : p.slice(cut);
+  let path = cut === -1 ? p : p.slice(0, cut);
+  const hadTrailing = path.endsWith('/');
+  const segs = path.split('/').filter(Boolean).map((s) => SLUGS[s]?.[l] ?? s);
+  path = `/${l}` + (segs.length ? '/' + segs.join('/') : '') + (hadTrailing || segs.length === 0 ? '/' : '');
+  return path + suffix;
 }
 
 /** hreflang alternates (relative paths) for a canonical path, incl. x-default (en). */
