@@ -16,12 +16,12 @@ never runs the client-side script, so the push never fires either way). With
 ## GTM container setup (one-time, dashboard)
 
 1. **Trigger** — Triggers → New → *Custom Event*, event name `generate_lead`.
-   Name: `CE — generate_lead`.
+   Name: `CE - generate_lead`.
 2. **Tag** — Tags → New → *Google Analytics: GA4 Event*. Measurement ID: reuse
    the existing GA4 config tag's ID. Event name: `generate_lead`. Event
    parameters: `locale` → `{{DLV - locale}}`, `form_id` → `{{DLV - form_id}}`,
    `page` → `{{DLV - page}}` (create the three Data Layer Variables).
-   Trigger: `CE — generate_lead`. Consent: default settings (Consent Mode v2
+   Trigger: `CE - generate_lead`. Consent: default settings (Consent Mode v2
    gates it automatically).
 3. **Key event** — GA4 Admin → Events → mark `generate_lead` as *key event*.
 4. Publish the container. Verify in GTM Preview: submit the staging demo form,
@@ -29,3 +29,16 @@ never runs the client-side script, so the push never fires either way). With
 
 Note: consent-denied visitors send cookieless pings under Consent Mode v2;
 counts in GA4 are modeled/partial by design.
+
+## As built (configured + verified 2026-08-05)
+
+Live in the production container / GA4 property `G-ET67VW5468`:
+
+- Trigger `CE - generate_lead` (Custom Event), tag `GA4 - generate_lead`
+  (GA4 Event), variables `DLV - locale` / `DLV - form_id` / `DLV - page`.
+- `generate_lead` registered as a **GA4 key event** via *Create event → Create
+  with code* (no default value, counted once per event).
+- Verified end-to-end in GTM Preview: form submit → tag fired → hit sent to
+  `G-ET67VW5468`, confirmed in Tag Assistant ("Hits sent") and GA4.
+- Reporting home: GA4 → Reports → Engagement → Key events (locale/form_id/page
+  arrive as event parameters).

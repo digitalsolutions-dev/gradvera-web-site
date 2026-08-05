@@ -36,6 +36,13 @@ checks run against the exact artifact Vercel ships, not `astro dev`.
 | `mobile-nav.spec.mjs` | MobileNav a11y: open state, focus trap, Escape, scrim, scroll-lock, breakpoint auto-close |
 | `homepage.spec.mjs` | one-`h1`, mockups `aria-hidden`, no h-scroll @375, no JSON-LD price, no hero SVG console error, Cap2 no-overlap across locales × widths |
 | `seo.spec.mjs` | 404 page (status 404, noindex, client-side SL/HR localization), per-locale OG image + localized `og:image:alt`, hero font preloads (latin / latin-ext), canonical host stays apex |
+| `header-responsive.spec.mjs` | header band overflow / responsive behavior across widths |
+| `lang-picker.spec.mjs` | globe dropdown: options, hreflang hrefs (incl. localized SL/HR slugs), keyboard behavior |
+| `i18n-parity.spec.mjs` | SL/HR pages leak no hardcoded English mock-screen copy; every `t()` key exists in all three dictionaries |
+| `number-format.spec.mjs` | SL/HR locale number rendering in the mock screens (decimal comma, NBSP before %) |
+| `lead-tracking.spec.mjs` | `generate_lead` dataLayer push on successful demo-form submit (EN/SL/HR + failure negative) |
+| `localized-slugs.spec.mjs` | localized SL/HR routes serve 200 with correct canonical/hreflang; legacy-URL 308s match both slash forms in the Vercel config; sitemap uses localized slugs |
+| `content-pages.spec.mjs` | guide pages ×6: status 200, FAQPage JSON-LD, hreflang set, CTA; footer links in every locale |
 
 ## Adding a check
 
