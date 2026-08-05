@@ -260,6 +260,73 @@
   "footer.explore.outcomes": "Vaši poslovni rezultati",
   "footer.explore.title": "Razišči",
   "footer.explore.works": "Kako deluje",
+  "guide.bid.eyebrow": "Gradbeni predračun",
+  "guide.bid.h1": "Gradbeni predračun, ki zdrži pregled naročnika in nadzora",
+  "guide.bid.lede": "Ta stran pojasnjuje, kaj gradbeni predračun vsebuje, kdo ga bere, ko ga oddate, in kako posamezna postavka pride do svoje cene. Namenjena je ocenjevalcem in komercialnim vodjem, ki predračune gradbenih del pripravljajo za naročnike, banke in nadzor.",
+  "guide.bid.sections": [
+    {
+      "h": "Kaj gradbeni predračun vsebuje in kdo ga bere",
+      "ps": [
+        "Gradbeni predračun je ovrednoten popis del: vsako delo, ki ga projekt zahteva, s svojo enoto mere, količino, ceno na enoto in vrednostjo postavke, vse urejeno po sklopih in zaključeno z rekapitulacijo. Gradbena, obrtniška in instalacijska dela so praviloma ločena, da je vsak sklop mogoče brati, primerjati in usklajevati zase.",
+        "Ko dokument odide iz pisarne, ga berejo ljudje, ki vaše delovne datoteke nikoli ne vidijo. Naročnik ga bere kot ceno in kot dokaz, da ste obseg del razumeli. Banka, ki gradnjo financira, ga bere kot razrez vrednosti, po katerem sprošča črpanje kredita. Nadzor ga bere med gradnjo, postavko za postavko, ko se gradbene situacije primerjajo z dejansko izvedenimi deli.",
+        "Zato predračuna ne presojajo le po skupni vrednosti. Postavka, ki je nihče ne najde, enota, ki se ne ujema z načrtom, količina, ki je ni mogoče izpeljati iz izmer — vsaka od njih najprej stane zaupanje in šele nato denar."
+      ]
+    },
+    {
+      "h": "Postavke: enota mere, količina in normativi",
+      "ps": [
+        "Vsaka postavka odgovori na tri vprašanja, preden odgovori na ceno: katero delo je to, v kateri enoti se meri in koliko ga je. Opis mora biti dovolj določen, da bi dva ocenjevalca ovrednotila isto delo — izkop z navedeno kategorijo zemljine, beton z razredom, izolacija z debelino. Kubični metri, kvadratni metri, tekoči metri, tone in kosi niso zamenljivi; enota, ki se med izmerami in predračunom zamenja, premakne postavko za cel velikostni red.",
+        "Količine prihajajo iz izmer in njihova šibka točka je, da potujejo. Spremenjen načrt spremeni količino v popisu del, do predračuna pa sprememba pride le, če jo nekdo tja prenese. Samo če postavka skozi revizije ohrani svojo identiteto — ista postavka, nova količina — je razliki pozneje mogoče slediti.",
+        "Pod ceno na enoto stojijo normativi: koliko materiala, dela in mehanizacije porabi enota dela. Objavljeni normativi dajo panožno vrednost, vaši zaključeni projekti pa vašo dejansko porabo; oboje je uporabno in odgovarja na različni vprašanji — koliko naj bi delo trajalo in koliko je pri vas trajalo."
+      ]
+    },
+    {
+      "h": "Izdelava predračuna: cene iz lastne zgodovine ali iz splošnega cenika",
+      "ps": [
+        "Splošni cenik je razumno izhodišče, kadar je postavka za vas nova. Kot končna cena je šibkejši: cenik ne pozna vaše ekipe, vaših dobaviteljev, oddaljenosti gradbišča niti tega, da ste podobno fasado izvedli že velikokrat.",
+        "Močnejši vir je zgodovina vašega podjetja, ki jo že imate: zaključeni projekti, oddane ponudbe in obračuni. Gradvera iz nje pri vsaki postavki predlaga ceno na enoto ter pokaže projekte, iz katerih predlog izhaja, in razpon, v katerem se je podjetje pri podobnem delu gibalo. Ocenjevalec ceno potrdi ali popravi; odločitev ostane pri njem.",
+        "Nad ovrednotenimi postavkami sta režija in marža, ki zahtevata enako disciplino. Vodenje gradbišča, ureditev gradbišča, zavarovanja in garancije se lahko razdelijo na postavke ali prikažejo kot lastne postavke — oboje je mogoče zagovarjati, dokler je v vseh predračunih enako. Marža je presoja tveganja konkretnega projekta, sprejeta enkrat in na vidnem mestu, ne pa tiho vračunana v cene na enoto, kjer je pozneje nihče ne najde."
+      ]
+    },
+    {
+      "h": "Napake, zaradi katerih se posel izgubi",
+      "ps": [
+        "Najdražje so manjkajoče postavke. Delo, ki je na načrtu, v predračunu pa ne, ste se zavezali izvesti brezplačno — izgine pa praviloma manj opazen del obsega: pomožna dela, odri, zaščita in popravila za drugimi izvajalci.",
+        "Zastarele cene so tihe. Ponudba podizvajalca, pridobljena pred meseci, cena materiala iz prejšnje sezone, postavka, prepisana iz starejšega projekta — vsaka je videti kot odločena številka in nobena to ni. Cene se starajo različno hitro, v preglednici pa nič ne opozori, da je katera od njih zastarala.",
+        "Ostane še računski del. Vrstica zunaj obsega seštevka, odstotek, obračunan na vsoto, ki ga že vsebuje, cena na enoto, vpisana ob napačni enoti — nič od tega se ne javi samo. Pokaže se tam, kjer se predračun sreča z obračunom in je razliko treba pojasniti nekomu, ki ima pred seboj oba dokumenta."
+      ]
+    },
+    {
+      "h": "Hitrejši gradbeni predračun, pri katerem odločitev ostane vaša",
+      "ps": [
+        "Hitrost pri ponudbi izvira iz tega, da ne začnete pri prazni preglednici. Gradvera predlaga strukturo predračuna iz dokumentacije, ki ste jo prejeli — sklopi in postavke so že postavljeni — tako da prve ure porabite za preverjanje obsega in ne za prepisovanje.",
+        "Ovrednotenje gre po isti poti: predlagane cene na enoto iz vaše zgodovine pri vsaki postavki, ponudbe podizvajalcev zbrane ob postavki, ki ji pripadajo, da so primerljive med seboj in s tem, kar ste za enako delo že plačali, ter pregled tveganj, ki pred zaključkom označi postavke z odstopanji od vaše zgodovine in jih razvrsti po resnosti.",
+        "Nič v tem zaporedju ni samodejna potrditev. Vsak predlog potrdi ali spremeni ocenjevalec, oddani predračun pa je tak, da ga lahko sami razložite postavko za postavko — naročniku, banki in nadzoru tudi leto in pol pozneje."
+      ]
+    }
+  ],
+  "guide.bid.faqTitle": "Pogosta vprašanja",
+  "guide.bid.faq": [
+    {
+      "q": "Kakšna je razlika med predračunom in ponudbo?",
+      "a": "Predračun je ovrednoten razrez del: postavke, količine, cene na enoto, režija in marža. Ponudba je tisto, kar oddate: predračun skupaj s komercialnimi pogoji, veljavnostjo, plačilnimi roki in morebitnimi pridržki. Prvi dokument ceno pojasni, drugi se nanjo zaveže."
+    },
+    {
+      "q": "Kdo pripravi popis del, po katerem se izdela predračun?",
+      "a": "Praviloma projektant, kot del projektne dokumentacije, ponudnikom pa se izda neovrednoten. Izvajalci ga ovrednotijo takšnega, kot so ga prejeli, da ponudbe ostanejo primerljive. Nejasnosti se rešujejo z vprašanjem naročniku, ne s tihim popravkom popisa."
+    },
+    {
+      "q": "Ali je gradbeni predračun po podpisu pogodbe zavezujoč?",
+      "a": "Odvisno od pogodbe. Pri pogodbi na ključ skupna vrednost drži, dokler se obseg ne spremeni; pri obračunu po dejanskih količinah držijo cene na enoto, količine pa se obračunajo po izvedenem. V obeh primerih so pod drobnogledom cene na enoto."
+    },
+    {
+      "q": "Ali lahko ovrednotimo popis del, ki smo ga prejeli v Excelu?",
+      "a": "Da. Gradvera uvozi popise del in pretekle ponudbe takšne, kot so, brez predlog, in med seboj poveže postavke, ki opisujejo isto delo. Vse, česar ne more zanesljivo povezati, označi za vašo potrditev in ne predpostavi sama."
+    }
+  ],
+  "guide.bid.cta.h2": "Oglejte si Gradvero na popisu del, ki ga imate na mizi.",
+  "guide.bid.cta.p": "Na kratki predstavitvi sestavimo strukturo predračuna iz vaše dokumentacije in pokažemo predlagane cene iz vaše zgodovine.",
+  "guide.bid.cta.btn": "Rezervirajte predstavitev",
   "guide.est.eyebrow": "Gradbene kalkulacije",
   "guide.est.h1": "Gradbene kalkulacije, ki jih lahko zagovarjate pred naročnikom",
   "guide.est.lede": "Ta stran razloži, kaj gradbene kalkulacije v praksi zajemajo — od postavk in količin do cen na enoto, režije in marže — in kje se postopek najpogosteje zatakne. Napisana je za ocenjevalce in komercialne vodje v gradbenih podjetjih, ki ponudbe še vedno sestavljajo v preglednicah.",
@@ -456,6 +523,8 @@
   "results.m1s": "4,5 dni → 0,8 dni",
   "results.m2l": "Več ovrednotenih ponudb na mesec, z isto ekipo",
   "results.m3l": "Predlaganih postavk ohranjenih nespremenjenih",
+  "seo.bid.title": "Gradbeni predračun: kaj vsebuje in kako nastane — Gradvera",
+  "seo.bid.desc": "Kaj gradbeni predračun vsebuje, kdo ga bere, kako postavke dobijo ceno iz lastne zgodovine in katere napake pri izdelavi predračuna stanejo največ.",
   "seo.demo.desc": "Oglejte si, kako Gradvera gradbenim ekipam pomaga hitreje pripraviti zanesljive ponudbe. Rezervirajte kratko predstavitev na vaši zgodovini cen.",
   "seo.demo.title": "Rezervirajte predstavitev — programska oprema Gradvera za ocenjevanje",
   "seo.est.title": "Gradbene kalkulacije: vodnik za ocenjevalce — Gradvera",
