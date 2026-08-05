@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GuideArticle from '../../../components/pages/GuideArticle.astro';
+import { useTranslations, localizePath, absoluteUrl, type Locale } from '../../../i18n/utils';
+
+const lang: Locale = 'sl';
+const t = useTranslations(lang);
+const site = Astro.site;
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: (t('guide.est.faq') as { q: string; a: string }[]).map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absoluteUrl(localizePath('/', lang), site) },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t('guide.est.eyebrow'),
+      item: absoluteUrl(localizePath('/construction-cost-estimation/', lang), site),
+    },
+  ],
+};
+---
+<BaseLayout
+  lang={lang}
+  path="/construction-cost-estimation/"
+  title={t('seo.est.title')}
+  description={t('seo.est.desc')}
+  ogType="article"
+  jsonLd={[breadcrumbLd, faqLd]}
+>
+  <GuideArticle lang={lang} ns="est" />
+</BaseLayout>

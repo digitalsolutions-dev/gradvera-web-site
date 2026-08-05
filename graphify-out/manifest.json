@@ -15,9 +15,9 @@
     "semantic_hash": "2a0117faa3a377ee70a65aaf9df4050e"
   },
   "src/components/layout/Footer.astro": {
-    "mtime": 1785920060.92494,
-    "ast_hash": "46cd41d6874c40680acee5ffa68b6ac6",
-    "semantic_hash": "46cd41d6874c40680acee5ffa68b6ac6"
+    "mtime": 1785928479.091761,
+    "ast_hash": "f0220750b118eb2386b9a4366b253fd1",
+    "semantic_hash": "f0220750b118eb2386b9a4366b253fd1"
   },
   "src/components/layout/Header.astro": {
     "mtime": 1785920060.925341,
@@ -140,9 +140,9 @@
     "semantic_hash": "56012240fde5093ba11405434b21b175"
   },
   "src/i18n/_parts/layout.en.json": {
-    "mtime": 1785920060.9381328,
-    "ast_hash": "12594f627e1f5bfa091f04716817798b",
-    "semantic_hash": "12594f627e1f5bfa091f04716817798b"
+    "mtime": 1785928508.8766313,
+    "ast_hash": "fced5ef5560dad4ae9f00ffe3e8ef41b",
+    "semantic_hash": "fced5ef5560dad4ae9f00ffe3e8ef41b"
   },
   "src/i18n/_parts/legal.en.json": {
     "mtime": 1785920060.9388483,
@@ -155,19 +155,19 @@
     "semantic_hash": "a8eeb785087cda0d5f52d0d9bc3dafdf"
   },
   "src/i18n/en.json": {
-    "mtime": 1785920060.939796,
-    "ast_hash": "8f9ff8bd295654860966afead4e19ae2",
-    "semantic_hash": "8f9ff8bd295654860966afead4e19ae2"
+    "mtime": 1785928492.3694367,
+    "ast_hash": "3364cf36520c9111a87eebd26dce4e9a",
+    "semantic_hash": "3364cf36520c9111a87eebd26dce4e9a"
   },
   "src/i18n/hr.json": {
-    "mtime": 1785920060.9404938,
-    "ast_hash": "8d0fb88a3cc9d6792183fa762c483e39",
-    "semantic_hash": "8d0fb88a3cc9d6792183fa762c483e39"
+    "mtime": 1785928495.7807229,
+    "ast_hash": "d90f92925d559cff47d0dc971dada595",
+    "semantic_hash": "d90f92925d559cff47d0dc971dada595"
   },
   "src/i18n/sl.json": {
-    "mtime": 1785920060.9415562,
-    "ast_hash": "c03802d4e04e459501f83dcf9ff0610c",
-    "semantic_hash": "c03802d4e04e459501f83dcf9ff0610c"
+    "mtime": 1785928493.9605107,
+    "ast_hash": "7873b54f7b2527b949550c62d4e10395",
+    "semantic_hash": "7873b54f7b2527b949550c62d4e10395"
   },
   "src/i18n/utils.ts": {
     "mtime": 1785921928.027124,
@@ -225,9 +225,9 @@
     "semantic_hash": "77e967ceef61579c6d5071239ae844fd"
   },
   "CLAUDE.md": {
-    "mtime": 1785923344.7898266,
-    "ast_hash": "e5b8af0265aa25ffc4dd3688b908c409",
-    "semantic_hash": "e5b8af0265aa25ffc4dd3688b908c409"
+    "mtime": 1785928582.7143486,
+    "ast_hash": "5be3cae3479403ff30c95954c0e62b81",
+    "semantic_hash": "5be3cae3479403ff30c95954c0e62b81"
   },
   "README.md": {
     "mtime": 1785920060.9066892,
@@ -445,9 +445,9 @@
     "semantic_hash": "05d55a096eb7ab7e30ae18e84b26d115"
   },
   "src/i18n/slugs.ts": {
-    "mtime": 1785921912.6760995,
-    "ast_hash": "3ee88973295b330ae79af3c6b64aff47",
-    "semantic_hash": "3ee88973295b330ae79af3c6b64aff47"
+    "mtime": 1785925432.752094,
+    "ast_hash": "b67116f0e88e2ebd5166b2a3a4c1c8af",
+    "semantic_hash": "b67116f0e88e2ebd5166b2a3a4c1c8af"
   },
   "src/pages/hr/pravila-privatnosti/index.astro": {
     "mtime": 1785920060.9458284,
@@ -470,8 +470,53 @@
     "semantic_hash": "084d91bc53d6271a79c745dbb9de002d"
   },
   "tests/e2e/localized-slugs.spec.mjs": {
-    "mtime": 1785923178.1386046,
-    "ast_hash": "1c973df36ea8ed22dd0b4eff9782a207",
-    "semantic_hash": "1c973df36ea8ed22dd0b4eff9782a207"
+    "mtime": 1785924947.9009776,
+    "ast_hash": "cc147f24a42a9bca95272a6f538499f8",
+    "semantic_hash": "cc147f24a42a9bca95272a6f538499f8"
+  },
+  "src/components/pages/GuideArticle.astro": {
+    "mtime": 1785925504.4236522,
+    "ast_hash": "6e6a7429b4a7e66074d5c4aacc31cf34",
+    "semantic_hash": "6e6a7429b4a7e66074d5c4aacc31cf34"
+  },
+  "src/i18n/_parts/guides.en.json": {
+    "mtime": 1785927764.1017659,
+    "ast_hash": "aadaa0e00f24ed2bc839c999039d1c7f",
+    "semantic_hash": "aadaa0e00f24ed2bc839c999039d1c7f"
+  },
+  "src/pages/construction-bid-estimate/index.astro": {
+    "mtime": 1785927337.6884277,
+    "ast_hash": "c870628ca0a6bd8b3fba2cc4b4c4334d",
+    "semantic_hash": "c870628ca0a6bd8b3fba2cc4b4c4334d"
+  },
+  "src/pages/construction-cost-estimation/index.astro": {
+    "mtime": 1785925907.4416554,
+    "ast_hash": "5f1ac4d3ec8bc06b2b5edddd322d6a7c",
+    "semantic_hash": "5f1ac4d3ec8bc06b2b5edddd322d6a7c"
+  },
+  "src/pages/hr/gradevinske-kalkulacije/index.astro": {
+    "mtime": 1785925921.9339826,
+    "ast_hash": "a15554105a1808930e0aacbf530a4ef6",
+    "semantic_hash": "a15554105a1808930e0aacbf530a4ef6"
+  },
+  "src/pages/hr/gradevinski-troskovnik/index.astro": {
+    "mtime": 1785927348.0117376,
+    "ast_hash": "4f9b19c5d40061093ccae0743415b8bb",
+    "semantic_hash": "4f9b19c5d40061093ccae0743415b8bb"
+  },
+  "src/pages/sl/gradbene-kalkulacije/index.astro": {
+    "mtime": 1785925915.071538,
+    "ast_hash": "2bb62bca7777207046b96f0f462ac568",
+    "semantic_hash": "2bb62bca7777207046b96f0f462ac568"
+  },
+  "src/pages/sl/gradbeni-predracun/index.astro": {
+    "mtime": 1785927342.9093344,
+    "ast_hash": "ffc20c6f48705be4ce0c52d585d79a05",
+    "semantic_hash": "ffc20c6f48705be4ce0c52d585d79a05"
+  },
+  "tests/e2e/content-pages.spec.mjs": {
+    "mtime": 1785928462.9124951,
+    "ast_hash": "1b1273f5977bf7e6c4aec6486c723674",
+    "semantic_hash": "1b1273f5977bf7e6c4aec6486c723674"
   }
 }

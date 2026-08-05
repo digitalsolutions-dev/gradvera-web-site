@@ -7,11 +7,23 @@
 export const SLUGS: Record<string, { sl: string; hr: string }> = {
   'book-a-demo': { sl: 'rezervirajte-demo', hr: 'rezervirajte-demo' },
   'privacy-policy': { sl: 'politika-zasebnosti', hr: 'pravila-privatnosti' },
+  'construction-cost-estimation': { sl: 'gradbene-kalkulacije', hr: 'gradevinske-kalkulacije' },
+  'construction-bid-estimate': { sl: 'gradbeni-predracun', hr: 'gradevinski-troskovnik' },
 };
 
 /** localized segment → canonical segment, per locale. */
 export const REVERSE: Record<'sl' | 'hr', Record<string, string>> = { sl: {}, hr: {} };
 for (const [canonical, bySlug] of Object.entries(SLUGS)) {
-  REVERSE.sl[bySlug.sl] = canonical;
-  REVERSE.hr[bySlug.hr] = canonical;
+  // A localized slug reused across two canonical segments would silently
+  // last-write-wins here and cross-wire stripLocale (wrong canonical → wrong
+  // hreflang/sitemap alternates). Fail the build instead.
+  for (const lang of ['sl', 'hr'] as const) {
+    const localized = bySlug[lang];
+    if (REVERSE[lang][localized] !== undefined) {
+      throw new Error(
+        `Duplicate ${lang} slug "${localized}": already maps to "${REVERSE[lang][localized]}", cannot also map to "${canonical}".`,
+      );
+    }
+    REVERSE[lang][localized] = canonical;
+  }
 }
