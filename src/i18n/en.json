@@ -255,11 +255,147 @@
   "footer.data.body": "Gradvera uses only your company's data. It is never shared across companies.",
   "footer.data.gdpr": "GDPR compliant",
   "footer.data.title": "Your Data Stays Yours",
+  "footer.explore.bidGuide": "Construction bid estimate",
   "footer.explore.bookDemo": "Book a demo",
+  "footer.explore.estGuide": "Construction cost estimation",
   "footer.explore.helps": "How Gradvera helps",
   "footer.explore.outcomes": "Your business outcomes",
   "footer.explore.title": "Explore",
   "footer.explore.works": "How it works",
+  "guide.bid.eyebrow": "Construction bid estimate",
+  "guide.bid.h1": "A construction bid estimate that holds up under scrutiny",
+  "guide.bid.lede": "This page walks through what a construction bid estimate contains, who reads it after you submit it, and how each line item arrives at its price. It is written for estimators and commercial managers who price bills of quantities for investors, banks and supervising engineers.",
+  "guide.bid.sections": [
+    {
+      "h": "What a construction bid estimate contains, and who reads it",
+      "ps": [
+        "A construction bid estimate is the priced version of the bill of quantities: every item of work the project calls for, with its unit of measure, its quantity, its unit price and the resulting line value, grouped by trade and closed with a recapitulation. Structural work, finishing trades and building services are normally kept apart, so each group can be read and negotiated on its own.",
+        "Once the document leaves your office it is read by people who never see your working file. The investor reads it as a price and as evidence that you have understood the scope. A bank financing the works reads it as a schedule of values against which drawdowns are released. The supervising engineer reads it during construction, item by item, as payment certificates are measured against what was built.",
+        "The total is not the only thing being judged. An item nobody can find, a unit that does not match the drawing, a quantity that cannot be traced back to the take-off — each one costs credibility first and money second."
+      ]
+    },
+    {
+      "h": "The line items: unit of measure, quantity and norms",
+      "ps": [
+        "Every line item answers three questions before it answers the price: what work is this, in what unit, and how much of it there is. The description has to be specific enough that two estimators would price the same thing — excavation with the ground category named, concrete with its class, insulation with its thickness. Units are not interchangeable either: one swapped between the take-off and the estimate moves a line by an order of magnitude.",
+        "Quantities come out of the take-off, and their weakness is that they travel. A revised drawing changes a quantity in the bill of quantities, but the change reaches the estimate only if somebody carries it there. Keeping the item's identity stable across revisions — same item, new quantity — is what makes the difference traceable afterwards.",
+        "Norms sit underneath the unit price: how much material, labour and plant a unit of work consumes. Published norms give the industry's figure, your completed projects give yours; both are useful, and they answer different questions — what the work ought to take, and what it took for you."
+      ]
+    },
+    {
+      "h": "Pricing the items: your own history against a published catalogue",
+      "ps": [
+        "A published catalogue is a reasonable starting point when an item is new to you. It is a weaker finishing point: the catalogue does not know your crews, your suppliers, the distance to site, or that you have built this kind of façade many times already.",
+        "The stronger source is your company's own history, and it is already in the building: completed projects, submitted offers and final accounts. Gradvera draws on it to suggest a unit price on each item, showing the projects the suggestion comes from and the range the company has worked within on similar work. The estimator confirms the price or changes it; the decision stays with the estimator.",
+        "Overheads and margin sit above the priced items and ask for the same discipline. Site management, site setup, insurance and bonds can be distributed across the items or shown separately — either is defensible, as long as it is the same on every bid. Margin is a judgement about this project's risk, taken once and visibly, rather than absorbed quietly into unit prices where nobody can find it again."
+      ]
+    },
+    {
+      "h": "The mistakes that lose bids",
+      "ps": [
+        "Missing items are the most expensive. Work that is on the drawing but not in the estimate is work you have agreed to do for nothing, and what disappears is usually the less visible scope: temporary works, scaffolding, protection, making good after other trades.",
+        "Stale prices are the quiet ones. A subcontractor quote obtained months earlier, a material price from last season, an item copied from an older project — each looks like a settled number and none of them is. Prices age at different speeds, and nothing in a spreadsheet points out when one has aged past use.",
+        "Then there is the arithmetic. A row outside the sum range, a percentage applied to a subtotal that already contains it, a unit price entered against the wrong unit — none of these announce themselves. They surface where the bid estimate meets the final account, and the difference has to be explained to somebody holding both documents."
+      ]
+    },
+    {
+      "h": "A faster construction bid estimate without losing control",
+      "ps": [
+        "Speed on a bid comes from not starting on an empty sheet. Gradvera proposes the structure of the estimate from the documents you were sent — trade groups and items already in place — so the first hours go into checking the scope rather than re-typing it.",
+        "Pricing follows the same path: suggested unit prices from your own history on each item; subcontractor quotes collected against the item they belong to, comparable with each other and with what you paid before; and a risk review that flags items diverging from your history and ranks them by severity before the offer is closed.",
+        "None of that is automatic approval. Every suggestion is confirmed or changed by an estimator, and the estimate you submit is one you can walk through yourself, item by item — with the investor, with the bank, and with the supervising engineer a year and a half later."
+      ]
+    }
+  ],
+  "guide.bid.faqTitle": "Frequently asked questions",
+  "guide.bid.faq": [
+    {
+      "q": "What is the difference between a bid estimate and an offer?",
+      "a": "The estimate is the priced breakdown of the works: items, quantities, unit prices, overheads and margin. The offer is what you submit: the estimate together with commercial terms, validity, payment arrangements and any qualifications. One document explains the price, the other commits to it."
+    },
+    {
+      "q": "Who prepares the bill of quantities the estimate is priced from?",
+      "a": "As a rule the designer, as part of the project documentation, and it is issued to bidders unpriced. Contractors price it as received so that offers stay comparable. Anything ambiguous is settled by a query to the client rather than by quietly correcting the document."
+    },
+    {
+      "q": "Is a construction bid estimate binding once the contract is signed?",
+      "a": "That depends on the contract. Under a lump-sum contract the total holds until the scope changes; under re-measurement the unit prices hold and quantities are settled against what was built. Either way it is the unit prices that come under the microscope."
+    },
+    {
+      "q": "Can we price a bill of quantities we received in Excel?",
+      "a": "Yes, and the import keeps the bill of quantities exactly as it was received. Each item Gradvera recognises then carries a suggested unit price drawn from your own history, with the projects behind it. Pricing a received bill of quantities becomes a matter of reviewing proposals rather than filling an empty column."
+    }
+  ],
+  "guide.bid.cta.h2": "See Gradvera on the bill of quantities on your desk.",
+  "guide.bid.cta.p": "In a short demo we build the structure of the estimate from your own documents and show the suggested prices from your history.",
+  "guide.bid.cta.btn": "Book a demo",
+  "guide.est.eyebrow": "Construction cost estimation",
+  "guide.est.h1": "Construction cost estimation software built on your own history",
+  "guide.est.lede": "This page explains what a construction estimate actually covers — line items, quantities, unit prices, overheads and margin — and where the process usually breaks down. It is written for estimators and commercial managers at construction SMEs weighing up whether construction cost estimation software is worth the switch.",
+  "guide.est.sections": [
+    {
+      "h": "What construction cost estimation software has to account for",
+      "ps": [
+        "A construction estimate is a project broken down into items that can be priced. Each item carries a description, a unit of measure and a quantity from the bill of quantities; behind its unit price sit four cost components — material, labour, equipment and subcontracted work. Until those four are worked out, a unit price is a guess with a decimal point.",
+        "Two layers sit above the items, and they are the easiest to lose. Overheads — site management, site setup, insurance and bonds — can be distributed across the items or shown separately. Margin is a separate decision: it covers the risk of this project, not an industry average. What matters is that the split is the same on every offer, otherwise no two projects can be compared.",
+        "An estimate, then, is not one calculation. It is a record of decisions: which items you included, at what quantity, at what price, with how much cover. That record is worth as much as you can reuse later."
+      ]
+    },
+    {
+      "h": "Where the spreadsheet starts to cost you",
+      "ps": [
+        "Excel is used for estimating for good reasons: it is already there, everyone can read it, and for a single offer it does exactly what is needed. The problem does not show up on the first estimate. It shows up on the hundredth, when the same line item lives in fifteen files, each with its own price and its own version of the formula.",
+        "Three patterns repeat. Versions: a file marked “final” with three corrected copies behind it, and no certainty about which one was submitted. Price history: what you charged for the same work last year does exist, but it is filed by document rather than by line item. Silent formula errors: a row that falls outside a sum range never announces itself — it turns up in the gap between the offer and the final account.",
+        "None of this is user error. A spreadsheet has no concept of a line item. It cannot tell that “wide machine excavation, category III” and “excavation cat. III, machine” are the same work, so it cannot flag that the two were priced far apart."
+      ]
+    },
+    {
+      "h": "Where construction cost estimation software gets its unit prices",
+      "ps": [
+        "A published price book tells you what work costs somewhere in the industry. It does not tell you what it costs for you — with your crews, your suppliers and your site logistics. The best source for a unit price is your own company's history: the projects you finished and the prices that actually held on them.",
+        "Gradvera uses that history as the basis for a suggested price. On each line item it shows the suggested unit price, the projects it came from, and the range your company has worked within on similar work. The estimator accepts or overrides it — the decision stays with the estimator, and every override sharpens the next suggestion.",
+        "The practical difference is what you have in front of you when the price has to be justified. Instead of “that is what we estimated”, you can point to the projects the price rests on — and how far this one sits from them."
+      ]
+    },
+    {
+      "h": "Risk review before the offer goes out",
+      "ps": [
+        "The last day before submission is the worst possible moment for careful reading, and it is exactly when the expensive mistakes get in: a quantity copied from an older revision of the BoQ, a subcontractor price that moved since the enquiry, an item priced well outside your normal range.",
+        "Before an offer is finalised, Gradvera flags the items that diverge from company history and ranks the divergences by severity. It does not correct them: every flagged item is confirmed or changed by an estimator. The point is not to take the decision away from the estimator, but to narrow the review to the few lines worth a second look.",
+        "The review doubles as a record. When someone asks six months later why a line was priced the way it was, the answer is in the offer rather than in someone's memory."
+      ]
+    },
+    {
+      "h": "From estimate to confirmed offer",
+      "ps": [
+        "Between a finished estimate and a signed contract there are still several steps: comparing subcontractor quotes, reconciling quantities, revising after negotiation. Every revision changes value, risk and profitability — and in a spreadsheet every revision is a new file.",
+        "Subcontractor prices are the most volatile part of it. Gradvera keeps them in one place, against the same BoQ item, so quotes are comparable with each other and with what the company paid for the same work before. Enquiries can go out directly, and the responses come back into the same estimate.",
+        "When the offer is confirmed, the estimate does not go into an archive; it becomes the basis for the next one. That is the only way construction cost estimation software adapts to your company over time, rather than the other way round."
+      ]
+    }
+  ],
+  "guide.est.faqTitle": "Frequently asked questions",
+  "guide.est.faq": [
+    {
+      "q": "How much does construction cost estimation software cost?",
+      "a": "It depends on team size and how widely it is used, so we do not publish a single figure. In the demo we go through how offers are put together at your company and prepare a quote for your case."
+    },
+    {
+      "q": "Can we import our existing offers and BoQs from Excel?",
+      "a": "Yes. Gradvera imports existing offers, bills of quantities and project data as they are, with no templates required. Line items that describe the same work are connected to each other, and anything it is not sure about is flagged for your confirmation."
+    },
+    {
+      "q": "Who is Gradvera for?",
+      "a": "Estimators, heads of estimating and commercial managers at construction companies who price offers from bills of quantities regularly. It gives most where a company already has an archive of completed projects to draw prices from."
+    },
+    {
+      "q": "How long does it take to get started?",
+      "a": "It depends on how many past offers you bring across and what condition they are in. Setup begins by importing a handful of completed projects rather than re-keying the whole archive — you can start estimating as soon as the first batch is in."
+    }
+  ],
+  "guide.est.cta.h2": "See Gradvera on your last estimate.",
+  "guide.est.cta.p": "In a short demo we walk through one of your own offers — your line items and your price history, not a generic template.",
+  "guide.est.cta.btn": "Book a demo",
   "helps.eyebrow": "How Gradvera helps",
   "helps.h2Amber": "costs you can rely on.",
   "helps.h2a": "Price more offers in less time, with",
@@ -389,8 +525,12 @@
   "results.m1s": "4.5 days → 0.8 days",
   "results.m2l": "More offers priced every month, same team",
   "results.m3l": "Of suggested lines kept as-is",
+  "seo.bid.title": "Construction bid estimate: structure and pricing — Gradvera",
+  "seo.bid.desc": "What a construction bid estimate contains, who reads it after submission, how items get priced from your own history, and the mistakes that lose bids.",
   "seo.demo.desc": "See how Gradvera helps construction teams prepare reliable offers faster. Book a short demo and watch it price a real estimate from your own history.",
   "seo.demo.title": "Book a demo — Gradvera estimating software",
+  "seo.est.title": "Construction cost estimation software — Gradvera",
+  "seo.est.desc": "What a construction estimate covers, where spreadsheets stop scaling, and how construction cost estimation software prices from your own project history.",
   "seo.home.desc": "Gradvera is construction estimating software that helps teams price more offers in less time, with costs they can rely on before the client confirms.",
   "seo.home.title": "Gradvera — construction estimating software",
   "seo.ogAlt": "Gradvera — Construction estimating software",

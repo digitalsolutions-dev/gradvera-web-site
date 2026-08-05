@@ -46,8 +46,8 @@ test.describe('Language dropdown — desktop header', () => {
   test('subpage switch preserves the path across locales', async ({ page }) => {
     await gotoClean(page, '/book-a-demo/');
     const list = page.locator('.hdr .lang-menu .lang-menu__list');
-    await expect(list.locator('a[hreflang="sl"]')).toHaveAttribute('href', '/sl/book-a-demo/');
-    await expect(list.locator('a[hreflang="hr"]')).toHaveAttribute('href', '/hr/book-a-demo/');
+    await expect(list.locator('a[hreflang="sl"]')).toHaveAttribute('href', '/sl/rezervirajte-demo/');
+    await expect(list.locator('a[hreflang="hr"]')).toHaveAttribute('href', '/hr/rezervirajte-demo/');
     await expect(list.locator('a[hreflang="en"]')).toHaveAttribute('href', '/book-a-demo/');
   });
 

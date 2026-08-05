@@ -241,6 +241,13 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       })
         .then(function (res) {
           if (!res.ok) throw new Error('request failed');
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'generate_lead',
+            form_id: 'gv-demo-form',
+            locale: data.locale || '',
+            page: data.page || '',
+          });
           form.style.display = 'none';
           if (ok) { ok.classList.add('show'); ok.focus(); }
         })

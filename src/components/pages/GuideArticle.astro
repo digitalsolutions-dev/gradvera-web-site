@@ -1,0 +1,102 @@
+---
+/**
+ * Long-form SEO guide page body (hero + prose sections + FAQ + one demo CTA).
+ * Content is namespaced so the same shell serves every cluster:
+ * `guide.<ns>.eyebrow|h1|lede|sections|faqTitle|faq|cta.h2|cta.p|cta.btn`.
+ * Layout follows the site's reading-page convention (see PrivacyBody): dark
+ * blueprint hero, light slate-on-page body, one amber-lit CTA plate.
+ */
+import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
+
+interface Props {
+  lang: Locale;
+  /** Content-cluster namespace, e.g. 'est'. */
+  ns: string;
+}
+
+const { lang, ns } = Astro.props;
+const t = useTranslations(lang);
+const k = (s: string) => t(`guide.${ns}.${s}`);
+
+const sections: { h: string; ps: string[] }[] = k('sections');
+const faq: { q: string; a: string }[] = k('faq');
+const demoHref = localizePath('/book-a-demo/', lang);
+---
+<article class="guide">
+  <header class="guide-hero">
+    <div class="wrap">
+      <p class="eyebrow">{k('eyebrow')}</p>
+      <h1>{k('h1')}</h1>
+      <p class="guide-lede">{k('lede')}</p>
+    </div>
+  </header>
+
+  <div class="guide-body">
+    {sections.map((s) => (
+      <section>
+        <h2>{s.h}</h2>
+        {s.ps.map((p) => <p>{p}</p>)}
+      </section>
+    ))}
+
+    <section class="guide-faq">
+      <h2>{k('faqTitle')}</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <aside class="guide-cta">
+      <h2>{k('cta.h2')}</h2>
+      <p>{k('cta.p')}</p>
+      <a class="btn btn-primary" href={demoHref}>{k('cta.btn')} <span class="arr" aria-hidden="true">→</span></a>
+    </aside>
+  </div>
+</article>
+
+<style is:global>
+  .guide { background: var(--bg2); }
+
+  /* ---------- hero (dark blueprint chrome) ---------- */
+  .guide-hero { background: var(--ink); color: var(--on-ink);
+    padding: clamp(96px, 14vh, 176px) 0 clamp(40px, 6vh, 72px); }
+  .guide-hero .eyebrow { margin: 0 0 16px; }
+  .guide-hero h1 { font-weight: 600; font-size: clamp(32px, 4.6vw, 56px); line-height: 1.06;
+    letter-spacing: -0.024em; color: var(--on-ink); margin: 0; max-width: 20ch; text-wrap: balance; }
+  .guide-hero .guide-lede { color: var(--on-ink-2); font-size: clamp(16px, 1.35vw, 18.5px);
+    line-height: 1.62; margin: 20px 0 0; max-width: 62ch; text-wrap: pretty; }
+
+  /* ---------- body (light reading surface) ---------- */
+  .guide-body { max-width: 800px; margin: 0 auto;
+    padding: clamp(28px, 4vh, 52px) var(--pad) clamp(64px, 9vh, 110px); }
+  .guide-body section { margin-top: clamp(36px, 5vh, 56px); }
+  .guide-body section:first-child { margin-top: 0; }
+  .guide-body h2 { font-weight: 600; font-size: clamp(23px, 2.6vw, 32px); line-height: 1.14;
+    letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 16px; text-wrap: balance; }
+  .guide-body p { font-size: 16.5px; line-height: 1.7; color: var(--fg2); margin: 0 0 14px;
+    text-wrap: pretty; }
+  .guide-body p:last-child { margin-bottom: 0; }
+
+  /* ---------- FAQ ---------- */
+  .guide-faq details { border-bottom: 1px solid var(--border2); }
+  .guide-faq details:first-of-type { border-top: 1px solid var(--border2); }
+  .guide-faq summary { display: flex; align-items: baseline; justify-content: space-between;
+    gap: 20px; padding: 16px 0; cursor: pointer; list-style: none;
+    font-weight: 500; font-size: 16.5px; line-height: 1.45; color: var(--fg1); }
+  .guide-faq summary::-webkit-details-marker { display: none; }
+  .guide-faq summary::after { content: '+'; flex: none; color: var(--brand-primary-soft-text);
+    font: 500 17px/1 var(--font-mono); }
+  .guide-faq details[open] summary::after { content: '−'; }
+  .guide-faq summary:hover { color: var(--brand-primary-soft-text); }
+  .guide-faq details p { margin: -2px 0 18px; padding-right: 34px; }
+
+  /* ---------- closing CTA (the one lit element on this page) ---------- */
+  .guide-cta { margin-top: clamp(48px, 7vh, 76px); background: var(--ink);
+    border: 1px solid var(--ink-hair-2); border-radius: 16px; /* rounded.xl — same plate radius as .form-card */
+    padding: clamp(24px, 3vw, 36px); }
+  .guide-cta h2 { color: var(--on-ink); font-size: clamp(21px, 2.2vw, 26px); margin: 0 0 10px; }
+  .guide-cta p { color: var(--on-ink-2); font-size: 16px; margin: 0 0 22px; max-width: 56ch; }
+</style>

@@ -255,11 +255,147 @@
   "footer.data.body": "Gradvera koristi isključivo podatke vaše tvrtke. Nikada se ne dijele između tvrtki.",
   "footer.data.gdpr": "Usklađeno s GDPR-om",
   "footer.data.title": "Vaši podaci ostaju vaši",
+  "footer.explore.bidGuide": "Građevinski troškovnik",
   "footer.explore.bookDemo": "Rezervirajte demonstraciju",
+  "footer.explore.estGuide": "Građevinske kalkulacije",
   "footer.explore.helps": "Kako Gradvera pomaže",
   "footer.explore.outcomes": "Vaši poslovni rezultati",
   "footer.explore.title": "Istražite",
   "footer.explore.works": "Kako funkcionira",
+  "guide.bid.eyebrow": "Građevinski troškovnik",
+  "guide.bid.h1": "Građevinski troškovnik koji izdrži pregled investitora i nadzora",
+  "guide.bid.lede": "Ova stranica objašnjava što građevinski troškovnik sadrži, tko ga čita nakon što ga predate i kako pojedina stavka dolazi do svoje cijene. Namijenjena je procjeniteljima i komercijalnim voditeljima koji troškovnike građevinskih radova pripremaju za investitore, banke i nadzor.",
+  "guide.bid.sections": [
+    {
+      "h": "Što građevinski troškovnik sadrži i tko ga čita",
+      "ps": [
+        "Građevinski troškovnik popis je radova s cijenama: svaki rad koji projekt traži, sa svojom jedinicom mjere, količinom, jediničnom cijenom i vrijednošću stavke, sve složeno po grupama i zaključeno rekapitulacijom. Građevinski, obrtnički i instalaterski radovi obično se drže odvojeno, kako bi se svaka grupa mogla čitati, uspoređivati i usuglašavati zasebno.",
+        "Kada dokument izađe iz ureda, čitaju ga ljudi koji vaše radne datoteke nikada ne vide. Investitor ga čita kao cijenu i kao dokaz da ste opseg radova razumjeli. Banka koja gradnju financira čita ga kao raspodjelu vrijednosti prema kojoj odobrava isplate. Nadzorni inženjer čita ga tijekom gradnje, stavku po stavku, kada se privremene situacije uspoređuju sa stvarno izvedenim radovima.",
+        "Zato se troškovnik ne prosuđuje samo po ukupnoj vrijednosti. Stavka koju nitko ne može pronaći, jedinica koja se ne poklapa s nacrtom, količina koja se ne može povezati s izmjerama — svaka od njih najprije košta povjerenje, a tek onda novac."
+      ]
+    },
+    {
+      "h": "Stavke: jedinica mjere, količina i norme",
+      "ps": [
+        "Svaka stavka odgovara na tri pitanja prije nego što odgovori na cijenu: koji je to rad, u kojoj se jedinici mjeri i koliko ga ima. Opis mora biti dovoljno određen da bi dva procjenitelja odredila cijenu istoga rada — iskop s navedenom kategorijom tla, beton s razredom, izolacija s debljinom. Kubični metri, četvorni metri, dužni metri, tone i komadi nisu zamjenjivi, a jedinica zamijenjena između izmjera i troškovnika pomiče stavku za cijeli red veličine.",
+        "Količine dolaze iz izmjera i njihova je slabost to što putuju. Izmijenjeni nacrt mijenja količinu u troškovniku, ali do vrednovane inačice promjena stiže samo ako je netko onamo prenese. Samo ako stavka kroz revizije zadrži svoj identitet — ista stavka, nova količina — razliku je poslije moguće pratiti.",
+        "Ispod jedinične cijene stoje norme: koliko materijala, rada i mehanizacije troši jedinica rada. Objavljene norme daju prosjek struke, a vaši dovršeni projekti vašu stvarnu potrošnju; oboje je korisno i odgovara na različita pitanja — što bi rad trebao potrošiti i što je kod vas stvarno potrošio."
+      ]
+    },
+    {
+      "h": "Izrada troškovnika: cijene iz vlastite povijesti ili iz općeg cjenika",
+      "ps": [
+        "Opći cjenik razumno je polazište kada je stavka za vas nova. Kao konačna cijena slabiji je: cjenik ne poznaje vašu ekipu, vaše dobavljače, udaljenost gradilišta ni to da ste sličnu fasadu izveli već mnogo puta.",
+        "Jači je izvor povijest vaše tvrtke, koju već imate: dovršeni projekti, predane ponude i obračuni. Gradvera iz nje uz svaku stavku predlaže jediničnu cijenu te pokazuje projekte iz kojih prijedlog proizlazi i raspon u kojem se tvrtka na sličnim radovima kretala. Procjenitelj cijenu potvrđuje ili mijenja; odluka ostaje kod njega.",
+        "Iznad vrednovanih stavki stoje režija i marža, koje traže istu disciplinu. Vođenje gradilišta, uređenje gradilišta, osiguranja i jamstva mogu se raspodijeliti na stavke ili prikazati kao vlastite stavke — oboje se dade obraniti, sve dok je u svim troškovnicima jednako. Marža je prosudba rizika konkretnog projekta, donesena jednom i na vidljivom mjestu, a ne tiho uračunata u jedinične cijene gdje je poslije nitko ne pronađe."
+      ]
+    },
+    {
+      "h": "Pogreške zbog kojih se posao gubi",
+      "ps": [
+        "Najskuplje su stavke koje nedostaju. Rad koji je na nacrtu, a u troškovniku nije, obvezali ste se izvesti besplatno — a nestaje u pravilu manje vidljiv dio opsega: pomoćni radovi, skele, zaštita i popravci za drugim izvođačima.",
+        "Zastarjele cijene su tihe. Ponuda podizvođača pribavljena prije nekoliko mjeseci, cijena materijala iz prošle sezone, stavka prepisana iz starijeg projekta — svaka izgleda kao konačna brojka, a nijedna to nije. Cijene stare različitom brzinom, a u tablici ništa ne upozori da je koja od njih zastarjela.",
+        "Ostaje računski dio. Redak izvan raspona zbrajanja, postotak obračunat na zbroj koji ga već sadrži, jedinična cijena upisana uz krivu jedinicu — ništa se od toga ne javlja samo. Izlazi na vidjelo ondje gdje se troškovnik susreće s obračunom i razliku treba objasniti nekome tko pred sobom ima oba dokumenta."
+      ]
+    },
+    {
+      "h": "Brži građevinski troškovnik, uz odluku koja ostaje vaša",
+      "ps": [
+        "Brzina na ponudi dolazi od toga da ne krećete od prazne tablice. Gradvera predlaže strukturu troškovnika iz dokumentacije koju ste primili — grupe i stavke već su postavljene — pa prvi sati odlaze na provjeru opsega, a ne na prepisivanje.",
+        "Vrednovanje ide istim putem: predložene jedinične cijene iz vaše povijesti uz svaku stavku, ponude podizvođača prikupljene uz stavku kojoj pripadaju, tako da su usporedive međusobno i s onim što ste za isti rad već platili, te pregled rizika koji prije zaključenja označava stavke s odstupanjima od vaše povijesti i razvrstava ih po ozbiljnosti.",
+        "Ništa u tom slijedu nije automatska potvrda. Svaki prijedlog potvrđuje ili mijenja procjenitelj, a predani troškovnik takav je da ga možete sami objasniti stavku po stavku — investitoru, banci i nadzoru čak i godinu i pol poslije."
+      ]
+    }
+  ],
+  "guide.bid.faqTitle": "Česta pitanja",
+  "guide.bid.faq": [
+    {
+      "q": "Koja je razlika između troškovnika i ponude?",
+      "a": "Troškovnik je vrednovana razrada radova: stavke, količine, jedinične cijene, režija i marža. Ponuda je ono što predajete: troškovnik zajedno s komercijalnim uvjetima, rokom valjanosti, načinom plaćanja i mogućim ogradama. Prvi dokument cijenu objašnjava, drugi se na nju obvezuje."
+    },
+    {
+      "q": "Tko izrađuje troškovnik po kojem se daje ponuda?",
+      "a": "U pravilu projektant, kao dio projektne dokumentacije, a ponuditeljima se izdaje bez cijena. Izvođači ga vrednuju onakvog kakvog su ga primili, kako bi ponude ostale usporedive. Nejasnoće se rješavaju upitom investitoru, a ne tihim ispravkom troškovnika."
+    },
+    {
+      "q": "Je li građevinski troškovnik obvezujući nakon potpisa ugovora?",
+      "a": "Ovisi o ugovoru. Kod ugovora po sustavu ključ u ruke ukupna vrijednost drži dok se opseg ne promijeni; kod obračuna po stvarnim količinama drže jedinične cijene, a količine se obračunavaju po izvedenom. U oba su slučaja pod povećalom jedinične cijene."
+    },
+    {
+      "q": "Možemo li vrednovati troškovnik koji smo primili u Excelu?",
+      "a": "Da. Uvoz zadržava primljeni troškovnik onakvim kakav jest. Uz svaku prepoznatu stavku Gradvera zatim pripisuje predloženu jediničnu cijenu iz vaše povijesti i projekte iz kojih proizlazi. Vrednovanje primljenog troškovnika tako postaje pregled prijedloga, a ne popunjavanje praznog stupca."
+    }
+  ],
+  "guide.bid.cta.h2": "Pogledajte Gradveru na troškovniku koji vam je na stolu.",
+  "guide.bid.cta.p": "Na kratkoj demonstraciji složimo strukturu troškovnika iz vaše dokumentacije i pokažemo predložene cijene iz vaše povijesti.",
+  "guide.bid.cta.btn": "Rezervirajte demonstraciju",
+  "guide.est.eyebrow": "Građevinske kalkulacije",
+  "guide.est.h1": "Građevinske kalkulacije koje možete obraniti pred naručiteljem",
+  "guide.est.lede": "Ova stranica objašnjava što građevinske kalkulacije obuhvaćaju u praksi — od stavki i količina do jediničnih cijena, režijskih troškova i marže — i gdje se postupak najčešće zaglavi. Pisana je za procjenitelje i komercijalne voditelje u građevinskim tvrtkama koji ponude još uvijek slažu u tablicama.",
+  "guide.est.sections": [
+    {
+      "h": "Što građevinske kalkulacije zapravo obuhvaćaju",
+      "ps": [
+        "Građevinska kalkulacija razrada je projekta na stavke kojima se može odrediti cijena. Svaka stavka nosi opis rada, jedinicu mjere i količinu iz troškovnika, a iza jedinične cijene stoje četiri troškovna dijela: materijal, rad, mehanizacija i podizvođački radovi. Dok ta četiri dijela nisu izračunata, jedinična je cijena samo procjena od oka.",
+        "Iznad stavki su još dva sloja koja je najlakše previdjeti. Režijski troškovi — vođenje gradilišta, uređenje gradilišta, osiguranja i jamstva — mogu se raspodijeliti na stavke ili prikazati odvojeno. Marža je zasebna odluka: pokriva rizik konkretnog projekta, a ne prosjek djelatnosti. Važno je da raspodjela bude ista u svim ponudama, inače projekte međusobno nije moguće usporediti.",
+        "Kalkulacija građevinskih radova stoga nije jedan izračun, nego zapis odluka: koje ste stavke uključili, s kojom količinom, po kojoj cijeni i s kolikom rezervom. Taj zapis vrijedi onoliko koliko ga je poslije moguće ponovno upotrijebiti."
+      ]
+    },
+    {
+      "h": "Gdje se građevinske kalkulacije u Excelu zaglave",
+      "ps": [
+        "Excel se za građevinske kalkulacije koristi s razlogom: pri ruci je, svatko ga zna čitati i za pojedinu ponudu radi točno ono što treba. Problem se ne pokazuje na prvoj kalkulaciji, nego na stotoj — kada je ista stavka raspršena po petnaest datoteka, svaka kopija sa svojom cijenom i svojom inačicom formule.",
+        "Tri se obrasca ponavljaju. Prvo, inačice: datoteka s oznakom „final” i iza nje još tri ispravljene, a nitko sa sigurnošću ne zna koja je predana. Drugo, povijest cijena — podatak o tome po kojoj ste cijeni isti rad ponudili lani postoji, ali je posložen po datotekama, a ne po stavkama. Treće, tihe pogreške u formulama: redak koji ostane izvan raspona zbrajanja ne javlja se; primijetit ćete ga tek u razlici između ponuđene i obračunate vrijednosti.",
+        "Ništa od toga nije korisnička pogreška. Tablica ne zna što je stavka. Ne prepoznaje da su „široki strojni iskop, III. kategorija” i „iskop III. kat., strojno” isti rad, pa ne može ni upozoriti da su u dvije ponude dobili znatno različitu cijenu."
+      ]
+    },
+    {
+      "h": "Jedinične cijene iz vlastite povijesti, a ne iz općeg cjenika",
+      "ps": [
+        "Opći cjenici govore koliko rad stoji negdje u djelatnosti. Ne govore koliko stoji kod vas — s vašom ekipom, vašim dobavljačima i vašom organizacijom gradilišta. Najbolji izvor za jediničnu cijenu zato je povijest vaše tvrtke: projekti koje ste dovršili i cijene koje su se na njima stvarno potvrdile.",
+        "Gradvera tu povijest koristi kao podlogu za prijedlog cijene. Uz svaku stavku prikazuje predloženu jediničnu cijenu, projekte iz kojih proizlazi i raspon u kojem se tvrtka dosad kretala na sličnim radovima. Procjenitelj cijenu prihvaća ili mijenja — odluka ostaje njegova, a svaka izmjena izoštrava sljedeći prijedlog.",
+        "Praktična je razlika u tome što imate pred sobom kada cijenu treba obrazložiti. Umjesto „tako smo procijenili”, na stolu su projekti na kojima cijena počiva i odstupanje od njih."
+      ]
+    },
+    {
+      "h": "Pregled rizika prije nego što ponuda ode",
+      "ps": [
+        "Zadnji dan prije predaje najgori je mogući trenutak za pažljivo čitanje. Upravo se tada u kalkulaciju uvuku pogreške koje poslije skupo stoje: količina prepisana iz starije inačice troškovnika, cijena podizvođača koja je od upita porasla, stavka s cijenom posve izvan vašeg uobičajenog raspona.",
+        "Gradvera prije zaključenja ponude označava stavke koje odstupaju od povijesti tvrtke i razvrstava odstupanja po ozbiljnosti. Ne ispravlja ih sama: svaku označenu stavku potvrđuje ili mijenja procjenitelj. Svrha nije oduzeti odluku procjenitelju, nego suziti pregled na onih nekoliko stavki koje je vrijedno pogledati još jednom.",
+        "Pregled služi i kao zapisnik. Kada za pola godine netko pita zašto je pojedina stavka dobila baš takvu cijenu, odgovor je u ponudi, a ne u sjećanju."
+      ]
+    },
+    {
+      "h": "Od kalkulacije do potvrđene ponude",
+      "ps": [
+        "Između dovršene kalkulacije i potpisanog ugovora ima još nekoliko koraka: usporedba ponuda podizvođača, usklađivanje količina, revizije nakon pregovora. Svaka revizija mijenja vrijednost, rizik i profitabilnost — a u tablicama se bilježi kao nova datoteka.",
+        "Cijene podizvođača pritom su najpromjenjiviji dio. Gradvera ih objedinjuje na jednom mjestu, uz istu stavku troškovnika, tako da su ponude usporedive međusobno i s onim što je tvrtka za isti rad platila ranije. Upite možete poslati izravno, a odgovori se vraćaju u istu kalkulaciju.",
+        "Kada je ponuda potvrđena, kalkulacija ne završava u arhivi nego postaje podloga za sljedeću. To je i jedini način da se program za građevinske kalkulacije s vremenom prilagodi vašoj tvrtki, a ne obrnuto."
+      ]
+    }
+  ],
+  "guide.est.faqTitle": "Česta pitanja",
+  "guide.est.faq": [
+    {
+      "q": "Koliko stoji program za građevinske kalkulacije?",
+      "a": "Cijena ovisi o veličini tima i opsegu korištenja, pa je ne objavljujemo kao jedan broj. Na demonstraciji prođemo kako kod vas nastaju ponude i zatim pripremimo cijenu za vaš slučaj."
+    },
+    {
+      "q": "Možemo li uvesti postojeće ponude i troškovnike iz Excela?",
+      "a": "Da. Gradvera uvozi postojeće ponude, troškovnike i podatke o projektima takve kakvi jesu, bez predložaka. Stavke koje se odnose na isti rad međusobno povezuje, a sve u što nije sigurna označava za vašu potvrdu."
+    },
+    {
+      "q": "Kome je Gradvera namijenjena?",
+      "a": "Procjeniteljima, voditeljima izrade troškovnika i komercijalnim voditeljima u građevinskim tvrtkama koji redovito pripremaju ponude na temelju troškovnika. Najviše donosi ondje gdje tvrtka već ima arhivu dovršenih projekata iz koje se mogu crpiti cijene."
+    },
+    {
+      "q": "Koliko traje uvođenje?",
+      "a": "Ovisi o tome koliko prošlih ponuda prenesete i u kakvom su stanju. Uvođenje počinje uvozom nekoliko dovršenih projekata, a ne prepisivanjem cijele arhive — prve kalkulacije možete pripremati čim je uvezena prva skupina projekata."
+    }
+  ],
+  "guide.est.cta.h2": "Pogledajte Gradveru na svojoj zadnjoj kalkulaciji.",
+  "guide.est.cta.p": "Na kratkoj demonstraciji prolazimo kroz jednu vašu ponudu — s vašim stavkama i vašom poviješću cijena, a ne s općim predloškom.",
+  "guide.est.cta.btn": "Rezervirajte demonstraciju",
   "helps.eyebrow": "Kako Gradvera pomaže",
   "helps.h2Amber": "troškovima na koje se možete osloniti.",
   "helps.h2a": "Odredite cijene za više ponuda u manje vremena, uz",
@@ -389,8 +525,12 @@
   "results.m1s": "4,5 dana → 0,8 dana",
   "results.m2l": "Više ponuda s cijenama svaki mjesec, isti tim",
   "results.m3l": "Predloženih stavki zadržano nepromijenjeno",
+  "seo.bid.title": "Građevinski troškovnik: što sadrži i kako nastaje — Gradvera",
+  "seo.bid.desc": "Što građevinski troškovnik sadrži, tko ga čita, kako stavke dobivaju cijenu iz vlastite povijesti i koje pogreške pri izradi troškovnika najviše stoje.",
   "seo.demo.desc": "Pogledajte kako Gradvera građevinskim timovima pomaže brže pripremiti pouzdane ponude. Rezervirajte kratku demonstraciju na vašoj povijesti cijena.",
   "seo.demo.title": "Rezervirajte demonstraciju — Gradvera softver za izradu troškovnika",
+  "seo.est.title": "Građevinske kalkulacije: vodič za procjenitelje — Gradvera",
+  "seo.est.desc": "Što obuhvaćaju građevinske kalkulacije, gdje tablice prestaju biti dovoljne i kako iz vlastite povijesti cijena složiti ponudu koju možete obraniti.",
   "seo.home.desc": "Gradvera je softver za izradu građevinskih troškovnika: odredite cijene za više ponuda u manje vremena, uz pouzdane troškove prije potvrde.",
   "seo.home.title": "Gradvera — softver za izradu građevinskih troškovnika",
   "seo.ogAlt": "Gradvera — softver za izradu građevinskih troškovnika",

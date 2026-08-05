@@ -14,6 +14,9 @@ The website never talks to D365 directly. It validates, normalizes and signs
 the lead, then forwards it to one HTTPS endpoint owned by the gtm-toolkit. The
 toolkit is the only component holding CRM credentials.
 
+Client-side conversion tracking for this form is documented in
+[lead-tracking-ga4.md](lead-tracking-ga4.md).
+
 ---
 
 ## 1. Browser → `POST /api/lead`
