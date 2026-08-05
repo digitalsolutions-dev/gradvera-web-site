@@ -7,8 +7,11 @@ On a successful `/api/lead` POST, `DemoForm.astro` pushes to `window.dataLayer`:
 ```
 
 The push happens client-side only after the API returns 2xx (the honeypot and
-validation paths never fire it). With `PUBLIC_GTM_ID` unset the push still
-happens (inert — nothing consumes it).
+validation paths never fire it — these are two different mechanisms: the
+client script early-returns on a filled honeypot before ever calling `fetch`,
+while a non-JS bot that POSTs `/api/lead` directly gets a `200` response but
+never runs the client-side script, so the push never fires either way). With
+`PUBLIC_GTM_ID` unset the push still happens (inert — nothing consumes it).
 
 ## GTM container setup (one-time, dashboard)
 
