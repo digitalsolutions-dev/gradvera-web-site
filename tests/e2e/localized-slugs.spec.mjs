@@ -3,7 +3,6 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
-import { gotoClean } from './helpers.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -16,8 +15,8 @@ const PAGES = [
 
 for (const { url, canonicalEn } of PAGES) {
   test(`${url} serves 200 with hreflang pointing at ${canonicalEn}`, async ({ page }) => {
-    const res = await gotoClean(page, url);
-    if (res) expect(res.status()).toBe(200);
+    const res = await page.goto(url, { waitUntil: 'load' });
+    expect(res.status(), `${url} should serve 200`).toBe(200);
     const enAlt = page.locator('link[rel="alternate"][hreflang="en"]');
     await expect(enAlt).toHaveAttribute('href', `https://gradvera.com${canonicalEn}`);
     const canonical = page.locator('link[rel="canonical"]');
