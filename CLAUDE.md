@@ -20,7 +20,9 @@ to Vercel. Production domain: `gradvera.com`.
 ## Commands
 
 - `npm run dev` — dev server (`astro dev`)
-- `npm run build` — production build (`astro build`)
+- `npm run build` — production build (`astro build` + `scripts/patch-vercel-redirects.mjs`,
+  which widens the emitted redirect matchers to accept trailing slashes — the
+  legacy SL/HR slug 308s depend on it)
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
 - `npm run test:e2e` — Playwright browser checks (see below); runs in CI, but `astro check` is the gate
@@ -85,8 +87,11 @@ Non-production deploys (Vercel Preview / staging) emit `noindex`.
 
 **Deploy (Vercel).** `main` → production (`gradvera.com`). `staging` →
 `staging.gradvera.com` (Vercel preview). Every PR also gets a Vercel Preview
-deploy. Vercel runs `astro build` but **not** `astro check`, so a type error
-passes the build and would ship silently.
+deploy. Vercel runs the package.json **`build` script** (`astro build` + the
+redirect patch script — verified live 2026-08-05; do not pin the dashboard
+build command to bare `astro build`, that would drop the SL/HR legacy-slug
+308s) but **not** `astro check`, so a type error passes the build and would
+ship silently.
 
 **CI (`.github/workflows/ci.yml`).** Two jobs run on every PR and on pushes to
 `main` / `staging`: **`astro check`** (the type-safety gate that closes the
