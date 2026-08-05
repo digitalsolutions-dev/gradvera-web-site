@@ -6,8 +6,8 @@ import { gotoClean } from './helpers.mjs';
 
 const PAGES = [
   { path: '/book-a-demo/', locale: 'en' },
-  { path: '/sl/book-a-demo/', locale: 'sl' },
-  { path: '/hr/book-a-demo/', locale: 'hr' },
+  { path: '/sl/rezervirajte-demo/', locale: 'sl' },
+  { path: '/hr/rezervirajte-demo/', locale: 'hr' },
 ];
 
 for (const { path, locale } of PAGES) {
