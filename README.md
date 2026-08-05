@@ -18,7 +18,7 @@ the product name **Gradvera** is never translated.
 | i18n        | Built-in Astro i18n routing — **EN** at `/`, **SL** at `/sl/`, **HR** at `/hr/` |
 | Hosting     | [Vercel](https://vercel.com) via `@astrojs/vercel`                    |
 | Fonts       | Self-hosted **IBM Plex** Sans + Mono via `@fontsource/*`               |
-| Analytics   | Google Tag Manager (GA4 inside GTM), loaded off-thread with `@astrojs/partytown`, consent-gated |
+| Analytics   | Google Tag Manager (GA4 inside GTM), async main-thread loader, Consent Mode v2 gated |
 | Sitemap     | `@astrojs/sitemap` (i18n-aware) → `sitemap-index.xml`                  |
 
 Output is `static` (see `astro.config.mjs`); the Vercel adapter lets individual
@@ -33,7 +33,9 @@ Web Vitals.
 ```bash
 npm install        # install dependencies
 npm run dev        # local dev server (http://localhost:4321)
-npm run build      # production build to dist/
+npm run build      # production build to dist/ + widens Vercel redirect matchers
+                   # (scripts/patch-vercel-redirects.mjs — required for the SL/HR
+                   # legacy-slug 308s; Vercel runs this same script)
 npm run preview    # preview the production build locally
 npm run check      # astro check — type + content validation (run before pushing)
 ```
@@ -71,7 +73,10 @@ See `.env.example` for the authoritative list and inline notes.
   - `useTranslations(lang)` → `t('ns.key')`. `t()` falls back to English, then
     to the raw key, so a missing SL/HR string degrades gracefully.
   - `localizePath(path, lang)` → prefixes a canonical (locale-stripped) path
-    for the active locale (`/sl/…`, `/hr/…`, or `/` for EN).
+    for the active locale (`/sl/…`, `/hr/…`, or `/` for EN) and translates slug
+    segments through the map in `src/i18n/slugs.ts` (e.g. `/book-a-demo/` →
+    `/sl/rezervirajte-demo/`). The same map drives sitemap alternates and the
+    legacy-URL 308 redirects in `astro.config.mjs`.
 - Routing is configured in `astro.config.mjs` (`prefixDefaultLocale: false`,
   `redirectToDefaultLocale: false`).
 - **Translate** only human-readable marketing copy. **Leave** illustrative
@@ -107,9 +112,13 @@ One deliberate change from the original export: the Google Fonts hotlink was
 
 ## Analytics & consent
 
-- GTM is loaded only when `PUBLIC_GTM_ID` is set, and runs **off the main
-  thread** via Partytown (`forward: ['dataLayer.push', 'gtag']`) to protect
-  Core Web Vitals — see `src/components/marketing/Analytics.astro`.
+- GTM is loaded only when `PUBLIC_GTM_ID` is set, via the standard **async
+  main-thread loader** (kept on the main thread so Consent Mode v2 gating and
+  every GTM/GA4 tag behave reliably; `j.async=true` keeps it off the critical
+  rendering path) — see `src/components/marketing/Analytics.astro`.
+- A successful demo-form submit pushes a **`generate_lead`** event to the
+  dataLayer (registered as a GA4 key event) — contract and GTM container setup
+  in `docs/lead-tracking-ga4.md`.
 - **Consent Mode v2** defaults everything to `denied` (ads + analytics storage)
   before GTM loads; `functionality_storage` / `security_storage` are granted.
 - `src/components/marketing/CookieConsent.astro` renders the consent banner. A
@@ -148,41 +157,40 @@ contract and the gtm-toolkit receiver spec: **`docs/lead-integration.md`**.
 public/assets/        SVG monograms (static images)
 public/og/            Open Graph images (EN + per-locale SL/HR SVG→PNG)
 scripts/             render-og.mjs — regenerates the OG PNGs from the SVGs
+                     patch-vercel-redirects.mjs — widens redirect matchers post-build
 src/
   styles/            Design-origin CSS (Vite-bundled): tokens, site, cap*, site-polish
   scripts/           site.js — interactions (Vite-bundled)
-  components/         Sections, layout, forms, marketing, seo
-  i18n/               en/sl/hr.json + _parts/*.en.json + utils.ts
+  components/         Sections, layout, forms, marketing, seo, pages (HomeSections, GuideArticle)
+  i18n/               en/sl/hr.json + _parts/*.en.json + utils.ts + slugs.ts (per-locale URL slugs)
   layouts/            BaseLayout.astro
   pages/
     api/lead.ts       Lead capture endpoint (prerender = false)
     robots.txt.ts     Generated robots.txt
+    …                 Routes ×3 locales: home, book-a-demo, privacy-policy, and the
+                      SEO guide pages (construction-cost-estimation, construction-bid-estimate;
+                      SL/HR under localized slugs — see src/i18n/slugs.ts)
   consts.ts           Brand / company facts, integration ids
 docs/
-  lead-integration.md Lead contract + gtm-toolkit TODO
+  lead-integration.md Lead contract + gtm-toolkit receiver spec
+  lead-tracking-ga4.md GA4 generate_lead conversion event + GTM container setup
 ```
 
 ---
 
-## Before launch
+## Launch checklist (site is live at gradvera.com)
 
-- [ ] **Confirm `PUBLIC_SITE_URL`** is the real production domain (gradvera.com?
-      gradvera.si?) — it bakes into canonical URLs, hreflang, OG tags, sitemap
-      and robots.
-- [ ] **Set `PUBLIC_GTM_ID`** to the production GTM container (and verify GA4 +
-      Consent Mode fire correctly through the consent banner).
-- [ ] **Wire `GTM_LEAD_ENDPOINT`** (and `GTM_LEAD_SECRET`) to the gtm-toolkit
-      inbound-lead receiver — see the "gtm-toolkit TODO" in
-      `docs/lead-integration.md`. Until then leads are log-only.
-- [ ] **Legal review of the SL / HR privacy copy** (and all translated strings)
-      by a native speaker.
+- [x] **`PUBLIC_SITE_URL`** confirmed: `https://gradvera.com` (apex canonical).
+- [x] **`PUBLIC_GTM_ID`** set; GA4 + Consent Mode verified end-to-end
+      (2026-08-05: `generate_lead` fires through GTM Preview → GA4 DebugView).
+- [x] **`GTM_LEAD_ENDPOINT` / `GTM_LEAD_SECRET`** wired to the gtm-toolkit
+      inbound-lead receiver (leads flow to Dynamics 365).
+- [ ] **Native-speaker review of SL / HR copy** — privacy policy plus the two
+      guide-page clusters (HR pass pending; includes the standing
+      "stavke/stavaka" question).
 - [x] **OG images** — `public/og/gradvera-og{,-sl,-hr}.png` (1200×630; EN
       referenced by `src/consts.ts`, SL/HR wired per locale in `SEO.astro`) are
       generated from the sibling SVGs. Regenerate after brand/tagline changes
       with `node scripts/render-og.mjs` (Playwright Chromium + real IBM Plex).
-- [ ] **Make the www → apex redirect permanent** — Vercel currently answers
-      `www.gradvera.com` with a **307 (temporary)** redirect to `gradvera.com`
-      (verified 2026-07-10). In Vercel → Project → Settings → Domains, set the
-      `www` redirect to **permanent (308)** so search engines consolidate the
-      canonical host instead of re-checking it.
-- [ ] Run `npm run check` and a production `npm run build` clean.
+- [x] **www → apex redirect is permanent (308)** — set in Vercel dashboard,
+      verified live 2026-08-05 (deep paths preserved).
