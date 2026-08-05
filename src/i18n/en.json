@@ -260,6 +260,73 @@
   "footer.explore.outcomes": "Your business outcomes",
   "footer.explore.title": "Explore",
   "footer.explore.works": "How it works",
+  "guide.est.eyebrow": "Construction cost estimation",
+  "guide.est.h1": "Construction cost estimation software built on your own history",
+  "guide.est.lede": "This page explains what a construction estimate actually covers — line items, quantities, unit prices, overheads and margin — and where the process usually breaks down. It is written for estimators and commercial managers at construction SMEs weighing up whether construction cost estimation software is worth the change.",
+  "guide.est.sections": [
+    {
+      "h": "What construction cost estimation software has to account for",
+      "ps": [
+        "A construction estimate is a project broken down into items that can be priced. Each item carries a description, a unit of measure and a quantity from the bill of quantities; behind its unit price sit four cost components — material, labour, equipment and subcontracted work. Until those four are worked out, a unit price is a guess with a decimal point.",
+        "Two layers sit above the items, and they are the easiest to lose. Overheads — site management, site setup, insurance and bonds — can be distributed across the items or shown separately. Margin is a separate decision: it covers the risk of this project, not an industry average. What matters is that the split is the same on every offer, otherwise no two projects can be compared.",
+        "An estimate, then, is not one calculation. It is a record of decisions: which items you included, at what quantity, at what price, with how much cover. That record is worth whatever you can reuse of it later."
+      ]
+    },
+    {
+      "h": "Where the spreadsheet starts to cost you",
+      "ps": [
+        "Excel is used for estimating for good reasons: it is already there, everyone can read it, and for a single offer it does exactly what is needed. The problem does not show up on the first estimate. It shows up on the hundredth, when the same line item lives in fifteen files, each with its own price and its own version of the formula.",
+        "Three patterns repeat. Versions: a file marked “final” with three corrected copies behind it, and no certainty about which one was submitted. Price history: what you charged for the same work last year does exist, but it is filed by document rather than by line item. Silent formula errors: a row that falls outside a sum range never announces itself — it turns up in the gap between the offer and the final account.",
+        "None of this is user error. A spreadsheet has no concept of a line item. It cannot tell that “wide machine excavation, category III” and “excavation cat. III, machine” are the same work, so it cannot flag that the two were priced far apart."
+      ]
+    },
+    {
+      "h": "Where construction cost estimation software gets its unit prices",
+      "ps": [
+        "A published price book tells you what work costs somewhere in the industry. It does not tell you what it costs for you — with your crews, your suppliers and your site logistics. The best source for a unit price is your own company's history: the projects you finished and the prices that actually held on them.",
+        "Gradvera uses that history as the basis for a suggested price. On each line item it shows the suggested unit price, the projects it came from, and the range your company has worked within on similar work. The estimator accepts or overrides it — the decision stays with the estimator, and every override sharpens the next suggestion.",
+        "The practical difference is what you have in front of you when the price has to be justified. Instead of “that is what we estimated”, there are the projects the price rests on, and how far this one sits from them."
+      ]
+    },
+    {
+      "h": "Risk review before the offer goes out",
+      "ps": [
+        "The last day before submission is the worst possible moment for careful reading, and it is exactly when the expensive mistakes get in: a quantity copied from an older revision of the BoQ, a subcontractor price that moved since the enquiry, an item priced well outside your normal range.",
+        "Before an offer is finalised, Gradvera flags the items that diverge from company history and ranks the divergences by severity. It does not correct them: every flagged item is confirmed or changed by an estimator. The point is not to take the decision away from the estimator, but to narrow the review to the few lines worth a second look.",
+        "The review doubles as a record. When someone asks six months later why a line was priced the way it was, the answer is in the offer rather than in someone's memory."
+      ]
+    },
+    {
+      "h": "From estimate to confirmed offer",
+      "ps": [
+        "Between a finished estimate and a signed contract there are still several steps: comparing subcontractor quotes, reconciling quantities, revising after negotiation. Every revision changes value, risk and profitability — and in a spreadsheet every revision is a new file.",
+        "Subcontractor prices are the most volatile part of it. Gradvera keeps them in one place, against the same BoQ item, so quotes are comparable with each other and with what the company paid for the same work before. Enquiries can go out directly, and the responses come back into the same estimate.",
+        "When the offer is confirmed, the estimate does not go into an archive; it becomes the basis for the next one. That is the only way construction cost estimation software adapts to your company over time, rather than the other way round."
+      ]
+    }
+  ],
+  "guide.est.faqTitle": "Frequently asked questions",
+  "guide.est.faq": [
+    {
+      "q": "How much does construction cost estimation software cost?",
+      "a": "It depends on team size and how widely it is used, so we do not publish a single figure. In the demo we go through how offers are put together at your company and prepare a quote for your case."
+    },
+    {
+      "q": "Can we import our existing offers and BoQs from Excel?",
+      "a": "Yes. Gradvera imports existing offers, bills of quantities and project data as they are, with no templates required. Line items that describe the same work are connected to each other, and anything it is not sure about is flagged for your confirmation."
+    },
+    {
+      "q": "Who is Gradvera for?",
+      "a": "Estimators, heads of estimating and commercial managers at construction companies who price offers from bills of quantities regularly. It gives most where a company already has an archive of completed projects to draw prices from."
+    },
+    {
+      "q": "How long does it take to get started?",
+      "a": "It depends on how many past offers you bring across and what condition they are in. Setup begins by importing a handful of completed projects rather than re-keying the whole archive — you can start estimating as soon as the first batch is in."
+    }
+  ],
+  "guide.est.cta.h2": "See Gradvera on your last estimate.",
+  "guide.est.cta.p": "In a short demo we walk through one of your own offers — your line items and your price history, not a generic template.",
+  "guide.est.cta.btn": "Book a demo",
   "helps.eyebrow": "How Gradvera helps",
   "helps.h2Amber": "costs you can rely on.",
   "helps.h2a": "Price more offers in less time, with",
@@ -391,6 +458,8 @@
   "results.m3l": "Of suggested lines kept as-is",
   "seo.demo.desc": "See how Gradvera helps construction teams prepare reliable offers faster. Book a short demo and watch it price a real estimate from your own history.",
   "seo.demo.title": "Book a demo — Gradvera estimating software",
+  "seo.est.title": "Construction cost estimation software — Gradvera",
+  "seo.est.desc": "What a construction estimate covers, where spreadsheets stop scaling, and how construction cost estimation software prices from your own project history.",
   "seo.home.desc": "Gradvera is construction estimating software that helps teams price more offers in less time, with costs they can rely on before the client confirms.",
   "seo.home.title": "Gradvera — construction estimating software",
   "seo.ogAlt": "Gradvera — Construction estimating software",

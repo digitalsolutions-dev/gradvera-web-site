@@ -260,6 +260,73 @@
   "footer.explore.outcomes": "Vaši poslovni rezultati",
   "footer.explore.title": "Razišči",
   "footer.explore.works": "Kako deluje",
+  "guide.est.eyebrow": "Gradbene kalkulacije",
+  "guide.est.h1": "Gradbene kalkulacije, ki jih lahko zagovarjate pred naročnikom",
+  "guide.est.lede": "Ta stran razloži, kaj gradbene kalkulacije v praksi zajemajo — od postavk in količin do cen na enoto, režije in marže — in kje se postopek najpogosteje zatakne. Napisana je za ocenjevalce in komercialne vodje v gradbenih podjetjih, ki ponudbe še vedno sestavljajo v preglednicah.",
+  "guide.est.sections": [
+    {
+      "h": "Kaj gradbene kalkulacije v resnici zajemajo",
+      "ps": [
+        "Gradbena kalkulacija je razčlenitev projekta na postavke, ki jih je mogoče ovrednotiti. Vsaka postavka nosi opis dela, enoto mere in količino iz popisa del, za ceno na enoto pa stojijo štirje stroškovni deli: material, delo, mehanizacija in podizvajalska dela. Dokler ti štirje deli niso izračunani, je cena na enoto zgolj ocena na pamet.",
+        "Nad postavkami sta še dva sloja, ki ju je najlažje spregledati. Režijski stroški — vodstvo gradbišča, ureditev gradbišča, zavarovanja in garancije — se lahko razdelijo na postavke ali prikažejo ločeno. Marža je ločena odločitev: pokriva tveganje konkretnega projekta, ne povprečja panoge. Pomembno je, da je razdelitev v vseh ponudbah enaka, sicer projektov med seboj ni mogoče primerjati.",
+        "Kalkulacija gradbenih del torej ni en sam izračun, ampak zapis odločitev: katere postavke ste vključili, s kakšno količino, po kateri ceni in s kolikšno rezervo. Ta zapis je vreden toliko, kolikor ga je mogoče pozneje ponovno uporabiti."
+      ]
+    },
+    {
+      "h": "Kje se gradbene kalkulacije v Excelu zataknejo",
+      "ps": [
+        "Excel se za gradbene kalkulacije uporablja z razlogom: pri roki je, vsak ga zna brati in za posamezno ponudbo naredi točno to, kar potrebujete. Težava se ne pokaže pri prvi kalkulaciji, ampak pri stoti — ko je ista postavka razpršena po petnajstih datotekah, vsaka kopija s svojo ceno in svojo različico formule.",
+        "Trije vzorci se ponavljajo. Prvi so različice: datoteka z oznako »final« in za njo še tri popravljene, pri čemer nihče zanesljivo ne ve, katera je bila oddana. Drugi je zgodovina cen — podatek o tem, po kakšni ceni ste isto delo ovrednotili lani, obstaja, a je urejen po datotekah in ne po postavkah. Tretji so tihe napake v formulah: vrstica, ki ostane zunaj obsega seštevka, se ne javi; opazite jo šele v razliki med ponudbeno in obračunsko vrednostjo.",
+        "Nič od tega ni napaka uporabnika. Preglednica ne ve, kaj je postavka. Ne prepozna, da sta »široki strojni izkop, III. kategorija« in »izkop III. kat., strojno« isto delo, zato tudi ne more opozoriti, da sta v dveh ponudbah ovrednotena občutno različno."
+      ]
+    },
+    {
+      "h": "Cene na enoto iz lastne zgodovine, ne iz splošnega cenika",
+      "ps": [
+        "Splošni ceniki povedo, koliko delo stane nekje v panogi. Ne povedo, koliko stane pri vas — z vašo ekipo, vašimi dobavitelji in vašo organizacijo gradbišča. Najboljši vir za ceno na enoto je zato zgodovina vašega podjetja: projekti, ki ste jih zaključili, in cene, ki so se na njih dejansko obnesle.",
+        "Gradvera to zgodovino uporabi kot podlago za predlog cene. Pri vsaki postavki pokaže predlagano ceno na enoto, projekte, iz katerih izhaja, in razpon, v katerem se je podjetje doslej gibalo pri podobnem delu. Ocenjevalec ceno potrdi ali popravi — odločitev ostane njegova, vsak popravek pa izostri naslednji predlog.",
+        "Praktična razlika je v tem, kaj imate pred seboj, ko je treba ceno zagovarjati. Namesto »tako smo ocenili« so na mizi projekti, na katerih cena temelji, in odstopanje od njih."
+      ]
+    },
+    {
+      "h": "Pregled tveganj, preden ponudba odide",
+      "ps": [
+        "Zadnji dan pred oddajo je najslabši možen trenutek za natančno branje. Ravno takrat se v kalkulacijo prikradejo napake, ki so pozneje drage: količina, prepisana iz starejše različice popisa, cena podizvajalca, ki je od povpraševanja zrasla, postavka s ceno povsem zunaj vašega običajnega razpona.",
+        "Gradvera pred zaključkom ponudbe označi postavke, ki odstopajo od zgodovine podjetja, in odstopanja razvrsti po resnosti. Ne popravi jih sama: vsako označeno postavko potrdi ali popravi ocenjevalec. Namen ni odvzeti odločitve ocenjevalcu, ampak zožiti pregled na tistih nekaj postavk, ki jih je vredno pogledati še enkrat.",
+        "Pregled deluje tudi kot zapisnik. Ko čez pol leta nekdo vpraša, zakaj je bila določena postavka ovrednotena tako, je odgovor v ponudbi in ne v spominu."
+      ]
+    },
+    {
+      "h": "Od kalkulacije do potrjene ponudbe",
+      "ps": [
+        "Med končano kalkulacijo in podpisano pogodbo je še nekaj korakov: primerjava ponudb podizvajalcev, uskladitev količin, revizije po pogajanjih. Vsaka revizija spremeni vrednost, tveganje in donosnost — v preglednicah pa se zabeleži kot nova datoteka.",
+        "Cene podizvajalcev so pri tem najbolj gibljiv del. Gradvera jih zbere na enem mestu, pri isti postavki popisa, tako da so ponudbe primerljive med seboj in s tem, kar je podjetje za enako delo plačalo prej. Povpraševanja lahko oddate neposredno, odgovori pa se vrnejo v isto kalkulacijo.",
+        "Ko je ponudba potrjena, kalkulacija ne konča v arhivu, ampak postane podlaga za naslednjo. To je tudi edini način, da se program za gradbene kalkulacije sčasoma prilagodi vašemu podjetju in ne obratno."
+      ]
+    }
+  ],
+  "guide.est.faqTitle": "Pogosta vprašanja",
+  "guide.est.faq": [
+    {
+      "q": "Koliko stane program za gradbene kalkulacije?",
+      "a": "Cena je odvisna od velikosti ekipe in obsega uporabe, zato je ne objavljamo kot eno samo številko. Na predstavitvi pregledamo, kako pri vas nastajajo ponudbe, in vam nato pripravimo ceno za vaš primer."
+    },
+    {
+      "q": "Ali lahko uvozimo obstoječe ponudbe in popise del iz Excela?",
+      "a": "Da. Gradvera uvozi obstoječe ponudbe, popise del in podatke o projektih takšne, kot so, brez predlog. Postavke, ki se nanašajo na isto delo, med seboj poveže, vse, glede česar ni prepričana, pa označi za vašo potrditev."
+    },
+    {
+      "q": "Za koga je Gradvera namenjena?",
+      "a": "Za ocenjevalce, vodje ocenjevanja in komercialne vodje v gradbenih podjetjih, ki redno pripravljajo ponudbe na podlagi popisov del. Največ prinese tam, kjer podjetje že ima arhiv zaključenih projektov, iz katerega je mogoče črpati cene."
+    },
+    {
+      "q": "Koliko časa traja uvedba?",
+      "a": "Odvisno od tega, koliko preteklih ponudb prenesete in v kakšnem stanju so. Uvedba se začne z uvozom nekaj zaključenih projektov, ne s prepisom celotnega arhiva — prve kalkulacije lahko pripravljate takoj, ko je uvožena prva skupina projektov."
+    }
+  ],
+  "guide.est.cta.h2": "Oglejte si Gradvero na svoji zadnji kalkulaciji.",
+  "guide.est.cta.p": "Na kratki predstavitvi gremo skozi eno vaših ponudb — z vašimi postavkami in vašo zgodovino cen, ne s splošno predlogo.",
+  "guide.est.cta.btn": "Rezervirajte predstavitev",
   "helps.eyebrow": "Kako Gradvera pomaga",
   "helps.h2Amber": "stroški, na katere se lahko zanesete.",
   "helps.h2a": "Oblikujte cene za več ponudb v krajšem času, s",
@@ -391,6 +458,8 @@
   "results.m3l": "Predlaganih postavk ohranjenih nespremenjenih",
   "seo.demo.desc": "Oglejte si, kako Gradvera gradbenim ekipam pomaga hitreje pripraviti zanesljive ponudbe. Rezervirajte kratko predstavitev na vaši zgodovini cen.",
   "seo.demo.title": "Rezervirajte predstavitev — programska oprema Gradvera za ocenjevanje",
+  "seo.est.title": "Gradbene kalkulacije: vodnik za ocenjevalce — Gradvera",
+  "seo.est.desc": "Kaj zajemajo gradbene kalkulacije, kje se preglednice ustavijo in kako iz lastne zgodovine cen sestaviti ponudbo, ki jo lahko zagovarjate pred naročnikom.",
   "seo.home.desc": "Gradvera je programska oprema za gradbeno ocenjevanje: cenite več ponudb v krajšem času, z zanesljivimi stroški že pred potrditvijo naročnika.",
   "seo.home.title": "Gradvera — programska oprema za gradbeno ocenjevanje",
   "seo.ogAlt": "Gradvera — programska oprema za gradbeno ocenjevanje",
