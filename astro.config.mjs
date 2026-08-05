@@ -25,6 +25,10 @@ for (const canonical of LEGACY_SLUG_PATHS) {
     }
   }
 }
+// One-off: the SL bid-guide slug was renamed predračun→izračun shortly after
+// launch (native-speaker correction, 2026-08-05); the old URL was live and in
+// the sitemap for a few hours, so redirect rather than 404 it.
+redirects['/sl/gradbeni-predracun/'] = { status: 308, destination: '/sl/gradbeni-izracun/' };
 
 export default defineConfig({
   site: SITE,

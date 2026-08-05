@@ -8,7 +8,7 @@ export const SLUGS: Record<string, { sl: string; hr: string }> = {
   'book-a-demo': { sl: 'rezervirajte-demo', hr: 'rezervirajte-demo' },
   'privacy-policy': { sl: 'politika-zasebnosti', hr: 'pravila-privatnosti' },
   'construction-cost-estimation': { sl: 'gradbene-kalkulacije', hr: 'gradevinske-kalkulacije' },
-  'construction-bid-estimate': { sl: 'gradbeni-predracun', hr: 'gradevinski-troskovnik' },
+  'construction-bid-estimate': { sl: 'gradbeni-izracun', hr: 'gradevinski-troskovnik' },
 };
 
 /** localized segment → canonical segment, per locale. */

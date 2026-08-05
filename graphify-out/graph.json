@@ -106,7 +106,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "source_location": "L1",
-      "community": 63,
+      "community": 57,
       "norm_label": "problem.astro",
       "id": "src_components_sections_problem"
     },
@@ -117,7 +117,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "source_location": "L1",
-      "community": 62,
+      "community": 56,
       "norm_label": "helpsintro.astro",
       "id": "src_components_sections_helpsintro"
     },
@@ -128,7 +128,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "source_location": "L1",
-      "community": 44,
+      "community": 38,
       "norm_label": "cta1.astro",
       "id": "src_components_sections_cta1"
     },
@@ -139,7 +139,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "source_location": "L1",
-      "community": 45,
+      "community": 39,
       "norm_label": "cta2.astro",
       "id": "src_components_sections_cta2"
     },
@@ -149,7 +149,7 @@
       "source_file": "src/components/sections/Cta1.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 44,
+      "community": 38,
       "norm_label": "t",
       "id": "src_components_sections_cta1_t"
     },
@@ -159,7 +159,7 @@
       "source_file": "src/components/sections/Cta2.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 45,
+      "community": 39,
       "norm_label": "t",
       "id": "src_components_sections_cta2_t"
     },
@@ -169,7 +169,7 @@
       "source_file": "src/pages/book-a-demo/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "book-a-demo/index.astro",
       "id": "src_pages_book_a_demo_index"
     },
@@ -179,7 +179,7 @@
       "source_file": "src/pages/book-a-demo/index.astro",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_book_a_demo_index_t"
     },
@@ -189,7 +189,7 @@
       "source_file": "src/pages/book-a-demo/index.astro",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "breadcrumbld",
       "id": "src_pages_book_a_demo_index_breadcrumbld"
     },
@@ -199,7 +199,7 @@
       "source_file": "src/pages/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "pages/index.astro",
       "id": "src_pages_index"
     },
@@ -209,7 +209,7 @@
       "source_file": "src/pages/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_index_t"
     },
@@ -219,7 +219,7 @@
       "source_file": "src/pages/index.astro",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "jsonld",
       "id": "src_pages_index_jsonld"
     },
@@ -229,7 +229,7 @@
       "source_file": "src/pages/privacy-policy/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "privacy-policy/index.astro",
       "id": "src_pages_privacy_policy_index"
     },
@@ -239,7 +239,7 @@
       "source_file": "src/pages/privacy-policy/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_privacy_policy_index_t"
     },
@@ -249,7 +249,7 @@
       "source_file": "src/pages/robots.txt.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 46,
+      "community": 40,
       "norm_label": "robots.txt.ts",
       "id": "src_pages_robots_txt"
     },
@@ -259,7 +259,7 @@
       "source_file": "src/pages/robots.txt.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 46,
+      "community": 40,
       "norm_label": "get()",
       "id": "src_pages_robots_txt_get"
     },
@@ -269,7 +269,7 @@
       "source_file": "tests/e2e/helpers.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "helpers.mjs",
       "id": "tests_e2e_helpers"
     },
@@ -279,7 +279,7 @@
       "source_file": "tests/e2e/helpers.mjs",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "viewports",
       "id": "tests_e2e_helpers_viewports"
     },
@@ -289,7 +289,7 @@
       "source_file": "tests/e2e/helpers.mjs",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "gotoclean()",
       "id": "tests_e2e_helpers_gotoclean"
     },
@@ -299,7 +299,7 @@
       "source_file": "tests/e2e/helpers.mjs",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "boxof()",
       "id": "tests_e2e_helpers_boxof"
     },
@@ -309,7 +309,7 @@
       "source_file": "tests/e2e/helpers.mjs",
       "source_location": "L32",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "rectsoverlap()",
       "id": "tests_e2e_helpers_rectsoverlap"
     },
@@ -319,7 +319,7 @@
       "source_file": "tests/e2e/mobile-nav.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "mobile-nav.spec.mjs",
       "id": "tests_e2e_mobile_nav_spec"
     },
@@ -329,7 +329,7 @@
       "source_file": "tests/e2e/playwright.config.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 39,
+      "community": 33,
       "norm_label": "playwright.config.mjs",
       "id": "tests_e2e_playwright_config"
     },
@@ -339,7 +339,7 @@
       "source_file": "tests/e2e/playwright.config.mjs",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 39,
+      "community": 33,
       "norm_label": "repo_root",
       "id": "tests_e2e_playwright_config_repo_root"
     },
@@ -349,7 +349,7 @@
       "source_file": "tests/e2e/playwright.config.mjs",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 39,
+      "community": 33,
       "norm_label": "port",
       "id": "tests_e2e_playwright_config_port"
     },
@@ -359,7 +359,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "tsconfig.json",
       "id": "tsconfig"
     },
@@ -369,7 +369,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "extends",
       "id": "tsconfig_extends"
     },
@@ -379,7 +379,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "include",
       "id": "tsconfig_include"
     },
@@ -389,7 +389,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "exclude",
       "id": "tsconfig_exclude"
     },
@@ -399,7 +399,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "compileroptions",
       "id": "tsconfig_compileroptions"
     },
@@ -409,7 +409,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "resolvejsonmodule",
       "id": "tsconfig_compileroptions_resolvejsonmodule"
     },
@@ -419,7 +419,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "allowjs",
       "id": "tsconfig_compileroptions_allowjs"
     },
@@ -429,7 +429,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "baseurl",
       "id": "tsconfig_compileroptions_baseurl"
     },
@@ -439,7 +439,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "paths",
       "id": "tsconfig_compileroptions_paths"
     },
@@ -449,7 +449,7 @@
       "source_file": "tsconfig.json",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "norm_label": "@/*",
       "id": "tsconfig_paths"
     },
@@ -462,7 +462,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 24,
       "norm_label": "ci workflow (github actions)",
       "_origin": "semantic",
       "id": "_github_workflows_ci_workflow"
@@ -477,7 +477,7 @@
       "author": null,
       "contributor": null,
       "rationale": "astro build (run by Vercel on every deploy) does NOT type-check, so a TS/.astro template error can ship silently; the check job runs npm run check to close that gap. Build + deploy stay Vercel's job.",
-      "community": 30,
+      "community": 24,
       "norm_label": "astro check job",
       "_origin": "semantic",
       "id": "_github_workflows_ci_check_job"
@@ -492,7 +492,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Installs Chromium only (--with-deps for Linux libs), builds and serves dist/client, runs specs with CI=1 to enable a retry + HTML report; uploads playwright-report/ as an artifact only on failure. Additive to the astro check gate, not a replacement.",
-      "community": 30,
+      "community": 24,
       "norm_label": "e2e (playwright) job",
       "_origin": "semantic",
       "id": "_github_workflows_ci_e2e_job"
@@ -506,7 +506,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 27,
       "norm_label": "gradvera monogram (plain, transparent)",
       "_origin": "semantic",
       "id": "public_assets_monogram_plain_gradvera_monogram_plain"
@@ -520,7 +520,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 27,
       "norm_label": "gradvera monogram (on dark tile)",
       "_origin": "semantic",
       "id": "public_assets_monogram_gradvera_monogram"
@@ -534,7 +534,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, android chrome icon 192x192",
       "_origin": "semantic",
       "id": "public_favicons_android_chrome_192x192_gradvera_g_icon_192px"
@@ -548,7 +548,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, android chrome icon 512x512",
       "_origin": "semantic",
       "id": "public_favicons_android_chrome_512x512_gradvera_g_icon_512px"
@@ -562,7 +562,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark: angular amber square-spiral g on dark charcoal with orange corner accent",
       "_origin": "semantic",
       "id": "public_favicons_gradvera_g_brand_mark_concept"
@@ -576,7 +576,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, apple touch icon",
       "_origin": "semantic",
       "id": "public_favicons_apple_touch_icon_gradvera_g_apple_touch_icon"
@@ -590,7 +590,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, browser favicon 16x16",
       "_origin": "semantic",
       "id": "public_favicons_favicon_16x16_gradvera_g_favicon_16px"
@@ -604,7 +604,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, browser favicon 32x32",
       "_origin": "semantic",
       "id": "public_favicons_favicon_32x32_gradvera_g_favicon_32px"
@@ -618,7 +618,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 16,
       "norm_label": "gradvera 'g' brand mark, browser favicon 48x48",
       "_origin": "semantic",
       "id": "public_favicons_favicon_48x48_gradvera_g_favicon_48px"
@@ -632,7 +632,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 27,
       "norm_label": "gradvera favicon",
       "_origin": "semantic",
       "id": "public_favicons_favicon_gradvera_favicon"
@@ -646,7 +646,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 28,
       "norm_label": "gradvera og social-share card (svg source)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_gradvera_og_card_svg"
@@ -660,7 +660,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 28,
       "norm_label": "construction estimating software (gradvera product tagline)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_construction_estimating_software"
@@ -674,7 +674,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 28,
       "norm_label": "gradvera brand / product identity",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_gradvera_brand"
@@ -685,7 +685,7 @@
       "source_file": "src/components/pages/DemoIntro.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "demointro.astro",
       "id": "src_components_pages_demointro"
     },
@@ -695,7 +695,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "lead.ts",
       "id": "src_pages_api_lead"
     },
@@ -705,7 +705,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "lead",
       "id": "src_pages_api_lead_lead"
     },
@@ -715,7 +715,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L50",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "str()",
       "id": "src_pages_api_lead_str"
     },
@@ -725,7 +725,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "json()",
       "id": "src_pages_api_lead_json"
     },
@@ -735,7 +735,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "post()",
       "id": "src_pages_api_lead_post"
     },
@@ -745,7 +745,7 @@
       "source_file": "src/pages/api/lead.ts",
       "source_location": "L191",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "norm_label": "get()",
       "id": "src_pages_api_lead_get"
     },
@@ -755,7 +755,7 @@
       "source_file": "src/components/sections/Outcomes.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "outcomes.astro",
       "id": "src_components_sections_outcomes"
     },
@@ -765,7 +765,7 @@
       "source_file": "src/components/sections/Outcomes.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "t",
       "id": "src_components_sections_outcomes_t"
     },
@@ -779,7 +779,7 @@
       "author": null,
       "contributor": null,
       "rationale": "A dark drafting table under one work lamp: deep blueprint navy ground, one burnished-amber light picking out what matters. Credibility is shown not claimed (hero renders a live estimate rather than asserting accuracy). Explicitly rejects the generic SaaS template and sterile corporate blue.",
-      "community": 8,
+      "community": 7,
       "norm_label": "the lit blueprint (creative north star)",
       "_origin": "semantic",
       "id": "design_lit_blueprint"
@@ -794,7 +794,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The single brand accent used like a work-light; hover deepens to Amber Ember #C77713, pressed to Amber Kiln #9C5C0E; Amber Ink #7A4708 is the text tone on light.",
-      "community": 8,
+      "community": 7,
       "norm_label": "burnished amber accent (#e8901c)",
       "_origin": "semantic",
       "id": "design_burnished_amber"
@@ -809,7 +809,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Drafting-ink blue for inline links and info states only; never a second brand color competing with amber.",
-      "community": 8,
+      "community": 7,
       "norm_label": "blueprint navy (#1e3a8a) link/info accent",
       "_origin": "semantic",
       "id": "design_blueprint_navy"
@@ -824,7 +824,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Amber is the only accent and behaves like a single work-lamp: one dominant amber element per fold. Its rarity is what makes it read as important.",
-      "community": 8,
+      "community": 7,
       "norm_label": "the one light rule",
       "_origin": "semantic",
       "id": "design_one_light_rule"
@@ -839,7 +839,7 @@
       "author": null,
       "contributor": null,
       "rationale": "#E8901C scores ~2.2-2.5:1 as text on light (below AA), so amber-toned words on light use Amber Ink #7A4708 (7.7:1 on white). Enforced in site-polish.css; do not undo it.",
-      "community": 8,
+      "community": 7,
       "norm_label": "the amber-never-as-body-text rule",
       "_origin": "semantic",
       "id": "design_amber_never_body_text_rule"
@@ -854,7 +854,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Headings are sentence case: no Title Case, no ALL-CAPS headlines, no exclamation marks; caps reserved for short mono labels only.",
-      "community": 8,
+      "community": 7,
       "norm_label": "the sentence-case rule",
       "_origin": "semantic",
       "id": "design_sentence_case_rule"
@@ -869,7 +869,7 @@
       "author": null,
       "contributor": null,
       "rationale": "IBM Plex Mono is for callouts that report (labels, tags, HUD readouts, code); never set a sentence of marketing prose in mono.",
-      "community": 8,
+      "community": 7,
       "norm_label": "the mono-is-annotation rule",
       "_origin": "semantic",
       "id": "design_mono_is_annotation_rule"
@@ -884,7 +884,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Slate shadow = elevation; amber glow = live data or focus. Never use amber glow to fake depth, nor slate drop-shadows on the dark chrome.",
-      "community": 43,
+      "community": 37,
       "norm_label": "the glow-signals-life rule",
       "_origin": "semantic",
       "id": "design_glow_signals_life_rule"
@@ -899,7 +899,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One humanist-industrial sans (Plex Sans) for every readable word; Plex Mono only for technical annotation. Tabular numerals for currency/quantities. Display ceiling 82px, letter-spacing floor -0.04em.",
-      "community": 8,
+      "community": 7,
       "norm_label": "ibm plex sans/mono typography system",
       "_origin": "semantic",
       "id": "design_ibm_plex_typography"
@@ -914,7 +914,7 @@
       "author": null,
       "contributor": null,
       "rationale": "SVG building wireframe plus a floating HUD reading a live estimate (EUR 1.24M, filling amber bar, Estimate ready 87% confidence): the system's thesis object that shows the product working instead of describing it. Motion only animates already-visible elements.",
-      "community": 8,
+      "community": 7,
       "norm_label": "hero blueprint + estimate hud (signature object)",
       "_origin": "semantic",
       "id": "design_hero_estimate_hud"
@@ -929,7 +929,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Color / typography / spacing / radius / component tokens defined in the DESIGN.md frontmatter and materialized as gradvera-tokens.css.",
-      "community": 8,
+      "community": 7,
       "norm_label": "design tokens (gradvera-tokens)",
       "_origin": "semantic",
       "id": "design_tokens"
@@ -944,7 +944,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Light reading surface uses diffuse slate shadows for real elevation; dark chrome stays flat with depth from tonal Ink plates, and reserves amber glow for live-data signal.",
-      "community": 43,
+      "community": 37,
       "norm_label": "hybrid elevation system (slate shadow vs amber glow)",
       "_origin": "semantic",
       "id": "design_elevation"
@@ -958,7 +958,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 59,
+      "community": 53,
       "norm_label": "register: brand",
       "_origin": "semantic",
       "id": "product_register_brand"
@@ -973,7 +973,7 @@
       "author": null,
       "contributor": null,
       "rationale": "SME contractor firms across SI/HR/EU; high-stakes deadline-bound bidding; arrive skeptical of marketing, evaluating whether the tool is serious enough to trust with real numbers.",
-      "community": 32,
+      "community": 26,
       "norm_label": "users: construction estimators / quantity surveyors / bid teams",
       "_origin": "semantic",
       "id": "product_users"
@@ -988,7 +988,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Book-a-demo is the only conversion that matters (lead capture -> Dynamics 365); success is qualified demo bookings from organic/outbound across three language markets, not traffic.",
-      "community": 32,
+      "community": 26,
       "norm_label": "product purpose: convert qualified interest into a booked demo (to d365)",
       "_origin": "semantic",
       "id": "product_purpose"
@@ -1003,7 +1003,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Measured professional voice: sentence-case headings, no exclamation marks, no superlatives, no 'revolutionary AI'. The name Gradvera is never translated. Confidence shown through precision and proof, not volume.",
-      "community": 8,
+      "community": 7,
       "norm_label": "brand personality: calm / precise / anti-hype",
       "_origin": "semantic",
       "id": "product_brand_personality"
@@ -1018,7 +1018,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Cream/gradient-mesh backgrounds, hero-metric cards, repeated icon+heading+text grids, purple gradient buttons, gradient text: the flooded AI-landing look, the fastest way to read as untrustworthy to this buyer.",
-      "community": 8,
+      "community": 7,
       "norm_label": "anti-reference: generic saas template",
       "_origin": "semantic",
       "id": "product_anti_ref_generic_saas"
@@ -1033,7 +1033,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Stock-photo handshakes, navy-and-gray walls of body copy, faceless big-vendor feel. Credibility comes from showing the actual product and its precision, not from looking like an incumbent.",
-      "community": 8,
+      "community": 7,
       "norm_label": "anti-reference: sterile corporate blue",
       "_origin": "semantic",
       "id": "product_anti_ref_corporate_blue"
@@ -1048,7 +1048,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The buyer distrusts marketing noise; calm confidence converts where hype repels. Restraint must be intentional and distinctive, never timid or generic.",
-      "community": 8,
+      "community": 7,
       "norm_label": "principle 1: earn trust through restraint",
       "_origin": "semantic",
       "id": "product_principle_restraint"
@@ -1063,7 +1063,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Demonstrate precision with blueprint and live-estimate motifs (hero HUD reading EUR 1.24M, 87% confidence) rather than asserting it in adjectives. Proof over promise.",
-      "community": 8,
+      "community": 7,
       "norm_label": "principle 2: show the work, don't claim it",
       "_origin": "semantic",
       "id": "product_principle_show_the_work"
@@ -1078,7 +1078,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One unambiguous path (book a demo). Every section accrues proof and lowers risk; it never applies pressure or urgency.",
-      "community": 32,
+      "community": 26,
       "norm_label": "principle 3: credibility is the conversion",
       "_origin": "semantic",
       "id": "product_principle_credibility_conversion"
@@ -1093,7 +1093,7 @@
       "author": null,
       "contributor": null,
       "rationale": "EN/SL/HR are equal citizens; layout, headings, and copy must breathe in all three at every breakpoint, never English-first with translations bolted on and overflowing.",
-      "community": 0,
+      "community": 1,
       "norm_label": "principle 4: trilingual parity (en/sl/hr)",
       "_origin": "semantic",
       "id": "product_principle_trilingual_parity"
@@ -1108,7 +1108,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Static-first, fast, SEO-legible: a tool that respects the estimator's time should have a site that respects the visitor's. Performance and Core Web Vitals are brand, not just engineering.",
-      "community": 58,
+      "community": 52,
       "norm_label": "principle 5: speed is part of the promise",
       "_origin": "semantic",
       "id": "product_principle_speed"
@@ -1123,7 +1123,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Body text contrast >=4.5:1, large text >=3:1; full keyboard operability with visible :focus-visible amber outlines; prefers-reduced-motion honored; amber-on-navy contrast-checked per use.",
-      "community": 8,
+      "community": 7,
       "norm_label": "accessibility target: wcag 2.1 aa",
       "_origin": "semantic",
       "id": "product_wcag_2_1_aa"
@@ -1364,7 +1364,7 @@
       "source_file": "tests/e2e/homepage.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 69,
+      "community": 63,
       "norm_label": "homepage.spec.mjs",
       "id": "tests_e2e_homepage_spec"
     },
@@ -1374,7 +1374,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "render-og.mjs",
       "id": "scripts_render_og"
     },
@@ -1384,7 +1384,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "root",
       "id": "scripts_render_og_root"
     },
@@ -1394,7 +1394,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "og_dir",
       "id": "scripts_render_og_og_dir"
     },
@@ -1404,7 +1404,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "font_pkg",
       "id": "scripts_render_og_font_pkg"
     },
@@ -1414,7 +1414,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "fontfaces()",
       "id": "scripts_render_og_fontfaces"
     },
@@ -1424,7 +1424,7 @@
       "source_file": "scripts/render-og.mjs",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 20,
+      "community": 18,
       "norm_label": "svgs",
       "id": "scripts_render_og_svgs"
     },
@@ -1434,7 +1434,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "seo.astro",
       "id": "src_components_seo_seo"
     },
@@ -1444,7 +1444,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L46",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "t",
       "id": "src_components_seo_seo_t"
     },
@@ -1454,7 +1454,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "string",
       "id": "src_components_seo_seo_string"
     },
@@ -1464,7 +1464,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "canonical",
       "id": "src_components_seo_seo_canonical"
     },
@@ -1474,7 +1474,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "ogimage",
       "id": "src_components_seo_seo_ogimage"
     },
@@ -1484,7 +1484,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L57",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "alts",
       "id": "src_components_seo_seo_alts"
     },
@@ -1494,7 +1494,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "ogaltlocales",
       "id": "src_components_seo_seo_ogaltlocales"
     },
@@ -1504,7 +1504,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L64",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "organizationld",
       "id": "src_components_seo_seo_organizationld"
     },
@@ -1514,7 +1514,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L81",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "websiteld",
       "id": "src_components_seo_seo_websiteld"
     },
@@ -1524,7 +1524,7 @@
       "source_file": "src/components/seo/SEO.astro",
       "source_location": "L90",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "structureddata",
       "id": "src_components_seo_seo_structureddata"
     },
@@ -1534,7 +1534,7 @@
       "source_file": "src/consts",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "../../consts",
       "id": "src_consts"
     },
@@ -1544,7 +1544,7 @@
       "source_file": "@fontsource/ibm-plex-sans/400.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 47,
+      "community": 41,
       "norm_label": "@fontsource/ibm-plex-sans/400.css",
       "id": "400_css"
     },
@@ -1554,7 +1554,7 @@
       "source_file": "@fontsource/ibm-plex-sans/500.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 48,
+      "community": 42,
       "norm_label": "@fontsource/ibm-plex-sans/500.css",
       "id": "500_css"
     },
@@ -1564,7 +1564,7 @@
       "source_file": "@fontsource/ibm-plex-sans/600.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 49,
+      "community": 43,
       "norm_label": "@fontsource/ibm-plex-sans/600.css",
       "id": "600_css"
     },
@@ -1574,7 +1574,7 @@
       "source_file": "@fontsource/ibm-plex-sans/700.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 50,
+      "community": 44,
       "norm_label": "@fontsource/ibm-plex-sans/700.css",
       "id": "700_css"
     },
@@ -1584,7 +1584,7 @@
       "source_file": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2?url",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 54,
+      "community": 48,
       "norm_label": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2?url",
       "id": "ibm_plex_sans_latin_500_normal_woff2_url"
     },
@@ -1594,7 +1594,7 @@
       "source_file": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2?url",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 55,
+      "community": 49,
       "norm_label": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2?url",
       "id": "ibm_plex_sans_latin_600_normal_woff2_url"
     },
@@ -1604,7 +1604,7 @@
       "source_file": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-500-normal.woff2?url",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 56,
+      "community": 50,
       "norm_label": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-500-normal.woff2?url",
       "id": "ibm_plex_sans_latin_ext_500_normal_woff2_url"
     },
@@ -1614,7 +1614,7 @@
       "source_file": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-600-normal.woff2?url",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 57,
+      "community": 51,
       "norm_label": "@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-ext-600-normal.woff2?url",
       "id": "ibm_plex_sans_latin_ext_600_normal_woff2_url"
     },
@@ -1624,7 +1624,7 @@
       "source_file": "src/styles/gradvera-tokens.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 66,
+      "community": 60,
       "norm_label": "../styles/gradvera-tokens.css",
       "id": "src_styles_gradvera_tokens"
     },
@@ -1634,7 +1634,7 @@
       "source_file": "src/styles/site.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 67,
+      "community": 61,
       "norm_label": "../styles/site.css",
       "id": "src_styles_site"
     },
@@ -1644,7 +1644,7 @@
       "source_file": "src/styles/cap1-screens.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 64,
+      "community": 58,
       "norm_label": "../styles/cap1-screens.css",
       "id": "src_styles_cap1_screens"
     },
@@ -1654,7 +1654,7 @@
       "source_file": "src/styles/cap-screens.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 65,
+      "community": 59,
       "norm_label": "../styles/cap-screens.css",
       "id": "src_styles_cap_screens"
     },
@@ -1664,7 +1664,7 @@
       "source_file": "src/styles/site-polish.css",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 68,
+      "community": 62,
       "norm_label": "../styles/site-polish.css",
       "id": "src_styles_site_polish"
     },
@@ -1674,7 +1674,7 @@
       "source_file": "src/components/marketing/CookieConsent.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 61,
+      "community": 55,
       "norm_label": "../components/marketing/cookieconsent.astro",
       "id": "src_components_marketing_cookieconsent"
     },
@@ -1684,7 +1684,7 @@
       "source_file": "src/components/marketing/Analytics.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 60,
+      "community": 54,
       "norm_label": "../components/marketing/analytics.astro",
       "id": "src_components_marketing_analytics"
     },
@@ -1694,7 +1694,7 @@
       "source_file": "src/pages/404.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "404.astro",
       "id": "src_pages_404"
     },
@@ -1704,7 +1704,7 @@
       "source_file": "src/pages/404.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_404_t"
     },
@@ -1714,7 +1714,7 @@
       "source_file": "src/pages/404.astro",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "strings()",
       "id": "src_pages_404_strings"
     },
@@ -1724,7 +1724,7 @@
       "source_file": "src/pages/404.astro",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "l10n",
       "id": "src_pages_404_l10n"
     },
@@ -1734,7 +1734,7 @@
       "source_file": "tests/e2e/seo.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 40,
+      "community": 34,
       "norm_label": "seo.spec.mjs",
       "id": "tests_e2e_seo_spec"
     },
@@ -1744,7 +1744,7 @@
       "source_file": "tests/e2e/seo.spec.mjs",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 40,
+      "community": 34,
       "norm_label": "bundledcss()",
       "id": "tests_e2e_seo_spec_bundledcss"
     },
@@ -1754,7 +1754,7 @@
       "source_file": "tests/e2e/seo.spec.mjs",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 40,
+      "community": 34,
       "norm_label": "expectpreloadsresolveandmatchcss()",
       "id": "tests_e2e_seo_spec_expectpreloadsresolveandmatchcss"
     },
@@ -1764,7 +1764,7 @@
       "source_file": "tests/e2e/serve-dist.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 24,
+      "community": 20,
       "norm_label": "serve-dist.mjs",
       "id": "tests_e2e_serve_dist"
     },
@@ -1774,7 +1774,7 @@
       "source_file": "tests/e2e/serve-dist.mjs",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 24,
+      "community": 20,
       "norm_label": "root",
       "id": "tests_e2e_serve_dist_root"
     },
@@ -1784,7 +1784,7 @@
       "source_file": "tests/e2e/serve-dist.mjs",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 24,
+      "community": 20,
       "norm_label": "port",
       "id": "tests_e2e_serve_dist_port"
     },
@@ -1794,7 +1794,7 @@
       "source_file": "tests/e2e/serve-dist.mjs",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 24,
+      "community": 20,
       "norm_label": "types",
       "id": "tests_e2e_serve_dist_types"
     },
@@ -1804,7 +1804,7 @@
       "source_file": "tests/e2e/serve-dist.mjs",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 24,
+      "community": 20,
       "norm_label": "resolvefile()",
       "id": "tests_e2e_serve_dist_resolvefile"
     },
@@ -1818,7 +1818,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Verifies what astro check and static HTML greps can't: interaction, focus management, computed layout, responsive overflow, runtime console errors. Builds the production site and serves real dist/client (via webServer) so checks run against the exact artifact Vercel ships, not astro dev. Additive to the astro check gate.",
-      "community": 29,
+      "community": 23,
       "norm_label": "playwright browser harness",
       "_origin": "semantic",
       "id": "tests_e2e_readme_playwright_harness"
@@ -1833,7 +1833,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Config plus a webServer that builds and serves dist/client.",
-      "community": 29,
+      "community": 23,
       "norm_label": "playwright.config.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_playwright_config"
@@ -1848,7 +1848,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Zero-dep static server for /, /sl/, /hr/ and assets; unknown paths get 404.html with status 404, mirroring Vercel.",
-      "community": 29,
+      "community": 23,
       "norm_label": "serve-dist.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_serve_dist"
@@ -1863,7 +1863,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Reusable bits: VIEWPORTS, gotoClean (drops the consent banner), boxOf, rectsOverlap.",
-      "community": 0,
+      "community": 1,
       "norm_label": "helpers.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_helpers"
@@ -1878,7 +1878,7 @@
       "author": null,
       "contributor": null,
       "rationale": "MobileNav a11y: open state, focus trap, Escape, scrim, scroll-lock, breakpoint auto-close.",
-      "community": 0,
+      "community": 1,
       "norm_label": "mobile-nav.spec.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_mobile_nav_spec"
@@ -1893,7 +1893,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Checks: one h1, mockups aria-hidden, no h-scroll @375, no JSON-LD price, no hero SVG console error, Cap2 no-overlap across locales x widths.",
-      "community": 0,
+      "community": 1,
       "norm_label": "homepage.spec.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_homepage_spec"
@@ -1908,7 +1908,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Checks: 404 page (status 404, noindex, client-side SL/HR localization), per-locale OG image + localized og:image:alt, hero font preloads (latin/latin-ext), canonical host stays apex.",
-      "community": 0,
+      "community": 1,
       "norm_label": "seo.spec.mjs",
       "_origin": "semantic",
       "id": "tests_e2e_readme_seo_spec"
@@ -1923,7 +1923,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Wired into .github/workflows/ci.yml as the e2e job beside astro check on every PR and pushes to main/staging: npx playwright install --with-deps chromium -> npm run test:e2e with CI=1 (retry + HTML report). On failure playwright-report/ is uploaded as an artifact. astro check remains the type-safety gate; this job is additive.",
-      "community": 29,
+      "community": 23,
       "norm_label": "e2e ci job",
       "_origin": "semantic",
       "id": "tests_e2e_readme_e2e_ci_job"
@@ -1937,7 +1937,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 26,
+      "community": 22,
       "norm_label": "gradvera open graph image",
       "_origin": "semantic",
       "id": "public_og_gradvera_og"
@@ -1951,7 +1951,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 26,
+      "community": 22,
       "norm_label": "gradvera g monogram (amber blueprint mark)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_brand_mark"
@@ -1965,7 +1965,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 26,
+      "community": 22,
       "norm_label": "gradvera wordmark",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_wordmark"
@@ -1979,7 +1979,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 26,
+      "community": 22,
       "norm_label": "construction estimating software tagline",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_tagline"
@@ -1993,7 +1993,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "gradvera og image (slovenian)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_sl"
@@ -2007,7 +2007,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "slovenian tagline: programska oprema za gradbeno ocenjevanje",
       "_origin": "semantic",
       "id": "concept_gradvera_slovenian_tagline"
@@ -2021,7 +2021,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "lit blueprint brand identity (navy chrome + amber g monogram)",
       "_origin": "semantic",
       "id": "concept_lit_blueprint_brand_identity"
@@ -2035,7 +2035,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "gradvera og image (croatian)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_hr"
@@ -2049,7 +2049,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "gradvera brand wordmark & amber g monogram",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_hr_brand"
@@ -2063,7 +2063,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "croatian tagline \u2014 softver za izradu gra\u0111evinskih troskovnika",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_hr_tagline"
@@ -2077,7 +2077,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "open graph social-share preview (hr locale)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_hr_social_share"
@@ -2091,7 +2091,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "gradvera og image (sl) \u2014 svg source",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_sl_svg_source"
@@ -2105,7 +2105,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "render-og.mjs \u2014 svg to png rasterizer",
       "_origin": "semantic",
       "id": "scripts_render_og_mjs"
@@ -2119,7 +2119,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 13,
       "norm_label": "gradvera og image source (hr)",
       "_origin": "semantic",
       "id": "public_og_gradvera_og_hr_svg_source"
@@ -2130,7 +2130,7 @@
       "source_file": "src/components/sections/Hero.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "hero.astro",
       "id": "src_components_sections_hero"
     },
@@ -2140,7 +2140,7 @@
       "source_file": "src/components/sections/Hero.astro",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "localizepath()",
       "id": "src_components_sections_hero_localizepath"
     },
@@ -2150,7 +2150,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "hr/index.astro",
       "id": "src_pages_hr_index"
     },
@@ -2160,7 +2160,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "t",
       "id": "src_pages_hr_index_t"
     },
@@ -2170,7 +2170,7 @@
       "source_file": "src/pages/hr/index.astro",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "jsonld",
       "id": "src_pages_hr_index_jsonld"
     },
@@ -2180,7 +2180,7 @@
       "source_file": "src/layouts/BaseLayout.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "../../layouts/baselayout.astro",
       "id": "src_layouts_baselayout"
     },
@@ -2190,7 +2190,7 @@
       "source_file": "src/components/pages/HomeSections.astro",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "../../components/pages/homesections.astro",
       "id": "src_components_pages_homesections"
     },
@@ -2200,7 +2200,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "sl/index.astro",
       "id": "src_pages_sl_index"
     },
@@ -2210,7 +2210,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "t",
       "id": "src_pages_sl_index_t"
     },
@@ -2220,7 +2220,7 @@
       "source_file": "src/pages/sl/index.astro",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 19,
+      "community": 17,
       "norm_label": "jsonld",
       "id": "src_pages_sl_index_jsonld"
     },
@@ -2230,7 +2230,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "i18n-parity.spec.mjs",
       "id": "tests_e2e_i18n_parity_spec"
     },
@@ -2240,7 +2240,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "root",
       "id": "tests_e2e_i18n_parity_spec_root"
     },
@@ -2250,7 +2250,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "localized_components",
       "id": "tests_e2e_i18n_parity_spec_localized_components"
     },
@@ -2260,7 +2260,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "sentinels",
       "id": "tests_e2e_i18n_parity_spec_sentinels"
     },
@@ -2270,7 +2270,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L42",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "visibletext()",
       "id": "tests_e2e_i18n_parity_spec_visibletext"
     },
@@ -2280,7 +2280,7 @@
       "source_file": "tests/e2e/i18n-parity.spec.mjs",
       "source_location": "L58",
       "_origin": "ast",
-      "community": 22,
+      "community": 19,
       "norm_label": "local_proof",
       "id": "tests_e2e_i18n_parity_spec_local_proof"
     },
@@ -2293,7 +2293,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "gradvera marketing website",
       "_origin": "semantic",
       "id": "readme_gradvera_site"
@@ -2307,7 +2307,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "astro 5 framework",
       "_origin": "semantic",
       "id": "readme_astro"
@@ -2321,7 +2321,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "typescript (astro/tsconfigs/strict)",
       "_origin": "semantic",
       "id": "readme_typescript"
@@ -2335,7 +2335,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "astro i18n routing (en/sl/hr)",
       "_origin": "semantic",
       "id": "readme_i18n_routing"
@@ -2349,7 +2349,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "vercel hosting (@astrojs/vercel)",
       "_origin": "semantic",
       "id": "readme_vercel"
@@ -2364,7 +2364,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Google Fonts hotlink stripped in favour of self-hosted IBM Plex via @fontsource for privacy, performance, and no third-party request on first paint.",
-      "community": 0,
+      "community": 1,
       "norm_label": "self-hosted ibm plex fonts",
       "_origin": "semantic",
       "id": "readme_ibm_plex_fonts"
@@ -2378,7 +2378,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "google tag manager (ga4 inside gtm)",
       "_origin": "semantic",
       "id": "readme_gtm"
@@ -2393,7 +2393,7 @@
       "author": null,
       "contributor": null,
       "rationale": "GTM runs off the main thread via Partytown (forward: ['dataLayer.push','gtag']) to protect Core Web Vitals.",
-      "community": 0,
+      "community": 1,
       "norm_label": "partytown off-thread analytics loading",
       "_origin": "semantic",
       "id": "readme_partytown"
@@ -2407,7 +2407,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "@astrojs/sitemap (i18n-aware)",
       "_origin": "semantic",
       "id": "readme_sitemap"
@@ -2422,7 +2422,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The only on-demand route (prerender = false); always returns 200 on a valid lead so a downstream outage is logged but never breaks the success UX.",
-      "community": 0,
+      "community": 1,
       "norm_label": "/api/lead lead-capture endpoint",
       "_origin": "semantic",
       "id": "readme_api_lead"
@@ -2437,7 +2437,7 @@
       "author": null,
       "contributor": null,
       "rationale": "English is assembled from per-section _parts/*.en.json; missing SL/HR strings degrade gracefully by falling back to English then the raw key.",
-      "community": 0,
+      "community": 1,
       "norm_label": "i18n model (flat-keyed json dictionaries)",
       "_origin": "semantic",
       "id": "readme_i18n_model"
@@ -2451,7 +2451,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "i18n helpers (src/i18n/utils.ts)",
       "_origin": "semantic",
       "id": "readme_i18n_utils"
@@ -2465,7 +2465,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "usetranslations(lang) helper",
       "_origin": "semantic",
       "id": "readme_use_translations"
@@ -2479,7 +2479,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "localizepath(path, lang) helper",
       "_origin": "semantic",
       "id": "readme_localize_path"
@@ -2494,7 +2494,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Design-origin CSS/JS came verbatim from the Claude Design project and were moved into src/ so Astro/Vite bundles, minifies and fingerprints them for immutable caching instead of serving six raw files.",
-      "community": 0,
+      "community": 1,
       "norm_label": "design-asset provenance",
       "_origin": "semantic",
       "id": "readme_design_provenance"
@@ -2508,7 +2508,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "claude design project (design origin)",
       "_origin": "semantic",
       "id": "readme_claude_design_project"
@@ -2523,7 +2523,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Imported last so its overrides win over the verbatim design-origin stylesheets.",
-      "community": 0,
+      "community": 1,
       "norm_label": "site-polish.css local corrections layer",
       "_origin": "semantic",
       "id": "readme_site_polish"
@@ -2538,7 +2538,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Defaults ads + analytics storage to denied before GTM loads; only functionality_storage and security_storage are granted.",
-      "community": 0,
+      "community": 1,
       "norm_label": "google consent mode v2",
       "_origin": "semantic",
       "id": "readme_consent_mode"
@@ -2553,7 +2553,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Stores the visitor's choice in a gv-consent cookie and replays it via gtag('consent','update',\u2026) on the next visit.",
-      "community": 0,
+      "community": 1,
       "norm_label": "cookieconsent banner",
       "_origin": "semantic",
       "id": "readme_cookie_consent"
@@ -2567,7 +2567,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "analytics.astro component",
       "_origin": "semantic",
       "id": "readme_analytics_component"
@@ -2581,7 +2581,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "demoform.astro demo/contact form",
       "_origin": "semantic",
       "id": "readme_demo_form"
@@ -2596,7 +2596,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Normalized leads are forwarded to gtm-toolkit HMAC-SHA256 signed via the x-gradvera-signature: sha256=<hex> header.",
-      "community": 0,
+      "community": 1,
       "norm_label": "hmac-sha256 lead signing",
       "_origin": "semantic",
       "id": "readme_hmac_signing"
@@ -2610,7 +2610,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "gtm-toolkit inbound-lead receiver",
       "_origin": "semantic",
       "id": "readme_gtm_toolkit"
@@ -2625,7 +2625,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Bot submissions are silently dropped with a 200 response so bots get no signal about detection.",
-      "community": 0,
+      "community": 1,
       "norm_label": "company_website honeypot",
       "_origin": "semantic",
       "id": "readme_honeypot"
@@ -2640,7 +2640,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Generated from src/pages/robots.txt.ts: allows all, disallows /api/, points to the sitemap index.",
-      "community": 0,
+      "community": 1,
       "norm_label": "robots.txt (generated)",
       "_origin": "semantic",
       "id": "readme_robots_txt"
@@ -2655,7 +2655,7 @@
       "author": null,
       "contributor": null,
       "rationale": "1200x630 per-locale PNGs regenerated from sibling SVGs via node scripts/render-og.mjs (Playwright Chromium + real IBM Plex).",
-      "community": 35,
+      "community": 29,
       "norm_label": "open graph images / render-og.mjs",
       "_origin": "semantic",
       "id": "readme_og_images"
@@ -2670,7 +2670,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Preserve every class, id, data-*, inline style and inline svg exactly; the CSS/JS target the design's exact selectors so any drift breaks the layout or interactive blueprint screens.",
-      "community": 0,
+      "community": 1,
       "norm_label": "design fidelity rules",
       "_origin": "semantic",
       "id": "readme_fidelity_rules"
@@ -2685,7 +2685,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Vercel currently answers www.gradvera.com with a 307 (temporary) redirect; set it to permanent (308) so search engines consolidate the canonical host instead of re-checking it.",
-      "community": 0,
+      "community": 1,
       "norm_label": "www -> apex permanent redirect (307->308)",
       "_origin": "semantic",
       "id": "readme_www_apex_redirect"
@@ -2699,7 +2699,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 29,
       "norm_label": "consts.ts (brand facts, integration ids)",
       "_origin": "semantic",
       "id": "readme_consts"
@@ -2713,7 +2713,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "docs/lead-integration.md",
       "_origin": "semantic",
       "id": "readme_lead_integration_doc"
@@ -2727,7 +2727,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 29,
       "norm_label": "seo.astro component",
       "_origin": "semantic",
       "id": "readme_seo_component"
@@ -2742,7 +2742,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Output is static; every page ships pre-rendered HTML for SEO and Core Web Vitals, and only individual routes opt into on-demand rendering with prerender = false.",
-      "community": 0,
+      "community": 1,
       "norm_label": "static-first / prerender rationale",
       "_origin": "semantic",
       "id": "readme_static_first"
@@ -2757,7 +2757,7 @@
       "author": null,
       "contributor": null,
       "rationale": "PUBLIC_-prefixed vars are exposed to client JS (Astro convention); everything else is server-only and read inside the /api/lead serverless function.",
-      "community": 0,
+      "community": 1,
       "norm_label": "environment variables",
       "_origin": "semantic",
       "id": "readme_environment"
@@ -2768,7 +2768,7 @@
       "source_file": "src/components/layout/Header.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "header.astro",
       "id": "src_components_layout_header"
     },
@@ -2778,7 +2778,7 @@
       "source_file": "src/components/layout/Header.astro",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "localizepath()",
       "id": "src_components_layout_header_localizepath"
     },
@@ -2788,7 +2788,7 @@
       "source_file": "src/components/layout/MobileNav.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "mobilenav.astro",
       "id": "src_components_layout_mobilenav"
     },
@@ -2798,7 +2798,7 @@
       "source_file": "src/components/sections/PrivacyBody.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "privacybody.astro",
       "id": "src_components_sections_privacybody"
     },
@@ -2808,7 +2808,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "company",
       "id": "src_consts_company"
     },
@@ -2818,7 +2818,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "site",
       "id": "src_consts_site"
     },
@@ -2828,7 +2828,7 @@
       "source_file": "src/consts.ts",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "nav_items",
       "id": "src_consts_nav_items"
     },
@@ -2838,7 +2838,7 @@
       "source_file": "tests/e2e/header-responsive.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 37,
+      "community": 31,
       "norm_label": "header-responsive.spec.mjs",
       "id": "tests_e2e_header_responsive_spec"
     },
@@ -2848,7 +2848,7 @@
       "source_file": "tests/e2e/header-responsive.spec.mjs",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 37,
+      "community": 31,
       "norm_label": "locales",
       "id": "tests_e2e_header_responsive_spec_locales"
     },
@@ -2858,7 +2858,7 @@
       "source_file": "tests/e2e/header-responsive.spec.mjs",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 37,
+      "community": 31,
       "norm_label": "headerstate()",
       "id": "tests_e2e_header_responsive_spec_headerstate"
     },
@@ -2868,7 +2868,7 @@
       "source_file": "src/components/layout/LangSwitch.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "langswitch.astro",
       "id": "src_components_layout_langswitch"
     },
@@ -2878,7 +2878,7 @@
       "source_file": "src/components/layout/LangSwitch.astro",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "t",
       "id": "src_components_layout_langswitch_t"
     },
@@ -2888,7 +2888,7 @@
       "source_file": "src/components/layout/LangSwitch.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "string",
       "id": "src_components_layout_langswitch_string"
     },
@@ -2898,7 +2898,7 @@
       "source_file": "src/components/layout/LangSwitch.astro",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 5,
+      "community": 12,
       "norm_label": "flagsvg()",
       "id": "src_components_layout_langswitch_flagsvg"
     },
@@ -2908,7 +2908,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "utils.ts",
       "id": "src_i18n_utils"
     },
@@ -2918,7 +2918,7 @@
       "source_file": "src/components/sections/Capability1.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "capability1.astro",
       "id": "src_components_sections_capability1"
     },
@@ -2928,7 +2928,7 @@
       "source_file": "src/components/sections/Capability2.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "capability2.astro",
       "id": "src_components_sections_capability2"
     },
@@ -2938,7 +2938,7 @@
       "source_file": "src/components/sections/Capability3.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "capability3.astro",
       "id": "src_components_sections_capability3"
     },
@@ -2948,7 +2948,7 @@
       "source_file": "src/components/sections/Capability4.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "capability4.astro",
       "id": "src_components_sections_capability4"
     },
@@ -2958,7 +2958,7 @@
       "source_file": "src/components/sections/HowItWorks.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "howitworks.astro",
       "id": "src_components_sections_howitworks"
     },
@@ -2968,7 +2968,7 @@
       "source_file": "src/components/sections/Results.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 23,
+      "community": 12,
       "norm_label": "results.astro",
       "id": "src_components_sections_results"
     },
@@ -2978,7 +2978,7 @@
       "source_file": "src/components/sections/Results.astro",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 23,
+      "community": 12,
       "norm_label": "t",
       "id": "src_components_sections_results_t"
     },
@@ -2988,7 +2988,7 @@
       "source_file": "src/components/sections/Results.astro",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 23,
+      "community": 12,
       "norm_label": "{ pct }",
       "id": "src_components_sections_results_pct"
     },
@@ -2998,7 +2998,7 @@
       "source_file": "src/components/sections/Results.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 23,
+      "community": 12,
       "norm_label": "m1sfrom",
       "id": "src_components_sections_results_m1sfrom"
     },
@@ -3008,7 +3008,7 @@
       "source_file": "src/components/sections/Results.astro",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 23,
+      "community": 12,
       "norm_label": "m1sto",
       "id": "src_components_sections_results_m1sto"
     },
@@ -3018,7 +3018,7 @@
       "source_file": "src/components/forms/DemoForm.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "demoform.astro",
       "id": "src_components_forms_demoform"
     },
@@ -3029,7 +3029,7 @@
       "source_location": "L82",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "t()",
       "id": "src_components_forms_demoform_t"
     },
@@ -3040,7 +3040,7 @@
       "source_location": "L218",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "if()",
       "id": "src_components_forms_demoform_if"
     },
@@ -3050,7 +3050,7 @@
       "source_file": "tests/e2e/number-format.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "number-format.spec.mjs",
       "id": "tests_e2e_number_format_spec"
     },
@@ -3061,7 +3061,7 @@
       "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "pagetext()",
       "id": "tests_e2e_number_format_spec_pagetext"
     },
@@ -3074,7 +3074,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "lead integration (doc)",
       "_origin": "semantic",
       "id": "docs_lead_integration"
@@ -3089,7 +3089,7 @@
       "author": null,
       "contributor": null,
       "rationale": "If the hidden field arrives non-empty the endpoint still returns 200 {ok:true} and silently drops the lead, so the bot believes it succeeded and nothing is forwarded downstream.",
-      "community": 12,
+      "community": 11,
       "norm_label": "honeypot field (company_website)",
       "_origin": "semantic",
       "id": "docs_lead_integration_honeypot"
@@ -3103,7 +3103,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 11,
       "norm_label": "lead payload validation",
       "_origin": "semantic",
       "id": "docs_lead_integration_lead_validation"
@@ -3118,7 +3118,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The signature must be computed over the exact serialized JSON body bytes sent on the wire; the receiver must verify against raw request body bytes, not a re-serialized parse, because re-serializing can reorder keys or change whitespace and break verification.",
-      "community": 12,
+      "community": 11,
       "norm_label": "hmac-sha256 lead signature (x-gradvera-signature)",
       "_origin": "semantic",
       "id": "docs_lead_integration_hmac_signature"
@@ -3133,7 +3133,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Shared secret for HMAC-SHA256 signing; must match the toolkit's WEBSITE_WEBHOOK_SECRET; blank means no signature header, so production must always set it to let the receiver reject forgeries.",
-      "community": 12,
+      "community": 11,
       "norm_label": "gtm_lead_secret env var",
       "_origin": "semantic",
       "id": "docs_lead_integration_gtm_lead_secret"
@@ -3148,7 +3148,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Lives in the gtm-toolkit repo (gtm_toolkit.website module), mirrors the Smartlead webhook receiver: Starlette + HMAC, decoupled queue + consumer so the public endpoint never blocks on D365. Returns fast (enqueues only).",
-      "community": 12,
+      "community": 11,
       "norm_label": "gtm-toolkit inbound-lead webhook receiver (post /website/lead)",
       "_origin": "semantic",
       "id": "docs_lead_integration_gtm_toolkit_receiver"
@@ -3163,7 +3163,7 @@
       "author": null,
       "contributor": null,
       "rationale": "gtm website consume --apply creates the D365 Account+Lead, idempotent on (email, receivedAt) via a processed-key ledger; an email that already exists as an Open Lead or active Contact is skipped+logged so inbound never clobbers a rep-managed record. Smartlead enrollment is deliberately not automatic for inbound demo requests.",
-      "community": 12,
+      "community": 11,
       "norm_label": "d365 write path (scheduled consumer, idempotent)",
       "_origin": "semantic",
       "id": "docs_lead_integration_d365_write_path"
@@ -3178,7 +3178,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The visitor always sees success (HTTP 200) once the lead is valid, even if the downstream hand-off failed, because the site must never break the success UX over a transient toolkit outage; the forward is bounded by a 5s timeout so a hung receiver can't stall the request.",
-      "community": 12,
+      "community": 11,
       "norm_label": "`forwarded` soft flag",
       "_origin": "semantic",
       "id": "docs_lead_integration_forwarded_flag"
@@ -3192,7 +3192,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "seo growth implementation plan (doc)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth"
@@ -3206,7 +3206,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "pr1: feat/lead-event-ga4",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_pr1"
@@ -3220,7 +3220,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "pr2: feat/localized-slugs",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_pr2"
@@ -3234,7 +3234,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "pr3: feat/content-pages",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_pr3"
@@ -3248,7 +3248,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "task 1: generate_lead datalayer push + e2e + doc",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task1"
@@ -3263,7 +3263,7 @@
       "author": null,
       "contributor": null,
       "rationale": "src/i18n/slugs.ts becomes the single source of truth for per-locale URL segments, consumed by localizePath/stripLocale and by astro.config.mjs (sitemap alternates, priorities, 308 redirects).",
-      "community": 3,
+      "community": 4,
       "norm_label": "task 2: slug map + localized routing helpers",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task2"
@@ -3278,7 +3278,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Architecture review verdict was revise-plan and flagged this Critical: Astro strips the trailing slash from redirect keys and the Vercel adapter compiles `^/sl/book-a-demo$`, which does not match the indexed trailing-slash URL and the adapter disables fallback redirect HTML \u2014 without a patch script the renamed SL/HR URLs would 404 in production.",
-      "community": 3,
+      "community": 4,
       "norm_label": "task 3: sitemap + redirects + trailing-slash patch script",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task3"
@@ -3292,7 +3292,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "task 4: rename page dirs + update e2e specs",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task4"
@@ -3306,7 +3306,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "task 5: guidearticle component + guide.est content (cluster 1: kalkulacije)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task5"
@@ -3320,7 +3320,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "task 6: cluster 2 content (guide.bid: predracun/troskovnik)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task6"
@@ -3334,7 +3334,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "task 7: footer links + e2e + graphify + docs",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_task7"
@@ -3349,7 +3349,7 @@
       "author": null,
       "contributor": null,
       "rationale": "ASCII-only slugs, no diacritics, so a segment absent from the map keeps its canonical form in every locale.",
-      "community": 3,
+      "community": 4,
       "norm_label": "slugs/reverse slug map (src/i18n/slugs.ts, planned)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_slug_map"
@@ -3364,7 +3364,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Under strict TS the `lang === DEFAULT_LOCALE` early return does not narrow lang (DEFAULT_LOCALE is typed Locale, not the literal), so an explicit `as 'sl'|'hr'` cast is required or astro check fails with TS7053. stripLocale keeps a file-like/hash guard so `.png` paths never gain a trailing slash.",
-      "community": 3,
+      "community": 4,
       "norm_label": "localizepath/striplocale slug-aware rework (src/i18n/utils.ts)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_localizepath_rework"
@@ -3379,7 +3379,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Widens each emitted Vercel redirect matcher from `^/sl/book-a-demo$` to `^/sl/book-a-demo/?$` post-build; fails loudly if nothing matched so a silent regression cannot ship. Must be wired via package.json's build script since no vercel.json exists to override the dashboard build command.",
-      "community": 3,
+      "community": 4,
       "norm_label": "scripts/patch-vercel-redirects.mjs (planned)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_patch_vercel_redirects"
@@ -3394,7 +3394,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The sitemap integration's i18n: block is removed because its same-path grouping breaks under localized per-locale slugs; serialize() computes xhtml:link alternates + x-default itself from the canonical path and the slug map.",
-      "community": 3,
+      "community": 4,
       "norm_label": "astro.config.mjs sitemap serialize() rework (slug-aware alternates)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_sitemap_serialize"
@@ -3409,7 +3409,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Only launch-era paths (book-a-demo, privacy-policy) get redirects \u2014 pages created after the slug map existed never served a canonical-slug URL, so a permanent redirect transfers the indexed SEO signal only where needed.",
-      "community": 3,
+      "community": 4,
       "norm_label": "308 redirects for legacy canonical-slug sl/hr urls",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_legacy_redirects"
@@ -3424,7 +3424,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Props { lang: Locale; ns: string } reads dictionary keys guide.<ns>.* generically so Task 6 can reuse it unmodified with ns:'bid'.",
-      "community": 3,
+      "community": 4,
       "norm_label": "guidearticle.astro component (planned)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_guidearticle"
@@ -3439,7 +3439,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Binding brief: 5 sections/600-900 words per language, 4 FAQ Q&As with no invented statistics or fabricated customer claims, one conversion path (book a demo) \u2014 matches PRODUCT.md's calm/precise/anti-hype 'show the work' tone.",
-      "community": 3,
+      "community": 4,
       "norm_label": "guide.est.* content brief (construction cost estimation)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_guide_est_content"
@@ -3454,7 +3454,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Same structural contract as guide.est: 5 sections, 4 FAQs, Gradvera flow tie-in (structure proposal -> suggested prices -> risk review -> offer).",
-      "community": 3,
+      "community": 4,
       "norm_label": "guide.bid.* content brief (construction bid estimate)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_guide_bid_content"
@@ -3468,7 +3468,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "footer guide links (footer.explore.estguide/bidguide)",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_footer_links"
@@ -3483,51 +3483,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Cross-referenced to the gradvera-open-followups memory: use 'stavke/stavaka' consistently with existing hr.json usage and flag any new uses in the task report.",
-      "community": 3,
+      "community": 4,
       "norm_label": "hr 'stavke/stavaka' native-speaker open item",
       "_origin": "semantic",
       "id": "docs_superpowers_plans_2026_08_05_seo_growth_hr_stavaka_followup"
-    },
-    {
-      "label": "astro.config.mjs",
-      "file_type": "code",
-      "source_file": "astro.config.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 3,
-      "norm_label": "astro.config.mjs",
-      "id": "astro_config"
-    },
-    {
-      "label": "LEGACY_SLUG_PATHS",
-      "file_type": "code",
-      "source_file": "astro.config.mjs",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 3,
-      "norm_label": "legacy_slug_paths",
-      "id": "astro_config_legacy_slug_paths"
-    },
-    {
-      "label": "redirects",
-      "file_type": "code",
-      "source_file": "astro.config.mjs",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 3,
-      "norm_label": "redirects",
-      "id": "astro_config_redirects"
-    },
-    {
-      "label": "serialize()",
-      "file_type": "code",
-      "source_file": "astro.config.mjs",
-      "source_location": "L56",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "norm_label": "serialize()",
-      "id": "astro_config_serialize"
     },
     {
       "label": "package.json",
@@ -3535,7 +3494,7 @@
       "source_file": "package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "package.json",
       "id": "package"
     },
@@ -3545,7 +3504,7 @@
       "source_file": "package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "name",
       "id": "package_name"
     },
@@ -3555,7 +3514,7 @@
       "source_file": "package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "type",
       "id": "package_type"
     },
@@ -3565,7 +3524,7 @@
       "source_file": "package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "version",
       "id": "package_version"
     },
@@ -3575,7 +3534,7 @@
       "source_file": "package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "private",
       "id": "package_private"
     },
@@ -3585,7 +3544,7 @@
       "source_file": "package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "description",
       "id": "package_description"
     },
@@ -3595,7 +3554,7 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "scripts",
       "id": "package_scripts"
     },
@@ -3605,7 +3564,7 @@
       "source_file": "package.json",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "dev",
       "id": "package_scripts_dev"
     },
@@ -3615,7 +3574,7 @@
       "source_file": "package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "start",
       "id": "package_scripts_start"
     },
@@ -3625,7 +3584,7 @@
       "source_file": "package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "build",
       "id": "package_scripts_build"
     },
@@ -3635,7 +3594,7 @@
       "source_file": "package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "preview",
       "id": "package_scripts_preview"
     },
@@ -3645,7 +3604,7 @@
       "source_file": "package.json",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "check",
       "id": "package_scripts_check"
     },
@@ -3655,7 +3614,7 @@
       "source_file": "package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "test:e2e",
       "id": "package_scripts_test_e2e"
     },
@@ -3665,7 +3624,7 @@
       "source_file": "package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "test:e2e:report",
       "id": "package_scripts_test_e2e_report"
     },
@@ -3675,7 +3634,7 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "astro",
       "id": "package_scripts_astro"
     },
@@ -3685,7 +3644,7 @@
       "source_file": "package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "dependencies",
       "id": "package_dependencies"
     },
@@ -3695,7 +3654,7 @@
       "source_file": "package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/sitemap",
       "id": "package_dependencies_astrojs_sitemap"
     },
@@ -3705,7 +3664,7 @@
       "source_file": "package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/sitemap",
       "id": "astrojs_sitemap"
     },
@@ -3715,7 +3674,7 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/vercel",
       "id": "package_dependencies_astrojs_vercel"
     },
@@ -3725,7 +3684,7 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/vercel",
       "id": "astrojs_vercel"
     },
@@ -3735,7 +3694,7 @@
       "source_file": "package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@fontsource/ibm-plex-mono",
       "id": "package_dependencies_fontsource_ibm_plex_mono"
     },
@@ -3745,7 +3704,7 @@
       "source_file": "package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@fontsource/ibm-plex-sans",
       "id": "package_dependencies_fontsource_ibm_plex_sans"
     },
@@ -3755,7 +3714,7 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "astro",
       "id": "package_dependencies_astro"
     },
@@ -3765,7 +3724,7 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "astro",
       "id": "astro"
     },
@@ -3775,7 +3734,7 @@
       "source_file": "package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "devdependencies",
       "id": "package_devdependencies"
     },
@@ -3785,7 +3744,7 @@
       "source_file": "package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/check",
       "id": "package_devdependencies_astrojs_check"
     },
@@ -3795,7 +3754,7 @@
       "source_file": "package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@astrojs/check",
       "id": "astrojs_check"
     },
@@ -3805,7 +3764,7 @@
       "source_file": "package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@playwright/test",
       "id": "package_devdependencies_playwright_test"
     },
@@ -3815,7 +3774,7 @@
       "source_file": "package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "@playwright/test",
       "id": "playwright_test"
     },
@@ -3825,7 +3784,7 @@
       "source_file": "package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "typescript",
       "id": "package_devdependencies_typescript"
     },
@@ -3835,7 +3794,7 @@
       "source_file": "package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "typescript",
       "id": "typescript"
     },
@@ -3845,7 +3804,7 @@
       "source_file": "scripts/patch-vercel-redirects.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 30,
       "norm_label": "patch-vercel-redirects.mjs",
       "id": "scripts_patch_vercel_redirects"
     },
@@ -3855,7 +3814,7 @@
       "source_file": "scripts/patch-vercel-redirects.mjs",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 36,
+      "community": 30,
       "norm_label": "cfgpath",
       "id": "scripts_patch_vercel_redirects_cfgpath"
     },
@@ -3865,7 +3824,7 @@
       "source_file": "scripts/patch-vercel-redirects.mjs",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 36,
+      "community": 30,
       "norm_label": "cfg",
       "id": "scripts_patch_vercel_redirects_cfg"
     },
@@ -3875,7 +3834,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "locales",
       "id": "src_i18n_utils_locales"
     },
@@ -3887,7 +3846,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "locale",
       "id": "src_i18n_utils_locale"
     },
@@ -3897,7 +3856,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "default_locale",
       "id": "src_i18n_utils_default_locale"
     },
@@ -3907,7 +3866,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 9,
+      "community": 8,
       "norm_label": "locale_meta",
       "id": "src_i18n_utils_locale_meta"
     },
@@ -3917,7 +3876,7 @@
       "source_file": "src/i18n/utils.ts",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "dicts",
       "id": "src_i18n_utils_dicts"
     },
@@ -3928,7 +3887,7 @@
       "source_location": "L41",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "islocale()",
       "id": "src_i18n_utils_islocale"
     },
@@ -3939,7 +3898,7 @@
       "source_location": "L45",
       "_callable": true,
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "isempty()",
       "id": "src_i18n_utils_isempty"
     },
@@ -3950,7 +3909,7 @@
       "source_location": "L58",
       "_callable": true,
       "_origin": "ast",
-      "community": 21,
+      "community": 0,
       "norm_label": "usetranslations()",
       "id": "src_i18n_utils_usetranslations"
     },
@@ -3961,7 +3920,7 @@
       "source_location": "L74",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "usenumberformat()",
       "id": "src_i18n_utils_usenumberformat"
     },
@@ -3972,7 +3931,7 @@
       "source_location": "L87",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "getlocalefrompath()",
       "id": "src_i18n_utils_getlocalefrompath"
     },
@@ -3983,7 +3942,7 @@
       "source_location": "L93",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 0,
       "norm_label": "striplocale()",
       "id": "src_i18n_utils_striplocale"
     },
@@ -3994,7 +3953,7 @@
       "source_location": "L110",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "localizepath()",
       "id": "src_i18n_utils_localizepath"
     },
@@ -4005,7 +3964,7 @@
       "source_location": "L126",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "alternates()",
       "id": "src_i18n_utils_alternates"
     },
@@ -4016,7 +3975,7 @@
       "source_location": "L138",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "absoluteurl()",
       "id": "src_i18n_utils_absoluteurl"
     },
@@ -4026,7 +3985,7 @@
       "source_file": "src/pages/hr/pravila-privatnosti/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "pravila-privatnosti/index.astro",
       "id": "src_pages_hr_pravila_privatnosti_index"
     },
@@ -4036,7 +3995,7 @@
       "source_file": "src/pages/hr/pravila-privatnosti/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_hr_pravila_privatnosti_index_t"
     },
@@ -4046,7 +4005,7 @@
       "source_file": "src/pages/hr/rezervirajte-demo/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "hr/rezervirajte-demo/index.astro",
       "id": "src_pages_hr_rezervirajte_demo_index"
     },
@@ -4056,7 +4015,7 @@
       "source_file": "src/pages/hr/rezervirajte-demo/index.astro",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_hr_rezervirajte_demo_index_t"
     },
@@ -4066,7 +4025,7 @@
       "source_file": "src/pages/hr/rezervirajte-demo/index.astro",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "breadcrumbld",
       "id": "src_pages_hr_rezervirajte_demo_index_breadcrumbld"
     },
@@ -4076,7 +4035,7 @@
       "source_file": "src/pages/sl/politika-zasebnosti/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "politika-zasebnosti/index.astro",
       "id": "src_pages_sl_politika_zasebnosti_index"
     },
@@ -4086,7 +4045,7 @@
       "source_file": "src/pages/sl/politika-zasebnosti/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 14,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_sl_politika_zasebnosti_index_t"
     },
@@ -4096,7 +4055,7 @@
       "source_file": "src/pages/sl/rezervirajte-demo/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "sl/rezervirajte-demo/index.astro",
       "id": "src_pages_sl_rezervirajte_demo_index"
     },
@@ -4106,7 +4065,7 @@
       "source_file": "src/pages/sl/rezervirajte-demo/index.astro",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "t",
       "id": "src_pages_sl_rezervirajte_demo_index_t"
     },
@@ -4116,7 +4075,7 @@
       "source_file": "src/pages/sl/rezervirajte-demo/index.astro",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 13,
+      "community": 0,
       "norm_label": "breadcrumbld",
       "id": "src_pages_sl_rezervirajte_demo_index_breadcrumbld"
     },
@@ -4126,7 +4085,7 @@
       "source_file": "tests/e2e/lang-picker.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "lang-picker.spec.mjs",
       "id": "tests_e2e_lang_picker_spec"
     },
@@ -4136,7 +4095,7 @@
       "source_file": "tests/e2e/lang-picker.spec.mjs",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "endonyms",
       "id": "tests_e2e_lang_picker_spec_endonyms"
     },
@@ -4146,7 +4105,7 @@
       "source_file": "tests/e2e/lead-tracking.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "lead-tracking.spec.mjs",
       "id": "tests_e2e_lead_tracking_spec"
     },
@@ -4156,7 +4115,7 @@
       "source_file": "tests/e2e/lead-tracking.spec.mjs",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 11,
+      "community": 10,
       "norm_label": "pages",
       "id": "tests_e2e_lead_tracking_spec_pages"
     },
@@ -4169,7 +4128,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "lead conversion tracking (ga4 via gtm)",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_leadconversiontracking"
@@ -4183,7 +4142,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "ga4 (google analytics 4)",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_ga4"
@@ -4197,7 +4156,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "window.datalayer push on lead success",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_datalayerpush"
@@ -4211,7 +4170,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "generate_lead event",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_generateleadevent"
@@ -4226,7 +4185,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The push happens client-side only after the API returns 2xx; honeypot and validation paths never fire it because they are two different mechanisms \u2014 a filled honeypot early-returns before fetch is ever called, while a non-JS bot POSTing /api/lead directly gets a 200 response but never runs the client-side script, so the push never fires either way.",
-      "community": 10,
+      "community": 9,
       "norm_label": "honeypot/validation paths never fire push",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_honeypotvalidationpaths"
@@ -4240,7 +4199,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "public_gtm_id env var",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_publicgtmidenvvar"
@@ -4254,7 +4213,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "gtm container setup (one-time)",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_gtmcontainersetup"
@@ -4268,7 +4227,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "ce \u2014 generate_lead trigger",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_customeventtrigger"
@@ -4282,7 +4241,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "ga4 event tag",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_ga4eventtag"
@@ -4296,7 +4255,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "data layer variables (dlv - locale/form_id/page)",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_datalayervariables"
@@ -4310,7 +4269,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "ga4 key event marking",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_ga4keyevent"
@@ -4324,7 +4283,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "gtm preview verification (staging)",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_gtmpreviewverification"
@@ -4339,7 +4298,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Consent-denied visitors send cookieless pings under Consent Mode v2, so counts in GA4 are modeled/partial by design rather than a tracking bug.",
-      "community": 10,
+      "community": 9,
       "norm_label": "consent mode v2 cookieless pings",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_consentmodev2cookielesspings"
@@ -4353,7 +4312,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "ga4 debugview",
       "_origin": "semantic",
       "id": "docs_lead_tracking_ga4_ga4debugview"
@@ -4364,49 +4323,9 @@
       "source_file": "src/components/layout/Footer.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_layout_footer",
-      "community": 3,
-      "norm_label": "footer.astro"
-    },
-    {
-      "label": "GuideArticle.astro",
-      "file_type": "code",
-      "source_file": "src/components/pages/GuideArticle.astro",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_pages_guidearticle",
-      "community": 7,
-      "norm_label": "guidearticle.astro"
-    },
-    {
-      "label": "slugs.ts",
-      "file_type": "code",
-      "source_file": "src/i18n/slugs.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_i18n_slugs",
-      "community": 3,
-      "norm_label": "slugs.ts"
-    },
-    {
-      "label": "SLUGS",
-      "file_type": "code",
-      "source_file": "src/i18n/slugs.ts",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_i18n_slugs_slugs",
-      "community": 3,
-      "norm_label": "slugs"
-    },
-    {
-      "label": "REVERSE",
-      "file_type": "code",
-      "source_file": "src/i18n/slugs.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "src_i18n_slugs_reverse",
-      "community": 3,
-      "norm_label": "reverse"
+      "community": 4,
+      "norm_label": "footer.astro",
+      "id": "src_components_layout_footer"
     },
     {
       "label": "construction-bid-estimate/index.astro",
@@ -4414,9 +4333,9 @@
       "source_file": "src/pages/construction-bid-estimate/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_construction_bid_estimate_index",
-      "community": 7,
-      "norm_label": "construction-bid-estimate/index.astro"
+      "community": 0,
+      "norm_label": "construction-bid-estimate/index.astro",
+      "id": "src_pages_construction_bid_estimate_index"
     },
     {
       "label": "t",
@@ -4424,9 +4343,9 @@
       "source_file": "src/pages/construction-bid-estimate/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "src_pages_construction_bid_estimate_index_t",
-      "community": 7,
-      "norm_label": "t"
+      "community": 0,
+      "norm_label": "t",
+      "id": "src_pages_construction_bid_estimate_index_t"
     },
     {
       "label": "faqLd",
@@ -4434,9 +4353,9 @@
       "source_file": "src/pages/construction-bid-estimate/index.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_pages_construction_bid_estimate_index_faqld",
-      "community": 7,
-      "norm_label": "faqld"
+      "community": 0,
+      "norm_label": "faqld",
+      "id": "src_pages_construction_bid_estimate_index_faqld"
     },
     {
       "label": "breadcrumbLd",
@@ -4444,9 +4363,9 @@
       "source_file": "src/pages/construction-bid-estimate/index.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "src_pages_construction_bid_estimate_index_breadcrumbld",
-      "community": 7,
-      "norm_label": "breadcrumbld"
+      "community": 0,
+      "norm_label": "breadcrumbld",
+      "id": "src_pages_construction_bid_estimate_index_breadcrumbld"
     },
     {
       "label": "construction-cost-estimation/index.astro",
@@ -4454,9 +4373,9 @@
       "source_file": "src/pages/construction-cost-estimation/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_construction_cost_estimation_index",
-      "community": 14,
-      "norm_label": "construction-cost-estimation/index.astro"
+      "community": 0,
+      "norm_label": "construction-cost-estimation/index.astro",
+      "id": "src_pages_construction_cost_estimation_index"
     },
     {
       "label": "t",
@@ -4464,9 +4383,9 @@
       "source_file": "src/pages/construction-cost-estimation/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "src_pages_construction_cost_estimation_index_t",
-      "community": 14,
-      "norm_label": "t"
+      "community": 0,
+      "norm_label": "t",
+      "id": "src_pages_construction_cost_estimation_index_t"
     },
     {
       "label": "faqLd",
@@ -4474,9 +4393,9 @@
       "source_file": "src/pages/construction-cost-estimation/index.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_pages_construction_cost_estimation_index_faqld",
-      "community": 14,
-      "norm_label": "faqld"
+      "community": 0,
+      "norm_label": "faqld",
+      "id": "src_pages_construction_cost_estimation_index_faqld"
     },
     {
       "label": "breadcrumbLd",
@@ -4484,9 +4403,9 @@
       "source_file": "src/pages/construction-cost-estimation/index.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "src_pages_construction_cost_estimation_index_breadcrumbld",
-      "community": 14,
-      "norm_label": "breadcrumbld"
+      "community": 0,
+      "norm_label": "breadcrumbld",
+      "id": "src_pages_construction_cost_estimation_index_breadcrumbld"
     },
     {
       "label": "gradevinske-kalkulacije/index.astro",
@@ -4494,9 +4413,9 @@
       "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinske_kalkulacije_index",
-      "community": 7,
-      "norm_label": "gradevinske-kalkulacije/index.astro"
+      "community": 0,
+      "norm_label": "gradevinske-kalkulacije/index.astro",
+      "id": "src_pages_hr_gradevinske_kalkulacije_index"
     },
     {
       "label": "t",
@@ -4504,9 +4423,9 @@
       "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinske_kalkulacije_index_t",
-      "community": 7,
-      "norm_label": "t"
+      "community": 0,
+      "norm_label": "t",
+      "id": "src_pages_hr_gradevinske_kalkulacije_index_t"
     },
     {
       "label": "faqLd",
@@ -4514,9 +4433,9 @@
       "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinske_kalkulacije_index_faqld",
-      "community": 7,
-      "norm_label": "faqld"
+      "community": 0,
+      "norm_label": "faqld",
+      "id": "src_pages_hr_gradevinske_kalkulacije_index_faqld"
     },
     {
       "label": "breadcrumbLd",
@@ -4524,9 +4443,9 @@
       "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinske_kalkulacije_index_breadcrumbld",
-      "community": 7,
-      "norm_label": "breadcrumbld"
+      "community": 0,
+      "norm_label": "breadcrumbld",
+      "id": "src_pages_hr_gradevinske_kalkulacije_index_breadcrumbld"
     },
     {
       "label": "gradevinski-troskovnik/index.astro",
@@ -4534,9 +4453,9 @@
       "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinski_troskovnik_index",
-      "community": 27,
-      "norm_label": "gradevinski-troskovnik/index.astro"
+      "community": 0,
+      "norm_label": "gradevinski-troskovnik/index.astro",
+      "id": "src_pages_hr_gradevinski_troskovnik_index"
     },
     {
       "label": "t",
@@ -4544,9 +4463,9 @@
       "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinski_troskovnik_index_t",
-      "community": 27,
-      "norm_label": "t"
+      "community": 0,
+      "norm_label": "t",
+      "id": "src_pages_hr_gradevinski_troskovnik_index_t"
     },
     {
       "label": "faqLd",
@@ -4554,9 +4473,9 @@
       "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinski_troskovnik_index_faqld",
-      "community": 27,
-      "norm_label": "faqld"
+      "community": 0,
+      "norm_label": "faqld",
+      "id": "src_pages_hr_gradevinski_troskovnik_index_faqld"
     },
     {
       "label": "breadcrumbLd",
@@ -4564,9 +4483,9 @@
       "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "src_pages_hr_gradevinski_troskovnik_index_breadcrumbld",
-      "community": 27,
-      "norm_label": "breadcrumbld"
+      "community": 0,
+      "norm_label": "breadcrumbld",
+      "id": "src_pages_hr_gradevinski_troskovnik_index_breadcrumbld"
     },
     {
       "label": "gradbene-kalkulacije/index.astro",
@@ -4574,9 +4493,9 @@
       "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_pages_sl_gradbene_kalkulacije_index",
-      "community": 7,
-      "norm_label": "gradbene-kalkulacije/index.astro"
+      "community": 0,
+      "norm_label": "gradbene-kalkulacije/index.astro",
+      "id": "src_pages_sl_gradbene_kalkulacije_index"
     },
     {
       "label": "t",
@@ -4584,9 +4503,9 @@
       "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "src_pages_sl_gradbene_kalkulacije_index_t",
-      "community": 7,
-      "norm_label": "t"
+      "community": 0,
+      "norm_label": "t",
+      "id": "src_pages_sl_gradbene_kalkulacije_index_t"
     },
     {
       "label": "faqLd",
@@ -4594,9 +4513,9 @@
       "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_pages_sl_gradbene_kalkulacije_index_faqld",
-      "community": 7,
-      "norm_label": "faqld"
+      "community": 0,
+      "norm_label": "faqld",
+      "id": "src_pages_sl_gradbene_kalkulacije_index_faqld"
     },
     {
       "label": "breadcrumbLd",
@@ -4604,69 +4523,9 @@
       "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "src_pages_sl_gradbene_kalkulacije_index_breadcrumbld",
-      "community": 7,
-      "norm_label": "breadcrumbld"
-    },
-    {
-      "label": "gradbeni-predracun/index.astro",
-      "file_type": "code",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_sl_gradbeni_predracun_index",
-      "community": 28,
-      "norm_label": "gradbeni-predracun/index.astro"
-    },
-    {
-      "label": "t",
-      "file_type": "code",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_pages_sl_gradbeni_predracun_index_t",
-      "community": 28,
-      "norm_label": "t"
-    },
-    {
-      "label": "faqLd",
-      "file_type": "code",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "src_pages_sl_gradbeni_predracun_index_faqld",
-      "community": 28,
-      "norm_label": "faqld"
-    },
-    {
-      "label": "breadcrumbLd",
-      "file_type": "code",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "src_pages_sl_gradbeni_predracun_index_breadcrumbld",
-      "community": 28,
-      "norm_label": "breadcrumbld"
-    },
-    {
-      "label": "content-pages.spec.mjs",
-      "file_type": "code",
-      "source_file": "tests/e2e/content-pages.spec.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tests_e2e_content_pages_spec",
-      "community": 11,
-      "norm_label": "content-pages.spec.mjs"
-    },
-    {
-      "label": "PAGES",
-      "file_type": "code",
-      "source_file": "tests/e2e/content-pages.spec.mjs",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "tests_e2e_content_pages_spec_pages",
-      "community": 11,
-      "norm_label": "pages"
+      "community": 0,
+      "norm_label": "breadcrumbld",
+      "id": "src_pages_sl_gradbene_kalkulacije_index_breadcrumbld"
     },
     {
       "label": "localized-slugs.spec.mjs",
@@ -4674,9 +4533,9 @@
       "source_file": "tests/e2e/localized-slugs.spec.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tests_e2e_localized_slugs_spec",
-      "community": 38,
-      "norm_label": "localized-slugs.spec.mjs"
+      "community": 32,
+      "norm_label": "localized-slugs.spec.mjs",
+      "id": "tests_e2e_localized_slugs_spec"
     },
     {
       "label": "ROOT",
@@ -4684,9 +4543,9 @@
       "source_file": "tests/e2e/localized-slugs.spec.mjs",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "tests_e2e_localized_slugs_spec_root",
-      "community": 38,
-      "norm_label": "root"
+      "community": 32,
+      "norm_label": "root",
+      "id": "tests_e2e_localized_slugs_spec_root"
     },
     {
       "label": "PAGES",
@@ -4694,9 +4553,9 @@
       "source_file": "tests/e2e/localized-slugs.spec.mjs",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "tests_e2e_localized_slugs_spec_pages",
-      "community": 38,
-      "norm_label": "pages"
+      "community": 32,
+      "norm_label": "pages",
+      "id": "tests_e2e_localized_slugs_spec_pages"
     },
     {
       "label": "Gradvera (marketing website / product)",
@@ -4708,9 +4567,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_gradvera",
-      "community": 1,
-      "norm_label": "gradvera (marketing website / product)"
+      "community": 2,
+      "norm_label": "gradvera (marketing website / product)",
+      "id": "claude_gradvera"
     },
     {
       "label": "DIGITAL SOLUTIONS d.o.o. (company behind Gradvera)",
@@ -4722,9 +4581,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_digital_solutions",
-      "community": 1,
-      "norm_label": "digital solutions d.o.o. (company behind gradvera)"
+      "community": 2,
+      "norm_label": "digital solutions d.o.o. (company behind gradvera)",
+      "id": "claude_digital_solutions"
     },
     {
       "label": "gradvera.com (production domain)",
@@ -4736,9 +4595,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_gradvera_com",
-      "community": 1,
-      "norm_label": "gradvera.com (production domain)"
+      "community": 2,
+      "norm_label": "gradvera.com (production domain)",
+      "id": "claude_gradvera_com"
     },
     {
       "label": "Astro 5 (static output framework)",
@@ -4750,9 +4609,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_astro_5",
-      "community": 1,
-      "norm_label": "astro 5 (static output framework)"
+      "community": 2,
+      "norm_label": "astro 5 (static output framework)",
+      "id": "claude_astro_5"
     },
     {
       "label": "@astrojs/vercel integration",
@@ -4764,9 +4623,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_astrojs_vercel",
-      "community": 1,
-      "norm_label": "@astrojs/vercel integration"
+      "community": 2,
+      "norm_label": "@astrojs/vercel integration",
+      "id": "claude_astrojs_vercel"
     },
     {
       "label": "src/pages/api/lead.ts (POST /api/lead, only on-demand route)",
@@ -4779,9 +4638,9 @@
       "contributor": null,
       "rationale": "Only on-demand route in an otherwise fully static/prerendered site (output: 'static'); export const prerender = false lets it break the static model just for lead capture.",
       "_origin": "semantic",
-      "id": "claude_pages_api_lead_ts",
-      "community": 4,
-      "norm_label": "src/pages/api/lead.ts (post /api/lead, only on-demand route)"
+      "community": 5,
+      "norm_label": "src/pages/api/lead.ts (post /api/lead, only on-demand route)",
+      "id": "claude_pages_api_lead_ts"
     },
     {
       "label": "TypeScript (astro/tsconfigs/strict, no any)",
@@ -4793,9 +4652,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_typescript_strict",
-      "community": 1,
-      "norm_label": "typescript (astro/tsconfigs/strict, no any)"
+      "community": 2,
+      "norm_label": "typescript (astro/tsconfigs/strict, no any)",
+      "id": "claude_typescript_strict"
     },
     {
       "label": "@astrojs/sitemap integration",
@@ -4807,9 +4666,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_astrojs_sitemap",
-      "community": 1,
-      "norm_label": "@astrojs/sitemap integration"
+      "community": 2,
+      "norm_label": "@astrojs/sitemap integration",
+      "id": "claude_astrojs_sitemap"
     },
     {
       "label": "@fontsource/ibm-plex-sans + -mono fonts",
@@ -4821,9 +4680,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_fontsource_fonts",
-      "community": 1,
-      "norm_label": "@fontsource/ibm-plex-sans + -mono fonts"
+      "community": 2,
+      "norm_label": "@fontsource/ibm-plex-sans + -mono fonts",
+      "id": "claude_fontsource_fonts"
     },
     {
       "label": "`astro check` verification gate",
@@ -4835,9 +4694,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_astro_check",
-      "community": 1,
-      "norm_label": "`astro check` verification gate"
+      "community": 2,
+      "norm_label": "`astro check` verification gate",
+      "id": "claude_astro_check"
     },
     {
       "label": "npm run dev (astro dev)",
@@ -4849,9 +4708,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_npm_run_dev",
-      "community": 1,
-      "norm_label": "npm run dev (astro dev)"
+      "community": 2,
+      "norm_label": "npm run dev (astro dev)",
+      "id": "claude_npm_run_dev"
     },
     {
       "label": "npm run build (astro build)",
@@ -4863,9 +4722,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_npm_run_build",
-      "community": 1,
-      "norm_label": "npm run build (astro build)"
+      "community": 2,
+      "norm_label": "npm run build (astro build)",
+      "id": "claude_npm_run_build"
     },
     {
       "label": "npm run preview (serve build locally)",
@@ -4877,9 +4736,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_npm_run_preview",
-      "community": 1,
-      "norm_label": "npm run preview (serve build locally)"
+      "community": 2,
+      "norm_label": "npm run preview (serve build locally)",
+      "id": "claude_npm_run_preview"
     },
     {
       "label": "npm run check (astro check)",
@@ -4891,9 +4750,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_npm_run_check",
-      "community": 1,
-      "norm_label": "npm run check (astro check)"
+      "community": 2,
+      "norm_label": "npm run check (astro check)",
+      "id": "claude_npm_run_check"
     },
     {
       "label": "npm run test:e2e (Playwright browser checks)",
@@ -4905,9 +4764,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_npm_run_test_e2e",
-      "community": 1,
-      "norm_label": "npm run test:e2e (playwright browser checks)"
+      "community": 2,
+      "norm_label": "npm run test:e2e (playwright browser checks)",
+      "id": "claude_npm_run_test_e2e"
     },
     {
       "label": "Playwright e2e harness (tests/e2e/)",
@@ -4919,9 +4778,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_playwright_harness",
-      "community": 1,
-      "norm_label": "playwright e2e harness (tests/e2e/)"
+      "community": 2,
+      "norm_label": "playwright e2e harness (tests/e2e/)",
+      "id": "claude_playwright_harness"
     },
     {
       "label": "tests/e2e/README.md",
@@ -4933,9 +4792,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_tests_e2e_readme",
-      "community": 1,
-      "norm_label": "tests/e2e/readme.md"
+      "community": 2,
+      "norm_label": "tests/e2e/readme.md",
+      "id": "claude_tests_e2e_readme"
     },
     {
       "label": "src/pages/ (routes, Astro i18n)",
@@ -4947,9 +4806,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_src_pages",
-      "community": 4,
-      "norm_label": "src/pages/ (routes, astro i18n)"
+      "community": 5,
+      "norm_label": "src/pages/ (routes, astro i18n)",
+      "id": "claude_src_pages"
     },
     {
       "label": "Astro i18n routing (prefixDefaultLocale: false; EN/SL/HR)",
@@ -4961,9 +4820,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_i18n_routing",
-      "community": 4,
-      "norm_label": "astro i18n routing (prefixdefaultlocale: false; en/sl/hr)"
+      "community": 5,
+      "norm_label": "astro i18n routing (prefixdefaultlocale: false; en/sl/hr)",
+      "id": "claude_i18n_routing"
     },
     {
       "label": "src/i18n/slugs.ts (localized SL/HR slugs)",
@@ -4975,9 +4834,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_i18n_slugs_ts",
-      "community": 4,
-      "norm_label": "src/i18n/slugs.ts (localized sl/hr slugs)"
+      "community": 5,
+      "norm_label": "src/i18n/slugs.ts (localized sl/hr slugs)",
+      "id": "claude_i18n_slugs_ts"
     },
     {
       "label": "src/pages/robots.txt.ts",
@@ -4989,9 +4848,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_robots_txt_ts",
-      "community": 1,
-      "norm_label": "src/pages/robots.txt.ts"
+      "community": 2,
+      "norm_label": "src/pages/robots.txt.ts",
+      "id": "claude_robots_txt_ts"
     },
     {
       "label": "astro.config.mjs (hreflang x-default + per-page priority)",
@@ -5003,9 +4862,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_astro_config_mjs",
-      "community": 1,
-      "norm_label": "astro.config.mjs (hreflang x-default + per-page priority)"
+      "community": 2,
+      "norm_label": "astro.config.mjs (hreflang x-default + per-page priority)",
+      "id": "claude_astro_config_mjs"
     },
     {
       "label": "src/components/sections/ (Hero, Problem, HelpsIntro, Capability1-4, HowItWorks, Outcomes, Results, Cta1/2, PrivacyBody)",
@@ -5017,9 +4876,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_components_sections",
-      "community": 41,
-      "norm_label": "src/components/sections/ (hero, problem, helpsintro, capability1-4, howitworks, outcomes, results, cta1/2, privacybody)"
+      "community": 35,
+      "norm_label": "src/components/sections/ (hero, problem, helpsintro, capability1-4, howitworks, outcomes, results, cta1/2, privacybody)",
+      "id": "claude_components_sections"
     },
     {
       "label": "src/components/layout/ (Header, Footer, MobileNav)",
@@ -5031,9 +4890,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_components_layout",
-      "community": 51,
-      "norm_label": "src/components/layout/ (header, footer, mobilenav)"
+      "community": 45,
+      "norm_label": "src/components/layout/ (header, footer, mobilenav)",
+      "id": "claude_components_layout"
     },
     {
       "label": "DemoForm.astro (src/components/forms/DemoForm)",
@@ -5045,9 +4904,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_demoform_astro",
-      "community": 4,
-      "norm_label": "demoform.astro (src/components/forms/demoform)"
+      "community": 5,
+      "norm_label": "demoform.astro (src/components/forms/demoform)",
+      "id": "claude_demoform_astro"
     },
     {
       "label": "src/components/marketing/ (Analytics, CookieConsent)",
@@ -5059,9 +4918,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_marketing_components",
-      "community": 1,
-      "norm_label": "src/components/marketing/ (analytics, cookieconsent)"
+      "community": 2,
+      "norm_label": "src/components/marketing/ (analytics, cookieconsent)",
+      "id": "claude_marketing_components"
     },
     {
       "label": "SEO.astro (src/components/seo/SEO; sole owner of JSON-LD/structured-data)",
@@ -5073,9 +4932,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_seo_astro",
-      "community": 4,
-      "norm_label": "seo.astro (src/components/seo/seo; sole owner of json-ld/structured-data)"
+      "community": 5,
+      "norm_label": "seo.astro (src/components/seo/seo; sole owner of json-ld/structured-data)",
+      "id": "claude_seo_astro"
     },
     {
       "label": "src/components/pages/HomeSections",
@@ -5087,9 +4946,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_homesections",
-      "community": 41,
-      "norm_label": "src/components/pages/homesections"
+      "community": 35,
+      "norm_label": "src/components/pages/homesections",
+      "id": "claude_homesections"
     },
     {
       "label": "src/i18n/ (en.json/sl.json/hr.json + _parts/)",
@@ -5101,9 +4960,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_i18n_dir",
-      "community": 31,
-      "norm_label": "src/i18n/ (en.json/sl.json/hr.json + _parts/)"
+      "community": 25,
+      "norm_label": "src/i18n/ (en.json/sl.json/hr.json + _parts/)",
+      "id": "claude_i18n_dir"
     },
     {
       "label": "src/i18n/utils.ts (translation helpers)",
@@ -5115,9 +4974,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_i18n_utils_ts",
-      "community": 31,
-      "norm_label": "src/i18n/utils.ts (translation helpers)"
+      "community": 25,
+      "norm_label": "src/i18n/utils.ts (translation helpers)",
+      "id": "claude_i18n_utils_ts"
     },
     {
       "label": "src/consts.ts (brand/company facts, site metadata, analytics ids, nav)",
@@ -5129,9 +4988,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_consts_ts",
-      "community": 31,
-      "norm_label": "src/consts.ts (brand/company facts, site metadata, analytics ids, nav)"
+      "community": 25,
+      "norm_label": "src/consts.ts (brand/company facts, site metadata, analytics ids, nav)",
+      "id": "claude_consts_ts"
     },
     {
       "label": "src/styles/ cascade (gradvera-tokens -> site -> cap1-screens -> cap-screens -> site-polish)",
@@ -5144,9 +5003,9 @@
       "contributor": null,
       "rationale": "Cascade order is deliberate: gradvera-tokens (design tokens) -> site -> cap1-screens -> cap-screens -> site-polish, with site-polish the local corrections layer that must stay last; imported by BaseLayout.astro so Vite bundles/minifies/fingerprints them for immutable caching.",
       "_origin": "semantic",
-      "id": "claude_styles_dir",
-      "community": 4,
-      "norm_label": "src/styles/ cascade (gradvera-tokens -> site -> cap1-screens -> cap-screens -> site-polish)"
+      "community": 5,
+      "norm_label": "src/styles/ cascade (gradvera-tokens -> site -> cap1-screens -> cap-screens -> site-polish)",
+      "id": "claude_styles_dir"
     },
     {
       "label": "BaseLayout.astro (wraps every route)",
@@ -5158,9 +5017,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_baselayout_astro",
-      "community": 4,
-      "norm_label": "baselayout.astro (wraps every route)"
+      "community": 5,
+      "norm_label": "baselayout.astro (wraps every route)",
+      "id": "claude_baselayout_astro"
     },
     {
       "label": "src/scripts/site.js (interactions)",
@@ -5172,9 +5031,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_site_js",
-      "community": 4,
-      "norm_label": "src/scripts/site.js (interactions)"
+      "community": 5,
+      "norm_label": "src/scripts/site.js (interactions)",
+      "id": "claude_site_js"
     },
     {
       "label": "public/assets/ (static SVG monograms)",
@@ -5186,9 +5045,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_public_assets",
-      "community": 53,
-      "norm_label": "public/assets/ (static svg monograms)"
+      "community": 47,
+      "norm_label": "public/assets/ (static svg monograms)",
+      "id": "claude_public_assets"
     },
     {
       "label": "public/og/ (per-locale OG images)",
@@ -5200,9 +5059,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_public_og",
-      "community": 42,
-      "norm_label": "public/og/ (per-locale og images)"
+      "community": 36,
+      "norm_label": "public/og/ (per-locale og images)",
+      "id": "claude_public_og"
     },
     {
       "label": "scripts/render-og.mjs (regenerates OG images from sibling SVGs)",
@@ -5214,9 +5073,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_render_og_mjs",
-      "community": 42,
-      "norm_label": "scripts/render-og.mjs (regenerates og images from sibling svgs)"
+      "community": 36,
+      "norm_label": "scripts/render-og.mjs (regenerates og images from sibling svgs)",
+      "id": "claude_render_og_mjs"
     },
     {
       "label": "Lead capture mechanism (POST /api/lead flow)",
@@ -5229,9 +5088,9 @@
       "contributor": null,
       "rationale": "Forwarding failures to gtm-toolkit are logged but never surfaced to the user; the route always returns 200 so the success UX never breaks, and the honeypot silently drops bots by also returning 200.",
       "_origin": "semantic",
-      "id": "claude_lead_capture",
-      "community": 4,
-      "norm_label": "lead capture mechanism (post /api/lead flow)"
+      "community": 5,
+      "norm_label": "lead capture mechanism (post /api/lead flow)",
+      "id": "claude_lead_capture"
     },
     {
       "label": "company_website honeypot field (silently drops bots)",
@@ -5243,9 +5102,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_company_website_honeypot",
-      "community": 4,
-      "norm_label": "company_website honeypot field (silently drops bots)"
+      "community": 5,
+      "norm_label": "company_website honeypot field (silently drops bots)",
+      "id": "claude_company_website_honeypot"
     },
     {
       "label": "GTM_LEAD_ENDPOINT env var",
@@ -5257,9 +5116,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_gtm_lead_endpoint",
-      "community": 4,
-      "norm_label": "gtm_lead_endpoint env var"
+      "community": 5,
+      "norm_label": "gtm_lead_endpoint env var",
+      "id": "claude_gtm_lead_endpoint"
     },
     {
       "label": "HMAC-SHA256 signing (lead forwarding)",
@@ -5271,9 +5130,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_hmac_sha256",
-      "community": 4,
-      "norm_label": "hmac-sha256 signing (lead forwarding)"
+      "community": 5,
+      "norm_label": "hmac-sha256 signing (lead forwarding)",
+      "id": "claude_hmac_sha256"
     },
     {
       "label": "gtm-toolkit inbound-lead service (external repo)",
@@ -5286,9 +5145,9 @@
       "contributor": null,
       "rationale": "Cross-repo lead concepts (HMAC, idempotent ledger, decoupled queue) live in gtm-toolkit, not this repo; the knowledge graph intentionally flags them as unlinked here rather than fabricating a cross-repo edge.",
       "_origin": "semantic",
-      "id": "claude_gtm_toolkit",
-      "community": 4,
-      "norm_label": "gtm-toolkit inbound-lead service (external repo)"
+      "community": 5,
+      "norm_label": "gtm-toolkit inbound-lead service (external repo)",
+      "id": "claude_gtm_toolkit"
     },
     {
       "label": "Dynamics 365 (lead destination)",
@@ -5300,9 +5159,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_dynamics_365",
-      "community": 4,
-      "norm_label": "dynamics 365 (lead destination)"
+      "community": 5,
+      "norm_label": "dynamics 365 (lead destination)",
+      "id": "claude_dynamics_365"
     },
     {
       "label": ".env.example (lead-capture env vars)",
@@ -5314,9 +5173,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_env_example",
-      "community": 4,
-      "norm_label": ".env.example (lead-capture env vars)"
+      "community": 5,
+      "norm_label": ".env.example (lead-capture env vars)",
+      "id": "claude_env_example"
     },
     {
       "label": "docs/lead-integration.md (full lead-capture contract)",
@@ -5328,9 +5187,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_lead_integration_doc",
-      "community": 4,
-      "norm_label": "docs/lead-integration.md (full lead-capture contract)"
+      "community": 5,
+      "norm_label": "docs/lead-integration.md (full lead-capture contract)",
+      "id": "claude_lead_integration_doc"
     },
     {
       "label": "Google Tag Manager",
@@ -5342,9 +5201,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_gtm",
-      "community": 1,
-      "norm_label": "google tag manager"
+      "community": 2,
+      "norm_label": "google tag manager",
+      "id": "claude_gtm"
     },
     {
       "label": "Google Consent Mode",
@@ -5356,9 +5215,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_google_consent_mode",
-      "community": 1,
-      "norm_label": "google consent mode"
+      "community": 2,
+      "norm_label": "google consent mode",
+      "id": "claude_google_consent_mode"
     },
     {
       "label": "CookieConsent.astro (GDPR consent gate)",
@@ -5370,9 +5229,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_cookieconsent_astro",
-      "community": 1,
-      "norm_label": "cookieconsent.astro (gdpr consent gate)"
+      "community": 2,
+      "norm_label": "cookieconsent.astro (gdpr consent gate)",
+      "id": "claude_cookieconsent_astro"
     },
     {
       "label": "noindex on non-production deploys",
@@ -5384,9 +5243,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_noindex",
-      "community": 1,
-      "norm_label": "noindex on non-production deploys"
+      "community": 2,
+      "norm_label": "noindex on non-production deploys",
+      "id": "claude_noindex"
     },
     {
       "label": "Vercel (deploy platform)",
@@ -5398,9 +5257,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_vercel",
-      "community": 1,
-      "norm_label": "vercel (deploy platform)"
+      "community": 2,
+      "norm_label": "vercel (deploy platform)",
+      "id": "claude_vercel"
     },
     {
       "label": "main branch (-> production)",
@@ -5412,9 +5271,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_main_branch",
-      "community": 1,
-      "norm_label": "main branch (-> production)"
+      "community": 2,
+      "norm_label": "main branch (-> production)",
+      "id": "claude_main_branch"
     },
     {
       "label": "staging branch (-> staging.gradvera.com)",
@@ -5426,9 +5285,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_staging_branch",
-      "community": 1,
-      "norm_label": "staging branch (-> staging.gradvera.com)"
+      "community": 2,
+      "norm_label": "staging branch (-> staging.gradvera.com)",
+      "id": "claude_staging_branch"
     },
     {
       "label": "staging.gradvera.com",
@@ -5440,9 +5299,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_staging_gradvera_com",
-      "community": 1,
-      "norm_label": "staging.gradvera.com"
+      "community": 2,
+      "norm_label": "staging.gradvera.com",
+      "id": "claude_staging_gradvera_com"
     },
     {
       "label": ".github/workflows/ci.yml",
@@ -5454,9 +5313,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_ci_yml",
-      "community": 1,
-      "norm_label": ".github/workflows/ci.yml"
+      "community": 2,
+      "norm_label": ".github/workflows/ci.yml",
+      "id": "claude_ci_yml"
     },
     {
       "label": "CI \"astro check\" job (type-safety gate)",
@@ -5469,9 +5328,9 @@
       "contributor": null,
       "rationale": "Exists to close the Vercel-doesn't-type-check gap: Vercel runs astro build but not astro check, so without this CI job a type error would pass the build and ship silently.",
       "_origin": "semantic",
-      "id": "claude_astro_check_job",
-      "community": 1,
-      "norm_label": "ci \"astro check\" job (type-safety gate)"
+      "community": 2,
+      "norm_label": "ci \"astro check\" job (type-safety gate)",
+      "id": "claude_astro_check_job"
     },
     {
       "label": "CI \"e2e\" job (Playwright)",
@@ -5483,9 +5342,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_e2e_job",
-      "community": 1,
-      "norm_label": "ci \"e2e\" job (playwright)"
+      "community": 2,
+      "norm_label": "ci \"e2e\" job (playwright)",
+      "id": "claude_e2e_job"
     },
     {
       "label": "Branch flow (feat/fix/docs/ci/chore -> PR -> CI green -> merge)",
@@ -5498,9 +5357,9 @@
       "contributor": null,
       "rationale": "Short-lived branches keep main/staging as the only long-lived branches; GitHub auto-deletes the head branch on merge and the local copy should be deleted too.",
       "_origin": "semantic",
-      "id": "claude_branch_flow",
-      "community": 1,
-      "norm_label": "branch flow (feat/fix/docs/ci/chore -> pr -> ci green -> merge)"
+      "community": 2,
+      "norm_label": "branch flow (feat/fix/docs/ci/chore -> pr -> ci green -> merge)",
+      "id": "claude_branch_flow"
     },
     {
       "label": "Keeping staging current (merge main -> staging procedure)",
@@ -5513,9 +5372,9 @@
       "contributor": null,
       "rationale": "staging must carry its own ci.yml because the merge-triggered push to staging needs its own CI run, separate from main's.",
       "_origin": "semantic",
-      "id": "claude_keeping_staging_current",
-      "community": 1,
-      "norm_label": "keeping staging current (merge main -> staging procedure)"
+      "community": 2,
+      "norm_label": "keeping staging current (merge main -> staging procedure)",
+      "id": "claude_keeping_staging_current"
     },
     {
       "label": "PRODUCT.md (register, users, purpose, brand personality, design principles)",
@@ -5527,9 +5386,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_product_md",
-      "community": 17,
-      "norm_label": "product.md (register, users, purpose, brand personality, design principles)"
+      "community": 15,
+      "norm_label": "product.md (register, users, purpose, brand personality, design principles)",
+      "id": "claude_product_md"
     },
     {
       "label": "DESIGN.md (visual system, \"The Lit Blueprint\")",
@@ -5541,9 +5400,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_design_md",
-      "community": 17,
-      "norm_label": "design.md (visual system, \"the lit blueprint\")"
+      "community": 15,
+      "norm_label": "design.md (visual system, \"the lit blueprint\")",
+      "id": "claude_design_md"
     },
     {
       "label": ".impeccable/design.json sidecar",
@@ -5555,9 +5414,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_impeccable_design_json",
-      "community": 17,
-      "norm_label": ".impeccable/design.json sidecar"
+      "community": 15,
+      "norm_label": ".impeccable/design.json sidecar",
+      "id": "claude_impeccable_design_json"
     },
     {
       "label": "/impeccable skill",
@@ -5569,9 +5428,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_impeccable_skill",
-      "community": 17,
-      "norm_label": "/impeccable skill"
+      "community": 15,
+      "norm_label": "/impeccable skill",
+      "id": "claude_impeccable_skill"
     },
     {
       "label": "5 design principles (restraint, show-the-work, credibility=conversion, trilingual parity, speed)",
@@ -5583,9 +5442,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_five_design_principles",
-      "community": 17,
-      "norm_label": "5 design principles (restraint, show-the-work, credibility=conversion, trilingual parity, speed)"
+      "community": 15,
+      "norm_label": "5 design principles (restraint, show-the-work, credibility=conversion, trilingual parity, speed)",
+      "id": "claude_five_design_principles"
     },
     {
       "label": "WCAG 2.1 AA target",
@@ -5597,9 +5456,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_wcag21aa",
-      "community": 17,
-      "norm_label": "wcag 2.1 aa target"
+      "community": 15,
+      "norm_label": "wcag 2.1 aa target",
+      "id": "claude_wcag21aa"
     },
     {
       "label": "\"The Lit Blueprint\" north star (blueprint-navy + burnished-amber #E8901C, IBM Plex Sans/Mono)",
@@ -5611,9 +5470,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_lit_blueprint",
-      "community": 17,
-      "norm_label": "\"the lit blueprint\" north star (blueprint-navy + burnished-amber #e8901c, ibm plex sans/mono)"
+      "community": 15,
+      "norm_label": "\"the lit blueprint\" north star (blueprint-navy + burnished-amber #e8901c, ibm plex sans/mono)",
+      "id": "claude_lit_blueprint"
     },
     {
       "label": "Claude Design project (remote design source of truth)",
@@ -5625,9 +5484,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_design_project_url",
-      "community": 25,
-      "norm_label": "claude design project (remote design source of truth)"
+      "community": 21,
+      "norm_label": "claude design project (remote design source of truth)",
+      "id": "claude_design_project_url"
     },
     {
       "label": "/design-sync skill",
@@ -5640,9 +5499,9 @@
       "contributor": null,
       "rationale": "Enforces incremental, one-component-at-a-time sync with a strict order (list_files/get_file read -> finalize_plan locks paths -> write_files/delete_files) to avoid wholesale replaces.",
       "_origin": "semantic",
-      "id": "claude_design_sync_skill",
-      "community": 25,
-      "norm_label": "/design-sync skill"
+      "community": 21,
+      "norm_label": "/design-sync skill",
+      "id": "claude_design_sync_skill"
     },
     {
       "label": "DesignSync MCP tool",
@@ -5654,9 +5513,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_designsync_mcp",
-      "community": 25,
-      "norm_label": "designsync mcp tool"
+      "community": 21,
+      "norm_label": "designsync mcp tool",
+      "id": "claude_designsync_mcp"
     },
     {
       "label": "/design-login (auth for design scopes)",
@@ -5668,9 +5527,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_design_login",
-      "community": 25,
-      "norm_label": "/design-login (auth for design scopes)"
+      "community": 21,
+      "norm_label": "/design-login (auth for design scopes)",
+      "id": "claude_design_login"
     },
     {
       "label": "graphify-out/ (committed knowledge-graph outputs)",
@@ -5683,9 +5542,9 @@
       "contributor": null,
       "rationale": "Consulted before a fix or feature to see blast radius and coupling (what imports a helper, which sections a layout wraps, which doc describes a mechanism) instead of rediscovering it from scratch; machine-local cache/state is git-ignored so only portable outputs are committed.",
       "_origin": "semantic",
-      "id": "claude_graphify_out",
-      "community": 4,
-      "norm_label": "graphify-out/ (committed knowledge-graph outputs)"
+      "community": 5,
+      "norm_label": "graphify-out/ (committed knowledge-graph outputs)",
+      "id": "claude_graphify_out"
     },
     {
       "label": "graph.json (nodes/edges of the repo graph)",
@@ -5697,9 +5556,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_graph_json",
-      "community": 4,
-      "norm_label": "graph.json (nodes/edges of the repo graph)"
+      "community": 5,
+      "norm_label": "graph.json (nodes/edges of the repo graph)",
+      "id": "claude_graph_json"
     },
     {
       "label": "graph.html (standalone interactive viewer)",
@@ -5711,9 +5570,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_graph_html",
-      "community": 4,
-      "norm_label": "graph.html (standalone interactive viewer)"
+      "community": 5,
+      "norm_label": "graph.html (standalone interactive viewer)",
+      "id": "claude_graph_html"
     },
     {
       "label": "GRAPH_REPORT.md (god nodes, bridges, cohesion audit)",
@@ -5725,9 +5584,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_graph_report_md",
-      "community": 4,
-      "norm_label": "graph_report.md (god nodes, bridges, cohesion audit)"
+      "community": 5,
+      "norm_label": "graph_report.md (god nodes, bridges, cohesion audit)",
+      "id": "claude_graph_report_md"
     },
     {
       "label": "/graphify skill",
@@ -5739,9 +5598,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_graphify_skill",
-      "community": 4,
-      "norm_label": "/graphify skill"
+      "community": 5,
+      "norm_label": "/graphify skill",
+      "id": "claude_graphify_skill"
     },
     {
       "label": "`graphify query` (NL question against graph.json)",
@@ -5753,9 +5612,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_graphify_query",
-      "community": 4,
-      "norm_label": "`graphify query` (nl question against graph.json)"
+      "community": 5,
+      "norm_label": "`graphify query` (nl question against graph.json)",
+      "id": "claude_graphify_query"
     },
     {
       "label": "Idempotent ledger (cross-repo lead concept, lives in gtm-toolkit)",
@@ -5767,9 +5626,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_idempotent_ledger",
-      "community": 4,
-      "norm_label": "idempotent ledger (cross-repo lead concept, lives in gtm-toolkit)"
+      "community": 5,
+      "norm_label": "idempotent ledger (cross-repo lead concept, lives in gtm-toolkit)",
+      "id": "claude_idempotent_ledger"
     },
     {
       "label": "Decoupled queue (cross-repo lead concept, lives in gtm-toolkit)",
@@ -5781,9 +5640,9 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_decoupled_queue",
-      "community": 4,
-      "norm_label": "decoupled queue (cross-repo lead concept, lives in gtm-toolkit)"
+      "community": 5,
+      "norm_label": "decoupled queue (cross-repo lead concept, lives in gtm-toolkit)",
+      "id": "claude_decoupled_queue"
     },
     {
       "label": ".idea/ (WebStorm editor state, not application code)",
@@ -5795,9 +5654,150 @@
       "author": null,
       "contributor": null,
       "_origin": "semantic",
-      "id": "claude_idea_dir",
-      "community": 52,
-      "norm_label": ".idea/ (webstorm editor state, not application code)"
+      "community": 46,
+      "norm_label": ".idea/ (webstorm editor state, not application code)",
+      "id": "claude_idea_dir"
+    },
+    {
+      "label": "astro.config.mjs",
+      "file_type": "code",
+      "source_file": "astro.config.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "astro_config",
+      "community": 4,
+      "norm_label": "astro.config.mjs"
+    },
+    {
+      "label": "LEGACY_SLUG_PATHS",
+      "file_type": "code",
+      "source_file": "astro.config.mjs",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "astro_config_legacy_slug_paths",
+      "community": 4,
+      "norm_label": "legacy_slug_paths"
+    },
+    {
+      "label": "redirects",
+      "file_type": "code",
+      "source_file": "astro.config.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "astro_config_redirects",
+      "community": 4,
+      "norm_label": "redirects"
+    },
+    {
+      "label": "serialize()",
+      "file_type": "code",
+      "source_file": "astro.config.mjs",
+      "source_location": "L60",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "astro_config_serialize",
+      "community": 4,
+      "norm_label": "serialize()"
+    },
+    {
+      "label": "GuideArticle.astro",
+      "file_type": "code",
+      "source_file": "src/components/pages/GuideArticle.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_pages_guidearticle",
+      "community": 0,
+      "norm_label": "guidearticle.astro"
+    },
+    {
+      "label": "slugs.ts",
+      "file_type": "code",
+      "source_file": "src/i18n/slugs.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_i18n_slugs",
+      "community": 4,
+      "norm_label": "slugs.ts"
+    },
+    {
+      "label": "SLUGS",
+      "file_type": "code",
+      "source_file": "src/i18n/slugs.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_i18n_slugs_slugs",
+      "community": 4,
+      "norm_label": "slugs"
+    },
+    {
+      "label": "REVERSE",
+      "file_type": "code",
+      "source_file": "src/i18n/slugs.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "src_i18n_slugs_reverse",
+      "community": 4,
+      "norm_label": "reverse"
+    },
+    {
+      "label": "gradbeni-izracun/index.astro",
+      "file_type": "code",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_sl_gradbeni_izracun_index",
+      "community": 0,
+      "norm_label": "gradbeni-izracun/index.astro"
+    },
+    {
+      "label": "t",
+      "file_type": "code",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_pages_sl_gradbeni_izracun_index_t",
+      "community": 0,
+      "norm_label": "t"
+    },
+    {
+      "label": "faqLd",
+      "file_type": "code",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "src_pages_sl_gradbeni_izracun_index_faqld",
+      "community": 0,
+      "norm_label": "faqld"
+    },
+    {
+      "label": "breadcrumbLd",
+      "file_type": "code",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "src_pages_sl_gradbeni_izracun_index_breadcrumbld",
+      "community": 0,
+      "norm_label": "breadcrumbld"
+    },
+    {
+      "label": "content-pages.spec.mjs",
+      "file_type": "code",
+      "source_file": "tests/e2e/content-pages.spec.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_e2e_content_pages_spec",
+      "community": 10,
+      "norm_label": "content-pages.spec.mjs"
+    },
+    {
+      "label": "PAGES",
+      "file_type": "code",
+      "source_file": "tests/e2e/content-pages.spec.mjs",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "tests_e2e_content_pages_spec_pages",
+      "community": 10,
+      "norm_label": "pages"
     }
   ],
   "links": [
@@ -8291,36 +8291,36 @@
       "confidence": "EXTRACTED",
       "source_file": "src/pages/construction-bid-estimate/index.astro",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_layouts_baselayout",
-      "confidence_score": 1.0
+      "target": "src_layouts_baselayout"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/construction-cost-estimation/index.astro",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_layouts_baselayout",
-      "confidence_score": 1.0
+      "target": "src_layouts_baselayout"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_layouts_baselayout",
-      "confidence_score": 1.0
+      "target": "src_layouts_baselayout"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_layouts_baselayout",
-      "confidence_score": 1.0
+      "target": "src_layouts_baselayout"
     },
     {
       "relation": "imports_from",
@@ -8345,16 +8345,16 @@
       "confidence": "EXTRACTED",
       "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_layouts_baselayout",
-      "confidence_score": 1.0
+      "target": "src_layouts_baselayout"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_layouts_baselayout",
       "confidence_score": 1.0
     },
@@ -9297,9 +9297,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_i18n_utils",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils"
     },
     {
       "relation": "imports_from",
@@ -9309,9 +9309,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_i18n_utils",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils"
     },
     {
       "relation": "imports_from",
@@ -9321,9 +9321,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_i18n_utils",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils"
     },
     {
       "relation": "imports_from",
@@ -9333,9 +9333,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_i18n_utils",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils"
     },
     {
       "relation": "imports_from",
@@ -9369,19 +9369,19 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_i18n_utils",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils"
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_i18n_utils",
       "confidence_score": 1.0
     },
@@ -9953,75 +9953,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L17",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "astro_config_legacy_slug_paths"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "astro_config_redirects"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L56",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "astro_config_serialize"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "src_i18n_slugs"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "src_i18n_slugs_reverse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.mjs",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "astro_config",
-      "target": "src_i18n_slugs_slugs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L17",
       "weight": 1.0,
@@ -10385,9 +10316,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_i18n_utils_locale",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_locale"
     },
     {
       "relation": "imports",
@@ -10397,9 +10328,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_i18n_utils_locale",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_locale"
     },
     {
       "relation": "imports",
@@ -10409,9 +10340,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_i18n_utils_locale",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_locale"
     },
     {
       "relation": "imports",
@@ -10421,9 +10352,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_i18n_utils_locale",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_locale"
     },
     {
       "relation": "imports",
@@ -10457,19 +10388,19 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_i18n_utils_locale",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_locale"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_i18n_utils_locale",
       "confidence_score": 1.0
     },
@@ -10541,9 +10472,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_i18n_utils_usetranslations",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_usetranslations"
     },
     {
       "relation": "imports",
@@ -10553,9 +10484,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_i18n_utils_usetranslations",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_usetranslations"
     },
     {
       "relation": "imports",
@@ -10565,9 +10496,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_i18n_utils_usetranslations",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_usetranslations"
     },
     {
       "relation": "imports",
@@ -10577,9 +10508,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_i18n_utils_usetranslations",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_usetranslations"
     },
     {
       "relation": "imports",
@@ -10613,19 +10544,19 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_i18n_utils_usetranslations",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_usetranslations"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_i18n_utils_usetranslations",
       "confidence_score": 1.0
     },
@@ -10673,9 +10604,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_i18n_utils_localizepath",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_localizepath"
     },
     {
       "relation": "imports",
@@ -10685,9 +10616,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_i18n_utils_localizepath",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_localizepath"
     },
     {
       "relation": "imports",
@@ -10697,9 +10628,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_i18n_utils_localizepath",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_localizepath"
     },
     {
       "relation": "imports",
@@ -10709,9 +10640,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_i18n_utils_localizepath",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_localizepath"
     },
     {
       "relation": "imports",
@@ -10733,19 +10664,19 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_i18n_utils_localizepath",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_localizepath"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_i18n_utils_localizepath",
       "confidence_score": 1.0
     },
@@ -10769,9 +10700,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_i18n_utils_absoluteurl",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_absoluteurl"
     },
     {
       "relation": "imports",
@@ -10781,9 +10712,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_i18n_utils_absoluteurl",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_absoluteurl"
     },
     {
       "relation": "imports",
@@ -10793,9 +10724,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_i18n_utils_absoluteurl",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_absoluteurl"
     },
     {
       "relation": "imports",
@@ -10805,9 +10736,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_i18n_utils_absoluteurl",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_absoluteurl"
     },
     {
       "relation": "imports",
@@ -10829,19 +10760,19 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_i18n_utils_absoluteurl",
-      "confidence_score": 1.0
+      "target": "src_i18n_utils_absoluteurl"
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
+      "source": "src_pages_sl_gradbeni_izracun_index",
       "target": "src_i18n_utils_absoluteurl",
       "confidence_score": 1.0
     },
@@ -11140,91 +11071,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/construction-cost-estimation/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
-      "target": "src_components_pages_guidearticle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/i18n/slugs.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_i18n_slugs",
-      "target": "src_i18n_slugs_reverse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/i18n/slugs.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_i18n_slugs",
-      "target": "src_i18n_slugs_slugs",
-      "confidence_score": 1.0
+      "target": "src_components_pages_guidearticle"
     },
     {
       "relation": "contains",
@@ -11233,9 +11082,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_pages_construction_bid_estimate_index_breadcrumbld",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_bid_estimate_index_breadcrumbld"
     },
     {
       "relation": "contains",
@@ -11244,9 +11093,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_pages_construction_bid_estimate_index_faqld",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_bid_estimate_index_faqld"
     },
     {
       "relation": "contains",
@@ -11255,9 +11104,21 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_bid_estimate_index",
-      "target": "src_pages_construction_bid_estimate_index_t",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_bid_estimate_index_t"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/construction-cost-estimation/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_pages_construction_cost_estimation_index",
+      "target": "src_components_pages_guidearticle"
     },
     {
       "relation": "contains",
@@ -11266,9 +11127,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_pages_construction_cost_estimation_index_breadcrumbld",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_cost_estimation_index_breadcrumbld"
     },
     {
       "relation": "contains",
@@ -11277,9 +11138,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_pages_construction_cost_estimation_index_faqld",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_cost_estimation_index_faqld"
     },
     {
       "relation": "contains",
@@ -11288,9 +11149,21 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_construction_cost_estimation_index",
-      "target": "src_pages_construction_cost_estimation_index_t",
-      "confidence_score": 1.0
+      "target": "src_pages_construction_cost_estimation_index_t"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/hr/gradevinske-kalkulacije/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_pages_hr_gradevinske_kalkulacije_index",
+      "target": "src_components_pages_guidearticle"
     },
     {
       "relation": "contains",
@@ -11299,9 +11172,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_pages_hr_gradevinske_kalkulacije_index_breadcrumbld",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinske_kalkulacije_index_breadcrumbld"
     },
     {
       "relation": "contains",
@@ -11310,9 +11183,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_pages_hr_gradevinske_kalkulacije_index_faqld",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinske_kalkulacije_index_faqld"
     },
     {
       "relation": "contains",
@@ -11321,9 +11194,21 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinske_kalkulacije_index",
-      "target": "src_pages_hr_gradevinske_kalkulacije_index_t",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinske_kalkulacije_index_t"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/hr/gradevinski-troskovnik/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_pages_hr_gradevinski_troskovnik_index",
+      "target": "src_components_pages_guidearticle"
     },
     {
       "relation": "contains",
@@ -11332,9 +11217,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_pages_hr_gradevinski_troskovnik_index_breadcrumbld",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinski_troskovnik_index_breadcrumbld"
     },
     {
       "relation": "contains",
@@ -11343,9 +11228,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_pages_hr_gradevinski_troskovnik_index_faqld",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinski_troskovnik_index_faqld"
     },
     {
       "relation": "contains",
@@ -11354,9 +11239,21 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_hr_gradevinski_troskovnik_index",
-      "target": "src_pages_hr_gradevinski_troskovnik_index_t",
-      "confidence_score": 1.0
+      "target": "src_pages_hr_gradevinski_troskovnik_index_t"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/sl/gradbene-kalkulacije/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "src_pages_sl_gradbene_kalkulacije_index",
+      "target": "src_components_pages_guidearticle"
     },
     {
       "relation": "contains",
@@ -11365,9 +11262,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_pages_sl_gradbene_kalkulacije_index_breadcrumbld",
-      "confidence_score": 1.0
+      "target": "src_pages_sl_gradbene_kalkulacije_index_breadcrumbld"
     },
     {
       "relation": "contains",
@@ -11376,9 +11273,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_pages_sl_gradbene_kalkulacije_index_faqld",
-      "confidence_score": 1.0
+      "target": "src_pages_sl_gradbene_kalkulacije_index_faqld"
     },
     {
       "relation": "contains",
@@ -11387,53 +11284,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_pages_sl_gradbene_kalkulacije_index",
-      "target": "src_pages_sl_gradbene_kalkulacije_index_t",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
-      "target": "src_pages_sl_gradbeni_predracun_index_breadcrumbld",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
-      "target": "src_pages_sl_gradbeni_predracun_index_faqld",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/sl/gradbeni-predracun/index.astro",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_sl_gradbeni_predracun_index",
-      "target": "src_pages_sl_gradbeni_predracun_index_t",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/e2e/content-pages.spec.mjs",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tests_e2e_content_pages_spec",
-      "target": "tests_e2e_content_pages_spec_pages",
-      "confidence_score": 1.0
+      "target": "src_pages_sl_gradbene_kalkulacije_index_t"
     },
     {
       "relation": "contains",
@@ -11442,9 +11295,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "tests_e2e_localized_slugs_spec",
-      "target": "tests_e2e_localized_slugs_spec_pages",
-      "confidence_score": 1.0
+      "target": "tests_e2e_localized_slugs_spec_pages"
     },
     {
       "relation": "contains",
@@ -11453,9 +11306,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "tests_e2e_localized_slugs_spec",
-      "target": "tests_e2e_localized_slugs_spec_root",
-      "confidence_score": 1.0
+      "target": "tests_e2e_localized_slugs_spec_root"
     },
     {
       "relation": "conceptually_related_to",
@@ -12303,6 +12156,153 @@
       "_origin": "semantic",
       "source": "claude_graphify_skill",
       "target": "claude_graphify_query"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "astro_config_legacy_slug_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "astro_config_redirects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "astro_config_serialize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "src_i18n_slugs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "src_i18n_slugs_reverse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "astro_config",
+      "target": "src_i18n_slugs_slugs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_sl_gradbeni_izracun_index",
+      "target": "src_components_pages_guidearticle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/i18n/slugs.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_i18n_slugs",
+      "target": "src_i18n_slugs_reverse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/i18n/slugs.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_i18n_slugs",
+      "target": "src_i18n_slugs_slugs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_sl_gradbeni_izracun_index",
+      "target": "src_pages_sl_gradbeni_izracun_index_breadcrumbld",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_sl_gradbeni_izracun_index",
+      "target": "src_pages_sl_gradbeni_izracun_index_faqld",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/sl/gradbeni-izracun/index.astro",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_sl_gradbeni_izracun_index",
+      "target": "src_pages_sl_gradbeni_izracun_index_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/e2e/content-pages.spec.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_e2e_content_pages_spec",
+      "target": "tests_e2e_content_pages_spec_pages",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [
@@ -12400,5 +12400,5 @@
       "source_file": "docs/superpowers/plans/2026-08-05-seo-growth.md"
     }
   ],
-  "built_at_commit": "2685831043b886885e612e5481a594922d7c570b"
+  "built_at_commit": "774e3e546d589c91892717081d31f9f51165fdec"
 }

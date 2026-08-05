@@ -72,8 +72,15 @@
       "input_tokens": 97082,
       "output_tokens": 0,
       "files": 17
+    },
+    {
+      "date": "2026-08-05T12:48:45.019916+00:00",
+      "input_tokens": 92681,
+      "output_tokens": 0,
+      "files": 10,
+      "note": "CLAUDE.md semantic re-extraction (92681 in) discarded — non-conforming node-id stem would have ghost-duplicated existing claude_* nodes; file content unchanged since d9be354, treated as cache-stable"
     }
   ],
-  "total_input_tokens": 480523,
+  "total_input_tokens": 573204,
   "total_output_tokens": 376503
 }
