@@ -52,7 +52,7 @@ harness never feeds the `astro check` gate.
 - `src/components/` — `sections/` (Hero, Problem, HelpsIntro, Capability1–4,
   HowItWorks, Outcomes, Results, Cta1/2, PrivacyBody), `layout/` (Header, Footer,
   MobileNav), `forms/DemoForm`, `marketing/` (Analytics, CookieConsent),
-  `seo/SEO`, `pages/HomeSections`.
+  `seo/SEO`, `pages/` (HomeSections, GuideArticle).
 - `src/i18n/` — `en.json` / `sl.json` / `hr.json`, plus `_parts/` fragments (EN
   is authored in parts and assembled). `utils.ts` = translation helpers.
 - `src/consts.ts` — brand/company facts, site metadata, analytics ids, nav.

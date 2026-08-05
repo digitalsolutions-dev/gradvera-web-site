@@ -279,7 +279,7 @@
       "ps": [
         "Svaka stavka odgovara na tri pitanja prije nego što odgovori na cijenu: koji je to rad, u kojoj se jedinici mjeri i koliko ga ima. Opis mora biti dovoljno određen da bi dva procjenitelja odredila cijenu istoga rada — iskop s navedenom kategorijom tla, beton s razredom, izolacija s debljinom. Kubični metri, četvorni metri, dužni metri, tone i komadi nisu zamjenjivi, a jedinica zamijenjena između izmjera i troškovnika pomiče stavku za cijeli red veličine.",
         "Količine dolaze iz izmjera i njihova je slabost to što putuju. Izmijenjeni nacrt mijenja količinu u troškovniku, ali do vrednovane inačice promjena stiže samo ako je netko onamo prenese. Samo ako stavka kroz revizije zadrži svoj identitet — ista stavka, nova količina — razliku je poslije moguće pratiti.",
-        "Ispod jedinične cijene stoje norme: koliko materijala, rada i mehanizacije troši jedinica rada. Objavljene norme daju prosjek struke, a vaši dovršeni projekti vašu stvarnu potrošnju; oboje je korisno i odgovara na različita pitanja — koliko bi rad trebao trajati i koliko je kod vas trajao."
+        "Ispod jedinične cijene stoje norme: koliko materijala, rada i mehanizacije troši jedinica rada. Objavljene norme daju prosjek struke, a vaši dovršeni projekti vašu stvarnu potrošnju; oboje je korisno i odgovara na različita pitanja — što bi rad trebao potrošiti i što je kod vas stvarno potrošio."
       ]
     },
     {
@@ -294,7 +294,7 @@
       "h": "Pogreške zbog kojih se posao gubi",
       "ps": [
         "Najskuplje su stavke koje nedostaju. Rad koji je na nacrtu, a u troškovniku nije, obvezali ste se izvesti besplatno — a nestaje u pravilu manje vidljiv dio opsega: pomoćni radovi, skele, zaštita i popravci za drugim izvođačima.",
-        "Zastarjele cijene su tihe. Ponuda podizvođača pribavljena prije nekoliko mjeseci, cijena materijala iz prošle sezone, stavka prepisana iz starijeg projekta — svaka izgleda kao odlučen broj, a nijedna to nije. Cijene stare različitom brzinom, a u tablici ništa ne upozori da je koja od njih zastarjela.",
+        "Zastarjele cijene su tihe. Ponuda podizvođača pribavljena prije nekoliko mjeseci, cijena materijala iz prošle sezone, stavka prepisana iz starijeg projekta — svaka izgleda kao konačna brojka, a nijedna to nije. Cijene stare različitom brzinom, a u tablici ništa ne upozori da je koja od njih zastarjela.",
         "Ostaje računski dio. Redak izvan raspona zbrajanja, postotak obračunat na zbroj koji ga već sadrži, jedinična cijena upisana uz krivu jedinicu — ništa se od toga ne javlja samo. Izlazi na vidjelo ondje gdje se troškovnik susreće s obračunom i razliku treba objasniti nekome tko pred sobom ima oba dokumenta."
       ]
     },
@@ -303,7 +303,7 @@
       "ps": [
         "Brzina na ponudi dolazi od toga da ne krećete od prazne tablice. Gradvera predlaže strukturu troškovnika iz dokumentacije koju ste primili — grupe i stavke već su postavljene — pa prvi sati odlaze na provjeru opsega, a ne na prepisivanje.",
         "Vrednovanje ide istim putem: predložene jedinične cijene iz vaše povijesti uz svaku stavku, ponude podizvođača prikupljene uz stavku kojoj pripadaju, tako da su usporedive međusobno i s onim što ste za isti rad već platili, te pregled rizika koji prije zaključenja označava stavke s odstupanjima od vaše povijesti i razvrstava ih po ozbiljnosti.",
-        "Ništa u tom slijedu nije automatska potvrda. Svaki prijedlog potvrđuje ili mijenja procjenitelj, a predani troškovnik takav je da ga možete sami objasniti stavku po stavku — investitoru, banci i nadzoru i godinu i pol poslije."
+        "Ništa u tom slijedu nije automatska potvrda. Svaki prijedlog potvrđuje ili mijenja procjenitelj, a predani troškovnik takav je da ga možete sami objasniti stavku po stavku — investitoru, banci i nadzoru čak i godinu i pol poslije."
       ]
     }
   ],
@@ -323,7 +323,7 @@
     },
     {
       "q": "Možemo li vrednovati troškovnik koji smo primili u Excelu?",
-      "a": "Da. Gradvera uvozi troškovnike i prijašnje ponude onakve kakvi jesu, bez predložaka, i međusobno povezuje stavke koje opisuju isti rad. Sve što ne može pouzdano povezati označava za vašu potvrdu, umjesto da pretpostavi sama."
+      "a": "Da. Uvoz zadržava primljeni troškovnik onakvim kakav jest. Uz svaku prepoznatu stavku Gradvera zatim pripisuje predloženu jediničnu cijenu iz vaše povijesti i projekte iz kojih proizlazi. Vrednovanje primljenog troškovnika tako postaje pregled prijedloga, a ne popunjavanje praznog stupca."
     }
   ],
   "guide.bid.cta.h2": "Pogledajte Gradveru na troškovniku koji vam je na stolu.",
@@ -352,7 +352,7 @@
     {
       "h": "Jedinične cijene iz vlastite povijesti, a ne iz općeg cjenika",
       "ps": [
-        "Opći cjenici govore koliko rad stoji negdje u djelatnosti. Ne govore koliko stoji kod vas — s vašom ekipom, vašim dobavljačima i vašom organizacijom gradilišta. Najbolji izvor za jediničnu cijenu zato je povijest vaše tvrtke: projekti koje ste dovršili i cijene koje su se na njima stvarno pokazale.",
+        "Opći cjenici govore koliko rad stoji negdje u djelatnosti. Ne govore koliko stoji kod vas — s vašom ekipom, vašim dobavljačima i vašom organizacijom gradilišta. Najbolji izvor za jediničnu cijenu zato je povijest vaše tvrtke: projekti koje ste dovršili i cijene koje su se na njima stvarno potvrdile.",
         "Gradvera tu povijest koristi kao podlogu za prijedlog cijene. Uz svaku stavku prikazuje predloženu jediničnu cijenu, projekte iz kojih proizlazi i raspon u kojem se tvrtka dosad kretala na sličnim radovima. Procjenitelj cijenu prihvaća ili mijenja — odluka ostaje njegova, a svaka izmjena izoštrava sljedeći prijedlog.",
         "Praktična je razlika u tome što imate pred sobom kada cijenu treba obrazložiti. Umjesto „tako smo procijenili”, na stolu su projekti na kojima cijena počiva i odstupanje od njih."
       ]
@@ -362,7 +362,7 @@
       "ps": [
         "Zadnji dan prije predaje najgori je mogući trenutak za pažljivo čitanje. Upravo se tada u kalkulaciju uvuku pogreške koje poslije skupo stoje: količina prepisana iz starije inačice troškovnika, cijena podizvođača koja je od upita porasla, stavka s cijenom posve izvan vašeg uobičajenog raspona.",
         "Gradvera prije zaključenja ponude označava stavke koje odstupaju od povijesti tvrtke i razvrstava odstupanja po ozbiljnosti. Ne ispravlja ih sama: svaku označenu stavku potvrđuje ili mijenja procjenitelj. Svrha nije oduzeti odluku procjenitelju, nego suziti pregled na onih nekoliko stavki koje je vrijedno pogledati još jednom.",
-        "Pregled služi i kao zapisnik. Kada za pola godine netko pita zašto je određena stavka ocijenjena baš tako, odgovor je u ponudi, a ne u sjećanju."
+        "Pregled služi i kao zapisnik. Kada za pola godine netko pita zašto je pojedina stavka dobila baš takvu cijenu, odgovor je u ponudi, a ne u sjećanju."
       ]
     },
     {

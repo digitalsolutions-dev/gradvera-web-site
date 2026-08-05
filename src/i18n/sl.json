@@ -279,7 +279,7 @@
       "ps": [
         "Vsaka postavka odgovori na tri vprašanja, preden odgovori na ceno: katero delo je to, v kateri enoti se meri in koliko ga je. Opis mora biti dovolj določen, da bi dva ocenjevalca ovrednotila isto delo — izkop z navedeno kategorijo zemljine, beton z razredom, izolacija z debelino. Kubični metri, kvadratni metri, tekoči metri, tone in kosi niso zamenljivi; enota, ki se med izmerami in predračunom zamenja, premakne postavko za cel velikostni red.",
         "Količine prihajajo iz izmer in njihova šibka točka je, da potujejo. Spremenjen načrt spremeni količino v popisu del, do predračuna pa sprememba pride le, če jo nekdo tja prenese. Samo če postavka skozi revizije ohrani svojo identiteto — ista postavka, nova količina — je razliki pozneje mogoče slediti.",
-        "Pod ceno na enoto stojijo normativi: koliko materiala, dela in mehanizacije porabi enota dela. Objavljeni normativi dajo panožno vrednost, vaši zaključeni projekti pa vašo dejansko porabo; oboje je uporabno in odgovarja na različni vprašanji — koliko naj bi delo trajalo in koliko je pri vas trajalo."
+        "Pod ceno na enoto stojijo normativi: koliko materiala, dela in mehanizacije porabi enota dela. Objavljeni normativi dajo povprečje panoge, vaši zaključeni projekti pa vašo dejansko porabo; oboje je uporabno in odgovarja na različni vprašanji — koliko naj bi delo zahtevalo in koliko je pri vas dejansko porabilo."
       ]
     },
     {
@@ -294,7 +294,7 @@
       "h": "Napake, zaradi katerih se posel izgubi",
       "ps": [
         "Najdražje so manjkajoče postavke. Delo, ki je na načrtu, v predračunu pa ne, ste se zavezali izvesti brezplačno — izgine pa praviloma manj opazen del obsega: pomožna dela, odri, zaščita in popravila za drugimi izvajalci.",
-        "Zastarele cene so tihe. Ponudba podizvajalca, pridobljena pred meseci, cena materiala iz prejšnje sezone, postavka, prepisana iz starejšega projekta — vsaka je videti kot odločena številka in nobena to ni. Cene se starajo različno hitro, v preglednici pa nič ne opozori, da je katera od njih zastarala.",
+        "Zastarele cene so tihe. Ponudba podizvajalca, pridobljena pred meseci, cena materiala iz prejšnje sezone, postavka, prepisana iz starejšega projekta — vsaka je videti kot dokončna številka, pa nobena to ni. Cene se starajo različno hitro, v preglednici pa nič ne opozori, da je katera od njih zastarala.",
         "Ostane še računski del. Vrstica zunaj obsega seštevka, odstotek, obračunan na vsoto, ki ga že vsebuje, cena na enoto, vpisana ob napačni enoti — nič od tega se ne javi samo. Pokaže se tam, kjer se predračun sreča z obračunom in je razliko treba pojasniti nekomu, ki ima pred seboj oba dokumenta."
       ]
     },
@@ -323,7 +323,7 @@
     },
     {
       "q": "Ali lahko ovrednotimo popis del, ki smo ga prejeli v Excelu?",
-      "a": "Da. Gradvera uvozi popise del in pretekle ponudbe takšne, kot so, brez predlog, in med seboj poveže postavke, ki opisujejo isto delo. Vse, česar ne more zanesljivo povezati, označi za vašo potrditev in ne predpostavi sama."
+      "a": "Da. Uvoz ohrani prejeti popis del takšen, kot je. Pri vsaki prepoznani postavki Gradvera nato pripiše predlagano ceno na enoto iz vaše zgodovine in projekte, iz katerih izhaja. Ovrednotenje prejetega popisa tako postane pregledovanje predlogov in ne izpolnjevanje praznega stolpca."
     }
   ],
   "guide.bid.cta.h2": "Oglejte si Gradvero na popisu del, ki ga imate na mizi.",
@@ -337,7 +337,7 @@
       "h": "Kaj gradbene kalkulacije v resnici zajemajo",
       "ps": [
         "Gradbena kalkulacija je razčlenitev projekta na postavke, ki jih je mogoče ovrednotiti. Vsaka postavka nosi opis dela, enoto mere in količino iz popisa del, za ceno na enoto pa stojijo štirje stroškovni deli: material, delo, mehanizacija in podizvajalska dela. Dokler ti štirje deli niso izračunani, je cena na enoto zgolj ocena na pamet.",
-        "Nad postavkami sta še dva sloja, ki ju je najlažje spregledati. Režijski stroški — vodstvo gradbišča, ureditev gradbišča, zavarovanja in garancije — se lahko razdelijo na postavke ali prikažejo ločeno. Marža je ločena odločitev: pokriva tveganje konkretnega projekta, ne povprečja panoge. Pomembno je, da je razdelitev v vseh ponudbah enaka, sicer projektov med seboj ni mogoče primerjati.",
+        "Nad postavkami sta še dva sloja, ki ju je najlažje spregledati. Režijski stroški — vodenje gradbišča, ureditev gradbišča, zavarovanja in garancije — se lahko razdelijo na postavke ali prikažejo ločeno. Marža je ločena odločitev: pokriva tveganje konkretnega projekta, ne povprečja panoge. Pomembno je, da je razdelitev v vseh ponudbah enaka, sicer projektov med seboj ni mogoče primerjati.",
         "Kalkulacija gradbenih del torej ni en sam izračun, ampak zapis odločitev: katere postavke ste vključili, s kakšno količino, po kateri ceni in s kolikšno rezervo. Ta zapis je vreden toliko, kolikor ga je mogoče pozneje ponovno uporabiti."
       ]
     },
@@ -345,7 +345,7 @@
       "h": "Kje se gradbene kalkulacije v Excelu zataknejo",
       "ps": [
         "Excel se za gradbene kalkulacije uporablja z razlogom: pri roki je, vsak ga zna brati in za posamezno ponudbo naredi točno to, kar potrebujete. Težava se ne pokaže pri prvi kalkulaciji, ampak pri stoti — ko je ista postavka razpršena po petnajstih datotekah, vsaka kopija s svojo ceno in svojo različico formule.",
-        "Trije vzorci se ponavljajo. Prvi so različice: datoteka z oznako »final« in za njo še tri popravljene, pri čemer nihče zanesljivo ne ve, katera je bila oddana. Drugi je zgodovina cen — podatek o tem, po kakšni ceni ste isto delo ovrednotili lani, obstaja, a je urejen po datotekah in ne po postavkah. Tretji so tihe napake v formulah: vrstica, ki ostane zunaj obsega seštevka, se ne javi; opazite jo šele v razliki med ponudbeno in obračunsko vrednostjo.",
+        "Trije vzorci se ponavljajo. Prvi vzorec so različice: datoteka z oznako »final« in za njo še tri popravljene, pri čemer nihče zanesljivo ne ve, katera je bila oddana. Drugi je zgodovina cen — podatek o tem, po kakšni ceni ste isto delo ovrednotili lani, obstaja, a je urejen po datotekah in ne po postavkah. Tretji so tihe napake v formulah: vrstica, ki ostane zunaj obsega seštevka, se ne javi; opazite jo šele v razliki med ponudbeno in obračunsko vrednostjo.",
         "Nič od tega ni napaka uporabnika. Preglednica ne ve, kaj je postavka. Ne prepozna, da sta »široki strojni izkop, III. kategorija« in »izkop III. kat., strojno« isto delo, zato tudi ne more opozoriti, da sta v dveh ponudbah ovrednotena občutno različno."
       ]
     },
@@ -386,7 +386,7 @@
     },
     {
       "q": "Za koga je Gradvera namenjena?",
-      "a": "Za ocenjevalce, vodje ocenjevanja in komercialne vodje v gradbenih podjetjih, ki redno pripravljajo ponudbe na podlagi popisov del. Največ prinese tam, kjer podjetje že ima arhiv zaključenih projektov, iz katerega je mogoče črpati cene."
+      "a": "Za ocenjevalce, vodje kalkulacij in komercialne vodje v gradbenih podjetjih, ki redno pripravljajo ponudbe na podlagi popisov del. Največ prinese tam, kjer podjetje že ima arhiv zaključenih projektov, iz katerega je mogoče črpati cene."
     },
     {
       "q": "Koliko časa traja uvedba?",

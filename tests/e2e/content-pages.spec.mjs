@@ -14,7 +14,8 @@ const PAGES = [
 
 for (const { url, proof } of PAGES) {
   test(`${url} serves with FAQPage schema and full hreflang`, async ({ page }) => {
-    await gotoClean(page, url);
+    const res = await page.goto(url, { waitUntil: 'load' });
+    expect(res.status(), `${url} should serve 200`).toBe(200);
     await expect(page.locator('article.guide h1')).toBeVisible();
     const body = await page.textContent('body');
     expect(body.toLowerCase()).toContain(proof.toLowerCase());
