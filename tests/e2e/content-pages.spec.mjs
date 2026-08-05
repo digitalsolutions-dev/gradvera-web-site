@@ -8,7 +8,7 @@ const PAGES = [
   { url: '/sl/gradbene-kalkulacije/', lang: 'sl', proof: 'kalkulacij' },
   { url: '/hr/gradevinske-kalkulacije/', lang: 'hr', proof: 'kalkulacij' },
   { url: '/construction-bid-estimate/', lang: 'en', proof: 'Gradvera' },
-  { url: '/sl/gradbeni-predracun/', lang: 'sl', proof: 'predračun' },
+  { url: '/sl/gradbeni-izracun/', lang: 'sl', proof: 'izračun' },
   { url: '/hr/gradevinski-troskovnik/', lang: 'hr', proof: 'troškovnik' },
 ];
 
@@ -31,6 +31,6 @@ test('footer links to both guides in every locale', async ({ page }) => {
     await gotoClean(page, home);
     const hrefs = await page.locator('.foot-links a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
     expect(hrefs.join(' ')).toMatch(/construction-cost-estimation|gradbene-kalkulacije|gradevinske-kalkulacije/);
-    expect(hrefs.join(' ')).toMatch(/construction-bid-estimate|gradbeni-predracun|gradevinski-troskovnik/);
+    expect(hrefs.join(' ')).toMatch(/construction-bid-estimate|gradbeni-izracun|gradevinski-troskovnik/);
   }
 });
