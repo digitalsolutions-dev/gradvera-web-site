@@ -21,6 +21,19 @@ const k = (s: string) => t(`guide.${ns}.${s}`);
 const sections: { h: string; ps: string[] }[] = k('sections');
 const faq: { q: string; a: string }[] = k('faq');
 const demoHref = localizePath('/book-a-demo/', lang);
+
+// Cross-link each guide to its sibling cluster page (same locale) so the two
+// guides form a real cluster; anchor text is the sibling's own H1 (native,
+// keyword-rich). Rendered as a quiet in-content link before the lit CTA.
+const GUIDE_PATHS: Record<string, string> = {
+  est: '/construction-cost-estimation/',
+  bid: '/construction-bid-estimate/',
+};
+const SIBLING: Record<string, string> = { est: 'bid', bid: 'est' };
+const siblingNs = SIBLING[ns];
+const related = siblingNs
+  ? { href: localizePath(GUIDE_PATHS[siblingNs], lang), title: t(`guide.${siblingNs}.h1`) }
+  : null;
 ---
 <article class="guide">
   <header class="guide-hero">
@@ -48,6 +61,13 @@ const demoHref = localizePath('/book-a-demo/', lang);
         </details>
       ))}
     </section>
+
+    {related && (
+      <nav class="guide-related" aria-label={t('guide.related')}>
+        <p class="rel-label">{t('guide.related')}</p>
+        <a href={related.href}>{related.title} <span class="arr" aria-hidden="true">→</span></a>
+      </nav>
+    )}
 
     <aside class="guide-cta">
       <h2>{k('cta.h2')}</h2>
@@ -95,6 +115,19 @@ const demoHref = localizePath('/book-a-demo/', lang);
   .guide-faq details[open] summary::after { content: '−'; }
   .guide-faq summary:hover { color: var(--brand-primary-soft-text); }
   .guide-faq details p { margin: -2px 0 18px; padding-right: 34px; }
+
+  /* ---------- related guide (quiet in-cluster link, sits before the lit CTA) ---------- */
+  .guide-related { margin-top: clamp(40px, 6vh, 64px); padding-top: clamp(28px, 4vh, 40px);
+    border-top: 1px solid var(--border2); }
+  .guide-related .rel-label { margin: 0 0 12px; font: 500 12.5px/1 var(--font-mono);
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-primary-soft-text); }
+  .guide-related a { display: inline-flex; align-items: baseline; gap: 12px; max-width: 42ch;
+    font-weight: 600; font-size: clamp(19px, 2.1vw, 24px); line-height: 1.18;
+    letter-spacing: -0.015em; color: var(--fg1); text-decoration: none; text-wrap: balance; }
+  .guide-related a .arr { flex: none; color: var(--brand-primary-soft-text);
+    font-family: var(--font-mono); transition: transform 200ms var(--ease-out, ease); }
+  .guide-related a:hover { color: var(--brand-primary-soft-text); }
+  .guide-related a:hover .arr { transform: translateX(4px); }
 
   /* ---------- closing CTA (the one lit element on this page) ---------- */
   .guide-cta { margin-top: clamp(48px, 7vh, 76px); background: var(--ink);
