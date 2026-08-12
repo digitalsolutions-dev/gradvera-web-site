@@ -445,7 +445,7 @@
   "privacy.contact.detail.storagePeriod": "Do završetka komunikacije. Prije toga možete zatražiti prekid komunikacije — uslijed čega će vaši osobni podaci (ako ne postoji daljnja pravna osnova za njihovu daljnju obradu, npr. ugovor) biti nepovratno uništeni.",
   "privacy.contact.detail.userCategories": "Pružatelj usluge hostinga web-mjesta. Korisnik obrađuje osobne podatke isključivo prema uputama i pod nadzorom voditelja obrade.",
   "privacy.contact.p1": "Dobrodošla nam je svaka vaša poruka. Ovdje će se naša komunikacija temeljiti na našem legitimnom interesu, kako ga pokazuje komunikacija voditelja obrade s javnošću. Ako nam ne želite otkriti svoje osobne podatke, žao nam je što nećemo moći odgovoriti na vaš upit ni poslati vam ponudu. Komunikaciju možete prekinuti u bilo kojem trenutku (obavještavanjem nas), što će također značiti da ćemo izbrisati vaše osobne podatke.",
-  "privacy.contact.title": "Ako nas kontaktirate putem online obrasca ili e-poštom",
+  "privacy.contact.title": "Ako nam se obratite putem mrežnog obrasca ili e-poštom",
   "privacy.detailsLabel": "Pojedinosti",
   "privacy.hero.sub": "Kako DIGITAL SOLUTIONS d.o.o. prikuplja, koristi i štiti vaše osobne podatke u vezi s Gradverom i ovim web-mjestom.",
   "privacy.hero.title": "Pravila privatnosti",
@@ -468,7 +468,7 @@
   "privacy.newsletter.detail.storagePeriod": "Do opoziva.",
   "privacy.newsletter.detail.unsubscribe": "Iz biltena u bilo kojem trenutku klikom na poveznicu u e-porukama koje primate.",
   "privacy.newsletter.detail.userCategories": "Pružatelj usluge hostinga web-mjesta, pružatelj usluge e-pošte, pružatelj ERP-a. Korisnici obrađuju osobne podatke isključivo prema uputama i pod nadzorom voditelja obrade.",
-  "privacy.newsletter.p1": "Bilo bi nam drago ako se pretplatite na naš bilten. Budući da i mi mrzimo neželjenu poštu, obećavamo da ćemo nastojati slati samo e-vijesti i ponude koje će vam biti korisne i koje ćete rado čitati. Također ćemo nastojati slati bilten što optimalnije, kako vam nepotrebno ne bismo zatrpavali pretinac.",
+  "privacy.newsletter.p1": "Bilo bi nam drago da se pretplatite na naš bilten. Budući da ni mi ne volimo neželjenu poštu, nastojat ćemo vam slati samo e-vijesti i ponude koje su vam korisne i zanimljive. Bilten ćemo slati promišljeno i umjereno kako vam ne bismo nepotrebno zatrpavali pretinac.",
   "privacy.newsletter.p2": "Budući da biltene šaljemo samo ako ste nam za to dali osobnu privolu, pretplatu možete otkazati (povući privolu) u bilo kojem trenutku klikom na poveznicu u e-porukama koje primate. Ako ste nam dali dopuštenje da vam šaljemo ponude za koje smatramo da bi vas mogle zanimati, naše će se pretpostavke temeljiti na vašim upitima i na svim kupnjama koje ste obavili kod nas.",
   "privacy.newsletter.title": "Ako se pretplatite na naš bilten",
   "privacy.purposes.title": "Svrhe obrade",
@@ -479,11 +479,11 @@
   "privacy.rights.intro": "Sljedeća prava u vezi sa svojim osobnim podacima možete ostvariti u bilo kojem trenutku. Vaša prava uključuju pravo:",
   "privacy.rights.items": [
     "na pristup vlastitim osobnim podacima;",
-    "na ispravak vaših osobnih podataka;",
+    "na ispravak svojih osobnih podataka;",
     "na brisanje vaših osobnih podataka kada više ne postoji pravna osnova (ni pravna obveza) za njihovu pohranu, ili ako ste nam dali privolu;",
-    "na ograničavanje vaših osobnih podataka (u određenim slučajevima);",
+    "na ograničenje obrade svojih osobnih podataka (u određenim slučajevima);",
     "na prigovor — kada se obrada provodi na temelju legitimnog interesa;",
-    "na prenosivost — u slučaju ugovora ili osobne privole te kada se obrada provodi automatiziranim sredstvima."
+    "na prenosivost podataka — ako se obrada temelji na ugovoru ili privoli i provodi automatiziranim sredstvima."
   ],
   "privacy.rights.title": "Koja su moja prava i kako ih mogu ostvariti?",
   "privacy.term.complaint": "Pritužba",
