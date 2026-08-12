@@ -351,8 +351,7 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 .works { background: var(--bg1); padding: var(--sec) 0; }
 .works-steps { margin-top: clamp(40px,6vh,72px); position: relative; }
-.wstep { position: relative; display: grid; grid-template-columns: 120px 1fr; gap: clamp(20px,4vw,56px); padding: clamp(32px,5vh,56px) 0; border-top: 1px solid var(--border2); }
-.wstep:last-child { border-bottom: 1px solid var(--border2); }
+.wstep { position: relative; display: grid; grid-template-columns: 120px 1fr; gap: clamp(20px,4vw,56px); padding: clamp(32px,5vh,56px) 0; }
 /* connecting process spine through the number column */
 .wstep::before { content: ""; position: absolute; left: 21px; top: 0; bottom: 0; width: 2px; background: var(--border2); }
 .wstep:first-child::before { top: calc(clamp(32px,5vh,56px) + 22px); }
