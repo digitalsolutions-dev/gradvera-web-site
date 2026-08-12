@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GuideArticle from '../../../components/pages/GuideArticle.astro';
-import { useTranslations, localizePath, absoluteUrl, type Locale } from '../../../i18n/utils';
+import { useTranslations, localizePath, absoluteUrl, guideArticleLd, type Locale } from '../../../i18n/utils';
 
 const lang: Locale = 'sl';
 const t = useTranslations(lang);
@@ -36,7 +36,7 @@ const breadcrumbLd = {
   title={t('seo.est.title')}
   description={t('seo.est.desc')}
   ogType="article"
-  jsonLd={[breadcrumbLd, faqLd]}
+  jsonLd={[breadcrumbLd, faqLd, guideArticleLd(lang, 'est', '/construction-cost-estimation/', site)]}
 >
   <GuideArticle lang={lang} ns="est" />
 </BaseLayout>
