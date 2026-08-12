@@ -53,9 +53,10 @@ export default defineConfig({
       // already excludes status-code pages by itself — this exact-path filter
       // is belt-and-braces (and won't swallow a future /404-guide/ page).
       filter: (page) => new URL(page).pathname !== '/404/',
-      // Stamp every entry with the deploy time — the static site is fully
-      // regenerated on each deploy, so this is an honest freshness signal.
-      lastmod: new Date(),
+      // No `lastmod`: stamping every URL with the deploy time re-stamps all
+      // entries on any deploy (even a CSS-only change), which trains Google to
+      // distrust the signal. Omitting it keeps lastmod meaningful. `changefreq`
+      // is advisory-only (ignored by Google/Bing) but harmless.
       changefreq: 'monthly',
       serialize(item) {
         const url = new URL(item.url);
