@@ -71,8 +71,8 @@ const demoHref = localizePath('/book-a-demo/', lang);
 
   /* ---------- body (light reading surface) ---------- */
   /* Same container geometry as .wrap / .legal-body (max-width --maxw + --pad
-     gutters) so the body column left-aligns with the hero above it; line
-     length is capped per-paragraph (70ch, like .legal-body), not by the box. */
+     gutters) so the body column left-aligns with the hero above it;
+     paragraphs flow to the full column width (no per-paragraph measure cap). */
   .guide-body { max-width: var(--maxw); margin: 0 auto;
     padding: clamp(28px, 4vh, 52px) var(--pad) clamp(64px, 9vh, 110px); }
   .guide-body section { margin-top: clamp(36px, 5vh, 56px); }
@@ -80,7 +80,7 @@ const demoHref = localizePath('/book-a-demo/', lang);
   .guide-body h2 { font-weight: 600; font-size: clamp(23px, 2.6vw, 32px); line-height: 1.14;
     letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 16px; text-wrap: balance; }
   .guide-body p { font-size: 16.5px; line-height: 1.7; color: var(--fg2); margin: 0 0 14px;
-    max-width: 70ch; text-wrap: pretty; }
+    text-wrap: pretty; }
   .guide-body p:last-child { margin-bottom: 0; }
 
   /* ---------- FAQ ---------- */
