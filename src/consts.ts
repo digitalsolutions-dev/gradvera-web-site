@@ -29,6 +29,17 @@ export const SITE = {
   themeColor: '#0A1020',
 } as const;
 
+/**
+ * Guide-cluster Article dates (schema.org datePublished / dateModified). Real,
+ * hand-maintained dates — bump `modified` only when guide copy genuinely
+ * changes (never auto-stamp; that inflates freshness signals). Guides went live
+ * 2026-08-05; last content pass (SL/HR native copy + cross-links) 2026-08-12.
+ */
+export const GUIDE_DATES = {
+  published: '2026-08-05',
+  modified: '2026-08-12',
+} as const;
+
 /** Analytics — blank disables the tag entirely. GA4 is configured inside GTM. */
 export const GTM_ID = import.meta.env.PUBLIC_GTM_ID || '';
 export const GA4_ID = import.meta.env.PUBLIC_GA4_ID || '';

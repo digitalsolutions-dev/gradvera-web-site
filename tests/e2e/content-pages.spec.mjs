@@ -21,6 +21,7 @@ for (const { url, proof, related } of PAGES) {
     expect(body.toLowerCase()).toContain(proof.toLowerCase());
     const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
     expect(ld.some((s) => s.includes('"FAQPage"'))).toBe(true);
+    expect(ld.some((s) => s.includes('"Article"') && s.includes('"datePublished"')), `${url} should carry Article schema with dates`).toBe(true);
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(4);
     await expect(page.locator('.guide-cta a.btn')).toBeVisible();
     // cross-link to the sibling cluster guide (same locale), anchored on its H1
