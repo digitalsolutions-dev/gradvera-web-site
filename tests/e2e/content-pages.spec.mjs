@@ -4,15 +4,15 @@ import { test, expect } from '@playwright/test';
 import { gotoClean } from './helpers.mjs';
 
 const PAGES = [
-  { url: '/construction-cost-estimation/', lang: 'en', proof: 'Gradvera' },
-  { url: '/sl/gradbene-kalkulacije/', lang: 'sl', proof: 'kalkulacij' },
-  { url: '/hr/gradevinske-kalkulacije/', lang: 'hr', proof: 'kalkulacij' },
-  { url: '/construction-bid-estimate/', lang: 'en', proof: 'Gradvera' },
-  { url: '/sl/gradbeni-izracun/', lang: 'sl', proof: 'izračun' },
-  { url: '/hr/gradevinski-troskovnik/', lang: 'hr', proof: 'troškovnik' },
+  { url: '/construction-cost-estimation/', lang: 'en', proof: 'Gradvera', related: /construction-bid-estimate/ },
+  { url: '/sl/gradbene-kalkulacije/', lang: 'sl', proof: 'kalkulacij', related: /gradbeni-izracun/ },
+  { url: '/hr/gradevinske-kalkulacije/', lang: 'hr', proof: 'kalkulacij', related: /gradevinski-troskovnik/ },
+  { url: '/construction-bid-estimate/', lang: 'en', proof: 'Gradvera', related: /construction-cost-estimation/ },
+  { url: '/sl/gradbeni-izracun/', lang: 'sl', proof: 'izračun', related: /gradbene-kalkulacije/ },
+  { url: '/hr/gradevinski-troskovnik/', lang: 'hr', proof: 'troškovnik', related: /gradevinske-kalkulacije/ },
 ];
 
-for (const { url, proof } of PAGES) {
+for (const { url, proof, related } of PAGES) {
   test(`${url} serves with FAQPage schema and full hreflang`, async ({ page }) => {
     const res = await page.goto(url, { waitUntil: 'load' });
     expect(res.status(), `${url} should serve 200`).toBe(200);
@@ -23,6 +23,10 @@ for (const { url, proof } of PAGES) {
     expect(ld.some((s) => s.includes('"FAQPage"'))).toBe(true);
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(4);
     await expect(page.locator('.guide-cta a.btn')).toBeVisible();
+    // cross-link to the sibling cluster guide (same locale), anchored on its H1
+    const relLink = page.locator('.guide-related a');
+    await expect(relLink).toBeVisible();
+    expect(await relLink.getAttribute('href'), `${url} should link to its sibling guide`).toMatch(related);
   });
 }
 
