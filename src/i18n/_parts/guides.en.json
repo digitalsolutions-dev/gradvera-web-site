@@ -70,7 +70,7 @@
   "seo.bid.title": "Construction bid estimate: structure and pricing — Gradvera",
   "seo.bid.desc": "What a construction bid estimate contains, who reads it after submission, how items get priced from your own history, and the mistakes that lose bids.",
   "guide.est.eyebrow": "Construction cost estimation",
-  "guide.est.h1": "Construction cost estimation software built on your own history",
+  "guide.est.h1": "Construction cost estimates built on your own history",
   "guide.est.lede": "This page explains what a construction estimate actually covers — line items, quantities, unit prices, overheads and margin — and where the process usually breaks down. It is written for estimators and commercial managers at construction SMEs weighing up whether construction cost estimation software is worth the switch.",
   "guide.est.sections": [
     {
@@ -136,6 +136,6 @@
   "guide.est.cta.h2": "See Gradvera on your last estimate.",
   "guide.est.cta.p": "In a short demo we walk through one of your own offers — your line items and your price history, not a generic template.",
   "guide.est.cta.btn": "Book a demo",
-  "seo.est.title": "Construction cost estimation software — Gradvera",
-  "seo.est.desc": "What a construction estimate covers, where spreadsheets stop scaling, and how construction cost estimation software prices from your own project history."
+  "seo.est.title": "Construction cost estimate: an estimator's guide — Gradvera",
+  "seo.est.desc": "What a construction cost estimate covers, where spreadsheets stop scaling, and how estimating software prices it from your own project history."
 }
