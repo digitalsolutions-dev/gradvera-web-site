@@ -6,7 +6,7 @@
 export const COMPANY = {
   brand: 'Gradvera',
   legalName: 'DIGITAL SOLUTIONS d.o.o.',
-  tagline: 'Construction estimating software',
+  tagline: 'Construction cost estimating software',
   email: 'info@gradvera.com',
   phoneDisplay: '+386 40 328 355',
   phoneHref: 'tel:+38640328355',
@@ -21,9 +21,9 @@ export const COMPANY = {
 export const SITE = {
   /** Canonical origin. astro.config sets Astro.site from PUBLIC_SITE_URL; we mirror the fallback here. */
   url: import.meta.env.PUBLIC_SITE_URL || 'https://gradvera.com',
-  defaultTitle: 'Gradvera — Construction estimating software',
+  defaultTitle: 'Gradvera — Construction cost estimating software',
   defaultDescription:
-    'Gradvera is construction estimating software that helps teams prepare bids faster, price with confidence from their own historical data, and catch costly risks before offers reach the client.',
+    'Gradvera is construction cost estimating software that helps teams prepare bids faster, price with confidence from their own historical data, and catch costly risks before offers reach the client.',
   ogImage: '/og/gradvera-og.png',
   // Dark blueprint-navy site chrome (hero/header). Accent is amber #E8901C.
   themeColor: '#0A1020',
