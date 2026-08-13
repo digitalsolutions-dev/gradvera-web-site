@@ -13,7 +13,7 @@ import en from './en.json';
 import sl from './sl.json';
 import hr from './hr.json';
 import { SLUGS, REVERSE } from './slugs';
-import { COMPANY, GUIDE_DATES } from '../consts';
+import { COMPANY, GUIDE_DATES, SITE } from '../consts';
 
 export const LOCALES = ['en', 'sl', 'hr'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -149,17 +149,20 @@ export function absoluteUrl(path: string, siteOrigin: string | URL | undefined):
  */
 export function guideArticleLd(
   lang: Locale,
-  ns: string,
+  ns: 'est' | 'bid',
   canonicalPath: string,
   siteOrigin: string | URL | undefined,
 ) {
   const t = useTranslations(lang);
   const url = absoluteUrl(localizePath(canonicalPath, lang), siteOrigin);
+  // Reuse the per-locale OG image (same convention as SEO.astro's defaults).
+  const ogImage = lang === 'en' ? SITE.ogImage : `/og/gradvera-og-${lang}.png`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: t(`guide.${ns}.h1`),
     inLanguage: LOCALE_META[lang].htmlLang,
+    image: absoluteUrl(ogImage, siteOrigin),
     datePublished: GUIDE_DATES.published,
     dateModified: GUIDE_DATES.modified,
     author: { '@type': 'Organization', name: COMPANY.legalName },
