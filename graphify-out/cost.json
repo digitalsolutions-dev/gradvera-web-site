@@ -79,6 +79,13 @@
       "output_tokens": 0,
       "files": 10,
       "note": "CLAUDE.md semantic re-extraction (92681 in) discarded — non-conforming node-id stem would have ghost-duplicated existing claude_* nodes; file content unchanged since d9be354, treated as cache-stable"
+    },
+    {
+      "date": "2026-08-13T07:34:21.247606+00:00",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "files": 21,
+      "note": "code-only incremental update"
     }
   ],
   "total_input_tokens": 573204,
