@@ -43,3 +43,17 @@ for (const [path, line] of Object.entries(PRODUCT_LINE)) {
     expect(overflows, `horizontal overflow on ${path} at 390px`).toBe(false);
   });
 }
+
+const GUARANTEE_PHRASES = {
+  '/': ['protects your profits', 'protect profits'],
+  '/sl/': ['varuje vaš dobiček', 'varujte dobiček'],
+  '/hr/': ['štiti vašu dobit', 'štitite dobit'],
+};
+
+for (const [path, phrases] of Object.entries(GUARANTEE_PHRASES)) {
+  test(`${path} makes no profit-guarantee claim`, async ({ page }) => {
+    await gotoClean(page, path);
+    const text = (await bodyText(page)).toLowerCase();
+    for (const p of phrases) expect(text, `found "${p}" on ${path}`).not.toContain(p.toLowerCase());
+  });
+}
