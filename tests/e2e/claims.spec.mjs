@@ -27,3 +27,19 @@ for (const path of HOME) {
     }
   });
 }
+
+const PRODUCT_LINE = {
+  '/': 'Gradvera is a product of DIGITAL SOLUTIONS d.o.o.',
+  '/sl/': 'Gradvera je produkt podjetja DIGITAL SOLUTIONS d.o.o.',
+  '/hr/': 'Gradvera je proizvod tvrtke DIGITAL SOLUTIONS d.o.o.',
+};
+
+for (const [path, line] of Object.entries(PRODUCT_LINE)) {
+  test(`${path} footer discloses the DIGITAL SOLUTIONS relationship`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 780 }); // narrowest layout: the new line must not overflow
+    await gotoClean(page, path);
+    await expect(page.locator('footer .foot-bottom')).toContainText(line);
+    const overflows = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+    expect(overflows, `horizontal overflow on ${path} at 390px`).toBe(false);
+  });
+}
