@@ -302,7 +302,7 @@
     {
       "h": "Brži građevinski troškovnik, uz odluku koja ostaje vaša",
       "ps": [
-        "Ponudu ćete pripremiti brže ako ne počinjete od prazne tablice. Gradvera iz primljene dokumentacije predlaže strukturu troškovnika — s već postavljenim grupama i stavkama — pa prve sate možete posvetiti provjeri opsega umjesto prepisivanju.",
+        "Ponudu ćete pripremiti brže ako ne počinjete od prazne tablice. Gradvera iz primljenog troškovnika u Excelu predlaže strukturu troškovnika — s već postavljenim grupama i stavkama — pa prve sate možete posvetiti provjeri opsega umjesto prepisivanju.",
         "Vrednovanje ide istim putem: predložene jedinične cijene iz vaše povijesti uz svaku stavku, ponude podizvođača prikupljene uz stavku kojoj pripadaju, tako da su usporedive međusobno i s onim što ste za isti rad već platili, te pregled rizika koji prije zaključenja označava stavke s odstupanjima od vaše povijesti i razvrstava ih po ozbiljnosti.",
         "Ništa u tom postupku ne odobrava se automatski. Svaki prijedlog potvrđuje ili mijenja kalkulant, a predani troškovnik možete sami obrazložiti stavku po stavku — investitoru, banci i nadzornom inženjeru čak i godinu i pol poslije."
       ]
@@ -328,7 +328,7 @@
     }
   ],
   "guide.bid.cta.h2": "Pogledajte kako Gradvera radi s troškovnikom koji vam je na stolu.",
-  "guide.bid.cta.p": "Na kratkoj demonstraciji složimo strukturu troškovnika iz vaše dokumentacije i pokažemo predložene cijene iz vaše povijesti.",
+  "guide.bid.cta.p": "Na 30-minutnoj vođenoj demonstraciji složimo strukturu ponude iz oglednog troškovnika u Excelu i pokažemo kako rade predložene cijene i pregled cijena — zatim razgovaramo o vašoj povijesti u Excelu.",
   "guide.bid.cta.btn": "Rezervirajte demonstraciju",
   "guide.est.eyebrow": "Građevinske kalkulacije",
   "guide.est.h1": "Građevinske kalkulacije koje možete obraniti pred naručiteljem",
@@ -395,7 +395,7 @@
     }
   ],
   "guide.est.cta.h2": "Pogledajte kako Gradvera radi s vašom posljednjom kalkulacijom.",
-  "guide.est.cta.p": "Na kratkoj demonstraciji prolazimo kroz jednu vašu ponudu — s vašim stavkama i vašom poviješću cijena, a ne s općim predloškom.",
+  "guide.est.cta.p": "Na 30-minutnoj vođenoj demonstraciji na oglednim podacima prolazimo kroz tijek izrade troškovnika — prijedloge cijena iz povijesti, pregled cijena i ponude podizvođača — i razgovaramo kako se to preslikava na vaše troškovnike u Excelu.",
   "guide.est.cta.btn": "Rezervirajte demonstraciju",
   "helps.eyebrow": "Kako Gradvera pomaže",
   "helps.h2Amber": "troškovima na koje se možete osloniti.",

@@ -57,3 +57,18 @@ for (const [path, phrases] of Object.entries(GUARANTEE_PHRASES)) {
     for (const p of phrases) expect(text, `found "${p}" on ${path}`).not.toContain(p.toLowerCase());
   });
 }
+
+const GUIDE_PAGES = [
+  { path: '/construction-bid-estimate/', excel: 'Excel', own: 'from your own documents' },
+  { path: '/sl/gradbeni-izracun/', excel: 'Excel', own: 'iz vaših dokumentov' },
+  { path: '/hr/gradevinski-troskovnik/', excel: 'Excel', own: 'iz vaše dokumentacije' },
+];
+
+for (const { path, excel, own } of GUIDE_PAGES) {
+  test(`${path} states Excel BoQ input and no own-documents demo promise`, async ({ page }) => {
+    await gotoClean(page, path);
+    const text = await bodyText(page);
+    expect(text).toContain(excel);
+    expect(text, `found "${own}" on ${path}`).not.toContain(own);
+  });
+}

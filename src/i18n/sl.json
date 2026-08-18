@@ -302,7 +302,7 @@
     {
       "h": "Hitrejši gradbeni izračun, pri katerem odločitev ostane vaša",
       "ps": [
-        "Ponudbo pripravite hitreje, če ne začnete s prazno preglednico. Gradvera iz prejete dokumentacije predlaga strukturo izračuna — sklope in postavke — zato prve ure namenite preverjanju obsega del, ne prepisovanju.",
+        "Ponudbo pripravite hitreje, če ne začnete s prazno preglednico. Gradvera iz prejetega popisa del v Excelu predlaga strukturo izračuna — sklope in postavke — zato prve ure namenite preverjanju obsega del, ne prepisovanju.",
         "Ovrednotenje poteka podobno: Gradvera pri vsaki postavki predlaga ceno na enoto na podlagi vaše zgodovine. Ponudbe podizvajalcev zbere ob ustreznih postavkah, zato jih lahko primerjate med seboj in s preteklimi cenami. Pred zaključkom ponudbe pregled tveganj označi postavke, ki odstopajo od vaše zgodovine, ter jih razvrsti po resnosti odstopanja.",
         "Noben predlog ni potrjen samodejno. Vsakega potrdi ali spremeni kalkulant, oddani izračun pa lahko sami pojasnite postavko za postavko — naročniku, banki in nadzornemu inženirju tudi leto in pol pozneje."
       ]
@@ -328,7 +328,7 @@
     }
   ],
   "guide.bid.cta.h2": "Oglejte si Gradvero na primeru popisa del, ki ga imate pred seboj.",
-  "guide.bid.cta.p": "Na kratki predstavitvi sestavimo strukturo izračuna iz vaših dokumentov in pokažemo cene, predlagane na podlagi vaših preteklih podatkov.",
+  "guide.bid.cta.p": "Na 30-minutni vodeni predstavitvi sestavimo strukturo ponudbe iz vzorčnega popisa del v Excelu in pokažemo, kako delujejo predlagane cene in pregled cen — nato se pogovorimo o vaši zgodovini v Excelu.",
   "guide.bid.cta.btn": "Rezervirajte predstavitev",
   "guide.est.eyebrow": "Gradbene kalkulacije",
   "guide.est.h1": "Gradbene kalkulacije na podlagi vaše zgodovine",
@@ -395,7 +395,7 @@
     }
   ],
   "guide.est.cta.h2": "Oglejte si Gradvero na primeru svoje zadnje kalkulacije.",
-  "guide.est.cta.p": "Na kratki predstavitvi pregledamo eno od vaših ponudb — vaše postavke in zgodovino cen, ne splošne predloge.",
+  "guide.est.cta.p": "Na 30-minutni vodeni predstavitvi na vzorčnih podatkih pokažemo potek kalkulacije — predloge cen iz zgodovine, pregled cen in ponudbe podizvajalcev — ter se pogovorimo, kako se to prenese na vaše popise del v Excelu.",
   "guide.est.cta.btn": "Rezervirajte predstavitev",
   "helps.eyebrow": "Kako Gradvera pomaga",
   "helps.h2Amber": "zanesljivimi stroški.",
