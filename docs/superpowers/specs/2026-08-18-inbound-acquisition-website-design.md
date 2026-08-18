@@ -28,7 +28,7 @@ automation, `gradvera.app`, cookie-based cross-session attribution.
 | D5 | Attribution carry | URL params on any page → `sessionStorage` first-touch → hidden fields |
 | D6 | Screenshots | `ProductEvidence` component built; renders nothing until PNGs configured — no placeholder art in prod |
 | A1 | Homepage `Results` | Remove now (all locales); `ProductEvidence` wired in later when assets exist |
-| A2 | DS relationship | Footer sentence + `Organization.parentOrganization` schema + LP trust section + demo-intro line |
+| A2 | DS relationship | Footer sentence + `Organization.brand: {Brand: Gradvera}` schema (Organization node is already the legal entity) + LP trust section + demo-intro line |
 | A3 | Excel-only | LP FAQ + demo-intro line + guides "received documentation" → "received Excel BoQ" |
 | A4 | Onboarding route | LP "Evaluation process" section + demo-intro 3-step line (all locales) |
 | A5 | Claim sweep | Numeric/"measured" claims **and** guarantee verbs (e.g. "protects your profits"); qualitative outcomes stay |
@@ -70,8 +70,9 @@ compliance; E composes B and C; F closes.
 2. Footer: `footer.bottom.copyright` becomes two lines — copyright + "Gradvera
    is a product of DIGITAL SOLUTIONS d.o.o." (new key `footer.bottom.product`,
    3 locales).
-3. `SEO.astro` `organizationLd`: Gradvera brand `Organization` gains
-   `parentOrganization: { '@type': 'Organization', name: COMPANY.legalName, address… }`.
+3. `SEO.astro` `organizationLd` (already `name: DIGITAL SOLUTIONS d.o.o.`,
+   `alternateName: Gradvera`) gains `brand: { '@type': 'Brand', name: 'Gradvera' }`
+   — expresses "product of" without inventing a second Organization node.
    Keep `WebSite.publisher` as is.
 4. Guarantee-verb softening (EN first, SL/HR mirrored): `helps.lede`
    ("protects your profits…" → "shows margin risk before you commit"),
