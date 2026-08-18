@@ -59,17 +59,20 @@ for (const [path, phrases] of Object.entries(GUARANTEE_PHRASES)) {
 }
 
 const GUIDE_PAGES = [
-  { path: '/construction-bid-estimate/', excel: 'Excel', own: 'from your own documents' },
-  { path: '/sl/gradbeni-izracun/', excel: 'Excel', own: 'iz vaših dokumentov' },
-  { path: '/hr/gradevinski-troskovnik/', excel: 'Excel', own: 'iz vaše dokumentacije' },
+  { path: '/construction-bid-estimate/', excel: 'Excel bill of quantities', own: ['from your own documents', 'on the bill of quantities on your desk'] },
+  { path: '/sl/gradbeni-izracun/', excel: 'popisa del v Excelu', own: ['iz vaših dokumentov', 'ki ga imate pred seboj'] },
+  { path: '/hr/gradevinski-troskovnik/', excel: 'troškovnika u Excelu', own: ['iz vaše dokumentacije', 'koji vam je na stolu'] },
+  { path: '/construction-cost-estimation/', excel: 'Excel', own: ['one of your own offers', 'on your last estimate'] },
+  { path: '/sl/gradbene-kalkulacije/', excel: 'Excel', own: ['eno od vaših ponudb', 'svoje zadnje kalkulacije'] },
+  { path: '/hr/gradevinske-kalkulacije/', excel: 'Excel', own: ['jednu vašu ponudu', 'vašom posljednjom kalkulacijom'] },
 ];
 
 for (const { path, excel, own } of GUIDE_PAGES) {
   test(`${path} states Excel BoQ input and no own-documents demo promise`, async ({ page }) => {
     await gotoClean(page, path);
     const text = await bodyText(page);
-    expect(text).toContain(excel);
-    expect(text, `found "${own}" on ${path}`).not.toContain(own);
+    expect(text, `missing "${excel}" on ${path}`).toContain(excel);
+    for (const o of own) expect(text, `found "${o}" on ${path}`).not.toContain(o);
   });
 }
 

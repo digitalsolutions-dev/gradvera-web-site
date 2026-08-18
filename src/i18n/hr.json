@@ -328,7 +328,7 @@
       "a": "Da. Uvoz zadržava primljeni troškovnik onakvim kakav jest. Uz svaku prepoznatu stavku Gradvera zatim pripisuje predloženu jediničnu cijenu iz vaše povijesti i projekte iz kojih proizlazi. Vrednovanje primljenog troškovnika tako postaje pregled prijedloga, a ne popunjavanje praznog stupca."
     }
   ],
-  "guide.bid.cta.h2": "Pogledajte kako Gradvera radi s troškovnikom koji vam je na stolu.",
+  "guide.bid.cta.h2": "Pogledajte kako Gradvera sastavlja ponudu iz troškovnika u Excelu.",
   "guide.bid.cta.p": "Na 30-minutnoj vođenoj demonstraciji složimo strukturu ponude iz oglednog troškovnika u Excelu i pokažemo kako rade predložene cijene i pregled cijena — zatim razgovaramo o vašoj povijesti u Excelu.",
   "guide.bid.cta.btn": "Rezervirajte demonstraciju",
   "guide.est.eyebrow": "Građevinske kalkulacije",
@@ -395,7 +395,7 @@
       "a": "Ovisi o tome koliko prošlih ponuda prenesete i u kakvom su stanju. Uvođenje počinje uvozom nekoliko dovršenih projekata, a ne prepisivanjem cijele arhive — prve kalkulacije možete pripremati čim je uvezena prva skupina projekata."
     }
   ],
-  "guide.est.cta.h2": "Pogledajte kako Gradvera radi s vašom posljednjom kalkulacijom.",
+  "guide.est.cta.h2": "Pogledajte kako Gradvera vrednuje troškovnik.",
   "guide.est.cta.p": "Na 30-minutnoj vođenoj demonstraciji na oglednim podacima prolazimo kroz tijek izrade troškovnika — prijedloge cijena iz povijesti, pregled cijena i ponude podizvođača — i razgovaramo kako se to preslikava na vaše troškovnike u Excelu.",
   "guide.est.cta.btn": "Rezervirajte demonstraciju",
   "helps.eyebrow": "Kako Gradvera pomaže",
@@ -522,7 +522,7 @@
   "problem.h2em": "truda?",
   "seo.bid.title": "Građevinski troškovnik: što sadrži i kako nastaje — Gradvera",
   "seo.bid.desc": "Što građevinski troškovnik sadrži, tko ga čita nakon predaje i kako se cijene stavaka određuju na temelju vlastite povijesti projekata.",
-  "seo.demo.desc": "Rezervirajte 30-minutnu vođenu demonstraciju tijeka izrade građevinskog troškovnika u Gradveri na oglednim podacima — pregled cijena, ponude podizvođača.",
+  "seo.demo.desc": "Rezervirajte 30-minutnu vođenu demonstraciju tijeka izrade troškovnika u Gradveri na oglednim podacima — pregled cijena, ponude podizvođača. Ulaz: Excel.",
   "seo.demo.title": "Rezervirajte demonstraciju — Gradvera",
   "seo.est.title": "Građevinske kalkulacije: vodič za kalkulante — Gradvera",
   "seo.est.desc": "Što obuhvaća građevinska kalkulacija, gdje tablice prestaju biti dovoljne i kako softver određuje cijene na temelju povijesti vaših projekata.",

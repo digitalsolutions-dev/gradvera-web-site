@@ -328,7 +328,7 @@
       "a": "Yes, and the import keeps the bill of quantities exactly as it was received. Each item Gradvera recognises then carries a suggested unit price drawn from your own history, with the projects behind it. Pricing a received bill of quantities becomes a matter of reviewing proposals rather than filling an empty column."
     }
   ],
-  "guide.bid.cta.h2": "See Gradvera on the bill of quantities on your desk.",
+  "guide.bid.cta.h2": "See Gradvera build a bid from an Excel bill of quantities.",
   "guide.bid.cta.p": "In a 30-minute guided demo we build the structure of a bid from a sample Excel bill of quantities and show how suggested prices and the pricing review work — then discuss your own Excel history.",
   "guide.bid.cta.btn": "Book a demo",
   "guide.est.eyebrow": "Construction cost estimation",
@@ -395,7 +395,7 @@
       "a": "It depends on how many past offers you bring across and what condition they are in. Setup begins by importing a handful of completed projects rather than re-keying the whole archive — you can start estimating as soon as the first batch is in."
     }
   ],
-  "guide.est.cta.h2": "See Gradvera on your last estimate.",
+  "guide.est.cta.h2": "See how Gradvera prices an estimate.",
   "guide.est.cta.p": "In a 30-minute guided demo we walk through the estimating workflow on sample data — historical price suggestions, pricing review and subcontractor quotes — and discuss how it maps to your Excel BoQs.",
   "guide.est.cta.btn": "Book a demo",
   "helps.eyebrow": "How Gradvera helps",
@@ -522,7 +522,7 @@
   "problem.h2em": "effort?",
   "seo.bid.title": "Construction bid estimate: structure and pricing — Gradvera",
   "seo.bid.desc": "What a construction bid estimate contains, who reads it after submission, how items get priced from your own history, and the mistakes that lose bids.",
-  "seo.demo.desc": "Book a 30-minute guided demo of Gradvera's construction estimating workflow on sample data — pricing review, historical prices, subcontractor quotes.",
+  "seo.demo.desc": "Book a 30-minute guided demo of Gradvera's construction estimating workflow on sample data — pricing review, subcontractor quotes. Excel BoQ input.",
   "seo.demo.title": "Book a demo — Gradvera estimating software",
   "seo.est.title": "Construction cost estimate: an estimator's guide — Gradvera",
   "seo.est.desc": "What a construction cost estimate covers, where spreadsheets stop scaling, and how estimating software prices it from your own project history.",

@@ -328,7 +328,7 @@
       "a": "Da. Uvoz ohrani prejeti popis del takšen, kot je. Pri vsaki prepoznani postavki Gradvera nato pripiše predlagano ceno na enoto iz vaše zgodovine in projekte, iz katerih izhaja. Ovrednotenje prejetega popisa tako postane pregledovanje predlogov in ne izpolnjevanje praznega stolpca."
     }
   ],
-  "guide.bid.cta.h2": "Oglejte si Gradvero na primeru popisa del, ki ga imate pred seboj.",
+  "guide.bid.cta.h2": "Oglejte si, kako Gradvera sestavi ponudbo iz popisa del v Excelu.",
   "guide.bid.cta.p": "Na 30-minutni vodeni predstavitvi sestavimo strukturo ponudbe iz vzorčnega popisa del v Excelu in pokažemo, kako delujejo predlagane cene in pregled cen — nato se pogovorimo o vaši zgodovini v Excelu.",
   "guide.bid.cta.btn": "Rezervirajte predstavitev",
   "guide.est.eyebrow": "Gradbene kalkulacije",
@@ -395,7 +395,7 @@
       "a": "Odvisno od tega, koliko preteklih ponudb prenesete in v kakšnem stanju so. Uvedba se začne z uvozom nekaj zaključenih projektov, ne s prepisom celotnega arhiva — prve kalkulacije lahko pripravljate takoj, ko je uvožena prva skupina projektov."
     }
   ],
-  "guide.est.cta.h2": "Oglejte si Gradvero na primeru svoje zadnje kalkulacije.",
+  "guide.est.cta.h2": "Oglejte si, kako Gradvera ovrednoti kalkulacijo.",
   "guide.est.cta.p": "Na 30-minutni vodeni predstavitvi na vzorčnih podatkih pokažemo potek kalkulacije — predloge cen iz zgodovine, pregled cen in ponudbe podizvajalcev — ter se pogovorimo, kako se to prenese na vaše popise del v Excelu.",
   "guide.est.cta.btn": "Rezervirajte predstavitev",
   "helps.eyebrow": "Kako Gradvera pomaga",
@@ -522,7 +522,7 @@
   "problem.h2em": "truda?",
   "seo.bid.title": "Gradbeni izračun: kaj vsebuje in kako nastane — Gradvera",
   "seo.bid.desc": "Kaj gradbeni izračun vsebuje, kdo ga bere, kako postavke dobijo ceno iz lastne zgodovine in katere napake pri gradbenih kalkulacijah stanejo največ.",
-  "seo.demo.desc": "Rezervirajte 30-minutno vodeno predstavitev poteka gradbene kalkulacije v Gradveri na vzorčnih podatkih — pregled cen, zgodovina cen, ponudbe podizvajalcev.",
+  "seo.demo.desc": "Rezervirajte 30-minutno vodeno predstavitev poteka gradbene kalkulacije v Gradveri na vzorčnih podatkih — pregled cen, ponudbe podizvajalcev. Vhod: Excel.",
   "seo.demo.title": "Rezervirajte predstavitev — Gradvera",
   "seo.est.title": "Gradbene kalkulacije: vodnik za kalkulante — Gradvera",
   "seo.est.desc": "Kaj zajema gradbena kalkulacija, kje preglednice postanejo omejitev in kako programska oprema določa cene na podlagi vaše projektne zgodovine.",
