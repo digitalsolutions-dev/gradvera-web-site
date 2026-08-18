@@ -72,3 +72,20 @@ for (const { path, excel, own } of GUIDE_PAGES) {
     expect(text, `found "${own}" on ${path}`).not.toContain(own);
   });
 }
+
+const DEMO_PAGES = [
+  { path: '/book-a-demo/', must: ['Excel', 'sample data', 'annual', '14-day'], mustNot: ['on your own offers', 'On your own offers'] },
+  { path: '/sl/rezervirajte-demo/', must: ['Excel', 'vzorčnih podatkih', 'letn', '14-dnevn'], mustNot: ['na primeru svojih ponudb', 'Na primeru vaših ponudb'] },
+  { path: '/hr/rezervirajte-demo/', must: ['Excel', 'oglednim podacima', 'godišnj', '14-dnevn'], mustNot: ['s vašim ponudama', 'Uz vaše ponude'] },
+];
+
+for (const { path, must, mustNot } of DEMO_PAGES) {
+  test(`${path} sets guided-demo / Excel / annual-onboarding expectations`, async ({ page }) => {
+    await gotoClean(page, path);
+    const text = await bodyText(page);
+    for (const m of must) expect(text, `missing "${m}" on ${path}`).toContain(m);
+    for (const n of mustNot) expect(text, `found "${n}" on ${path}`).not.toContain(n);
+    // The numbered "what happens next" list must keep exactly three steps.
+    expect(await page.locator('.demo-steps ol li').count()).toBe(3);
+  });
+}

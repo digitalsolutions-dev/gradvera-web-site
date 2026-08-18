@@ -193,17 +193,18 @@
   "demo.form.submit": "Rezervirajte predstavitev",
   "demo.page.back": "Nazaj na stran",
   "demo.page.eyebrow": "Rezervirajte predstavitev",
-  "demo.page.h2": "Oglejte si Gradvero na primeru svojih ponudb.",
-  "demo.page.intro": "Predstavili vam bomo, kako se Gradvera vključi v obstoječi način dela vaše kalkulantske ekipe, pri tem pa uporablja vašo zgodovino cen namesto splošne predloge.",
+  "demo.page.h2": "Oglejte si potek kalkulacije v Gradveri.",
+  "demo.page.intro": "30-minutna vodena predstavitev na vzorčnih podatkih, osredotočena na tisti del vašega dela, ki šteje največ — pregled cen, ponudbe podizvajalcev ali ponovna uporaba lastnih preteklih kalkulacij. Podprt vhod so danes popisi del v Excelu.",
   "demo.page.stepsTitle": "Kaj sledi",
   "demo.page.steps": [
-    "Izpolnite obrazec — imejte v mislih nekaj svojih nedavnih ponudb.",
-    "Dogovorimo se za delovni sestanek, na katerem uporabimo vaše cene in podatke.",
-    "Opazujete, kako Gradvera pripravi ponudbo, nato se odločite. Brez obveznosti."
+    "Izpolnite obrazec in takoj izberite termin.",
+    "30-minutna vodena predstavitev na vzorčnih podatkih, prilagojena načinu dela vaše ekipe.",
+    "Če se ujema: neobvezen predogled pod NDA na do 20 vaših popisih del v Excelu, nato letna uvedba s 14-dnevnim prevzemnim obdobjem."
   ],
   "demo.page.reassure": [
     "Brez obveznosti",
-    "Na primeru vaših ponudb"
+    "Vzorčni podatki — nič za pripraviti",
+    "Vhod: popisi del v Excelu"
   ],
   "demo.page.pts": [
     "Hitrejša priprava ponudb",
@@ -211,7 +212,7 @@
     "Zgodnejše prepoznavanje komercialnih tveganj"
   ],
   "demo.success.h3": "Hvala — prejeli smo vaše povpraševanje.",
-  "demo.success.p": "Kmalu se vam oglasimo in se dogovorimo za predstavitev na primeru vaših ponudb.",
+  "demo.success.p": "Kmalu se vam oglasimo in potrdimo vodeno predstavitev.",
   "footer.about.body": "Programska oprema za gradbene kalkulacije, podprta z umetno inteligenco, podjetjem pomaga pripravljati ponudbe, razumeti stroške in sprejemati boljše cenovne odločitve — pri tem pa se prilagaja njihovemu obstoječemu načinu dela.",
   "footer.about.title": "O Gradveri",
   "footer.bottom.copyright": "© 2026 Gradvera · DIGITAL SOLUTIONS d.o.o., Ljubljana",
@@ -521,7 +522,7 @@
   "problem.h2em": "truda?",
   "seo.bid.title": "Gradbeni izračun: kaj vsebuje in kako nastane — Gradvera",
   "seo.bid.desc": "Kaj gradbeni izračun vsebuje, kdo ga bere, kako postavke dobijo ceno iz lastne zgodovine in katere napake pri gradbenih kalkulacijah stanejo največ.",
-  "seo.demo.desc": "Oglejte si, kako Gradvera gradbenim ekipam pomaga hitreje pripraviti zanesljive ponudbe na podlagi vaše zgodovine cen. Dogovorite se za kratko predstavitev.",
+  "seo.demo.desc": "Rezervirajte 30-minutno vodeno predstavitev poteka gradbene kalkulacije v Gradveri na vzorčnih podatkih — pregled cen, zgodovina cen, ponudbe podizvajalcev.",
   "seo.demo.title": "Rezervirajte predstavitev — Gradvera",
   "seo.est.title": "Gradbene kalkulacije: vodnik za kalkulante — Gradvera",
   "seo.est.desc": "Kaj zajema gradbena kalkulacija, kje preglednice postanejo omejitev in kako programska oprema določa cene na podlagi vaše projektne zgodovine.",

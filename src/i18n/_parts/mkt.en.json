@@ -1,17 +1,18 @@
 {
   "demo.page.back": "Back to site",
   "demo.page.eyebrow": "Book a demo",
-  "demo.page.h2": "See Gradvera on your own offers.",
-  "demo.page.intro": "We'll walk through how Gradvera fits the way your estimating team already works — using your historical pricing, not a generic template.",
+  "demo.page.h2": "See the Gradvera estimating workflow.",
+  "demo.page.intro": "A 30-minute guided demo on sample data, focused on the part of your workflow that matters most — pricing review, subcontractor quotes, or reusing your own historical estimates. Excel BoQ files are the supported input today.",
   "demo.page.stepsTitle": "What happens next",
   "demo.page.steps": [
-    "Send the form — have a couple of your recent offers in mind.",
-    "We set up a working session on your own pricing and data.",
-    "You watch Gradvera build an offer, then decide. No obligation."
+    "Send the form, then pick a time straight away.",
+    "30-minute guided demo on sample data, shaped around your team's workflow.",
+    "If it fits: an optional NDA-covered preview on up to 20 of your Excel BoQs, then annual onboarding with a 14-day acceptance period."
   ],
   "demo.page.reassure": [
     "No obligation",
-    "On your own offers"
+    "Sample data — nothing to prepare",
+    "Excel BoQ input"
   ],
   "demo.page.pts": [
     "Faster offer preparation",
@@ -43,7 +44,7 @@
   "demo.form.errEmail": "Please enter a valid email address.",
   "demo.form.consent": "We use your details only to arrange your demo — never for unsolicited marketing.",
   "demo.success.h3": "Thank you — request received.",
-  "demo.success.p": "We'll be in touch shortly to arrange a demo on your own offers.",
+  "demo.success.p": "We'll be in touch shortly to confirm your guided demo.",
   "consent.title": "We respect your privacy",
   "consent.body": "We use cookies to understand how the site is used and to improve it. You can accept analytics cookies or continue with only the essentials.",
   "consent.accept": "Accept all",
