@@ -10,7 +10,7 @@ import { SITE } from '../../consts';
 interface Props { lang: Locale; refId: string }
 const { lang, refId } = Astro.props;
 const t = useTranslations(lang);
-const href = `${SITE.bookingUrl}&RefID=${refId}`;
+const href = `${SITE.bookingUrl}&RefID=${encodeURIComponent(refId)}`;
 ---
 <div class="booking" data-base-src={SITE.bookingUrl} data-ref-default={refId}>
   <p class="booking-intro">{t('booking.intro')}</p>
@@ -21,8 +21,9 @@ const href = `${SITE.bookingUrl}&RefID=${refId}`;
 
 <style is:global>
   .form-ok .booking { margin-top: 26px; text-align: left; }
-  .form-ok .booking-intro { color: var(--on-ink); font-weight: 600; margin: 0 0 8px; }
-  .form-ok .booking-linkrow { margin: 0 0 12px; }
+  /* .demo p (0,1,1) caps paragraphs at 380px — the intro + link row must run full width (SL/HR wrap). */
+  .form-ok .booking-intro { color: var(--on-ink); font-weight: 600; margin: 0 0 8px; max-width: none; }
+  .form-ok .booking-linkrow { margin: 0 0 12px; max-width: none; }
   .form-ok .booking-link { color: var(--amber); font: 500 13px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
   .form-ok .booking-link:hover { text-decoration: underline; }
   .form-ok .booking-frame { display: block; width: 100%; height: 720px; border: 1px solid var(--ink-hair-2); border-radius: 12px; background: #fff; }

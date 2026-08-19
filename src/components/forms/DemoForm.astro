@@ -237,8 +237,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     form.addEventListener('change', onStart, true);
     // Campaign ref for Bookings: sanitized utm_campaign (first touch) else the page default. Never personal data.
     function sanitizeRef(v) {
-      var s = String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
-      return s;
+      return String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').slice(0, 40).replace(/^-+|-+$/g, '');
     }
     function bookingRef(attr) {
       var def = booking ? (booking.getAttribute('data-ref-default') || '') : '';
@@ -256,7 +255,11 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       var frame = booking.querySelector('iframe.booking-frame');
       if (frame) frame.setAttribute('src', url);
       push({ event: 'booking_widget_open', form_id: formId, locale: ctx.locale, page: ctx.page, ref: ref });
-      try { booking.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { /* older browsers */ }
+      // Scroll the whole success card (heading + calendar) into view; honour reduced motion.
+      try {
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        (ok || booking).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      } catch (e) { /* older browsers */ }
     }
     var submitBtn = form.querySelector('button[type="submit"]');
     var btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;

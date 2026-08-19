@@ -13,6 +13,9 @@ const PAGES = [
 
 for (const { path, locale, ref } of PAGES) {
   test(`${path} ships the booking block hidden, with a direct link and no iframe src before success`, async ({ page }) => {
+    // no third-party request before conversion — arm the listener before the page loads
+    const requests = [];
+    page.on('request', (r) => { if (r.url().includes('outlook.office.com')) requests.push(r.url()); });
     await gotoClean(page, path);
     const block = page.locator('.form-ok .booking');
     await expect(block).toHaveCount(1);
@@ -21,10 +24,6 @@ for (const { path, locale, ref } of PAGES) {
     await expect(page.locator('.form-ok .booking-link')).toHaveAttribute('target', '_blank');
     await expect(page.locator('.form-ok .booking-link')).toHaveAttribute('rel', /noopener/);
     expect(await page.locator('.form-ok iframe.booking-frame').getAttribute('src')).toBeNull();
-    // no third-party request before conversion
-    const requests = [];
-    page.on('request', (r) => { if (r.url().includes('outlook.office.com')) requests.push(r.url()); });
-    await page.waitForTimeout(300);
     expect(requests).toEqual([]);
   });
 }
