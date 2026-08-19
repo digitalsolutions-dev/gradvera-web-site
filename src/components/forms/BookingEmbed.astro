@@ -1,0 +1,33 @@
+---
+// Microsoft Bookings calendar for the demo-form success state (acquisition
+// model §9). Rendered hidden inside .form-ok; the iframe has NO src until the
+// form script reveals it (no third-party request before conversion). The
+// direct link is always present as the fallback for iframe-blocking browsers.
+// `refId` is the campaign-level reference (never personal data) appended as
+// &RefID=; the form script may override it with a sanitized utm_campaign.
+import { useTranslations, type Locale } from '../../i18n/utils';
+import { SITE } from '../../consts';
+interface Props { lang: Locale; refId: string }
+const { lang, refId } = Astro.props;
+const t = useTranslations(lang);
+const href = `${SITE.bookingUrl}&RefID=${encodeURIComponent(refId)}`;
+---
+<div class="booking" data-base-src={SITE.bookingUrl} data-ref-default={refId}>
+  <p class="booking-intro">{t('booking.intro')}</p>
+  <p class="booking-linkrow"><a class="booking-link" href={href} target="_blank" rel="noopener noreferrer">{t('booking.open')} ↗</a></p>
+  <iframe class="booking-frame" title={t('booking.frameTitle')} referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-write"></iframe>
+  <p class="booking-fallback">{t('booking.fallback')}</p>
+</div>
+
+<style is:global>
+  .form-ok .booking { margin-top: 26px; text-align: left; }
+  /* .demo p (0,1,1) caps paragraphs at 380px — the intro + link row must run full width (SL/HR wrap). */
+  .form-ok .booking-intro { color: var(--on-ink); font-weight: 600; margin: 0 0 8px; max-width: none; }
+  .form-ok .booking-linkrow { margin: 0 0 12px; max-width: none; }
+  .form-ok .booking-link { color: var(--amber); font: 500 13px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-ok .booking-link:hover { text-decoration: underline; }
+  .form-ok .booking-frame { display: block; width: 100%; height: 720px; border: 1px solid var(--ink-hair-2); border-radius: 12px; background: #fff; }
+  .form-ok .booking-frame:not([src]) { display: none; }
+  .form-ok .booking-fallback { margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--on-ink-2); max-width: none; }
+  @media (max-width: 560px) { .form-ok .booking-frame { height: 640px; border-radius: 8px; } }
+</style>
