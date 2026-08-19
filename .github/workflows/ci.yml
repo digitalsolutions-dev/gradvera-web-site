@@ -41,18 +41,26 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # Chromium only (the harness targets one browser); --with-deps pulls the
-      # Linux system libs the runner needs. The apt step of --with-deps is known
-      # to stall on runner images (actions/runner-images#11347), so each attempt
-      # is bounded with coreutils `timeout` and retried once before failing.
+      # Chromium only (the harness targets one browser). Browser download is
+      # bounded + retried (CDN hiccups). System libs are NOT installed via apt
+      # here: the --with-deps apt step stalls on runner images
+      # (actions/runner-images#11347; seen on PR #74) and a killed apt-get keeps
+      # the lock, so the retry cannot recover. ubuntu-latest already ships
+      # Chrome's shared libraries, which is what Playwright's Chromium needs.
       - name: Install Chromium
         run: |
           for attempt in 1 2; do
-            timeout 8m npx playwright install --with-deps chromium && exit 0
-            echo "::warning::playwright install attempt $attempt timed out or failed — retrying"
-            sleep 20
+            timeout 5m npx playwright install chromium && exit 0
+            echo "::warning::playwright browser download attempt $attempt timed out or failed"
+            sleep 15
           done
           exit 1
+      # Best-effort system deps: bounded, never blocks the job. If the runner
+      # image ever lacks a library, the e2e step fails with Playwright's explicit
+      # "missing libraries" message, which is the signal to revisit this.
+      - name: Install system deps (best effort)
+        continue-on-error: true
+        run: timeout 3m npx playwright install-deps chromium
       # test:e2e builds the site itself and serves dist/client, then runs the
       # specs. CI=1 turns on a retry + the HTML report.
       - name: Run e2e checks
