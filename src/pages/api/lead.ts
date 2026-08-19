@@ -56,11 +56,11 @@ export const POST: APIRoute = async ({ request }) => {
   // ---- Parse JSON body -----------------------------------------------------
   let body: Record<string, unknown>;
   try {
-    const parsed: unknown = await request.json();
-    if (typeof parsed !== 'object' || parsed === null) {
+    const raw: unknown = await request.json();
+    if (typeof raw !== 'object' || raw === null) {
       return json({ ok: false, error: 'invalid' }, 400);
     }
-    body = parsed as Record<string, unknown>;
+    body = raw as Record<string, unknown>;
   } catch {
     return json({ ok: false, error: 'invalid' }, 400);
   }

@@ -69,3 +69,24 @@ describe('synthesizeMessage / ROLE_LABELS_EN', () => {
     expect(ROLE_LABELS_EN['project-manager']).toBe('Project manager');
   });
 });
+
+describe('parseLeadBody — edge cases', () => {
+  it('rejects a legacy label string as role (v1 form) instead of crashing', () => {
+    expect(parseLeadBody({ ...valid, role: 'Head of estimating' }, NOW)).toEqual({ ok: false, error: 'invalid' });
+  });
+  it('keeps consent=reject and maps unknown values to unset', () => {
+    const r = parseLeadBody({ ...valid, consent: 'reject' }, NOW);
+    expect(r.ok && r.lead.attribution.consent).toBe('reject');
+  });
+  it('synthesizes "Demo request" when the qualification digest is empty', () => {
+    expect(synthesizeMessage({ country: '', role: '', companySize: '', mainChallenge: '', estimatingMethod: '', bidFrequency: '', ndaWilling: '' })).toBe('Demo request');
+  });
+  it('caps attribution length before the charset check (a bad char beyond 256 is cut away)', () => {
+    const r = parseLeadBody({ ...valid, utm_content: 'a'.repeat(256) + '<script>' }, NOW);
+    expect(r.ok && r.lead.attribution.utm_content).toBe('a'.repeat(256));
+  });
+  it('keeps Unicode letters in decoded utm_term (SL/HR campaigns)', () => {
+    const r = parseLeadBody({ ...valid, utm_term: 'ocena stroškov gradnje' }, NOW);
+    expect(r.ok && r.lead.attribution.utm_term).toBe('ocena stroškov gradnje');
+  });
+});

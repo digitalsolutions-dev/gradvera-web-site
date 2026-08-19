@@ -62,3 +62,44 @@ test('/book-a-demo/ optional fields may be left blank and message is optional', 
   expect(b.estimatingMethod).toBeUndefined();
   expect(b.phone ?? '').toBe('');
 });
+
+// ---- First-touch attribution (src/scripts/attribution.js, acquisition model §8.3) ----
+// sessionStorage only (no cookie): the first touch of the tab wins and rides the POST.
+
+test('attribution: click id + utm on the landing page survive navigation to the form and ride the POST', async ({ page }) => {
+  const cap = await armLeadCapture(page);
+  await gotoClean(page, '/?gclid=Cj0TEST&utm_source=google&utm_medium=cpc&utm_campaign=nl-est&utm_term=construction%20estimating%20software');
+  // `.nav-cta` also holds the LangSwitch anchors, so target the CTA button itself.
+  await page.click('header .nav-cta a.btn-primary');
+  await expect(page).toHaveURL(/\/book-a-demo\/$/);
+  await fillRequired(page);
+  await page.click('#gv-demo-form button[type="submit"]');
+  await expect(page.locator('.form-ok')).toBeVisible();
+  const b = await cap.body;
+  expect(b).toMatchObject({
+    gclid: 'Cj0TEST', utm_source: 'google', utm_medium: 'cpc', utm_campaign: 'nl-est',
+    utm_term: 'construction estimating software', landingPage: '/', submissionPage: '/book-a-demo/', consent: 'unset',
+  });
+  expect(typeof b.submittedAt).toBe('string');
+  expect(b.submittedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+});
+
+test('attribution: first touch wins; a later visit without a click id does not overwrite', async ({ page }) => {
+  const cap = await armLeadCapture(page);
+  await gotoClean(page, '/book-a-demo/?gclid=FIRST&utm_campaign=one');
+  await gotoClean(page, '/book-a-demo/?utm_campaign=two');
+  await fillRequired(page);
+  await page.click('#gv-demo-form button[type="submit"]');
+  await expect(page.locator('.form-ok')).toBeVisible();
+  expect(await cap.body).toMatchObject({ gclid: 'FIRST', utm_campaign: 'one' });
+});
+
+test('attribution: consent state is read from the gv-consent cookie', async ({ page }) => {
+  const cap = await armLeadCapture(page);
+  await page.goto('/book-a-demo/', { waitUntil: 'load' });
+  await page.click('[data-consent="accept"]');
+  await fillRequired(page);
+  await page.click('#gv-demo-form button[type="submit"]');
+  await expect(page.locator('.form-ok')).toBeVisible();
+  expect((await cap.body).consent).toBe('accept');
+});

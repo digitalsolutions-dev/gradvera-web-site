@@ -185,7 +185,9 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   .chip:has(input:checked) .chip-tick { width: 13px; opacity: 1; }
   .chip:has(input:focus-visible) { outline: 2px solid var(--amber); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
-    .chip, .chip-tick { transition: none; }
+    /* Must match the raised `.form-card .chip` base rule (0,2,0) or the
+       transition it declares keeps winning here. */
+    .form-card .chip, .chip-tick { transition: none; }
   }
 
   /* ---- inline field validation ---- */
@@ -314,6 +316,14 @@ const privacyHref = localizePath('/privacy-policy/', lang);
         if ((f.type === 'radio' || f.type === 'checkbox') && !f.checked) continue;
         if (f.tagName === 'SELECT' && !f.value) continue;
         data[f.name] = f.value;
+      }
+
+      // ---- First-touch attribution (src/scripts/attribution.js) ----
+      // Blank values are skipped so an absent touch never overwrites a form
+      // field; no attribution key collides with a form field name.
+      if (typeof window.gvAttribution === 'function') {
+        var attr = window.gvAttribution();
+        for (var a in attr) if (Object.prototype.hasOwnProperty.call(attr, a) && attr[a]) data[a] = attr[a];
       }
 
       setLoading(true);

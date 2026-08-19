@@ -5,13 +5,17 @@
  */
 import {
   BID_FREQUENCIES, COMPANY_SIZES, COUNTRIES, ESTIMATING_METHODS, MAIN_CHALLENGES, NDA_WILLING, ROLES,
-  isOneOf, scoreLead, type BidFrequency, type CompanySize, type Country, type EstimatingMethod,
-  type MainChallenge, type NdaWilling, type Role,
+  isOneOf, scoreLead, type BidFrequency, type EstimatingMethod, type MainChallenge, type Role,
 } from './leadScore';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-/** URL-safe charset for attribution values (RFC 3986 unreserved + reserved + % + space for decoded utm_term). */
-const ATTR_SAFE_RE = /^[A-Za-z0-9._~:/?#[\]@!$&'()*+,;=% -]*$/; // URL-safe + space (decoded utm_term)
+/**
+ * URL-safe charset for attribution values (RFC 3986 unreserved + reserved + % +
+ * space for a decoded utm_term). `\p{L}\p{N}` rather than `A-Za-z0-9` so a
+ * decoded SL/HR keyword ("ocena stroškov gradnje") survives; `<`, `>`, `"`,
+ * backslash, backtick and control characters are still rejected outright.
+ */
+const ATTR_SAFE_RE = /^[\p{L}\p{N}._~:/?#[\]@!$&'()*+,;=% -]*$/u;
 const ATTR_MAX = 256;
 
 export interface Qualification {
@@ -123,10 +127,10 @@ export function parseLeadBody(body: Record<string, unknown>, receivedAt: Date): 
     submittedAt: attr(body, 'submittedAt'),
     consent: consentRaw === 'accept' || consentRaw === 'reject' ? consentRaw : 'unset',
   };
+  // No casts: the isOneOf guards above and the `=== null` bail-outs have already
+  // narrowed every one of these to its enum (plus '' for the optional ones).
   const { score, reasons, qualified } = scoreLead({
-    email, country: country as Country, role: role as Role, companySize: companySize as CompanySize,
-    estimatingMethod: estimatingMethod as EstimatingMethod | '', bidFrequency: bidFrequency as BidFrequency | '',
-    mainChallenge: mainChallenge as MainChallenge, ndaWilling: ndaWilling as NdaWilling | '',
+    email, country, role, companySize, estimatingMethod, bidFrequency, mainChallenge, ndaWilling,
   });
   const message = str(body, 'message', 4000) || synthesizeMessage(qualification);
 
