@@ -24,8 +24,16 @@ filled honeypot before `fetch`; a non-JS bot that POSTs `/api/lead` directly
 gets `200` but runs no client script). A 4xx/5xx/network failure pushes nothing
 and leaves the calendar unloaded. With `PUBLIC_GTM_ID` unset the pushes still
 happen (inert). `qualified`/`score` come from the API response (contract v2,
-`docs/lead-integration.md`). `generate_lead` (the 2026-08-05 event) is retired —
-nothing in `src/` pushes it any more.
+`docs/lead-integration.md`); if the 2xx body is not JSON they fall back to
+`false` / `0` and the calendar is still revealed. `generate_lead` (the
+2026-08-05 event) is retired — nothing in `src/` pushes it any more.
+
+> **Interim measurement gap.** As soon as this ships, `generate_lead` stops
+> firing, so the existing GA4 key event / Ads conversion goes silent until the
+> GTM steps below are published. Recommended order: publish steps 1–5 **before**
+> merging (the new triggers are inert until the site pushes the events), merge,
+> verify on staging (matrix below, step 7), then retire `generate_lead`
+> (step 6). Until steps 1–5 are live, **no lead conversion is recorded**.
 
 ## Bookings embed and its measurement limit (§9.4)
 
@@ -75,8 +83,8 @@ unreliable (§9.4).
 e2e (`tests/e2e/lead-events.spec.mjs`) proves the dataLayer pushes are correct
 and fire exactly once; what GTM/GA4/Ads do with them under Consent Mode must be
 verified by hand on **staging.gradvera.com** (same container) after each GTM
-change. Record Date · Tester · Result per row; keep the log in
-`docs/acquisition-readiness.md` (Workstream F) until then here:
+change. Record Date · Tester · Result per row here; once Workstream F creates
+`docs/acquisition-readiness.md`, move the log there:
 
 | # | Scenario | Expect | Date | Tester | Result |
 |---|---|---|---|---|---|
@@ -90,6 +98,22 @@ change. Record Date · Tester · Result per row; keep the log in
 
 Note: consent-denied visitors send cookieless pings under Consent Mode v2;
 counts in GA4 are modelled/partial by design.
+
+## Microsoft Bookings page configuration (§9.2 — user action)
+
+The embed goes live with this PR; the page itself is configured in Microsoft
+Bookings (not in this repo). Record who/when (moves to the readiness doc in WS-F):
+
+| # | Setting | Done (date · by) |
+|---|---|---|
+| 1 | Gradvera logo + brand styling | |
+| 2 | Service title "Gradvera estimating workflow demo", 30 min, 15 min buffer | |
+| 3 | Short description of what the meeting covers | |
+| 4 | Gradvera / DIGITAL SOLUTIONS relationship disclosed; data-use / privacy wording | |
+| 5 | Public booking without an organizational Microsoft account | |
+| 6 | Confirmation + reminder emails enabled; customer time zone shown | |
+| 7 | Search indexing disabled | |
+| 8 | Test booking made from the embed and matched to the originating test lead by email (§19) | |
 
 ## History
 
