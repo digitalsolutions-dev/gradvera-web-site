@@ -7,8 +7,12 @@
  * Flow:
  *   1. Honeypot — a hidden `company_website` field; bots fill it, humans don't.
  *      If present we silently 200 (the bot thinks it won; we drop the lead).
- *   2. Validate the required marketing fields.
- *   3. Normalize into a stable lead object.
+ *   2. Validate + normalize with `parseLeadBody` (src/lib/leadPayload.ts) — the
+ *      required marketing fields, the qualification enums, and the sanitized
+ *      attribution. This route is transport only; the contract lives there.
+ *   3. That same pure step scores the lead (src/lib/leadScore.ts). The `qualified`
+ *      and `score` verdict rides back in the response so the client can fire the
+ *      right analytics event; it is never a reason to reject a submission.
  *   4. If GTM_LEAD_ENDPOINT is configured, forward it to the gtm-toolkit
  *      inbound-lead service, HMAC-SHA256 signed over the exact JSON body, with
  *      a bounded timeout. Forwarding failures — a network/DNS error, the
@@ -24,33 +28,12 @@
  */
 import type { APIRoute } from 'astro';
 import crypto from 'node:crypto';
+import { parseLeadBody, type Lead } from '../../lib/leadPayload';
 
 export const prerender = false;
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 /** Max time to wait on the downstream hand-off before aborting it (ms). */
 const FORWARD_TIMEOUT_MS = 5_000;
-
-/** A normalized, downstream-stable lead. Mirrors docs/lead-integration.md. */
-interface Lead {
-  source: 'gradvera-website';
-  receivedAt: string;
-  locale: string;
-  page: string;
-  fullName: string;
-  company: string;
-  email: string;
-  phone: string;
-  role: string;
-  message: string;
-}
-
-/** Read a key as a trimmed, length-capped string, or '' when absent / not a string. */
-function str(body: Record<string, unknown>, key: string, max = 2000): string {
-  const v = body[key];
-  return typeof v === 'string' ? v.trim().slice(0, max) : '';
-}
 
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -89,36 +72,11 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: true }, 200);
   }
 
-  // ---- Validate required marketing fields ----------------------------------
-  const fullName = str(body, 'fullName', 200);
-  const company = str(body, 'company', 200);
-  const email = str(body, 'email', 254);
-  const message = str(body, 'message', 4000);
-
-  if (
-    !fullName ||
-    !company ||
-    !email ||
-    !message ||
-    email.length > 254 ||
-    !EMAIL_RE.test(email)
-  ) {
-    return json({ ok: false, error: 'invalid' }, 400);
-  }
-
-  // ---- Build the normalized lead -------------------------------------------
-  const lead: Lead = {
-    source: 'gradvera-website',
-    receivedAt: new Date().toISOString(),
-    locale: str(body, 'locale') || 'en',
-    page: str(body, 'page'),
-    fullName,
-    company,
-    email,
-    phone: str(body, 'phone'),
-    role: str(body, 'role'),
-    message,
-  };
+  // ---- Validate + normalize (pure; see src/lib/leadPayload.ts) ------------
+  const parsed = parseLeadBody(body, new Date());
+  if (!parsed.ok) return json({ ok: false, error: parsed.error }, 400);
+  const lead: Lead = parsed.lead;
+  const verdict = { qualified: lead.qualified, score: lead.score };
 
   // ---- Forward to the gtm-toolkit (or log when not configured) -------------
   const endpoint = import.meta.env.GTM_LEAD_ENDPOINT;
@@ -165,15 +123,15 @@ export const POST: APIRoute = async ({ request }) => {
           res.status,
           detail.slice(0, 500),
         );
-        return json({ ok: true, forwarded: false }, 200);
+        return json({ ok: true, forwarded: false, ...verdict }, 200);
       }
-      return json({ ok: true, forwarded: true }, 200);
+      return json({ ok: true, forwarded: true, ...verdict }, 200);
     } catch (err) {
       // Network failure, DNS, or the timeout aborting the request. Never lose
       // the lead UX: log server-side, still 200 the visitor, but flag the soft
       // failure so ops/monitoring can pick up the dropped hand-off.
       console.error('[lead] forward to GTM_LEAD_ENDPOINT failed', err);
-      return json({ ok: true, forwarded: false }, 200);
+      return json({ ok: true, forwarded: false, ...verdict }, 200);
     }
   }
 
@@ -184,8 +142,10 @@ export const POST: APIRoute = async ({ request }) => {
     locale: lead.locale,
     page: lead.page,
     receivedAt: lead.receivedAt,
+    qualified: lead.qualified,
+    score: lead.score,
   });
-  return json({ ok: true, forwarded: false }, 200);
+  return json({ ok: true, forwarded: false, ...verdict }, 200);
 };
 
 export const GET: APIRoute = () =>
