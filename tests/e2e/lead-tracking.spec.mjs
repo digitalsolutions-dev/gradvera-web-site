@@ -2,7 +2,7 @@
 // event to window.dataLayer (GTM forwards it to GA4). The API is intercepted —
 // the static preview server has no live endpoint.
 import { test, expect } from '@playwright/test';
-import { gotoClean } from './helpers.mjs';
+import { gotoClean, fillRequired } from './helpers.mjs';
 
 const PAGES = [
   { path: '/book-a-demo/', locale: 'en' },
@@ -16,10 +16,7 @@ for (const { path, locale } of PAGES) {
       route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' }),
     );
     await gotoClean(page, path);
-    await page.fill('#fn', 'Test Person');
-    await page.fill('#co', 'Test Co');
-    await page.fill('#em', 'test@example.com');
-    await page.fill('#ms', 'Hello');
+    await fillRequired(page);
     await page.click('#gv-demo-form button[type="submit"]');
     await expect(page.locator('.form-ok')).toBeVisible();
     const events = await page.evaluate(() =>
@@ -38,10 +35,7 @@ for (const { path, locale } of PAGES) {
 test('failed submit pushes no generate_lead', async ({ page }) => {
   await page.route('**/api/lead', (route) => route.fulfill({ status: 500, body: '' }));
   await gotoClean(page, '/book-a-demo/');
-  await page.fill('#fn', 'Test Person');
-  await page.fill('#co', 'Test Co');
-  await page.fill('#em', 'test@example.com');
-  await page.fill('#ms', 'Hello');
+  await fillRequired(page);
   await page.click('#gv-demo-form button[type="submit"]');
   await expect(page.locator('.form-net-err')).toBeVisible();
   const events = await page.evaluate(() =>

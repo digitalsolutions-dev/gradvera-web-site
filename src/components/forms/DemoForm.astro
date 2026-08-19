@@ -4,16 +4,33 @@ interface Props { lang: Locale; path?: string }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Role options. Value === translated label to preserve the exact string the
-// lead endpoint (and downstream D365) already receives — no contract change.
-const roles: string[] = [
-  t('demo.form.roleEstimator'),
-  t('demo.form.roleCommercialManager'),
-  t('demo.form.roleHeadOfEstimating'),
-  t('demo.form.roleOperationsManager'),
-  t('demo.form.roleCompanyDirector'),
-  t('demo.form.roleOther'),
-];
+import { ROLES, COUNTRIES, COMPANY_SIZES, MAIN_CHALLENGES, ESTIMATING_METHODS, BID_FREQUENCIES, NDA_WILLING } from '../../lib/leadScore';
+
+// Chip/select options: wire value = enum slug (validated server-side), label = i18n.
+const roleLabel: Record<(typeof ROLES)[number], string> = {
+  'company-director': t('demo.form.roleCompanyDirector'), 'estimator': t('demo.form.roleEstimator'),
+  'head-of-estimating': t('demo.form.roleHeadOfEstimating'), 'commercial-manager': t('demo.form.roleCommercialManager'),
+  'operations-manager': t('demo.form.roleOperationsManager'), 'project-manager': t('demo.form.roleProjectManager'), 'other': t('demo.form.roleOther'),
+};
+const countryLabel: Record<(typeof COUNTRIES)[number], string> = {
+  NL: t('demo.form.countryNL'), BE: t('demo.form.countryBE'), DE: t('demo.form.countryDE'), DK: t('demo.form.countryDK'),
+  SE: t('demo.form.countrySE'), NO: t('demo.form.countryNO'), FI: t('demo.form.countryFI'), AT: t('demo.form.countryAT'),
+  SI: t('demo.form.countrySI'), HR: t('demo.form.countryHR'), 'EU-OTHER': t('demo.form.countryEUOTHER'), 'NON-EU': t('demo.form.countryNONEU'),
+};
+const sizeLabel: Record<(typeof COMPANY_SIZES)[number], string> = {
+  '1-9': t('demo.form.size1_9'), '10-29': t('demo.form.size10_29'), '30-99': t('demo.form.size30_99'), '100-249': t('demo.form.size100_249'), '250+': t('demo.form.size250'),
+};
+const challengeLabel: Record<(typeof MAIN_CHALLENGES)[number], string> = {
+  'pricing-confidence': t('demo.form.challengePricing'), 'subcontractor-quotes': t('demo.form.challengeSubs'),
+  'historical-reuse': t('demo.form.challengeHistory'), 'management-visibility': t('demo.form.challengeMgmt'), 'other': t('demo.form.challengeOther'),
+};
+const methodLabel: Record<(typeof ESTIMATING_METHODS)[number], string> = {
+  excel: t('demo.form.methodExcel'), software: t('demo.form.methodSoftware'), mixed: t('demo.form.methodMixed'), other: t('demo.form.methodOther'),
+};
+const frequencyLabel: Record<(typeof BID_FREQUENCIES)[number], string> = {
+  weekly: t('demo.form.frequencyWeekly'), monthly: t('demo.form.frequencyMonthly'), 'few-per-year': t('demo.form.frequencyFewPerYear'), rarely: t('demo.form.frequencyRarely'),
+};
+const ndaLabel: Record<(typeof NDA_WILLING)[number], string> = { yes: t('demo.form.ndaYes'), 'not-yet': t('demo.form.ndaNotYet') };
 const privacyHref = localizePath('/privacy-policy/', lang);
 ---
 <form
@@ -51,22 +68,70 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       <input id="ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder={t('demo.form.phonePlaceholder')}>
     </div>
   </div>
-  <fieldset class="field role-field">
-    <legend>{t('demo.form.role')} <span class="opt">({t('demo.form.optional')})</span></legend>
+  <div class="field">
+    <label for="country">{t('demo.form.country')} <span class="req" aria-hidden="true">*</span></label>
+    <select id="country" name="country" required aria-required="true" aria-describedby="err-country" autocomplete="country">
+      {/* No locale preselection: country is a required qualification answer, so
+          every locale starts on the placeholder and the user picks it. */}
+      <option value="" disabled selected>{t('demo.form.countryPlaceholder')}</option>
+      {COUNTRIES.map((c) => (<option value={c}>{countryLabel[c]}</option>))}
+    </select>
+    <p class="field-error" id="err-country" role="alert" hidden></p>
+  </div>
+  <fieldset class="field chip-field" data-required>
+    <legend>{t('demo.form.role')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
-      {roles.map((r: string) => (
-        <label class="chip">
-          <input type="radio" name="role" value={r}>
-          <span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="chip-lbl">{r}</span>
-        </label>
+      {ROLES.map((r) => (
+        <label class="chip"><input type="radio" name="role" value={r} aria-describedby="err-role"><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{roleLabel[r]}</span></label>
+      ))}
+    </div>
+    <p class="field-error" id="err-role" role="alert" hidden></p>
+  </fieldset>
+  <fieldset class="field chip-field" data-required>
+    <legend>{t('demo.form.size')} <span class="req" aria-hidden="true">*</span></legend>
+    <div class="chips">
+      {COMPANY_SIZES.map((s) => (
+        <label class="chip"><input type="radio" name="companySize" value={s} aria-describedby="err-size"><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{sizeLabel[s]}</span></label>
+      ))}
+    </div>
+    <p class="field-error" id="err-size" role="alert" hidden></p>
+  </fieldset>
+  <fieldset class="field chip-field" data-required>
+    <legend>{t('demo.form.challenge')} <span class="req" aria-hidden="true">*</span></legend>
+    <div class="chips">
+      {MAIN_CHALLENGES.map((c) => (
+        <label class="chip"><input type="radio" name="mainChallenge" value={c} aria-describedby="err-challenge"><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{challengeLabel[c]}</span></label>
+      ))}
+    </div>
+    <p class="field-error" id="err-challenge" role="alert" hidden></p>
+  </fieldset>
+  <fieldset class="field chip-field">
+    <legend>{t('demo.form.method')} <span class="opt">({t('demo.form.optional')})</span></legend>
+    <div class="chips">
+      {ESTIMATING_METHODS.map((m) => (
+        <label class="chip"><input type="radio" name="estimatingMethod" value={m}><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{methodLabel[m]}</span></label>
+      ))}
+    </div>
+  </fieldset>
+  <fieldset class="field chip-field">
+    <legend>{t('demo.form.frequency')} <span class="opt">({t('demo.form.optional')})</span></legend>
+    <div class="chips">
+      {BID_FREQUENCIES.map((f) => (
+        <label class="chip"><input type="radio" name="bidFrequency" value={f}><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{frequencyLabel[f]}</span></label>
+      ))}
+    </div>
+  </fieldset>
+  <fieldset class="field chip-field">
+    <legend>{t('demo.form.nda')} <span class="opt">({t('demo.form.optional')})</span></legend>
+    <div class="chips">
+      {NDA_WILLING.map((n) => (
+        <label class="chip"><input type="radio" name="ndaWilling" value={n}><span class="chip-tick" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span><span class="chip-lbl">{ndaLabel[n]}</span></label>
       ))}
     </div>
   </fieldset>
   <div class="field">
-    <label for="ms">{t('demo.form.message')} <span class="req" aria-hidden="true">*</span></label>
-    <textarea id="ms" name="message" rows="3" placeholder={t('demo.form.messagePlaceholder')} required aria-required="true" aria-describedby="err-ms"></textarea>
-    <p class="field-error" id="err-ms" role="alert" hidden></p>
+    <label for="ms">{t('demo.form.message')} <span class="opt">({t('demo.form.optional')})</span></label>
+    <textarea id="ms" name="message" rows="3" placeholder={t('demo.form.messagePlaceholder')}></textarea>
   </div>
   <button type="submit" class="btn btn-primary">
     <span class="btn-label">{t('demo.form.submit')}</span>
@@ -91,11 +156,16 @@ const privacyHref = localizePath('/privacy-policy/', lang);
      restate the vendored .form-ok h3 look so the visual is unchanged. */
   .form-ok h2 { color: var(--on-ink); font-weight: 600; font-size: 22px; line-height: 1.2; margin: 0 0 10px; }
 
-  /* ---- role chips (replaces the native <select> so the OPEN control stays
-          on-brand; a native radiogroup keeps arrow-key + no-JS behaviour) ---- */
-  .role-field { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
-  .role-field legend { padding: 0; display: block; font: 500 12px/1 var(--font-mono);
+  /* ---- qualification chips (single-choice groups rendered on-brand; a native
+          radiogroup keeps arrow-key + no-JS behaviour) ---- */
+  .chip-field { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+  .chip-field legend { padding: 0; display: block; font: 500 12px/1 var(--font-mono);
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--on-ink-2); margin-bottom: 11px; }
+  /* .field select is already input-styled in site.css:476 — only the touch target
+     and the invalid-group cue are added here. */
+  .form-card select { width: 100%; min-height: 44px; }
+  .chip-field .field-error { margin-top: 9px; }
+  .chip-field[aria-invalid="true"] .chip { border-color: var(--danger-on-ink-border); }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; }
   /* min-height 44px: these are real radio controls — they were 35px, below the touch bar. */
   .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
@@ -158,42 +228,51 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     var sendingMsg = form.getAttribute('data-sending') || 'Sending…';
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Required set mirrors the server (src/pages/api/lead.ts): name, company,
-    // email, message. Phone + role are optional there, so they aren't validated.
-    var REQUIRED = ['fullName', 'company', 'email', 'message'];
-    var ERR_ID = { fullName: 'err-fn', company: 'err-co', email: 'err-em', message: 'err-ms' };
+    // Required set mirrors the server (src/lib/leadPayload.ts).
+    var REQUIRED = ['fullName', 'company', 'email', 'country', 'role', 'companySize', 'mainChallenge'];
+    var ERR_ID = { fullName: 'err-fn', company: 'err-co', email: 'err-em', country: 'err-country', role: 'err-role', companySize: 'err-size', mainChallenge: 'err-challenge' };
+    var RADIO = { role: true, companySize: true, mainChallenge: true };
 
     function fieldEl(name) { return form.querySelector('[name="' + name + '"]'); }
     function errEl(name) { return document.getElementById(ERR_ID[name]); }
-
-    function setError(name, msg) {
-      var el = errEl(name), input = fieldEl(name);
-      if (el) { el.textContent = msg; el.hidden = false; }
-      if (input) { input.setAttribute('aria-invalid', 'true'); input.classList.add('invalid'); }
+    function fieldValue(name) {
+      if (RADIO[name]) { var c = form.querySelector('input[name="' + name + '"]:checked'); return c ? c.value : ''; }
+      var el = fieldEl(name); return el ? (el.value || '').trim() : '';
     }
-    function clearError(name) {
-      var el = errEl(name), input = fieldEl(name);
-      if (el) { el.textContent = ''; el.hidden = true; }
-      if (input) { input.removeAttribute('aria-invalid'); input.classList.remove('invalid'); }
+    function markInvalid(name, on) {
+      var el = errEl(name);
+      if (el) { el.hidden = !on; }
+      if (RADIO[name]) {
+        var fs = form.querySelector('input[name="' + name + '"]'); fs = fs && fs.closest('fieldset');
+        if (fs) { if (on) fs.setAttribute('aria-invalid', 'true'); else fs.removeAttribute('aria-invalid'); }
+      } else {
+        var input = fieldEl(name);
+        if (input) { if (on) { input.setAttribute('aria-invalid', 'true'); input.classList.add('invalid'); } else { input.removeAttribute('aria-invalid'); input.classList.remove('invalid'); } }
+      }
     }
+    function setError(name, msg) { var el = errEl(name); if (el) el.textContent = msg; markInvalid(name, true); }
+    function clearError(name) { var el = errEl(name); if (el) el.textContent = ''; markInvalid(name, false); }
     function validateField(name) {
-      var input = fieldEl(name);
-      if (!input) return true;
-      var v = (input.value || '').trim();
+      var v = fieldValue(name);
       if (!v) { setError(name, reqMsg); return false; }
       if (name === 'email' && !EMAIL_RE.test(v)) { setError(name, emailMsg); return false; }
       clearError(name);
       return true;
     }
 
-    // Validate on blur; once a field is flagged, re-check live on input.
+    // Text/select fields validate on blur + live after flagged; radio groups clear on change.
     for (var k = 0; k < REQUIRED.length; k++) {
       (function (name) {
+        if (RADIO[name]) {
+          var radios = form.querySelectorAll('input[name="' + name + '"]');
+          for (var j = 0; j < radios.length; j++) radios[j].addEventListener('change', function () { validateField(name); });
+          return;
+        }
         var input = fieldEl(name);
         if (!input) return;
         input.addEventListener('blur', function () { validateField(name); });
-        input.addEventListener('input', function () {
-          if (input.getAttribute('aria-invalid')) validateField(name);
+        input.addEventListener(input.tagName === 'SELECT' ? 'change' : 'input', function () {
+          if (input.getAttribute('aria-invalid') || input.tagName === 'SELECT') validateField(name);
         });
       })(REQUIRED[k]);
     }
@@ -215,7 +294,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       // ---- Client-side validation: block submit, focus first invalid ----
       var firstInvalid = null, allOk = true;
       for (var r = 0; r < REQUIRED.length; r++) {
-        if (!validateField(REQUIRED[r])) { allOk = false; if (!firstInvalid) firstInvalid = fieldEl(REQUIRED[r]); }
+        if (!validateField(REQUIRED[r])) { allOk = false; if (!firstInvalid) firstInvalid = RADIO[REQUIRED[r]] ? form.querySelector('input[name="' + REQUIRED[r] + '"]') : fieldEl(REQUIRED[r]); }
       }
       if (!allOk) { if (firstInvalid) firstInvalid.focus(); return; }
 
@@ -229,6 +308,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
         var f = fields[i];
         if (!f.name) continue;
         if ((f.type === 'radio' || f.type === 'checkbox') && !f.checked) continue;
+        if (f.tagName === 'SELECT' && !f.value) continue;
         data[f.name] = f.value;
       }
 

@@ -32,3 +32,39 @@ export async function boxOf(page, selector) {
 export function rectsOverlap(a, b) {
   return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
 }
+
+/** Pick one qualification chip. The radio itself is visually hidden and
+ *  `pointer-events: none` (the label owns the pointer), so `page.check()` on the
+ *  input can never pass Playwright's hit-target check — click the chip label,
+ *  which is the real user gesture. Centred first so the sticky header can't
+ *  intercept the click. */
+export async function checkChip(page, name, value) {
+  const chip = page.locator(`label.chip:has(input[name="${name}"][value="${value}"])`);
+  await chip.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await chip.click();
+  await page.locator(`input[name="${name}"][value="${value}"]`).evaluate((el) => {
+    if (!el.checked) throw new Error('chip did not become checked');
+  });
+}
+
+/** Fill every required demo-form field with fixed values (qualification form, WS-B). */
+export async function fillRequired(page) {
+  await page.fill('#fn', 'Test Person');
+  await page.fill('#co', 'Test Co');
+  await page.fill('#em', 'test@example.com');
+  await page.selectOption('#country', 'NL');
+  await checkChip(page, 'role', 'head-of-estimating');
+  await checkChip(page, 'companySize', '30-99');
+  await checkChip(page, 'mainChallenge', 'pricing-confidence');
+}
+
+/** Intercept /api/lead (static server has none). Returns { body } — await `body` AFTER submitting. */
+export async function armLeadCapture(page, reply = '{"ok":true,"forwarded":false,"qualified":true,"score":8}') {
+  let resolve;
+  const body = new Promise((r) => { resolve = r; });
+  await page.route('**/api/lead', (route) => {
+    resolve(route.request().postDataJSON());
+    route.fulfill({ status: 200, contentType: 'application/json', body: reply });
+  });
+  return { body };
+}
