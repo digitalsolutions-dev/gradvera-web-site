@@ -15,7 +15,8 @@ to Vercel. Production domain: `gradvera.com`.
   (`export const prerender = false`).
 - **TypeScript**, `astro/tsconfigs/strict`, no `any`. Import alias `@/*` → `src/*`.
 - `@astrojs/sitemap`; fonts `@fontsource/ibm-plex-sans` + `-mono`.
-- `astro check` is the gate; Vitest covers `src/lib/` (`npm run test:unit`), Playwright covers the built site (`npm run test:e2e`).
+- `astro check` is the gate; Vitest covers `src/lib/` (`npm run test:unit`),
+  Playwright covers the built site (`npm run test:e2e`).
 
 ## Commands
 
@@ -25,7 +26,8 @@ to Vercel. Production domain: `gradvera.com`.
   legacy SL/HR slug 308s depend on it)
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
-- `npm run test:unit` — Vitest unit tests for the pure modules in `src/lib/` (`tests/unit/`); runs in CI next to `astro check`
+- `npm run test:unit` — Vitest unit tests for the pure modules in `src/lib/`
+  (`tests/unit/`); runs in CI next to `astro check`
 - `npm run test:e2e` — Playwright browser checks (see below); runs in CI, but `astro check` is the gate
 
 **`npm run check` is the verification gate — run it before pushing; CI enforces
@@ -98,11 +100,11 @@ ship silently.
 
 **CI (`.github/workflows/ci.yml`).** Two jobs run on every PR and on pushes to
 `main` / `staging`: **`astro check`** (the type-safety gate that closes the
-Vercel-doesn't-type-check gap) and **`e2e`** (the Playwright harness — installs
-Chromium, builds, runs the browser specs; uploads the HTML report as an artifact
-on failure). Build + deploy stay Vercel's job. Run `npm run check` (and, for
-UI/behaviour changes, `npm run test:e2e`) locally before pushing; CI is the
-enforcing copy.
+Vercel-doesn't-type-check gap, followed by `npm run test:unit`) and **`e2e`**
+(the Playwright harness — installs Chromium, builds, runs the browser specs;
+uploads the HTML report as an artifact on failure). Build + deploy stay
+Vercel's job. Run `npm run check` (and, for UI/behaviour changes,
+`npm run test:e2e`) locally before pushing; CI is the enforcing copy.
 
 **Branch flow.** Work lands via short-lived `feat/*` / `fix/*` / `docs/*` /
 `ci/*` / `chore/*` branches → PR → CI green → merge to `main` (squash for a

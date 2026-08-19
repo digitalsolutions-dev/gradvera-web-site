@@ -164,7 +164,6 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   /* .field select is already input-styled in site.css:476 — only the touch target
      and the invalid-group cue are added here. */
   .form-card select { width: 100%; min-height: 44px; }
-  .chip-field .field-error { margin-top: 9px; }
   .chip-field[aria-invalid="true"] .chip { border-color: var(--danger-on-ink-border); }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; }
   /* .form-card scope (0,2,0) is required: these chips are <label>s inside a
@@ -318,13 +317,13 @@ const privacyHref = localizePath('/privacy-policy/', lang);
         data[f.name] = f.value;
       }
 
-      // ---- First-touch attribution (src/scripts/attribution.js) ----
-      // Blank values are skipped so an absent touch never overwrites a form
-      // field; no attribution key collides with a form field name.
-      if (typeof window.gvAttribution === 'function') {
-        var attr = window.gvAttribution();
-        for (var a in attr) if (Object.prototype.hasOwnProperty.call(attr, a) && attr[a]) data[a] = attr[a];
-      }
+      // ---- First-touch attribution (src/scripts/attribution.js) — never block the submit ----
+      try {
+        if (typeof window.gvAttribution === 'function') {
+          var attr = window.gvAttribution();
+          for (var a in attr) if (Object.prototype.hasOwnProperty.call(attr, a) && attr[a]) data[a] = attr[a];
+        }
+      } catch (e) { /* attribution is best-effort */ }
 
       setLoading(true);
 
