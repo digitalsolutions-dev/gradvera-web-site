@@ -98,7 +98,7 @@ Field order (required marked *):
 `project-manager`), `companySize*` (chips), `mainChallenge*` (chips),
 `estimatingMethod` (chips), `bidFrequency` (chips), `ndaWilling` (chips),
 `phone`, `message` (optional textarea "Anything else?"). Honeypot + hidden
-`locale`, `page` unchanged. New hidden attribution inputs filled by JS (§5.4).
+`locale`, `page` unchanged. Attribution is merged into the JSON payload at submit by the form script (§5.4) — no hidden inputs.
 
 Client validation extended for the new required fields (same `.field-error`
 pattern). Chips reuse existing `.chip` styles.
@@ -122,9 +122,9 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 ### 5.3 `src/pages/api/lead.ts`
 
 - `Lead` type gains: `qualification: {country, role, companySize, mainChallenge, estimatingMethod, bidFrequency, ndaWilling}` (strings, `''` when absent), `attribution: {gclid, gbraid, wbraid, utm_source, utm_medium, utm_campaign, utm_term, utm_content, landingPage, referrer, submissionPage, submittedAt, consent}` (strings, `''` when absent; `consent` ∈ `accept|reject|unset`), `score: number`, `scoreReasons: string[]`, `qualified: boolean`.
-- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered (`[\w.\-:/%+=]`); `message` optional.
+- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered to the URL-safe set (RFC 3986 unreserved + reserved + `%` + space for decoded `utm_term`; anything else → `''`); `message` optional.
 - `message` synthesis when blank: `Main challenge: <label> · <method> · <frequency> · <country> · <size>` (English labels; keeps gtm-toolkit v1 `min_length=1` satisfied and D365 subject informative).
-- Pure `scoreLead(input): {score, reasons, qualified}` in `src/lib/leadScore.ts` (unit-testable later; today `astro check` + e2e).
+- Pure `scoreLead(input): {score, reasons, qualified}` in `src/lib/leadScore.ts` and `parseLeadBody()` in `src/lib/leadPayload.ts`, unit-tested with Vitest (`tests/unit/`, `npm run test:unit` — the e2e harness cannot reach the on-demand `/api/lead` route); `lead.ts` becomes transport only.
 - Response: `{ ok: true, forwarded: boolean, qualified: boolean, score: number }`.
 
 ### 5.4 Attribution capture (`src/scripts/attribution.js`, bundled via `site.js`)

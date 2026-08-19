@@ -4,7 +4,8 @@ A browser harness for the things `astro check` and static HTML greps can't
 verify: interaction, focus management, computed layout, responsive overflow, and
 runtime console errors. It runs **in CI** (the `e2e` job in `ci.yml`) and
 locally. `astro check` stays the type-safety gate — this suite is additive, not
-a replacement.
+a replacement. Server-side logic (lead scoring/parsing) is covered by Vitest in
+`tests/unit/`, not here.
 
 ## One-time setup
 
@@ -40,7 +41,8 @@ checks run against the exact artifact Vercel ships, not `astro dev`.
 | `lang-picker.spec.mjs` | globe dropdown: options, hreflang hrefs (incl. localized SL/HR slugs), keyboard behavior |
 | `i18n-parity.spec.mjs` | SL/HR pages leak no hardcoded English mock-screen copy; every `t()` key exists in all three dictionaries |
 | `number-format.spec.mjs` | SL/HR locale number rendering in the mock screens (decimal comma, NBSP before %) |
-| `lead-tracking.spec.mjs` | `generate_lead` dataLayer push on successful demo-form submit (EN/SL/HR + failure negative) |
+| `lead-tracking.spec.mjs` | `generate_lead` dataLayer push on successful demo-form submit (EN/SL/HR + failure negative); fills the qualification required set via `helpers.fillRequired` |
+| `lead-form.spec.mjs` | qualification form: required set + enum wire values + optional blanks on the intercepted `/api/lead` POST per locale (`helpers.armLeadCapture`), locale default country, chip validation; first-touch attribution (gclid/utm survive navigation, first touch wins, consent from `gv-consent`) |
 | `localized-slugs.spec.mjs` | localized SL/HR routes serve 200 with correct canonical/hreflang; legacy-URL 308s match both slash forms in the Vercel config; sitemap uses localized slugs |
 | `content-pages.spec.mjs` | guide pages ×6: status 200, FAQPage JSON-LD, hreflang set, CTA; footer links in every locale |
 | `claims.spec.mjs` | Claims policy (acquisition model §6.2/§7.1): no measured-results / profit-guarantee / own-data-demo copy; Excel input, DS-relationship footer line, sample-data guided demo + annual route present (EN/SL/HR) |

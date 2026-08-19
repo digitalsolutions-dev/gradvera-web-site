@@ -10,6 +10,7 @@
     "build": "astro build && node scripts/patch-vercel-redirects.mjs",
     "preview": "astro preview",
     "check": "astro check",
+    "test:unit": "vitest run",
     "test:e2e": "playwright test -c tests/e2e/playwright.config.mjs",
     "test:e2e:report": "playwright show-report",
     "astro": "astro"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@playwright/test": "^1.61.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.7"
   }
 }

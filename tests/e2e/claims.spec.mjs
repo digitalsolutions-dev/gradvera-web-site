@@ -92,3 +92,16 @@ for (const { path, must, mustNot } of DEMO_PAGES) {
     expect(await page.locator('.demo-steps ol li').count()).toBe(3);
   });
 }
+
+const PRIVACY = [
+  { path: '/privacy-policy/', must: 'session storage' },
+  { path: '/sl/politika-zasebnosti/', must: 'sejni shrambi' },
+  { path: '/hr/pravila-privatnosti/', must: 'pohrani sesije' },
+];
+
+for (const { path, must } of PRIVACY) {
+  test(`${path} discloses form qualification data and session attribution storage`, async ({ page }) => {
+    await gotoClean(page, path);
+    expect(await bodyText(page)).toContain(must);
+  });
+}

@@ -5,6 +5,10 @@
    checker, the hero draw-in uses the Web Animations API, and
    everything is visible by default (animation is enhancement).
    ============================================================ */
+// First-touch campaign attribution — side-effect only; runs on every page
+// because BaseLayout bundles this file site-wide. See attribution.js.
+import './attribution.js';
+
 (function () {
   'use strict';
   var docEl = document.documentElement;
