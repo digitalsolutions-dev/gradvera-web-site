@@ -56,15 +56,15 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `Gradvera Confirmed Acquisition Model` - 27 edges
-2. `[]` - 24 edges
-3. `useTranslations()` - 23 edges
-4. `localizePath()` - 19 edges
-5. `Locale` - 17 edges
-6. `Lead events & conversion tracking (GA4 / Google Ads via GTM)` - 17 edges
-7. `absoluteUrl()` - 16 edges
-8. `Lead integration (website → gtm-toolkit → D365)` - 13 edges
-9. `Workstream E — Acquisition Landing Page Implementation Plan` - 11 edges
-10. `Workstream A Claims Sweep Implementation Plan` - 10 edges
+2. `useTranslations()` - 23 edges
+3. `localizePath()` - 19 edges
+4. `Locale` - 17 edges
+5. `Lead events & conversion tracking (GA4 / Google Ads via GTM)` - 17 edges
+6. `absoluteUrl()` - 16 edges
+7. `Lead integration (website → gtm-toolkit → D365)` - 13 edges
+8. `Workstream E — Acquisition Landing Page Implementation Plan` - 11 edges
+9. `Workstream A Claims Sweep Implementation Plan` - 10 edges
+10. `scripts` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Brand personality: calm / precise / anti-hype` --semantically_similar_to--> `The Lit Blueprint (Creative North Star)`  [INFERRED] [semantically similar]
@@ -98,7 +98,7 @@
 
 ### Community 1 - "Landing Page & Lead Forms"
 Cohesion: 0.06
-Nodes (27): t, t, t, COMPANY, SITE, GUIDE_DATES, GTM_ID, GA4_ID (+19 more)
+Nodes (26): t, t, t, COMPANY, SITE, GUIDE_DATES, GTM_ID, GA4_ID (+18 more)
 
 ### Community 18 - "Demo Form & Book-a-Demo Pages"
 Cohesion: 0.20
@@ -236,6 +236,8 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **Why does `Task 1: EN-only route plumbing` connect `Astro Config & Redirects` to `Lead Scoring, Payload & Demo Form`, `Landing Page & Lead Forms`, `Project Guidance, CI & Plans`, `Base Layout & Fonts`?**
   _High betweenness centrality (0.045) - this node is a cross-community bridge._
+- **Are the 3 inferred relationships involving `Lead events & conversion tracking (GA4 / Google Ads via GTM)` (e.g. with `Decision D2': Score -> GTM dataLayer` and `landing.spec.mjs (acquisition landing page checks)`) actually correct?**
+  _`Lead events & conversion tracking (GA4 / Google Ads via GTM)` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `t`, `t`, `t` to the rest of the system?**
   _189 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Landing Page & Lead Forms` be split into smaller, more focused modules?**
@@ -244,5 +246,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.10338680926916222 - nodes in this community are weakly interconnected._
 - **Should `Project Docs & Principles` be split into smaller, more focused modules?**
   _Cohesion score 0.07311827956989247 - nodes in this community are weakly interconnected._
-- **Should `Base Layout & Fonts` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
