@@ -1,5 +1,5 @@
 ---
-import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, localizePath, useTranslations, type Locale } from '../../i18n/utils';
 import { isEnOnlyPath } from '../../i18n/slugs';
 
 /**
@@ -16,10 +16,13 @@ const { lang, path, variant = 'header' } = Astro.props;
 const t = useTranslations(lang);
 const switchPath = path ?? '/';
 // EN-only routes (slugs.ts EN_ONLY_ROUTES) have no SL/HR sibling, so localizing
-// the current path would link every option at a 404. Send them to that locale's
-// home page instead; the anchor's hreflang still describes its target's language.
+// the current path would point those options at a 404 — send them to that
+// locale's home page instead (their hreflang still describes the target). The
+// EN option stays self-linked so its aria-current="page" + check stay truthful.
 const targetPath = (loc: Locale): string =>
-  isEnOnlyPath(switchPath) ? localizePath('/', loc) : localizePath(switchPath, loc);
+  isEnOnlyPath(switchPath) && loc !== DEFAULT_LOCALE
+    ? localizePath('/', loc)
+    : localizePath(switchPath, loc);
 
 /* Simplified flags (24x16). EN uses the Union Jack by convention. */
 const FLAG_ART: Record<Locale, string> = {
