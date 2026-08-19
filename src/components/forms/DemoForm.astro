@@ -1,8 +1,10 @@
 ---
 import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
 import BookingEmbed from './BookingEmbed.astro';
-interface Props { lang: Locale; path?: string; refId?: string }
-const { lang, refId = `website-demo-${lang}` } = Astro.props;
+// `page` labels the submission's origin page in the lead payload — landing
+// pages override it so their leads are attributable.
+interface Props { lang: Locale; path?: string; refId?: string; page?: string }
+const { lang, refId = `website-demo-${lang}`, page = 'book-a-demo' } = Astro.props;
 const t = useTranslations(lang);
 
 import { ROLES, COUNTRIES, COMPANY_SIZES, MAIN_CHALLENGES, ESTIMATING_METHODS, BID_FREQUENCIES, NDA_WILLING } from '../../lib/leadScore';
@@ -47,7 +49,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
 >
   <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="locale" value={lang}>
-  <input type="hidden" name="page" value="book-a-demo">
+  <input type="hidden" name="page" value={page}>
   <div class="field-row">
     <div class="field">
       <label for="fn">{t('demo.form.fullName')} <span class="req" aria-hidden="true">*</span></label>

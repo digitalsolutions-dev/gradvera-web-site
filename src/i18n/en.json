@@ -302,12 +302,14 @@
   "footer.data.title": "Your Data Stays Yours",
   "footer.explore.bidGuide": "Construction bid estimate",
   "footer.explore.bookDemo": "Book a demo",
+  "footer.explore.lp": "Construction estimating software",
   "footer.explore.estGuide": "Construction cost estimation",
   "footer.explore.helps": "How Gradvera helps",
   "footer.explore.outcomes": "Your business outcomes",
   "footer.explore.title": "Explore",
   "footer.explore.works": "How it works",
   "guide.related": "Related guide",
+  "guide.lpLink": "See the software: construction estimating software for contractors",
   "guide.bid.eyebrow": "Construction bid estimate",
   "guide.bid.h1": "A construction bid estimate that holds up under scrutiny",
   "guide.bid.lede": "This page walks through what a construction bid estimate contains, who reads it after you submit it, and how each line item arrives at its price. It is written for estimators and commercial managers who price bills of quantities for investors, banks and supervising engineers.",
@@ -446,6 +448,7 @@
   "helps.h2Amber": "costs you can rely on.",
   "helps.h2a": "Price more offers in less time, with",
   "helps.lede": "The way your team estimates doesn't need to change. What changes is the support behind it. Gradvera is construction estimating software that shows you margin and pricing risk on every estimate before the client confirms it — not after the project is done.",
+  "helps.lpLink": "How the software works, step by step",
   "hero.chips.concrete": "Concrete C25/30",
   "hero.chips.earthworks": "Earthworks",
   "hero.chips.facade": "Façade system",
@@ -611,5 +614,126 @@
   "works.viz.row1": "Concrete foundation C25/30",
   "works.viz.row3": "Structural steel S355",
   "works.viz.progress": "Estimate in progress",
-  "works.s5p": "Every pricing decision helps Gradvera make better recommendations."
+  "works.s5p": "Every pricing decision helps Gradvera make better recommendations.",
+  "lp.seo.title": "Construction Estimating Software | Netherlands | Gradvera",
+  "lp.seo.desc": "Construction estimating software for Dutch contractors: review pricing confidence and prepare consistent bids from your historical Excel BoQs. Book a demo.",
+  "lp.hero.eyebrow": "For construction estimating teams in the Netherlands",
+  "lp.hero.h1": "Construction estimating software that uses your historical estimates",
+  "lp.hero.sub": "Review pricing confidence, reuse relevant knowledge from past bids, and prepare more consistent construction bids — starting from the Excel bills of quantities you already have.",
+  "lp.hero.cta": "Book a demo",
+  "lp.hero.cta2": "See the workflow",
+  "lp.who.eyebrow": "Who it is for",
+  "lp.who.h2": "Teams that bid regularly and keep their history in Excel",
+  "lp.who.p": "Contractors and estimating teams in the Netherlands with recurring tender and bid work, historical bills of quantities in Excel, and enough past estimates to build a meaningful knowledge base. Decision-makers: directors, project managers, commercial managers and estimating leads.",
+  "lp.who.pts": [
+    "Recurring tenders, bids and cost estimates",
+    "Historical BoQs stored mainly in Excel",
+    "A need for pricing-confidence review, historical-price reuse or subcontractor transparency"
+  ],
+  "lp.pain1.eyebrow": "Pricing confidence",
+  "lp.pain1.h2": "See which bid items still need a pricing review before you submit",
+  "lp.pain1.p1": "Most bids contain items priced from thin evidence — a rough unit rate, an old quote, a guess under deadline. Gradvera flags them and shows the total bid value represented by low-confidence pricing items, so the team reviews what matters before the offer leaves the office.",
+  "lp.pain1.p2": "“Value requiring pricing review” means the total value of low-confidence items. It is not an estimate of expected loss.",
+  "lp.pain2.eyebrow": "Subcontractor quotations",
+  "lp.pain2.h2": "One overview of subcontractor requests and quotations",
+  "lp.pain2.p1": "Requests go out by email, quotes come back in every format, and the comparison lives in someone's inbox. Gradvera centralizes subcontractor requests and quotations against the bid items they belong to — comparable with each other and with what you paid before.",
+  "lp.steps.eyebrow": "How it works",
+  "lp.steps.h2": "From Excel BoQ to a reviewed bid in four steps",
+  "lp.steps.items": [
+    {
+      "h": "Import",
+      "p": "Upload the Excel bill of quantities you received. Excel is the supported input today."
+    },
+    {
+      "h": "Structure and match",
+      "p": "Line items are normalized and matched against your historical estimates; the structure and suggested items come from your own past projects."
+    },
+    {
+      "h": "Review",
+      "p": "Historical price recommendations with source projects and confidence, plus a review of items whose pricing still needs attention."
+    },
+    {
+      "h": "Prepare and manage",
+      "p": "Subcontractor requests, offer-revision comparison, company margins and norms, and management visibility into estimating activity."
+    }
+  ],
+  "lp.evidence.eyebrow": "Product evidence",
+  "lp.evidence.h2": "Real screens from the sample tenant",
+  "lp.evidence.note": "All screenshots show sample data, not a customer case.",
+  "lp.caps.eyebrow": "Capabilities",
+  "lp.caps.h2": "What is operational today",
+  "lp.caps.items": [
+    "Excel BoQ import",
+    "Line-item normalization and matching",
+    "Estimate-structure suggestions and suggested line items",
+    "Historical price recommendations with source-project and confidence explanations",
+    "Price and cost risk review",
+    "Subcontractor quote requests and subcontractor portal",
+    "Offer-revision comparison",
+    "Margins and norms",
+    "Management analytics",
+    "Multi-user permissions and multilanguage application support"
+  ],
+  "lp.caps.note": "Supported input: Excel BoQ files. AI helps match, suggest and explain — the estimator decides.",
+  "lp.trust.eyebrow": "Data and trust",
+  "lp.trust.h2": "Your company's data stays yours",
+  "lp.trust.pts": [
+    "Tenant isolation: your historical estimates are never shared across companies.",
+    "Your data is used only to serve your own recommendations.",
+    "GDPR-compliant processing in the EU; see the privacy policy for details.",
+    "An NDA is available before any customer-specific preview."
+  ],
+  "lp.trust.company": "Gradvera is a product of DIGITAL SOLUTIONS d.o.o., Ljubljana (EU).",
+  "lp.trust.privacy": "Privacy policy",
+  "lp.eval.eyebrow": "Evaluation process",
+  "lp.eval.h2": "A guided route, not a free trial",
+  "lp.eval.items": [
+    {
+      "h": "Guided demo",
+      "p": "30 minutes on sample data, focused on the part of your workflow that matters most."
+    },
+    {
+      "h": "Optional preview",
+      "p": "After qualification and an NDA, an indicative preview on up to 20 of your Excel BoQs — limited data, so lower-confidence recommendations than the full setup."
+    },
+    {
+      "h": "Annual onboarding",
+      "p": "With an annual agreement we import roughly 100 historical BoQs to build your knowledge base, followed by a 14-day acceptance period."
+    }
+  ],
+  "lp.commercial.eyebrow": "Commercial context",
+  "lp.commercial.h2": "Annual plans, named users",
+  "lp.commercial.p": "Gradvera is licensed per named user on annual plans — from a single Professional licence, with Starter licences for additional estimators. Onboarding is agreed commercially; pricing is discussed once we know your setup.",
+  "lp.faq.eyebrow": "FAQ",
+  "lp.faq.h2": "Questions before a demo",
+  "lp.faq.items": [
+    {
+      "q": "How much historical data do we need?",
+      "a": "About 100 historical BoQ documents give a useful knowledge base; a typical document has more than 100 line items. They do not have to come from one project type. A 20-file preview is possible, but indicative only."
+    },
+    {
+      "q": "Which file formats are supported?",
+      "a": "Excel BoQ files. PDF, scanned documents and unrestricted document ingestion are not available today."
+    },
+    {
+      "q": "Is there a free trial?",
+      "a": "No. The product's value depends on your historical data and onboarding, so an empty account would misrepresent it. The route is a guided demo, an optional NDA-covered preview, then annual onboarding with a 14-day acceptance period."
+    },
+    {
+      "q": "How long does onboarding take?",
+      "a": "Import is largely automated; validation and correction take up to about ten minutes per BoQ. The team receives setup guidance during onboarding."
+    },
+    {
+      "q": "How is our data protected?",
+      "a": "Each company runs in its own tenant; data is never shared across companies and is processed in the EU under the GDPR. An NDA is available before any preview."
+    },
+    {
+      "q": "Which languages does the application support?",
+      "a": "The application is multilanguage. Sales and onboarding are currently conducted in English."
+    }
+  ],
+  "lp.book.eyebrow": "Book a demo",
+  "lp.book.h2": "See the workflow on sample data",
+  "lp.book.p": "Send the form, then pick a time straight away. 30 minutes, no obligation, nothing to prepare.",
+  "lp.breadcrumb": "Construction estimating software"
 }

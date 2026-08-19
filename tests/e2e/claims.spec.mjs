@@ -6,7 +6,9 @@
 import { test, expect } from '@playwright/test';
 import { gotoClean } from './helpers.mjs';
 
-const HOME = ['/', '/sl/', '/hr/'];
+// The three homepages plus the EN-only acquisition landing page — every
+// top-of-funnel entry point must stay free of unsupported "measured results".
+const HOME = ['/', '/sl/', '/hr/', '/construction-estimating-software/'];
 
 // Visible text of the page minus script/style, collapsed whitespace.
 async function bodyText(page) {

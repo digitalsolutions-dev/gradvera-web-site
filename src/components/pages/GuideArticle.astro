@@ -66,6 +66,8 @@ const related = siblingNs
       <nav class="guide-related" aria-label={t('guide.related')}>
         <p class="rel-label">{t('guide.related')}</p>
         <a href={related.href}>{related.title} <span class="arr" aria-hidden="true">→</span></a>
+        {/* EN-only product landing page: literal EN path on every locale (no localizePath). */}
+        <a class="guide-related-lp" href="/construction-estimating-software/" hreflang="en">{t('guide.lpLink')} <span class="arr" aria-hidden="true">→</span></a>
       </nav>
     )}
 
@@ -128,6 +130,13 @@ const related = siblingNs
     font-family: var(--font-mono); transition: transform 200ms var(--ease-out, ease); }
   .guide-related a:hover { color: var(--brand-primary-soft-text); }
   .guide-related a:hover .arr { transform: translateX(4px); }
+  /* Secondary link to the EN-only product page — display:flex puts it on its own
+     line under the sibling guide link and keeps it visibly quieter, so the
+     in-cluster guide stays the primary next step. */
+  .guide-related .guide-related-lp { display: flex; margin-top: 16px; gap: 8px;
+    max-width: 54ch; font-weight: 500; font-size: 15px; line-height: 1.45;
+    letter-spacing: 0; color: var(--brand-primary-soft-text); }
+  .guide-related .guide-related-lp:hover { text-decoration: underline; }
 
   /* ---------- closing CTA (the one lit element on this page) ---------- */
   .guide-cta { margin-top: clamp(48px, 7vh, 76px); background: var(--ink);

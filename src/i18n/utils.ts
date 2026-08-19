@@ -12,7 +12,7 @@
 import en from './en.json';
 import sl from './sl.json';
 import hr from './hr.json';
-import { SLUGS, REVERSE } from './slugs';
+import { SLUGS, REVERSE, isEnOnlyPath } from './slugs';
 import { COMPANY, GUIDE_DATES, SITE } from '../consts';
 
 export const LOCALES = ['en', 'sl', 'hr'] as const;
@@ -127,6 +127,15 @@ export function localizePath(canonicalPath: string, lang: Locale): string {
 export function alternates(
   canonicalPath: string,
 ): { hreflang: string; path: string }[] {
+  // EN-only routes (slugs.ts EN_ONLY_ROUTES): no SL/HR siblings → only en +
+  // x-default, both pointing at self.
+  if (isEnOnlyPath(canonicalPath)) {
+    const self = localizePath(canonicalPath, DEFAULT_LOCALE);
+    return [
+      { hreflang: LOCALE_META[DEFAULT_LOCALE].htmlLang, path: self },
+      { hreflang: 'x-default', path: self },
+    ];
+  }
   const list = LOCALES.map((lang) => ({
     hreflang: LOCALE_META[lang].htmlLang,
     path: localizePath(canonicalPath, lang),

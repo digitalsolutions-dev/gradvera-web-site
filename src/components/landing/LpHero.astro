@@ -1,0 +1,31 @@
+---
+// Landing-page hero — dark blueprint chrome, one amber CTA (The One Light Rule).
+// The H1 is the only h1 on the page; both CTAs are same-page anchors, so the
+// visitor never leaves the acquisition route.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="lp-hero">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.hero.eyebrow')}</p>
+    <h1>{t('lp.hero.h1')}</h1>
+    <p class="lede lp-hero-sub">{t('lp.hero.sub')}</p>
+    <div class="lp-hero-ctas">
+      <a class="btn btn-primary btn-lg" href="#book-a-demo">{t('lp.hero.cta')} <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost-ink btn-lg" href="#how-it-works">{t('lp.hero.cta2')}</a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Top padding clears the 74px fixed header. */
+  .lp-hero { background: var(--ink); color: var(--on-ink);
+    padding: calc(74px + clamp(56px, 9vh, 110px)) 0 clamp(56px, 8vh, 96px); }
+  .lp-hero h1 { font-weight: 600; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.04;
+    letter-spacing: -0.022em; max-width: 900px; margin: 16px 0 0; text-wrap: balance; }
+  .lp-hero .lp-hero-sub { color: var(--on-ink-2); max-width: 720px; margin-top: 22px;
+    text-wrap: pretty; }
+  .lp-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+</style>

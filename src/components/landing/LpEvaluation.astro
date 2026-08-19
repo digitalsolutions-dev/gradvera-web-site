@@ -1,0 +1,21 @@
+---
+// The evaluation route, stated up front: guided demo → optional NDA preview →
+// annual onboarding. Setting the expectation here is what keeps the form honest.
+import { useTranslations, type Locale } from '../../i18n/utils';
+import LpNumberedList from './LpNumberedList.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items: { h: string; p: string }[] = t('lp.eval.items');
+---
+<section class="lp-eval">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.eval.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.eval.h2')}</h2>
+    <LpNumberedList items={items} />
+  </div>
+</section>
+
+<style is:global>
+  .lp-eval { background: var(--bg1); padding: var(--sec) 0; }
+</style>

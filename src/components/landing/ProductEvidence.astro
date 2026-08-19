@@ -1,0 +1,44 @@
+---
+// Screenshots from the stable sample tenant (acquisition model §7.1.8). Every
+// caption is prefixed "Sample data ·" — the screens are never presented as a
+// customer case. With no shots supplied the component renders NOTHING: an empty
+// "product evidence" frame would be a promise the page cannot keep.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale; shots: { src: string; alt: string; caption: string }[] }
+const { lang, shots } = Astro.props;
+const t = useTranslations(lang);
+---
+{shots.length > 0 && (
+  <section class="product-evidence">
+    <div class="wrap">
+      <p class="eyebrow">{t('lp.evidence.eyebrow')}</p>
+      <h2 class="h-section lp-h2">{t('lp.evidence.h2')}</h2>
+      <p class="lede lp-lede">{t('lp.evidence.note')}</p>
+      <ul class="pe-grid">
+        {shots.map((s) => (
+          <li>
+            <figure>
+              <img src={s.src} alt={s.alt} loading="lazy" width="1200" height="750" />
+              <figcaption>Sample data · {s.caption}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style is:global>
+  /* Continues the how-it-works band (same --bg2), separated by a hairline:
+     these are the screens for the steps above, not a new claim. */
+  .product-evidence { background: var(--bg2); padding: var(--sec) 0;
+    border-top: 1px solid var(--border2); }
+  .pe-grid { list-style: none; margin: clamp(28px, 4vh, 46px) 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(22px, 3vw, 36px); }
+  .pe-grid figure { margin: 0; }
+  .pe-grid img { width: 100%; height: auto; border: 1px solid var(--border2);
+    border-radius: 12px; background: var(--bg1); }
+  .pe-grid figcaption { margin-top: 10px; font: 500 12.5px/1.5 var(--font-mono);
+    letter-spacing: 0.04em; color: var(--fg2); }
+  @media (max-width: 760px) { .pe-grid { grid-template-columns: 1fr; } }
+</style>
