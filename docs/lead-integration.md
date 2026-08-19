@@ -24,21 +24,48 @@ Client-side conversion tracking for this form is documented in
 Source: `src/components/forms/DemoForm.astro` (client) and
 `src/pages/api/lead.ts` (server). `Content-Type: application/json`.
 
-The browser posts the raw form fields:
+The browser posts the raw form fields (qualification form, contract **v2** —
+acquisition model §8.1/§8.3; wire values for choice fields are the enum slugs
+defined in `src/lib/leadScore.ts`):
 
 ```jsonc
 {
-  "fullName": "Ada Lovelace",      // required, non-empty
-  "company":  "Analytical Engines",// required, non-empty
-  "email":    "ada@example.com",   // required, must match a basic email regex
-  "phone":    "+386 40 000 000",   // optional
-  "role":     "Head of estimating",// optional (one of the form's <select> options)
-  "message":  "We bid ~30 jobs/mo",// required, non-empty
-  "locale":   "sl",                // optional, defaults to "en"
-  "page":     "book-a-demo",       // optional, free-text origin hint
-  "company_website": ""            // HONEYPOT — must stay empty (see below)
+  // ---- identity (required) ----
+  "fullName":  "Ada Lovelace",            // required, non-empty
+  "email":     "ada@analytical-engines.nl",// required, basic email regex
+  "company":   "Analytical Engines BV",   // required, non-empty
+  // ---- qualification (required unless noted) ----
+  "country":   "NL",                      // required — NL BE DE DK SE NO FI AT SI HR EU-OTHER NON-EU
+  "role":      "head-of-estimating",      // required — company-director estimator head-of-estimating commercial-manager operations-manager project-manager other
+  "companySize": "30-99",                 // required — 1-9 10-29 30-99 100-249 250+
+  "mainChallenge": "pricing-confidence",  // required — pricing-confidence subcontractor-quotes historical-reuse management-visibility other
+  "estimatingMethod": "excel",            // optional — excel software mixed other
+  "bidFrequency": "monthly",              // optional — weekly monthly few-per-year rarely
+  "ndaWilling": "yes",                    // optional — yes not-yet
+  "phone":     "+31 6 1234 5678",         // optional
+  "message":   "We bid ~30 jobs/mo",      // optional free text ("Anything else?")
+  // ---- context ----
+  "locale":    "en",                      // optional, defaults to "en"
+  "page":      "book-a-demo",             // optional, free-text origin hint
+  // ---- first-touch attribution (optional; added by src/scripts/attribution.js) ----
+  "gclid": "Cj0KCQ…", "gbraid": "", "wbraid": "",
+  "utm_source": "google", "utm_medium": "cpc", "utm_campaign": "nl-estimating",
+  "utm_term": "construction estimating software", "utm_content": "ad1",
+  "landingPage": "/construction-estimating-software/",  // first page of the session
+  "referrer": "https://www.google.com/",               // document.referrer on first touch
+  "submissionPage": "/book-a-demo/",
+  "submittedAt": "2026-08-19T09:59:50.000Z",           // browser clock — informational; receivedAt is authoritative
+  "consent": "accept",                                 // accept | reject | unset (gv-consent cookie)
+  "company_website": ""                   // HONEYPOT — must stay empty (see below)
 }
 ```
+
+Attribution is captured on the first page of the browsing session from the URL
+query (`gclid gbraid wbraid utm_*`), kept in `sessionStorage["gv_attr"]` (no
+cookie, cleared when the tab closes; first touch wins) and merged into this
+body on submit. Unknown keys are ignored server-side; an optional choice field
+that is *present but not one of its enum values* is a validation error (400),
+while an absent optional field is fine.
 
 ### Honeypot
 
@@ -49,8 +76,13 @@ forwarded.
 
 ### Validation
 
-`fullName`, `company`, `email`, `message` must be non-empty strings and `email`
-must match `^[^\s@]+@[^\s@]+\.[^\s@]+$`. On failure:
+`src/lib/leadPayload.ts` (`parseLeadBody`, unit-tested in `tests/unit/`).
+Required: `fullName`, `email` (regex `^[^\s@]+@[^\s@]+\.[^\s@]+$`), `company`,
+`country`, `role`, `companySize`, `mainChallenge` — the four choice fields must be
+exact enum values. Optional choice fields must be valid when present. Attribution
+values are trimmed, capped at 256 chars and must match the URL-safe charset
+(Unicode letters/digits, `._~:/?#[]@!$&'()*+,;=%`, space) — otherwise they are
+stored as `""`. `consent` is coerced to `accept | reject | unset`. On failure:
 
 ```
 HTTP 400
@@ -61,10 +93,10 @@ HTTP 400
 
 | Situation                                    | Status | Body                                 |
 | -------------------------------------------- | ------ | ------------------------------------ |
-| Valid lead, toolkit accepted (2xx)           | 200    | `{ "ok": true, "forwarded": true }`  |
-| Valid lead, toolkit rejected (non-2xx)       | 200    | `{ "ok": true, "forwarded": false }` |
-| Valid lead, forward threw / timed out        | 200    | `{ "ok": true, "forwarded": false }` |
-| Valid lead, no endpoint configured (logged)  | 200    | `{ "ok": true, "forwarded": false }` |
+| Valid lead, toolkit accepted (2xx)           | 200    | `{ "ok": true, "forwarded": true,  "qualified": bool, "score": n }` |
+| Valid lead, toolkit rejected (non-2xx)       | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
+| Valid lead, forward threw / timed out        | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
+| Valid lead, no endpoint configured (logged)  | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
 | Honeypot tripped                             | 200    | `{ "ok": true }`                     |
 | Payload over 16 KB                           | 413    | `{ "ok": false, "error": "too_large" }` |
 | Non-JSON `Content-Type`                      | 415    | `{ "ok": false, "error": "unsupported_media_type" }` |
@@ -90,38 +122,74 @@ hung receiver can never stall the visitor's request up to the function timeout.
 Check the website function logs for the two lines above to tell the cases apart.
 
 The front-end (`DemoForm.astro`) only checks `res.ok` (the HTTP status), so any
-200 shows the success card.
+200 shows the success card. `qualified` / `score` (acquisition model §8.2 — see
+`src/lib/leadScore.ts`; threshold 7) are returned so client-side analytics can
+distinguish qualified leads (wired in the analytics workstream); they carry no
+PII.
 
 ---
 
 ## 2. Website → gtm-toolkit (the forwarded lead)
 
 When `GTM_LEAD_ENDPOINT` is set, the endpoint normalizes the form into a stable
-shape and POSTs **this exact JSON** as the request body:
+shape (contract **v2**) and POSTs **this exact JSON** as the request body:
 
 ```jsonc
 {
-  "source":     "gradvera-website",       // constant — identifies the channel
-  "receivedAt": "2026-06-22T09:30:00.000Z",// server timestamp, ISO-8601 UTC
-  "locale":     "sl",                      // "en" | "sl" | "hr"
+  // ---- v1 keys (unchanged shape — the v1 receiver keeps working) ----
+  "source":     "gradvera-website",        // constant — identifies the channel
+  "receivedAt": "2026-08-19T10:00:00.000Z",// server timestamp, ISO-8601 UTC (authoritative)
+  "locale":     "en",                      // "en" | "sl" | "hr"
   "page":       "book-a-demo",
   "fullName":   "Ada Lovelace",
-  "company":    "Analytical Engines",
-  "email":      "ada@example.com",
-  "phone":      "+386 40 000 000",         // "" when not provided
-  "role":       "Head of estimating",      // "" when not provided
-  "message":    "We bid ~30 jobs/mo"
+  "company":    "Analytical Engines BV",
+  "email":      "ada@analytical-engines.nl",
+  "phone":      "+31 6 1234 5678",         // "" when not provided
+  "role":       "Head of estimating",      // ENGLISH LABEL (→ D365 jobtitle); the slug is in qualification.role
+  "message":    "We bid ~30 jobs/mo",      // NEVER blank — synthesized when the visitor left it empty (see below)
+  // ---- v2 keys ----
+  "qualification": {
+    "country": "NL", "role": "head-of-estimating", "companySize": "30-99",
+    "mainChallenge": "pricing-confidence", "estimatingMethod": "excel",
+    "bidFrequency": "monthly", "ndaWilling": "yes"        // "" for optional fields left blank
+  },
+  "attribution": {
+    "gclid": "Cj0KCQ…", "gbraid": "", "wbraid": "",
+    "utm_source": "google", "utm_medium": "cpc", "utm_campaign": "nl-estimating",
+    "utm_term": "construction estimating software", "utm_content": "ad1",
+    "landingPage": "/construction-estimating-software/", "referrer": "https://www.google.com/",
+    "submissionPage": "/book-a-demo/", "submittedAt": "2026-08-19T09:59:50.000Z",
+    "consent": "accept"                                   // accept | reject | unset
+  },
+  "score": 14,                              // §8.2 sum (−2 … 14)
+  "scoreReasons": ["country-nl","decision-role","size-30-plus","excel-history","recurring-bids","core-pain","nda-ready"],
+  "qualified": true                         // score >= 7
 }
 ```
 
 Field notes for the receiver:
 
-- `source` is always `"gradvera-website"`.
-- `receivedAt` is set by the website, not the browser.
-- `phone` and `role` are always present as strings (`""` if the visitor left
-  them blank).
+- `source` is always `"gradvera-website"`; `receivedAt` is set by the website.
+- `phone`, `role`, `message` and every `qualification`/`attribution` member are
+  always present as strings (`""` when blank) — except `consent`, which is one of
+  the three literals.
+- **`message` is never blank.** When the visitor leaves the optional textarea
+  empty the website synthesizes a qualification digest so the v1 receiver's
+  `message` `min_length=1` contract holds and the D365 subject stays useful, e.g.
+  `Main challenge: Pricing confidence · Method: Excel spreadsheets · Frequency: A few per month · Country: NL · Size: 30-99 · Role: Head of estimating · NDA: yes`
+  (parts omitted when blank; `Demo request` if everything is blank).
+- **`role` is the English label**, not the slug, so the v1 mapping `role → jobtitle`
+  keeps producing readable values; the slug lives in `qualification.role`.
 - The honeypot field and any extra browser fields are **stripped** — only the
   keys above are forwarded.
+- **Receiver compatibility.** The deployed gtm-toolkit receiver (`WebsiteLead`,
+  `extra="ignore"`) accepts this body today: it persists the v1 keys and ignores
+  `qualification` / `attribution` / `score` / `scoreReasons` / `qualified`.
+  **gtm-toolkit follow-up (separate repo/PR):** extend `WebsiteLead` + the queue
+  envelope + the D365 mapping (score/qualified/reasons → Lead fields;
+  qualification + attribution → description/notes or dedicated columns) so the
+  §8.3 attribution is *stored with the lead*, not only sent. Until then the
+  synthesized `message` carries the qualification into the D365 subject.
 
 ### Headers
 
