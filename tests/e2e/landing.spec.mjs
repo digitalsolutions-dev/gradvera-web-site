@@ -86,3 +86,19 @@ test('LP: form submits with page=construction-estimating-software and reveals Bo
   expect((await cap.body).page).toBe('construction-estimating-software');
   await expect(page.locator('.form-ok iframe.booking-frame')).toHaveAttribute('src', `${BOOKING_URL}&RefID=website-lp`);
 });
+
+// Internal links into the EN-only LP: the literal EN path is linked from every
+// locale (no localizePath) — footer "Explore" column on all three homepages,
+// the guides' related block, and the homepage HelpsIntro.
+test('internal links: footer (3 locales), guides related block, homepage HelpsIntro point at the LP', async ({ page }) => {
+  for (const home of ['/', '/sl/', '/hr/']) {
+    await gotoClean(page, home);
+    await expect(page.locator(`footer a[href="${LP}"]`)).toHaveCount(1);
+  }
+  await gotoClean(page, '/');
+  await expect(page.locator(`#helps a[href="${LP}"]`)).toHaveCount(1);
+  for (const guide of ['/construction-bid-estimate/', '/sl/gradbeni-izracun/', '/hr/gradevinski-troskovnik/']) {
+    await gotoClean(page, guide);
+    await expect(page.locator(`.guide-related a[href="${LP}"]`)).toHaveCount(1);
+  }
+});

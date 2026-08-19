@@ -24,8 +24,9 @@ for (const { url, proof, related } of PAGES) {
     expect(ld.some((s) => s.includes('"Article"') && s.includes('"datePublished"')), `${url} should carry Article schema with dates`).toBe(true);
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(4);
     await expect(page.locator('.guide-cta a.btn')).toBeVisible();
-    // cross-link to the sibling cluster guide (same locale), anchored on its H1
-    const relLink = page.locator('.guide-related a');
+    // cross-link to the sibling cluster guide (same locale), anchored on its H1.
+    // The block also carries the EN-only landing-page link, so exclude it here.
+    const relLink = page.locator('.guide-related a:not(.guide-related-lp)');
     await expect(relLink).toBeVisible();
     expect(await relLink.getAttribute('href'), `${url} should link to its sibling guide`).toMatch(related);
   });
