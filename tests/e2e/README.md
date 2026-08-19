@@ -43,6 +43,7 @@ checks run against the exact artifact Vercel ships, not `astro dev`.
 | `lead-tracking.spec.mjs` | `generate_lead` dataLayer push on successful demo-form submit (EN/SL/HR + failure negative) |
 | `localized-slugs.spec.mjs` | localized SL/HR routes serve 200 with correct canonical/hreflang; legacy-URL 308s match both slash forms in the Vercel config; sitemap uses localized slugs |
 | `content-pages.spec.mjs` | guide pages ×6: status 200, FAQPage JSON-LD, hreflang set, CTA; footer links in every locale |
+| `claims.spec.mjs` | Claims policy (acquisition model §6.2/§7.1): no measured-results / profit-guarantee / own-data-demo copy; Excel input, DS-relationship footer line, sample-data guided demo + annual route present (EN/SL/HR) |
 
 ## Adding a check
 

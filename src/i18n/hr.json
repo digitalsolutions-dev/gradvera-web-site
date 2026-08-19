@@ -1,7 +1,6 @@
 {
   "a11y.home": "Gradvera — početna stranica",
   "a11y.language": "Jezik",
-  "a11y.to": "na",
   "a11y.newTab": "otvara se u novoj kartici",
   "a11y.openMenu": "Otvori izbornik",
   "a11y.closeMenu": "Zatvori izbornik",
@@ -194,17 +193,18 @@
   "demo.form.submit": "Rezervirajte demonstraciju",
   "demo.page.back": "Natrag na stranicu",
   "demo.page.eyebrow": "Rezervirajte demonstraciju",
-  "demo.page.h2": "Pogledajte kako Gradvera radi s vašim ponudama.",
-  "demo.page.intro": "Pokazat ćemo vam kako se Gradvera uklapa u postojeći način rada vašeg tima za kalkulacije — koristeći vaše povijesne cijene, a ne generički predložak.",
+  "demo.page.h2": "Pogledajte tijek izrade troškovnika u Gradveri.",
+  "demo.page.intro": "30-minutna vođena demonstracija na oglednim podacima, usmjerena na dio vašeg rada koji je najvažniji — pregled cijena, ponude podizvođača ili ponovna upotreba vlastitih povijesnih troškovnika. Podržani ulaz danas su troškovnici u Excelu.",
   "demo.page.stepsTitle": "Što slijedi",
   "demo.page.steps": [
-    "Ispunite obrazac — imajte na umu nekoliko svojih nedavnih ponuda.",
-    "Dogovorit ćemo radnu sesiju s vašim cijenama i podacima.",
-    "Pogledajte kako Gradvera sastavlja ponudu, a zatim odlučite. Bez obveze."
+    "Pošaljite obrazac — termin potvrđujemo u jednom radnom danu.",
+    "30-minutna vođena demonstracija na oglednim podacima, prilagođena načinu rada vašeg tima.",
+    "Ako odgovara: neobvezni pregled pod NDA-om na do 20 vaših troškovnika u Excelu, zatim godišnje uvođenje s 14-dnevnim razdobljem prihvaćanja."
   ],
   "demo.page.reassure": [
     "Bez obveze",
-    "Uz vaše ponude"
+    "Ogledni podaci — ništa za pripremiti",
+    "Ulaz: troškovnici u Excelu"
   ],
   "demo.page.pts": [
     "Brža priprema ponuda",
@@ -212,10 +212,11 @@
     "Ranije prepoznavanje komercijalnih rizika"
   ],
   "demo.success.h3": "Hvala — zahtjev je zaprimljen.",
-  "demo.success.p": "Uskoro ćemo vam se javiti kako bismo dogovorili demonstraciju s vašim ponudama.",
+  "demo.success.p": "Uskoro ćemo vam se javiti kako bismo potvrdili vođenu demonstraciju.",
   "footer.about.body": "Softver za izradu građevinskih troškovnika potpomognut umjetnom inteligencijom koji tvrtkama pomaže pripremiti ponude, razumjeti troškove i donositi bolje odluke o cijenama — prilagođen njihovu postojećem načinu rada.",
   "footer.about.title": "O Gradveri",
   "footer.bottom.copyright": "© 2026 Gradvera · DIGITAL SOLUTIONS d.o.o., Ljubljana",
+  "footer.bottom.product": "Gradvera je proizvod tvrtke DIGITAL SOLUTIONS d.o.o.",
   "footer.bottom.privacy": "Pravila privatnosti",
   "mock.acceptPrice": "Prihvati cijenu",
   "mock.accept": "Prihvati",
@@ -302,7 +303,7 @@
     {
       "h": "Brži građevinski troškovnik, uz odluku koja ostaje vaša",
       "ps": [
-        "Ponudu ćete pripremiti brže ako ne počinjete od prazne tablice. Gradvera iz primljene dokumentacije predlaže strukturu troškovnika — s već postavljenim grupama i stavkama — pa prve sate možete posvetiti provjeri opsega umjesto prepisivanju.",
+        "Ponudu ćete pripremiti brže ako ne počinjete od prazne tablice. Gradvera iz primljenog troškovnika u Excelu predlaže strukturu troškovnika — s već postavljenim grupama i stavkama — pa prve sate možete posvetiti provjeri opsega umjesto prepisivanju.",
         "Vrednovanje ide istim putem: predložene jedinične cijene iz vaše povijesti uz svaku stavku, ponude podizvođača prikupljene uz stavku kojoj pripadaju, tako da su usporedive međusobno i s onim što ste za isti rad već platili, te pregled rizika koji prije zaključenja označava stavke s odstupanjima od vaše povijesti i razvrstava ih po ozbiljnosti.",
         "Ništa u tom postupku ne odobrava se automatski. Svaki prijedlog potvrđuje ili mijenja kalkulant, a predani troškovnik možete sami obrazložiti stavku po stavku — investitoru, banci i nadzornom inženjeru čak i godinu i pol poslije."
       ]
@@ -327,8 +328,8 @@
       "a": "Da. Uvoz zadržava primljeni troškovnik onakvim kakav jest. Uz svaku prepoznatu stavku Gradvera zatim pripisuje predloženu jediničnu cijenu iz vaše povijesti i projekte iz kojih proizlazi. Vrednovanje primljenog troškovnika tako postaje pregled prijedloga, a ne popunjavanje praznog stupca."
     }
   ],
-  "guide.bid.cta.h2": "Pogledajte kako Gradvera radi s troškovnikom koji vam je na stolu.",
-  "guide.bid.cta.p": "Na kratkoj demonstraciji složimo strukturu troškovnika iz vaše dokumentacije i pokažemo predložene cijene iz vaše povijesti.",
+  "guide.bid.cta.h2": "Pogledajte kako Gradvera sastavlja ponudu iz troškovnika u Excelu.",
+  "guide.bid.cta.p": "Na 30-minutnoj vođenoj demonstraciji složimo strukturu ponude iz oglednog troškovnika u Excelu i pokažemo kako rade predložene cijene i pregled cijena — zatim razgovaramo o vašoj povijesti u Excelu.",
   "guide.bid.cta.btn": "Rezervirajte demonstraciju",
   "guide.est.eyebrow": "Građevinske kalkulacije",
   "guide.est.h1": "Građevinske kalkulacije koje možete obraniti pred naručiteljem",
@@ -394,13 +395,13 @@
       "a": "Ovisi o tome koliko prošlih ponuda prenesete i u kakvom su stanju. Uvođenje počinje uvozom nekoliko dovršenih projekata, a ne prepisivanjem cijele arhive — prve kalkulacije možete pripremati čim je uvezena prva skupina projekata."
     }
   ],
-  "guide.est.cta.h2": "Pogledajte kako Gradvera radi s vašom posljednjom kalkulacijom.",
-  "guide.est.cta.p": "Na kratkoj demonstraciji prolazimo kroz jednu vašu ponudu — s vašim stavkama i vašom poviješću cijena, a ne s općim predloškom.",
+  "guide.est.cta.h2": "Pogledajte kako Gradvera vrednuje troškovnik.",
+  "guide.est.cta.p": "Na 30-minutnoj vođenoj demonstraciji na oglednim podacima prolazimo kroz tijek izrade troškovnika — prijedloge cijena iz povijesti, pregled cijena i ponude podizvođača — i razgovaramo kako se to preslikava na vaše troškovnike u Excelu.",
   "guide.est.cta.btn": "Rezervirajte demonstraciju",
   "helps.eyebrow": "Kako Gradvera pomaže",
   "helps.h2Amber": "troškovima na koje se možete osloniti.",
   "helps.h2a": "Odredite cijene za više ponuda u manje vremena, uz",
-  "helps.lede": "Način na koji vaš tim izrađuje troškovnike ne mora se mijenjati. Mijenja se podrška koja stoji iza toga. Gradvera je softver za izradu građevinskih troškovnika koji štiti vašu dobit na svakom troškovniku prije nego što ga klijent potvrdi — a ne nakon što je projekt gotov.",
+  "helps.lede": "Način na koji vaš tim izrađuje troškovnike ne mora se mijenjati. Mijenja se podrška koja stoji iza toga. Gradvera je softver za izradu građevinskih troškovnika koji vam na svakom troškovniku pokazuje maržu i cjenovne rizike prije nego što ga klijent potvrdi — a ne nakon što je projekt gotov.",
   "hero.chips.concrete": "Beton C25/30",
   "hero.chips.earthworks": "Zemljani radovi",
   "hero.chips.facade": "Fasadni sustav",
@@ -428,7 +429,7 @@
   "outcomes.badge": "Razlika nakon Gradvere",
   "outcomes.h2": "Što se mijenja za vaše poslovanje.",
   "outcomes.p1": "Brže pripremajte troškovnike i s istim timom sudjelujte na više natječaja.",
-  "outcomes.p2": "Donosite bolje odluke o cijenama i štitite dobit uz jasan pregled troškova.",
+  "outcomes.p2": "Donosite bolje odluke o cijenama uz jasan pregled troškova i marže na svakoj stavci.",
   "outcomes.p3": "Objedinite troškove podizvođača, usporedbe i komunikaciju na jednom mjestu.",
   "outcomes.p4": "Zadržite iskustvo izrade troškovnika u tvrtki — čak i kada ljudi odlaze.",
   "outcomes.p5": "Omogućite upravi uvid u ponude u izradi, rizike i aktivnosti izrade troškovnika.",
@@ -519,16 +520,9 @@
   "problem.eyebrow": "Problem",
   "problem.h2a": "Zašto izrada građevinskih troškovnika oduzima toliko",
   "problem.h2em": "truda?",
-  "results.eyebrow": "Izmjereno u praksi",
-  "results.h2": "Stvarni rezultati na stvarnim građevinskim ponudama.",
-  "results.lede": "Gradveru smo primijenili u srednje velikoj građevinskoj tvrtki na njezinim stvarnim ponudama i uz njezine povijesne cijene — bez ponovne izrade podataka. Tijekom tri mjeseca:",
-  "results.m1l": "Manje vremena za izradu prve ponude",
-  "results.m1s": "4,5 dana → 0,8 dana",
-  "results.m2l": "Više izrađenih ponuda mjesečno, uz isti tim",
-  "results.m3l": "Udio predloženih stavaka zadržanih bez izmjena",
   "seo.bid.title": "Građevinski troškovnik: što sadrži i kako nastaje — Gradvera",
   "seo.bid.desc": "Što građevinski troškovnik sadrži, tko ga čita nakon predaje i kako se cijene stavaka određuju na temelju vlastite povijesti projekata.",
-  "seo.demo.desc": "Pogledajte kako Gradvera građevinskim timovima pomaže brže pripremiti pouzdane ponude na temelju vaše povijesti cijena. Rezervirajte kratku demonstraciju.",
+  "seo.demo.desc": "Rezervirajte 30-minutnu vođenu demonstraciju tijeka izrade troškovnika u Gradveri na oglednim podacima — pregled cijena, ponude podizvođača. Ulaz: Excel.",
   "seo.demo.title": "Rezervirajte demonstraciju — Gradvera",
   "seo.est.title": "Građevinske kalkulacije: vodič za kalkulante — Gradvera",
   "seo.est.desc": "Što obuhvaća građevinska kalkulacija, gdje tablice prestaju biti dovoljne i kako softver određuje cijene na temelju povijesti vaših projekata.",

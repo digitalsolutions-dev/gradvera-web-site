@@ -125,3 +125,12 @@ test.describe('Canonical host', () => {
       .toBe('https://gradvera.com/');
   });
 });
+
+test('Organization JSON-LD names Gradvera as the DIGITAL SOLUTIONS brand', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'load' });
+  const blocks = await page.$$eval('script[type="application/ld+json"]', (els) => els.map((e) => e.textContent || ''));
+  const org = blocks.map((b) => JSON.parse(b)).find((o) => o['@type'] === 'Organization');
+  expect(org, 'Organization JSON-LD present').toBeTruthy();
+  expect(org.name).toBe('DIGITAL SOLUTIONS d.o.o.');
+  expect(org.brand).toEqual({ '@type': 'Brand', name: 'Gradvera' });
+});

@@ -41,7 +41,7 @@ const t = useTranslations(lang);
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="cc">{t('footer.bottom.copyright')}</span>
+      <span class="cc">{t('footer.bottom.copyright')} <span class="product-of">{t('footer.bottom.product')}</span></span>
       <span class="legal"><a href={localizePath('/privacy-policy/', lang)}>{t('footer.bottom.privacy')}</a></span>
     </div>
   </div>
@@ -66,4 +66,8 @@ const t = useTranslations(lang);
   /* The copyright span reused the global `.cc` utility (a 2-col grid, site.css:162);
      reset it to a plain inline-block so it doesn't inherit that layout. */
   .foot-bottom .cc { display: block; }
+  /* Corporate-relationship disclosure (acquisition model §7.1.4) sits under the
+     copyright as a quieter second line on narrow screens, inline on wide. */
+  .foot-bottom .product-of { display: block; color: var(--on-ink-2); margin-top: 4px; }
+  @media (min-width: 720px) { .foot-bottom .product-of { display: inline; margin: 0 0 0 10px; } }
 </style>

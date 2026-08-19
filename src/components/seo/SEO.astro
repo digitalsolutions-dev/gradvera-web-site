@@ -66,6 +66,7 @@ const organizationLd = {
   '@type': 'Organization',
   name: COMPANY.legalName,
   alternateName: COMPANY.brand,
+  brand: { '@type': 'Brand', name: COMPANY.brand },
   url: siteOrigin,
   logo: absoluteUrl('/favicons/android-chrome-512x512.png', site),
   email: COMPANY.email,

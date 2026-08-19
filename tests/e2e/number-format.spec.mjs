@@ -3,6 +3,9 @@
 // non-breaking space before % ("4 %"). The EN page must keep EN separators.
 // Currency symbol stays before the number in every locale (hero-chip
 // convention). Checks run against body textContent like i18n-parity.spec.
+// The "82 %" sample was dropped when the unsupported "Measured in Practice"
+// results section was removed (claims.spec.mjs) — it was that block's only
+// occurrence; the remaining samples all come from the mock platform screens.
 import { test, expect } from '@playwright/test';
 import { gotoClean, VIEWPORTS } from './helpers.mjs';
 
@@ -21,7 +24,7 @@ const NBSP = ' ';
 test('EN keeps EN separators and tight percent', async ({ page }) => {
   await gotoClean(page, '/');
   const text = await pageText(page);
-  for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%', '±10%']) {
+  for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '±10%']) {
     expect(text, `EN page should contain "${s}"`).toContain(s);
   }
 });
@@ -30,10 +33,10 @@ for (const locale of ['sl', 'hr']) {
   test(`/${locale}/ mock screens use local separators and spaced percent`, async ({ page }) => {
     await gotoClean(page, `/${locale}/`);
     const text = await pageText(page);
-    for (const s of ['€11.014,11', '427,66', '9,6 t', '€1.180', '€2.180', `98${NBSP}%`, `+34${NBSP}%`, `87${NBSP}%`, `82${NBSP}%`, `±10${NBSP}%`]) {
+    for (const s of ['€11.014,11', '427,66', '9,6 t', '€1.180', '€2.180', `98${NBSP}%`, `+34${NBSP}%`, `87${NBSP}%`, `±10${NBSP}%`]) {
       expect(text, `/${locale}/ should contain "${s}"`).toContain(s);
     }
-    for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '82%', '±10 %', '87 %']) {
+    for (const s of ['€11,014.11', '427.66', '9.6 t', '€1,180', '€2,180', '98%', '+34%', '87%', '±10 %', '87 %']) {
       expect(text, `/${locale}/ should not contain "${s}"`).not.toContain(s);
     }
   });
