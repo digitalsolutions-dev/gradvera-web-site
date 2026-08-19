@@ -133,6 +133,16 @@ and `staging` are long-lived.
 The pushed merge triggers a staging Vercel deploy and a CI run — so `staging`
 must itself carry `ci.yml` for its own push events to be checked.
 
+## Acquisition model (source of truth for marketing/sales behaviour)
+
+`docs/confirmed-acquisition-model.md` (v1.1) governs website copy, the
+qualification form, analytics events, the Bookings flow and sales operations
+(§20 source-of-truth rule). `docs/acquisition-readiness.md` is the §19
+evidence log — website rows carry PR numbers; GTM/GA4/Ads, Microsoft Bookings,
+GSC and sales-ops rows are user actions. The design spec + per-workstream plans
+live under `docs/superpowers/`. When copy or behaviour must change, change the
+model (with a changelog entry) or the readiness log in the same PR.
+
 ## Design context (impeccable)
 
 Strategic + visual design context lives in two root files, consumed by the

@@ -4,7 +4,7 @@
 **Source of requirements:** `docs/confirmed-acquisition-model.md` (v1.0). This
 spec maps its website-facing clauses (§6, §7, §8, §9, §11) onto concrete
 changes in this repo, plus the one cross-repo dependency (gtm-toolkit).
-**Status:** approved design, pending implementation plan.
+**Status:** approved design — **implemented** (Workstreams A–F, PRs #74–#78, 19 Aug 2026). "As built" notes mark where the implementation refined this text; `docs/confirmed-acquisition-model.md` v1.1 carries the model-level amendments.
 
 ## 1. Goal
 
@@ -122,8 +122,8 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 ### 5.3 `src/pages/api/lead.ts`
 
 - `Lead` type gains: `qualification: {country, role, companySize, mainChallenge, estimatingMethod, bidFrequency, ndaWilling}` (strings, `''` when absent), `attribution: {gclid, gbraid, wbraid, utm_source, utm_medium, utm_campaign, utm_term, utm_content, landingPage, referrer, submissionPage, submittedAt, consent}` (strings, `''` when absent; `consent` ∈ `accept|reject|unset`), `score: number`, `scoreReasons: string[]`, `qualified: boolean`.
-- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered to the URL-safe set (RFC 3986 unreserved + reserved + `%` + space for decoded `utm_term`; anything else → `''`); `message` optional.
-- `message` synthesis when blank: `Main challenge: <label> · <method> · <frequency> · <country> · <size>` (English labels; keeps gtm-toolkit v1 `min_length=1` satisfied and D365 subject informative).
+- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered to the URL-safe set (Unicode letters/digits + RFC 3986 reserved + `%` + space — diacritics in decoded SL/HR `utm_term` survive; anything else → `''`); `message` optional. *(As built, PR #75.)*
+- `message` synthesis when blank: `Main challenge: <label> · Method: <label> · Frequency: <label> · Country: <ISO2> · Size: <band> · Role: <label> · NDA: yes` (English labels; blank parts omitted; `Demo request` if all blank) — keeps gtm-toolkit v1 `min_length=1` satisfied and the D365 subject informative. *(As built, PR #75; format documented in `docs/lead-integration.md` §2.)*
 - Pure `scoreLead(input): {score, reasons, qualified}` in `src/lib/leadScore.ts` and `parseLeadBody()` in `src/lib/leadPayload.ts`, unit-tested with Vitest (`tests/unit/`, `npm run test:unit` — the e2e harness cannot reach the on-demand `/api/lead` route); `lead.ts` becomes transport only.
 - Response: `{ ok: true, forwarded: boolean, qualified: boolean, score: number }`.
 
@@ -161,7 +161,7 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 
 **Route:** `src/pages/construction-estimating-software/index.astro`, EN only, indexed, self-canonical.
 
-**EN-only routes plumbing:** `src/i18n/slugs.ts` exports `EN_ONLY_ROUTES = new Set(['construction-estimating-software'])`; `alternates()` in `utils.ts` returns `[en, x-default]` for those; `astro.config.mjs` `serialize()` emits only `en` + `x-default` links and skips them from SL/HR sitemap alternates; priority 0.9. `SEO.astro` needs no new prop (uses `alternates()`).
+**EN-only routes plumbing:** `src/i18n/slugs.ts` exports `EN_ONLY_ROUTES = new Set(['construction-estimating-software'])` + `isEnOnlyPath()`; `alternates()` in `utils.ts` returns `[en, x-default]` for those; `astro.config.mjs` `serialize()` emits only `en` + `x-default` links; priority 0.9. *(As built, PR #77: also `LangSwitch` sends SL/HR to their locale home while EN stays self-linked, `SEO.astro` omits `og:locale:alternate` on EN-only routes, and `Header`/`MobileNav`/`BaseLayout` accept `ctaHref`; `DemoForm` gained a `page` prop.)*
 
 **Sections (§7.2), components under `src/components/landing/`:**
 1. `LpHero` — H1 "Construction estimating software for contractors in the Netherlands" (tune ≤ ~70 chars), sub-line = §6.1 primary message, CTA → `#book-a-demo`.
