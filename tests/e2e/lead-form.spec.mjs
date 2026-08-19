@@ -47,7 +47,7 @@ for (const { path, locale } of DEMO) {
     await expect(page.locator('#err-challenge')).toBeVisible();
     expect(posted).toBe(false);
     // message is optional now: no error for it
-    await expect(page.locator('#err-ms')).toBeHidden();
+    await expect(page.locator('#err-ms')).toHaveCount(0);
   });
 }
 

@@ -78,7 +78,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     </select>
     <p class="field-error" id="err-country" role="alert" hidden></p>
   </div>
-  <fieldset class="field chip-field">
+  <fieldset class="field chip-field" role="radiogroup" aria-required="true">
     <legend>{t('demo.form.role')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {ROLES.map((r) => (
@@ -87,7 +87,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     </div>
     <p class="field-error" id="err-role" role="alert" hidden></p>
   </fieldset>
-  <fieldset class="field chip-field">
+  <fieldset class="field chip-field" role="radiogroup" aria-required="true">
     <legend>{t('demo.form.size')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {COMPANY_SIZES.map((s) => (
@@ -96,7 +96,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     </div>
     <p class="field-error" id="err-size" role="alert" hidden></p>
   </fieldset>
-  <fieldset class="field chip-field">
+  <fieldset class="field chip-field" role="radiogroup" aria-required="true">
     <legend>{t('demo.form.challenge')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {MAIN_CHALLENGES.map((c) => (
@@ -167,13 +167,17 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   .chip-field .field-error { margin-top: 9px; }
   .chip-field[aria-invalid="true"] .chip { border-color: var(--danger-on-ink-border); }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; }
-  /* min-height 44px: these are real radio controls — they were 35px, below the touch bar. */
-  .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  /* .form-card scope (0,2,0) is required: these chips are <label>s inside a
+     .field fieldset, and site.css:475 `.field label` (0,1,1) outranked a bare
+     `.chip` (0,1,0) — chips rendered as full-width uppercase mono blocks.
+     min-height 44px: they are real radio controls (were 35px, below the touch bar). */
+  .form-card .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
     padding: 9px 14px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
     background: var(--ink); color: var(--on-ink); font: 500 14px/1 var(--font-sans);
+    text-transform: none; letter-spacing: 0; margin-bottom: 0;
     cursor: pointer; user-select: none;
     transition: border-color 140ms, background 140ms, color 140ms; }
-  .chip input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
+  .form-card .chip input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
   .chip:hover { border-color: var(--on-ink-2); }
   .chip-tick { display: inline-flex; width: 0; overflow: hidden; opacity: 0;
     transition: width 140ms, opacity 140ms; }
@@ -190,7 +194,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
      of red. Scoping to the form outranks the section rule without !important. */
   .form-card .field-error { color: var(--danger-on-ink); font: 400 12.5px/1.4 var(--font-sans); margin-top: 7px; max-width: none; }
   .form-card .field-error[hidden] { display: none; }
-  .field input.invalid, .field textarea.invalid { border-color: var(--danger-on-ink-border); }
+  .field input.invalid, .field select.invalid, .field textarea.invalid { border-color: var(--danger-on-ink-border); }
 
   /* ---- submit loading state ---- */
   .form-card .btn.is-loading { cursor: default; }
