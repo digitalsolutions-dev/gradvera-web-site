@@ -31,6 +31,8 @@ const frequencyLabel: Record<(typeof BID_FREQUENCIES)[number], string> = {
   weekly: t('demo.form.frequencyWeekly'), monthly: t('demo.form.frequencyMonthly'), 'few-per-year': t('demo.form.frequencyFewPerYear'), rarely: t('demo.form.frequencyRarely'),
 };
 const ndaLabel: Record<(typeof NDA_WILLING)[number], string> = { yes: t('demo.form.ndaYes'), 'not-yet': t('demo.form.ndaNotYet') };
+// Locale default for the country select (SL → SI, HR → HR, EN → none) — spec §2 B3.
+const defaultCountry = lang === 'sl' ? 'SI' : lang === 'hr' ? 'HR' : '';
 const privacyHref = localizePath('/privacy-policy/', lang);
 ---
 <form
@@ -71,14 +73,12 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   <div class="field">
     <label for="country">{t('demo.form.country')} <span class="req" aria-hidden="true">*</span></label>
     <select id="country" name="country" required aria-required="true" aria-describedby="err-country" autocomplete="country">
-      {/* No locale preselection: country is a required qualification answer, so
-          every locale starts on the placeholder and the user picks it. */}
-      <option value="" disabled selected>{t('demo.form.countryPlaceholder')}</option>
-      {COUNTRIES.map((c) => (<option value={c}>{countryLabel[c]}</option>))}
+      <option value="" disabled selected={defaultCountry === ''}>{t('demo.form.countryPlaceholder')}</option>
+      {COUNTRIES.map((c) => (<option value={c} selected={c === defaultCountry}>{countryLabel[c]}</option>))}
     </select>
     <p class="field-error" id="err-country" role="alert" hidden></p>
   </div>
-  <fieldset class="field chip-field" data-required>
+  <fieldset class="field chip-field">
     <legend>{t('demo.form.role')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {ROLES.map((r) => (
@@ -87,7 +87,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     </div>
     <p class="field-error" id="err-role" role="alert" hidden></p>
   </fieldset>
-  <fieldset class="field chip-field" data-required>
+  <fieldset class="field chip-field">
     <legend>{t('demo.form.size')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {COMPANY_SIZES.map((s) => (
@@ -96,7 +96,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     </div>
     <p class="field-error" id="err-size" role="alert" hidden></p>
   </fieldset>
-  <fieldset class="field chip-field" data-required>
+  <fieldset class="field chip-field">
     <legend>{t('demo.form.challenge')} <span class="req" aria-hidden="true">*</span></legend>
     <div class="chips">
       {MAIN_CHALLENGES.map((c) => (

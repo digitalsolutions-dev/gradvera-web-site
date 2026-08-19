@@ -34,7 +34,14 @@ for (const { path, locale } of DEMO) {
     await page.fill('#co', 'Test Co');
     await page.fill('#em', 'test@example.com');
     await page.click('#gv-demo-form button[type="submit"]');
-    await expect(page.locator('#err-country')).toBeVisible();
+    // Country carries a locale default (spec §2 B3: SL→SI, HR→HR, EN→none), so
+    // only the EN form can flag it as missing; SL/HR are pre-answered instead.
+    if (locale === 'en') {
+      await expect(page.locator('#err-country')).toBeVisible();
+    } else {
+      await expect(page.locator('#country')).toHaveValue(locale === 'sl' ? 'SI' : 'HR');
+      await expect(page.locator('#err-country')).toBeHidden();
+    }
     await expect(page.locator('#err-role')).toBeVisible();
     await expect(page.locator('#err-size')).toBeVisible();
     await expect(page.locator('#err-challenge')).toBeVisible();
