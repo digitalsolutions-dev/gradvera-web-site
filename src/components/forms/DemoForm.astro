@@ -226,6 +226,38 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     var form = document.getElementById('gv-demo-form');
     if (!form) return;
     var ok = form.parentNode.querySelector('.form-ok');
+    var booking = ok ? ok.querySelector('.booking') : null;
+    var formId = 'gv-demo-form';
+    var ctx = { locale: (form.querySelector('input[name="locale"]') || {}).value || '', page: (form.querySelector('input[name="page"]') || {}).value || '' };
+    function push(ev) { window.dataLayer = window.dataLayer || []; window.dataLayer.push(ev); }
+    // First interaction → qualification_form_start (once per page load).
+    var started = false;
+    function onStart() { if (started) return; started = true; push({ event: 'qualification_form_start', form_id: formId, locale: ctx.locale, page: ctx.page }); }
+    form.addEventListener('input', onStart, true);
+    form.addEventListener('change', onStart, true);
+    // Campaign ref for Bookings: sanitized utm_campaign (first touch) else the page default. Never personal data.
+    function sanitizeRef(v) {
+      var s = String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
+      return s;
+    }
+    function bookingRef(attr) {
+      var def = booking ? (booking.getAttribute('data-ref-default') || '') : '';
+      var c = attr && attr.utm_campaign ? sanitizeRef(attr.utm_campaign) : '';
+      return c || def;
+    }
+    var revealed = false;
+    function revealBooking(ref) {
+      if (!booking || revealed) return;
+      revealed = true;
+      var base = booking.getAttribute('data-base-src') || '';
+      var url = base + '&RefID=' + encodeURIComponent(ref);
+      var link = booking.querySelector('.booking-link');
+      if (link) link.setAttribute('href', url);
+      var frame = booking.querySelector('iframe.booking-frame');
+      if (frame) frame.setAttribute('src', url);
+      push({ event: 'booking_widget_open', form_id: formId, locale: ctx.locale, page: ctx.page, ref: ref });
+      try { booking.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { /* older browsers */ }
+    }
     var submitBtn = form.querySelector('button[type="submit"]');
     var btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
 
@@ -320,9 +352,11 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       }
 
       // ---- First-touch attribution (src/scripts/attribution.js) — never block the submit ----
+      // Kept in scope: the Bookings RefID is derived from its utm_campaign on success.
+      var attr = null;
       try {
         if (typeof window.gvAttribution === 'function') {
-          var attr = window.gvAttribution();
+          attr = window.gvAttribution();
           for (var a in attr) if (Object.prototype.hasOwnProperty.call(attr, a) && attr[a]) data[a] = attr[a];
         }
       } catch (e) { /* attribution is best-effort */ }
@@ -336,15 +370,16 @@ const privacyHref = localizePath('/privacy-policy/', lang);
       })
         .then(function (res) {
           if (!res.ok) throw new Error('request failed');
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'generate_lead',
-            form_id: 'gv-demo-form',
-            locale: data.locale || '',
-            page: data.page || '',
-          });
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function (body) {
+          var qualified = !!(body && body.qualified === true);
+          var score = body && typeof body.score === 'number' ? body.score : 0;
+          push({ event: 'qualification_form_submit', form_id: formId, locale: ctx.locale, page: ctx.page, qualified: qualified, score: score });
+          if (qualified) push({ event: 'qualified_lead', form_id: formId, locale: ctx.locale, page: ctx.page, score: score });
           form.style.display = 'none';
           if (ok) { ok.classList.add('show'); ok.focus(); }
+          revealBooking(bookingRef(attr));
         })
         .catch(function () {
           setLoading(false);
