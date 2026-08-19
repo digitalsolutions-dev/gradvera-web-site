@@ -64,11 +64,11 @@ for (const [name, vp] of Object.entries({ mobile: { width: 360, height: 780 }, t
 }
 
 // The ban list covers AFFIRMATIVE claims only. "free trial" and "expected loss"
-// are required page copy in their negated form (acquisition model §7.2.9 "not a
-// free trial"; §4.2 caveat "not an estimate of expected loss") — the FAQ answers
-// the "free trial" search intent with a clear No. The positive assertions below
-// are the discriminating guard: the phrases must appear, and only negated.
-test('LP: claims-safe copy (no measured/guaranteed claims; the free-trial + expected-loss caveats appear only negated)', async ({ page }) => {
+// are required page copy (acquisition model §7.2.9 "not a free trial"; §4.2
+// caveat "not an estimate of expected loss") — the FAQ answers the "free trial"
+// search intent with a clear No. The positive assertions below are the
+// discriminating guard: the claims must appear in their negated / FAQ form.
+test('LP: claims-safe copy (no measured/guaranteed claims; the free-trial + expected-loss caveats appear in their negated/FAQ form)', async ({ page }) => {
   await gotoClean(page, LP);
   const text = await page.evaluate(() => { const c = document.body.cloneNode(true); c.querySelectorAll('script,style,noscript').forEach((n) => n.remove()); return (c.textContent || '').replace(/\s+/g, ' '); });
   for (const banned of ['%', '×', 'guaranteed', 'Guaranteed', 'Measured in Practice', 'real results']) expect(text, `found "${banned}"`).not.toContain(banned);

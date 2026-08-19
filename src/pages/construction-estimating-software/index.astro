@@ -83,3 +83,27 @@ const breadcrumbLd = {
   <LpFaq lang={lang} />
   <LpBook lang={lang} />
 </BaseLayout>
+
+<style is:global>
+  /* Page-wide shared rules for the landing sections — they live on the route
+     rather than in one component because eight siblings consume them.
+
+     Amber text on the LIGHT sections must be Amber Ink
+     (--brand-primary-soft-text, 7.7:1 on white): site.css:42 paints .eyebrow
+     with raw --amber (#E8901C), ~2.5:1 on white, below WCAG AA. This is the
+     same correction site-polish.css:114 already makes for .helps/.cap/.works.
+     The ink sections (.lp-hero, .lp-trust, .lp-book) keep amber, where it
+     clears AA against --ink. */
+  .lp-who .eyebrow,
+  .lp-pain .eyebrow,
+  .lp-steps .eyebrow,
+  .lp-caps .eyebrow,
+  .lp-eval .eyebrow,
+  .lp-commercial .eyebrow,
+  .lp-faq .eyebrow,
+  .product-evidence .eyebrow { color: var(--brand-primary-soft-text); }
+
+  /* Heading + lede rhythm shared by every light landing section. */
+  .lp-h2 { margin-top: 16px; max-width: 20ch; text-wrap: balance; }
+  .lp-lede { margin-top: 20px; max-width: 760px; text-wrap: pretty; }
+</style>

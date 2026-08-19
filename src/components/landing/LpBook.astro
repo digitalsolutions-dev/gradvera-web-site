@@ -24,8 +24,11 @@ const t = useTranslations(lang);
 </section>
 
 <style is:global>
-  /* Overrides .demo.standalone's full-viewport centring (book-a-demo/index.astro):
-     here the form is the last section of a long page, not the whole page. */
+  /* `.demo.standalone` is inert here: its full-viewport centring is declared in
+     book-a-demo/index.astro's own is:global block, which only ships on that
+     route. The class is kept for parity with /book-a-demo/, and these rules
+     state the landing-page geometry outright rather than relying on an
+     override — the form is this page's last section, not the whole page. */
   .lp-book.demo.standalone { min-height: auto; display: block; padding: var(--sec) 0;
     scroll-margin-top: 74px; }
   .lp-book .demo-intro h2 { margin: 16px 0 0; }
