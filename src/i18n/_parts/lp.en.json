@@ -64,7 +64,7 @@
   "lp.trust.pts": [
     "Tenant isolation: your historical estimates are never shared across companies.",
     "Your data is used only to serve your own recommendations.",
-    "GDPR-compliant processing; see the privacy policy for details.",
+    "GDPR-compliant processing in the EU; see the privacy policy for details.",
     "An NDA is available before any customer-specific preview."
   ],
   "lp.trust.company": "Gradvera is a product of DIGITAL SOLUTIONS d.o.o., Ljubljana (EU).",
@@ -109,7 +109,7 @@
     },
     {
       "q": "How is our data protected?",
-      "a": "Each company runs in its own tenant; data is never shared across companies and is processed under the GDPR. An NDA is available before any preview."
+      "a": "Each company runs in its own tenant; data is never shared across companies and is processed in the EU under the GDPR. An NDA is available before any preview."
     },
     {
       "q": "Which languages does the application support?",
