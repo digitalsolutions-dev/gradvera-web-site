@@ -1,0 +1,114 @@
+---
+// Acquisition landing page (acquisition model §7.2) — EN only, no SL/HR
+// sibling. The route segment is registered in i18n/slugs.ts EN_ONLY_ROUTES, so
+// hreflang emits en + x-default only and the language switcher sends SL/HR to
+// their home pages instead of a 404.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, absoluteUrl, type Locale } from '../../i18n/utils';
+import { COMPANY } from '../../consts';
+import LpHero from '../../components/landing/LpHero.astro';
+import LpWhoFor from '../../components/landing/LpWhoFor.astro';
+import LpPains from '../../components/landing/LpPains.astro';
+import LpSteps from '../../components/landing/LpSteps.astro';
+import ProductEvidence from '../../components/landing/ProductEvidence.astro';
+import LpCapabilities from '../../components/landing/LpCapabilities.astro';
+import LpTrust from '../../components/landing/LpTrust.astro';
+import LpEvaluation from '../../components/landing/LpEvaluation.astro';
+import LpCommercial from '../../components/landing/LpCommercial.astro';
+import LpFaq from '../../components/landing/LpFaq.astro';
+import LpBook from '../../components/landing/LpBook.astro';
+
+const lang: Locale = 'en';
+const t = useTranslations(lang);
+const site = Astro.site;
+const PATH = '/construction-estimating-software/';
+const url = absoluteUrl(PATH, site);
+
+/** Screenshots from the stable sample tenant (acquisition model §7.1.8). Empty until the PNGs land — the section renders nothing. */
+const SHOTS: { src: string; alt: string; caption: string }[] = [];
+
+// JSON-LD. Organization + WebSite come from SEO.astro (its subtree, sole
+// emitter); this page adds the three page-level nodes. SoftwareApplication
+// carries NO offers/aggregateRating — there is no public price and no reviews,
+// and inventing either would be a claims violation.
+const faq: { q: string; a: string }[] = t('lp.faq.items');
+const capabilities: string[] = t('lp.caps.items');
+const softwareLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: COMPANY.brand,
+  url,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: t('lp.seo.desc'),
+  inLanguage: 'en',
+  provider: { '@type': 'Organization', name: COMPANY.legalName, url: absoluteUrl('/', site) },
+  featureList: capabilities.join(', '),
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absoluteUrl('/', site) },
+    { '@type': 'ListItem', position: 2, name: t('lp.breadcrumb'), item: url },
+  ],
+};
+---
+<BaseLayout
+  lang={lang}
+  path={PATH}
+  title={t('lp.seo.title')}
+  description={t('lp.seo.desc')}
+  ctaHref="#book-a-demo"
+  jsonLd={[softwareLd, faqLd, breadcrumbLd]}
+>
+  <LpHero lang={lang} />
+  <LpWhoFor lang={lang} />
+  <LpPains lang={lang} />
+  <LpSteps lang={lang} />
+  <ProductEvidence lang={lang} shots={SHOTS} />
+  <LpCapabilities lang={lang} />
+  <LpTrust lang={lang} />
+  <LpEvaluation lang={lang} />
+  <LpCommercial lang={lang} />
+  <LpFaq lang={lang} />
+  <LpBook lang={lang} />
+</BaseLayout>
+
+<style is:global>
+  /* Page-wide shared rules for the landing sections — they live on the route
+     rather than in one component because eight siblings consume them.
+
+     Amber text on the LIGHT sections must be Amber Ink
+     (--brand-primary-soft-text, 7.7:1 on white): site.css:42 paints .eyebrow
+     with raw --amber (#E8901C), ~2.5:1 on white, below WCAG AA. This is the
+     same correction site-polish.css:114 already makes for .helps/.cap/.works.
+     The ink sections (.lp-hero, .lp-trust, .lp-book) keep amber, where it
+     clears AA against --ink. */
+  .lp-who .eyebrow,
+  .lp-pain .eyebrow,
+  .lp-steps .eyebrow,
+  .lp-caps .eyebrow,
+  .lp-eval .eyebrow,
+  .lp-commercial .eyebrow,
+  .lp-faq .eyebrow,
+  .product-evidence .eyebrow { color: var(--brand-primary-soft-text); }
+
+  /* Heading + lede rhythm shared by every light landing section. */
+  .lp-h2 { margin-top: 16px; max-width: 20ch; text-wrap: balance; }
+  .lp-lede { margin-top: 20px; max-width: 760px; text-wrap: pretty; }
+
+  /* Quiet definitional footnote that narrows a claim rather than amplifying it
+     — shared by LpPains and LpCapabilities, hence page-level. */
+  .lp-note { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--fg2);
+    max-width: 720px; padding-left: 14px; border-left: 2px solid var(--border2); }
+</style>

@@ -1,0 +1,43 @@
+---
+// Objection-handling FAQ. Same disclosure pattern as the guide pages, but the
+// rules are restated locally under .lp-faq: GuideArticle's `is:global` block
+// only ships on guide routes, so the landing page must not depend on it.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items: { q: string; a: string }[] = t('lp.faq.items');
+---
+<section id="faq" class="lp-faq">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.faq.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.faq.h2')}</h2>
+    <div class="lp-faq-list">
+      {items.map((it) => (
+        <details>
+          <summary>{it.q}</summary>
+          <p>{it.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .lp-faq { background: var(--bg1); padding: var(--sec) 0; scroll-margin-top: 90px; }
+  .lp-faq-list { margin-top: clamp(28px, 4vh, 46px); max-width: 860px; }
+  .lp-faq details { border-bottom: 1px solid var(--border2); }
+  .lp-faq details:first-of-type { border-top: 1px solid var(--border2); }
+  .lp-faq summary { display: flex; align-items: baseline; justify-content: space-between;
+    gap: 20px; padding: 16px 0; cursor: pointer; list-style: none;
+    font-weight: 500; font-size: 16.5px; line-height: 1.45; color: var(--fg1); }
+  .lp-faq summary::-webkit-details-marker { display: none; }
+  .lp-faq summary::after { content: '+'; flex: none; color: var(--brand-primary-soft-text);
+    font: 500 17px/1 var(--font-mono); }
+  .lp-faq details[open] summary::after { content: '−'; }
+  .lp-faq summary:hover { color: var(--brand-primary-soft-text); }
+  .lp-faq summary:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+  /* Restated in full — the guide pages inherit these from .guide-body p. */
+  .lp-faq details p { margin: -2px 0 18px; padding-right: 34px; font-size: 16px;
+    line-height: 1.7; color: var(--fg2); text-wrap: pretty; }
+</style>

@@ -1,8 +1,11 @@
 ---
 import { localizePath, useTranslations, type Locale } from '../../i18n/utils';
 import LangSwitch from './LangSwitch.astro';
-interface Props { lang: Locale; path?: string }
-const { lang, path } = Astro.props;
+// `ctaHref` mirrors Header's override — the mobile menu carries its own "book a
+// demo" button, so a landing page must retarget both or the burger menu leaks
+// off-page.
+interface Props { lang: Locale; path?: string; ctaHref?: string }
+const { lang, path, ctaHref } = Astro.props;
 const t = useTranslations(lang);
 const switchPath = path ?? '/';
 const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', lang)) + hash;
@@ -12,7 +15,7 @@ const homeHref = (hash: string) => (switchPath === '/' ? '' : localizePath('/', 
   <a href={homeHref('#helps')}>{t('nav.helps')}</a>
   <a href={homeHref('#works')}>{t('nav.works')}</a>
   <a href={homeHref('#outcomes')}>{t('nav.outcomes')}</a>
-  <a class="btn btn-primary" href={localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
+  <a class="btn btn-primary" href={ctaHref ?? localizePath('/book-a-demo/', lang)}>{t('cta.bookDemo')}</a>
   <LangSwitch lang={lang} path={switchPath} variant="menu" />
 </nav>
 

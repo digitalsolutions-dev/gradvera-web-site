@@ -10,6 +10,20 @@ const t = useTranslations(lang);
       <p class="eyebrow">{t('helps.eyebrow')}</p>
       <h2>{t('helps.h2a')} <span class="amber">{t('helps.h2Amber')}</span></h2>
       <p class="lede" style="margin-top:24px;max-width:740px">{t('helps.lede')}</p>
+      {/* EN-only acquisition landing page: literal EN path on every locale (no localizePath). */}
+      <p class="helps-lplink"><a href="/construction-estimating-software/" hreflang="en">{t('helps.lpLink')} <span class="arr" aria-hidden="true">→</span></a></p>
     </div>
   </div>
 </section>
+
+<style is:global>
+  /* Quiet mono link into the EN-only product page — same treatment as the demo
+     form's .consent-link, but coloured with --brand-primary-soft-text: this
+     section sits on the light --bg1, where amber text would fail WCAG AA. */
+  .helps .helps-lplink { margin: 18px 0 0; font: 500 12.5px/1.4 var(--font-mono);
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  .helps .helps-lplink a { color: var(--brand-primary-soft-text); }
+  .helps .helps-lplink a:hover { text-decoration: underline; }
+  .helps .helps-lplink .arr { display: inline-block; transition: transform 200ms var(--ease-out, ease); }
+  .helps .helps-lplink a:hover .arr { transform: translateX(4px); }
+</style>

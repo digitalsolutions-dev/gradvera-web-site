@@ -21,6 +21,8 @@ const t = useTranslations(lang);
           <li><a href={localizePath('/construction-cost-estimation/', lang)}>{t('footer.explore.estGuide')}</a></li>
           <li><a href={localizePath('/construction-bid-estimate/', lang)}>{t('footer.explore.bidGuide')}</a></li>
           <li><a href={localizePath('/book-a-demo/', lang)}>{t('footer.explore.bookDemo')}</a></li>
+          {/* EN-only acquisition landing page: literal EN path on every locale (no localizePath). */}
+          <li><a href="/construction-estimating-software/" hreflang="en">{t('footer.explore.lp')}</a></li>
         </ul>
       </div>
       <div class="foot-col">

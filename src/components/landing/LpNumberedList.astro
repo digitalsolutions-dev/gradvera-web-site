@@ -1,0 +1,45 @@
+---
+// Shared numbered process list for the acquisition landing page. Used by both
+// LpSteps (4 items) and LpEvaluation (3), so the amber count badges and the
+// grid geometry exist once. `data-cols` drives the desktop track count; the
+// two breakpoints below collapse it to 2 then 1 regardless.
+interface Props { items: { h: string; p: string }[] }
+const { items } = Astro.props;
+---
+<ol class="lp-steps-list" role="list" data-cols={String(items.length)}>
+  {items.map((it, i) => (
+    <li>
+      <span class="lp-step-n" aria-hidden="true">{i + 1}</span>
+      <div>
+        <h3>{it.h}</h3>
+        <p>{it.p}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style is:global>
+  /* Numbered process list (LpSteps / LpEvaluation). 4 or 3 tracks on desktop,
+     2 below 1000px, 1 below 560px — the same rhythm the capability grids use. */
+  .lp-steps-list { list-style: none; margin: clamp(28px, 4vh, 46px) 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 3vw, 36px); }
+  .lp-steps-list[data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+  .lp-steps-list > li { display: flex; gap: 13px; align-items: flex-start; }
+  /* Same badge as the book-a-demo "what happens next" steps (DemoIntro), retuned
+     for the light reading surface: amber wash + Amber Ink digit (AA on light). */
+  .lp-steps-list .lp-step-n { flex: none; width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(232, 144, 28, 0.14);
+    color: var(--brand-primary-soft-text); font: 600 13px/1 var(--font-mono); margin-top: 2px;
+    font-feature-settings: var(--tabular-nums); }
+  .lp-steps-list h3 { font-weight: 600; font-size: 17px; line-height: 1.25;
+    letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 7px; }
+  .lp-steps-list p { font-size: 15px; line-height: 1.6; color: var(--fg2); margin: 0;
+    text-wrap: pretty; }
+
+  @media (max-width: 1000px) {
+    .lp-steps-list, .lp-steps-list[data-cols="4"] { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .lp-steps-list, .lp-steps-list[data-cols="4"] { grid-template-columns: 1fr; }
+  }
+</style>

@@ -116,6 +116,21 @@ test.describe('Sitemap', () => {
     expect(res.status()).toBe(200);
     expect(await res.text()).not.toContain('/404');
   });
+
+  test('sitemap lists the EN-only landing page with priority 0.9 and only en + x-default alternates', async ({ request }) => {
+    const xml = await (await request.get('/sitemap-0.xml')).text();
+    const entry = xml.split('<url>').find((u) => u.includes('/construction-estimating-software/</loc>'));
+    expect(entry).toBeTruthy();
+    expect(entry).toContain('<priority>0.9</priority>');
+    expect(entry).toContain('hreflang="en"');
+    expect(entry).toContain('hreflang="x-default"');
+    expect(entry).not.toContain('hreflang="sl"');
+    expect(entry).not.toContain('/sl/construction-estimating-software/');
+    // Whole-document guard: no SL/HR landing URL may appear in ANY sitemap
+    // entry (a stray <url> of its own would slip past the per-entry checks).
+    expect(xml).not.toContain('/sl/construction-estimating-software/');
+    expect(xml).not.toContain('/hr/construction-estimating-software/');
+  });
 });
 
 test.describe('Canonical host', () => {

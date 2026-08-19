@@ -27,3 +27,17 @@ for (const [canonical, bySlug] of Object.entries(SLUGS)) {
     REVERSE[lang][localized] = canonical;
   }
 }
+
+/**
+ * Canonical first-segments that exist in EN only (no SL/HR page). Consumers:
+ * utils.alternates() (hreflang en + x-default only), astro.config sitemap
+ * serialize() (same + priority 0.9), LangSwitch (links to the locale home
+ * instead of a 404). Add a segment here the moment an EN-only route is created.
+ */
+export const EN_ONLY_ROUTES: ReadonlySet<string> = new Set(['construction-estimating-software']);
+
+/** True when a canonical (locale-stripped) path's first segment is EN-only. */
+export function isEnOnlyPath(canonicalPath: string): boolean {
+  const first = canonicalPath.split('/').filter(Boolean)[0];
+  return first !== undefined && EN_ONLY_ROUTES.has(first);
+}

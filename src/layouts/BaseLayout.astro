@@ -40,6 +40,8 @@ interface Props {
   image?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown>[];
+  /** Overrides the header CTA target (landing pages point it at their own form). */
+  ctaHref?: string;
 }
 
 const {
@@ -51,6 +53,7 @@ const {
   image,
   noindex,
   jsonLd,
+  ctaHref,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -85,8 +88,8 @@ const fontPreloads =
   <body>
     <a class="skip-link" href="#main">{t('a11y.skipToContent')}</a>
     <div class="scroll-progress" aria-hidden="true"></div>
-    <Header lang={lang} path={path} />
-    <MobileNav lang={lang} path={path} />
+    <Header lang={lang} path={path} ctaHref={ctaHref} />
+    <MobileNav lang={lang} path={path} ctaHref={ctaHref} />
     <main id="main" tabindex="-1">
       <slot />
     </main>
