@@ -1,4 +1,4 @@
-# Graph Report - /Users/katarov/WebstormProjects/WEB APPs/gradvera-web-site/.claude/worktrees/ws-a-claims-sweep  (2026-08-19)
+# Graph Report - .  (2026-08-19)
 
 ## Corpus Check
 - 21 files · ~81,389 words

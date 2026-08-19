@@ -62,9 +62,9 @@ const GUIDE_PAGES = [
   { path: '/construction-bid-estimate/', excel: 'Excel bill of quantities', own: ['from your own documents', 'on the bill of quantities on your desk'] },
   { path: '/sl/gradbeni-izracun/', excel: 'popisa del v Excelu', own: ['iz vaših dokumentov', 'ki ga imate pred seboj'] },
   { path: '/hr/gradevinski-troskovnik/', excel: 'troškovnika u Excelu', own: ['iz vaše dokumentacije', 'koji vam je na stolu'] },
-  { path: '/construction-cost-estimation/', excel: 'Excel', own: ['one of your own offers', 'on your last estimate'] },
-  { path: '/sl/gradbene-kalkulacije/', excel: 'Excel', own: ['eno od vaših ponudb', 'svoje zadnje kalkulacije'] },
-  { path: '/hr/gradevinske-kalkulacije/', excel: 'Excel', own: ['jednu vašu ponudu', 'vašom posljednjom kalkulacijom'] },
+  { path: '/construction-cost-estimation/', excel: 'Excel BoQs', own: ['one of your own offers', 'on your last estimate'] },
+  { path: '/sl/gradbene-kalkulacije/', excel: 'popise del v Excelu', own: ['eno od vaših ponudb', 'svoje zadnje kalkulacije'] },
+  { path: '/hr/gradevinske-kalkulacije/', excel: 'troškovnike u Excelu', own: ['jednu vašu ponudu', 'vašom posljednjom kalkulacijom'] },
 ];
 
 for (const { path, excel, own } of GUIDE_PAGES) {
@@ -77,9 +77,9 @@ for (const { path, excel, own } of GUIDE_PAGES) {
 }
 
 const DEMO_PAGES = [
-  { path: '/book-a-demo/', must: ['Excel', 'sample data', 'annual', '14-day'], mustNot: ['on your own offers', 'On your own offers'] },
-  { path: '/sl/rezervirajte-demo/', must: ['Excel', 'vzorčnih podatkih', 'letn', '14-dnevn'], mustNot: ['na primeru svojih ponudb', 'Na primeru vaših ponudb'] },
-  { path: '/hr/rezervirajte-demo/', must: ['Excel', 'oglednim podacima', 'godišnj', '14-dnevn'], mustNot: ['s vašim ponudama', 'Uz vaše ponude'] },
+  { path: '/book-a-demo/', must: ['Excel', 'sample data', 'annual', '14-day'], mustNot: ['on your own offers', 'On your own offers', 'free trial', 'Free trial'] },
+  { path: '/sl/rezervirajte-demo/', must: ['Excel', 'vzorčnih podatkih', 'letna uvedba', '14-dnevn'], mustNot: ['na primeru svojih ponudb', 'Na primeru vaših ponudb', 'brezplačn', 'Brezplačn'] },
+  { path: '/hr/rezervirajte-demo/', must: ['Excel', 'oglednim podacima', 'godišnje uvođenje', '14-dnevn'], mustNot: ['s vašim ponudama', 'Uz vaše ponude', 'besplatn', 'Besplatn'] },
 ];
 
 for (const { path, must, mustNot } of DEMO_PAGES) {

@@ -197,7 +197,7 @@
   "demo.page.intro": "A 30-minute guided demo on sample data, focused on the part of your workflow that matters most — pricing review, subcontractor quotes, or reusing your own historical estimates. Excel BoQ files are the supported input today.",
   "demo.page.stepsTitle": "What happens next",
   "demo.page.steps": [
-    "Send the form, then pick a time straight away.",
+    "Send the form — we confirm a time within one working day.",
     "30-minute guided demo on sample data, shaped around your team's workflow.",
     "If it fits: an optional NDA-covered preview on up to 20 of your Excel BoQs, then annual onboarding with a 14-day acceptance period."
   ],
