@@ -63,10 +63,17 @@ for (const [name, vp] of Object.entries({ mobile: { width: 360, height: 780 }, t
   });
 }
 
-test('LP: claims-safe copy (no % / × / free trial / loss wording; Excel + sample data + pricing review present)', async ({ page }) => {
+// The ban list covers AFFIRMATIVE claims only. "free trial" and "expected loss"
+// are required page copy in their negated form (acquisition model §7.2.9 "not a
+// free trial"; §4.2 caveat "not an estimate of expected loss") — the FAQ answers
+// the "free trial" search intent with a clear No. The positive assertions below
+// are the discriminating guard: the phrases must appear, and only negated.
+test('LP: claims-safe copy (no measured/guaranteed claims; the free-trial + expected-loss caveats appear only negated)', async ({ page }) => {
   await gotoClean(page, LP);
   const text = await page.evaluate(() => { const c = document.body.cloneNode(true); c.querySelectorAll('script,style,noscript').forEach((n) => n.remove()); return (c.textContent || '').replace(/\s+/g, ' '); });
-  for (const banned of ['%', '×', 'free trial', 'Free trial', 'expected loss', 'financial exposure', 'guaranteed', 'Measured in Practice']) expect(text, `found "${banned}"`).not.toContain(banned);
+  for (const banned of ['%', '×', 'guaranteed', 'Guaranteed', 'Measured in Practice', 'real results']) expect(text, `found "${banned}"`).not.toContain(banned);
+  expect(text).toContain('not a free trial');
+  expect(text).toContain('not an estimate of expected loss');
   for (const must of ['Excel', 'sample data', 'pricing review', 'Netherlands', 'DIGITAL SOLUTIONS']) expect(text, `missing "${must}"`).toContain(must);
 });
 

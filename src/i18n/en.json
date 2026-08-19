@@ -630,7 +630,7 @@
   "lp.pain1.eyebrow": "Pricing confidence",
   "lp.pain1.h2": "See which bid items still need a pricing review before you submit",
   "lp.pain1.p1": "Every bid contains items priced from thin evidence — a rough unit rate, an old quote, a guess under deadline. Gradvera flags them and shows the total bid value represented by low-confidence pricing items, so the team reviews what matters before the offer leaves the office.",
-  "lp.pain1.p2": "“Value requiring pricing review” means the total value of the items flagged as low-confidence. It marks how much of the bid deserves a second look — it is not a prediction of any outcome.",
+  "lp.pain1.p2": "“Value requiring pricing review” means the total value of low-confidence items. It is not an estimate of expected loss.",
   "lp.pain2.eyebrow": "Subcontractor quotations",
   "lp.pain2.h2": "One overview of subcontractor requests and quotations",
   "lp.pain2.p1": "Requests go out by email, quotes come back in every format, and the comparison lives in someone's inbox. Gradvera centralizes subcontractor requests and quotations against the bid items they belong to — comparable with each other and with what you paid before.",
@@ -683,7 +683,7 @@
   "lp.trust.company": "Gradvera is a product of DIGITAL SOLUTIONS d.o.o., Ljubljana (EU).",
   "lp.trust.privacy": "Privacy policy",
   "lp.eval.eyebrow": "Evaluation process",
-  "lp.eval.h2": "A guided route, not a self-serve sign-up",
+  "lp.eval.h2": "A guided route, not a free trial",
   "lp.eval.items": [
     {
       "h": "Guided demo",
@@ -713,8 +713,8 @@
       "a": "Excel BoQ files. PDF, scanned documents and unrestricted document ingestion are not available today."
     },
     {
-      "q": "Can we try Gradvera on our own first?",
-      "a": "Self-serve sign-up is not offered. The product's value depends on your historical data and onboarding, so an empty account would misrepresent it. The route is a guided demo, an optional NDA-covered preview, then annual onboarding with a 14-day acceptance period."
+      "q": "Is there a free trial?",
+      "a": "No. The product's value depends on your historical data and onboarding, so an empty account would misrepresent it. The route is a guided demo, an optional NDA-covered preview, then annual onboarding with a 14-day acceptance period."
     },
     {
       "q": "How long does onboarding take?",
