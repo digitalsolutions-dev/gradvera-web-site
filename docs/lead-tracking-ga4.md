@@ -13,6 +13,13 @@ while a non-JS bot that POSTs `/api/lead` directly gets a `200` response but
 never runs the client-side script, so the push never fires either way). With
 `PUBLIC_GTM_ID` unset the push still happens (inert — nothing consumes it).
 
+Since the qualification form (contract v2, see `lead-integration.md`) the API
+response also carries `qualified` / `score` (acquisition model §8.2). They are
+not yet pushed to the dataLayer — the event model (`qualification_form_submit`,
+`qualified_lead`, `booking_widget_open`, retiring `generate_lead`) is the
+analytics workstream's change; until then `generate_lead` fires exactly as
+before.
+
 ## GTM container setup (one-time, dashboard)
 
 1. **Trigger** — Triggers → New → *Custom Event*, event name `generate_lead`.
