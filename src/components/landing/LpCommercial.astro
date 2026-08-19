@@ -1,0 +1,19 @@
+---
+// Licensing shape without figures — pricing is a conversation, and a number on
+// a landing page would be a claim the sales motion cannot honour.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="lp-commercial">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.commercial.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.commercial.h2')}</h2>
+    <p class="lede lp-lede">{t('lp.commercial.p')}</p>
+  </div>
+</section>
+
+<style is:global>
+  .lp-commercial { background: var(--bg2); padding: var(--sec) 0; }
+</style>

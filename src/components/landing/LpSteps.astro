@@ -1,0 +1,21 @@
+---
+// The four-step workflow, Excel BoQ in → reviewed bid out. The hero's secondary
+// CTA points at this anchor.
+import { useTranslations, type Locale } from '../../i18n/utils';
+import LpNumberedList from './LpNumberedList.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items: { h: string; p: string }[] = t('lp.steps.items');
+---
+<section id="how-it-works" class="lp-steps">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.steps.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.steps.h2')}</h2>
+    <LpNumberedList items={items} />
+  </div>
+</section>
+
+<style is:global>
+  .lp-steps { background: var(--bg2); padding: var(--sec) 0; scroll-margin-top: 90px; }
+</style>

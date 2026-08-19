@@ -1,0 +1,32 @@
+---
+// The page's single conversion point. Reuses the site-wide `.demo` chrome and
+// grid so the form looks identical to /book-a-demo/, but tags the lead with the
+// landing page (`page`) and the campaign reference (`refId`).
+import { useTranslations, type Locale } from '../../i18n/utils';
+import DemoForm from '../forms/DemoForm.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="book-a-demo" class="demo standalone lp-book">
+  <div class="wrap">
+    <div class="demo-grid">
+      <div class="demo-intro">
+        <p class="eyebrow">{t('lp.book.eyebrow')}</p>
+        <h2>{t('lp.book.h2')}</h2>
+        <p>{t('lp.book.p')}</p>
+      </div>
+      <div>
+        <DemoForm lang={lang} page="construction-estimating-software" refId="website-lp" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Overrides .demo.standalone's full-viewport centring (book-a-demo/index.astro):
+     here the form is the last section of a long page, not the whole page. */
+  .lp-book.demo.standalone { min-height: auto; display: block; padding: var(--sec) 0;
+    scroll-margin-top: 74px; }
+  .lp-book .demo-intro h2 { margin: 16px 0 0; }
+</style>

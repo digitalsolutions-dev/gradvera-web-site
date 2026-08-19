@@ -1,0 +1,30 @@
+---
+// Qualification section — states plainly who the product is for, so an
+// unqualified visitor self-selects out before the form (acquisition model §7.2).
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const pts: string[] = t('lp.who.pts');
+---
+<section class="lp-who">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.who.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.who.h2')}</h2>
+    <p class="lede lp-lede">{t('lp.who.p')}</p>
+    <ul class="lp-pts">
+      {pts.map((s) => <li>{s}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style is:global>
+  .lp-who { background: var(--bg1); padding: var(--sec) 0; }
+  /* Shared heading/lede rhythm for every light landing section. */
+  .lp-h2 { margin-top: 16px; max-width: 20ch; text-wrap: balance; }
+  .lp-lede { margin-top: 20px; max-width: 760px; text-wrap: pretty; }
+  .lp-pts { margin: 22px 0 0; padding-left: 1.2em; color: var(--fg2);
+    max-width: 720px; line-height: 1.6; }
+  .lp-pts li { margin-top: 8px; }
+  .lp-pts li::marker { color: var(--brand-primary-soft-text); }
+</style>

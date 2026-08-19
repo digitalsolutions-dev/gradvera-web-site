@@ -1,0 +1,35 @@
+---
+// What ships today — a plain inventory, no roadmap items dressed as features.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items: string[] = t('lp.caps.items');
+---
+<section class="lp-caps">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.caps.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.caps.h2')}</h2>
+    <ul class="lp-caps-grid">
+      {items.map((s) => (
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          <span>{s}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="lp-note lp-caps-note">{t('lp.caps.note')}</p>
+  </div>
+</section>
+
+<style is:global>
+  .lp-caps { background: var(--bg1); padding: var(--sec) 0; }
+  .lp-caps-grid { list-style: none; margin: clamp(28px, 4vh, 46px) 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    gap: 14px clamp(22px, 3vw, 36px); }
+  .lp-caps-grid li { display: flex; gap: 11px; align-items: flex-start;
+    font-size: 15px; line-height: 1.5; color: var(--fg1); }
+  /* Amber Ink, not raw amber — these ticks sit on a white surface. */
+  .lp-caps-grid svg { flex: none; margin-top: 1px; color: var(--brand-primary-soft-text); }
+  .lp-caps-note { margin-top: clamp(24px, 3vh, 34px); }
+</style>

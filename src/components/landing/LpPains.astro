@@ -1,0 +1,35 @@
+---
+// The two problems the ads are bought against: pricing confidence and
+// subcontractor quotations. Each gets its own anchor so a campaign can land on
+// the one it promised.
+import { useTranslations, type Locale } from '../../i18n/utils';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="pricing-review" class="lp-pain alt">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.pain1.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.pain1.h2')}</h2>
+    <p class="lede lp-lede">{t('lp.pain1.p1')}</p>
+    <p class="lp-note">{t('lp.pain1.p2')}</p>
+  </div>
+</section>
+
+<section id="subcontractor-quotes" class="lp-pain">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.pain2.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.pain2.h2')}</h2>
+    <p class="lede lp-lede">{t('lp.pain2.p1')}</p>
+  </div>
+</section>
+
+<style is:global>
+  /* scroll-margin clears the fixed header when a campaign link deep-links here. */
+  .lp-pain { background: var(--bg1); padding: var(--sec) 0; scroll-margin-top: 90px; }
+  .lp-pain.alt { background: var(--bg2); }
+  /* Definitional footnote under the pricing-review claim — deliberately small
+     and quiet: it narrows the claim rather than amplifying it. */
+  .lp-note { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--fg2);
+    max-width: 720px; padding-left: 14px; border-left: 2px solid var(--border2); }
+</style>
