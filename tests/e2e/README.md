@@ -4,7 +4,8 @@ A browser harness for the things `astro check` and static HTML greps can't
 verify: interaction, focus management, computed layout, responsive overflow, and
 runtime console errors. It runs **in CI** (the `e2e` job in `ci.yml`) and
 locally. `astro check` stays the type-safety gate — this suite is additive, not
-a replacement.
+a replacement. Server-side logic (lead scoring/parsing) is covered by Vitest in
+`tests/unit/`, not here.
 
 ## One-time setup
 
