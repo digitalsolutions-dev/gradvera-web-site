@@ -128,7 +128,6 @@ html {
 /* (b2) low-contrast greys on dark sections -> --on-ink-2 (>=7:1) */
 .stage-label,
 .log-list .tick,
-.metric .ms,
 .foot-col h5,
 .foot-bottom a,
 .foot-bottom .cc,

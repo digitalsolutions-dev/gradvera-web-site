@@ -86,8 +86,14 @@
       "output_tokens": 0,
       "files": 21,
       "note": "code-only incremental update"
+    },
+    {
+      "date": "2026-08-19T07:37:32.130712+00:00",
+      "input_tokens": 202541,
+      "output_tokens": 35744,
+      "files": 21
     }
   ],
-  "total_input_tokens": 573204,
-  "total_output_tokens": 376503
+  "total_input_tokens": 775745,
+  "total_output_tokens": 412247
 }

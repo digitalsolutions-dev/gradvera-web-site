@@ -453,24 +453,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px){ .sky-row { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   RESULTS
-   ============================================================ */
-.results { background: var(--ink); color: var(--on-ink); padding: var(--sec) 0; }
-.results .eyebrow { margin-bottom: 18px; }
-.results h2 { font-weight: 600; font-size: clamp(28px,3.8vw,48px); line-height: 1.06; letter-spacing: -0.02em; color: var(--on-ink); max-width: 760px; }
-.results .lede { color: var(--on-ink-2); margin-top: 22px; max-width: 720px; }
-.metrics { margin-top: clamp(46px,7vh,80px); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-.metric { padding: 6px clamp(20px,3vw,44px); border-left: 1px solid var(--ink-hair); }
-.metric:first-child { padding-left: 0; border-left: 0; }
-.metric .mv { font-weight: 600; font-size: clamp(56px, 7vw, 96px); line-height: 0.96; letter-spacing: -0.03em;
-  color: var(--amber); font-feature-settings: "tnum" 1, "lnum" 1; }
-.metric .ml { margin-top: 16px; font-size: clamp(15px,1.3vw,17px); line-height: 1.4; color: var(--on-ink); max-width: 240px; }
-.metric .ms { margin-top: 10px; font: 500 13px/1.4 var(--font-mono); color: var(--on-ink-3); }
-@media (max-width: 760px){ .metrics { grid-template-columns: 1fr; gap: 36px; }
-  .metric { border-left: 0; padding: 0; border-top: 1px solid var(--ink-hair); padding-top: 30px; }
-  .metric:first-child { border-top: 0; padding-top: 0; } }
-
-/* ============================================================
    CTA 2
    ============================================================ */
 .cta2 { background: var(--ink-1); color: var(--on-ink); padding: var(--sec) 0; position: relative; overflow: hidden; text-align: center; }
@@ -579,9 +561,6 @@ a { color: inherit; text-decoration: none; }
 .sky-panel:hover::before { width: calc(var(--roof, 40px) + 26px); }
 .sky-ic { transition: background .25s var(--ease-out, ease), color .25s; }
 .sky-panel:hover .sky-ic { background: var(--amber); color: var(--brand-on-primary); }
-
-/* metrics: hairline grows on hover */
-.metric { transition: border-color .25s; }
 
 /* cta1 button + links micro */
 .cta1 .btn-primary:hover { transform: translateY(-1px); }
