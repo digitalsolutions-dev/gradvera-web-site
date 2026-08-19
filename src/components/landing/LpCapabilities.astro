@@ -31,5 +31,8 @@ const items: string[] = t('lp.caps.items');
     font-size: 15px; line-height: 1.5; color: var(--fg1); }
   /* Amber Ink, not raw amber — these ticks sit on a white surface. */
   .lp-caps-grid svg { flex: none; margin-top: 1px; color: var(--brand-primary-soft-text); }
-  .lp-caps-note { margin-top: clamp(24px, 3vh, 34px); }
+  /* Two classes: the shared .lp-note now lives in the page-level block, which
+     the bundler emits AFTER component styles — a bare .lp-caps-note would lose
+     its own margin-top to .lp-note's on equal specificity. */
+  .lp-caps .lp-caps-note { margin-top: clamp(24px, 3vh, 34px); }
 </style>

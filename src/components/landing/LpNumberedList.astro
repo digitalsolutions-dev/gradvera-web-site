@@ -6,7 +6,7 @@
 interface Props { items: { h: string; p: string }[] }
 const { items } = Astro.props;
 ---
-<ol class="lp-steps-list" data-cols={String(items.length)}>
+<ol class="lp-steps-list" role="list" data-cols={String(items.length)}>
   {items.map((it, i) => (
     <li>
       <span class="lp-step-n" aria-hidden="true">{i + 1}</span>

@@ -28,8 +28,6 @@ const t = useTranslations(lang);
   /* scroll-margin clears the fixed header when a campaign link deep-links here. */
   .lp-pain { background: var(--bg1); padding: var(--sec) 0; scroll-margin-top: 90px; }
   .lp-pain.alt { background: var(--bg2); }
-  /* Definitional footnote under the pricing-review claim — deliberately small
-     and quiet: it narrows the claim rather than amplifying it. */
-  .lp-note { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--fg2);
-    max-width: 720px; padding-left: 14px; border-left: 2px solid var(--border2); }
+  /* .lp-note (the footnote below) is shared with LpCapabilities, so it lives in
+     the page-level block in pages/construction-estimating-software/index.astro. */
 </style>

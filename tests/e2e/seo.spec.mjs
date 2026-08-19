@@ -126,6 +126,10 @@ test.describe('Sitemap', () => {
     expect(entry).toContain('hreflang="x-default"');
     expect(entry).not.toContain('hreflang="sl"');
     expect(entry).not.toContain('/sl/construction-estimating-software/');
+    // Whole-document guard: no SL/HR landing URL may appear in ANY sitemap
+    // entry (a stray <url> of its own would slip past the per-entry checks).
+    expect(xml).not.toContain('/sl/construction-estimating-software/');
+    expect(xml).not.toContain('/hr/construction-estimating-software/');
   });
 });
 
