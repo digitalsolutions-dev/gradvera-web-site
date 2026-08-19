@@ -58,8 +58,19 @@ export async function fillRequired(page) {
   await checkChip(page, 'mainChallenge', 'pricing-confidence');
 }
 
+/** Microsoft Bookings page (acquisition model §9.1) — mirrors SITE.bookingUrl. */
+export const BOOKING_URL = 'https://outlook.office.com/book/GradveraBookings@digitalsolutions.si/?ismsaljsauthenabled';
+
+/** Serve a tiny stub for any outlook.office.com request (the success state embeds the calendar). */
+export async function stubBookings(page) {
+  await page.route('https://outlook.office.com/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><title>bookings stub</title>' }),
+  );
+}
+
 /** Intercept /api/lead (static server has none). Returns { body } — await `body` AFTER submitting. */
 export async function armLeadCapture(page, reply = '{"ok":true,"forwarded":false,"qualified":true,"score":8}') {
+  await stubBookings(page);
   let resolve;
   const body = new Promise((r) => { resolve = r; });
   await page.route('**/api/lead', (route) => {

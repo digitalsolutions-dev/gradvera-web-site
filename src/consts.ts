@@ -27,6 +27,8 @@ export const SITE = {
   ogImage: '/og/gradvera-og.png',
   // Dark blueprint-navy site chrome (hero/header). Accent is amber #E8901C.
   themeColor: '#0A1020',
+  /** Microsoft Bookings page (acquisition model §9.1). Campaign ref is appended as `&RefID=<ref>` — never personal data. */
+  bookingUrl: 'https://outlook.office.com/book/GradveraBookings@digitalsolutions.si/?ismsaljsauthenabled',
 } as const;
 
 /**

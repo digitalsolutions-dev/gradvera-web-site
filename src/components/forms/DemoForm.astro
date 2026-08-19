@@ -1,7 +1,8 @@
 ---
 import { useTranslations, localizePath, type Locale } from '../../i18n/utils';
-interface Props { lang: Locale; path?: string }
-const { lang } = Astro.props;
+import BookingEmbed from './BookingEmbed.astro';
+interface Props { lang: Locale; path?: string; refId?: string }
+const { lang, refId = `website-demo-${lang}` } = Astro.props;
 const t = useTranslations(lang);
 
 import { ROLES, COUNTRIES, COMPANY_SIZES, MAIN_CHALLENGES, ESTIMATING_METHODS, BID_FREQUENCIES, NDA_WILLING } from '../../lib/leadScore';
@@ -145,6 +146,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
   <h2>{t('demo.success.h3')}</h2>
   <p>{t('demo.success.p')}</p>
+  <BookingEmbed lang={lang} refId={refId} />
 </div>
 
 <style is:global>
