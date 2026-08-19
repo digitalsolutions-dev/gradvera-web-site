@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
-import { SLUGS, REVERSE } from './src/i18n/slugs';
+import { SLUGS, REVERSE, EN_ONLY_ROUTES } from './src/i18n/slugs';
 
 // Production canonical origin. Override per-environment with PUBLIC_SITE_URL.
 // Confirmed launch domain: gradvera.com (apex). Configure Vercel to redirect
@@ -65,18 +65,27 @@ export default defineConfig({
         const rest = locale === 'en' ? parts : parts.slice(1);
         const canonSegs = rest.map((s) => (locale === 'en' ? s : (REVERSE[locale][s] ?? s)));
         const canonical = '/' + canonSegs.join('/') + (canonSegs.length ? '/' : '');
-        item.priority = canonical === '/' ? 1.0 : canonical.startsWith('/privacy') ? 0.3 : 0.8;
+        // EN-only routes (src/i18n/slugs.ts EN_ONLY_ROUTES) have no SL/HR
+        // sibling: no cross-locale alternates, and a higher priority than the
+        // trilingual subpages because they are paid-acquisition entry points.
+        const enOnly = canonSegs.length > 0 && EN_ONLY_ROUTES.has(canonSegs[0]);
+        item.priority = canonical === '/' ? 1.0 : canonical.startsWith('/privacy') ? 0.3 : enOnly ? 0.9 : 0.8;
         /** @param {'en'|'sl'|'hr'} lang */
         const localized = (lang) =>
           lang === 'en'
             ? canonical
             : `/${lang}` + (canonSegs.length ? '/' + canonSegs.map((s) => SLUGS[s]?.[lang] ?? s).join('/') : '') + '/';
-        item.links = [
-          { lang: 'en', url: url.origin + localized('en') },
-          { lang: 'sl', url: url.origin + localized('sl') },
-          { lang: 'hr', url: url.origin + localized('hr') },
-          { lang: 'x-default', url: url.origin + localized('en') },
-        ];
+        item.links = enOnly
+          ? [
+              { lang: 'en', url: url.origin + canonical },
+              { lang: 'x-default', url: url.origin + canonical },
+            ]
+          : [
+              { lang: 'en', url: url.origin + localized('en') },
+              { lang: 'sl', url: url.origin + localized('sl') },
+              { lang: 'hr', url: url.origin + localized('hr') },
+              { lang: 'x-default', url: url.origin + localized('en') },
+            ];
         return item;
       },
     }),

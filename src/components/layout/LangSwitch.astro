@@ -1,5 +1,6 @@
 ---
 import { LOCALES, LOCALE_META, localizePath, useTranslations, type Locale } from '../../i18n/utils';
+import { isEnOnlyPath } from '../../i18n/slugs';
 
 /**
  * Locale switcher, one source for both placements:
@@ -14,6 +15,11 @@ interface Props { lang: Locale; path?: string; variant?: 'header' | 'menu' }
 const { lang, path, variant = 'header' } = Astro.props;
 const t = useTranslations(lang);
 const switchPath = path ?? '/';
+// EN-only routes (slugs.ts EN_ONLY_ROUTES) have no SL/HR sibling, so localizing
+// the current path would link every option at a 404. Send them to that locale's
+// home page instead; the anchor's hreflang still describes its target's language.
+const targetPath = (loc: Locale): string =>
+  isEnOnlyPath(switchPath) ? localizePath('/', loc) : localizePath(switchPath, loc);
 
 /* Simplified flags (24x16). EN uses the Union Jack by convention. */
 const FLAG_ART: Record<Locale, string> = {
@@ -34,7 +40,7 @@ const flagSvg = (loc: Locale, cls: string): string =>
       {LOCALES.map((loc) => (
         <li>
           <a
-            href={localizePath(switchPath, loc)}
+            href={targetPath(loc)}
             hreflang={LOCALE_META[loc].htmlLang}
             lang={LOCALE_META[loc].htmlLang}
             aria-current={loc === lang ? 'page' : undefined}
@@ -88,7 +94,7 @@ const flagSvg = (loc: Locale, cls: string): string =>
   <div class="lang-switch lang-switch--menu" role="group" aria-label={t('a11y.language')}>
     {LOCALES.map((loc) => (
       <a
-        href={localizePath(switchPath, loc)}
+        href={targetPath(loc)}
         hreflang={LOCALE_META[loc].htmlLang}
         lang={LOCALE_META[loc].htmlLang}
         aria-label={LOCALE_META[loc].label}
