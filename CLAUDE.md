@@ -58,7 +58,7 @@ feeds the `astro check` gate.
   (`astro.config.mjs` adds hreflang `x-default` + per-page priority).
 - `src/components/` — `sections/` (Hero, Problem, HelpsIntro, Capability1–4,
   HowItWorks, Outcomes, Cta1/2, PrivacyBody), `layout/` (Header, Footer,
-  MobileNav), `forms/DemoForm`, `marketing/` (Analytics, CookieConsent),
+  MobileNav), `forms/{DemoForm,BookingEmbed}`, `marketing/` (Analytics, CookieConsent),
   `seo/SEO`, `pages/` (HomeSections, GuideArticle).
 - `src/i18n/` — `en.json` / `sl.json` / `hr.json`, plus `_parts/` fragments (EN
   is authored in parts and assembled). `utils.ts` = translation helpers.
@@ -82,6 +82,15 @@ set, forwarded HMAC-SHA256-signed to the gtm-toolkit inbound-lead service
 (→ Dynamics 365). Forwarding failures are logged but never surfaced — the route
 always returns 200 so the success UX never breaks. Env vars in `.env.example`;
 full contract in `docs/lead-integration.md`.
+
+On success the form reveals the Microsoft Bookings calendar
+(`BookingEmbed.astro`: lazy iframe whose `src` is set only after the 2xx, plus
+an always-visible direct link; `RefID` = sanitized first-touch `utm_campaign` or
+`website-demo-<lang>` — never personal data) and pushes
+`qualification_form_start` / `qualification_form_submit` (primary Ads
+conversion) / `qualified_lead` / `booking_widget_open` to the dataLayer — see
+`docs/lead-tracking-ga4.md` (GTM setup + consent matrix) and
+`docs/lead-integration.md` (contract v2).
 
 ## Analytics / consent
 
