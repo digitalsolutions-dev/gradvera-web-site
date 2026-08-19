@@ -124,7 +124,8 @@ Check the website function logs for the two lines above to tell the cases apart.
 The front-end (`DemoForm.astro`) only checks `res.ok` (the HTTP status), so any
 200 shows the success card. `qualified` / `score` (acquisition model §8.2 — see
 `src/lib/leadScore.ts`; threshold 7) are returned so client-side analytics can
-distinguish qualified leads (wired in the analytics workstream); they carry no
+distinguish qualified leads (pushed as `qualification_form_submit` /
+`qualified_lead`, see `lead-tracking-ga4.md`); they carry no
 PII.
 
 ---

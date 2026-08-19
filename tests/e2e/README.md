@@ -41,7 +41,7 @@ checks run against the exact artifact Vercel ships, not `astro dev`.
 | `lang-picker.spec.mjs` | globe dropdown: options, hreflang hrefs (incl. localized SL/HR slugs), keyboard behavior |
 | `i18n-parity.spec.mjs` | SL/HR pages leak no hardcoded English mock-screen copy; every `t()` key exists in all three dictionaries |
 | `number-format.spec.mjs` | SL/HR locale number rendering in the mock screens (decimal comma, NBSP before %) |
-| `lead-tracking.spec.mjs` | `generate_lead` dataLayer push on successful demo-form submit (EN/SL/HR + failure negative); fills the qualification required set via `helpers.fillRequired` |
+| `lead-events.spec.mjs` | §11.1 dataLayer events (`qualification_form_start` once, `qualification_form_submit` w/ qualified+score, `qualified_lead` conditional, `booking_widget_open` once, no `generate_lead`) + Bookings embed (hidden block, direct link with `RefID`, iframe `src` only after 2xx, sanitized `utm_campaign` → RefID, failure path) on EN/SL/HR; helpers `BOOKING_URL`, `stubBookings` (no real outlook.office.com load) |
 | `lead-form.spec.mjs` | qualification form: required set + enum wire values + optional blanks on the intercepted `/api/lead` POST per locale (`helpers.armLeadCapture`), locale default country, chip validation; first-touch attribution (gclid/utm survive navigation, first touch wins, consent from `gv-consent`) |
 | `localized-slugs.spec.mjs` | localized SL/HR routes serve 200 with correct canonical/hreflang; legacy-URL 308s match both slash forms in the Vercel config; sitemap uses localized slugs |
 | `content-pages.spec.mjs` | guide pages ×6: status 200, FAQPage JSON-LD, hreflang set, CTA; footer links in every locale |

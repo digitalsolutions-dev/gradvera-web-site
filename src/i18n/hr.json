@@ -237,7 +237,7 @@
   "demo.page.intro": "30-minutna vođena demonstracija na oglednim podacima, usmjerena na dio vašeg rada koji je najvažniji — pregled cijena, ponude podizvođača ili ponovna upotreba vlastitih povijesnih troškovnika. Podržani ulaz danas su troškovnici u Excelu.",
   "demo.page.stepsTitle": "Što slijedi",
   "demo.page.steps": [
-    "Pošaljite obrazac — termin potvrđujemo u jednom radnom danu.",
+    "Pošaljite obrazac i odmah odaberite termin.",
     "30-minutna vođena demonstracija na oglednim podacima, prilagođena načinu rada vašeg tima.",
     "Ako odgovara: neobvezni pregled pod NDA-om na do 20 vaših troškovnika u Excelu, zatim godišnje uvođenje s 14-dnevnim razdobljem prihvaćanja."
   ],
@@ -252,7 +252,11 @@
     "Ranije prepoznavanje komercijalnih rizika"
   ],
   "demo.success.h3": "Hvala — zahtjev je zaprimljen.",
-  "demo.success.p": "Uskoro ćemo vam se javiti kako bismo potvrdili vođenu demonstraciju.",
+  "demo.success.p": "U nastavku odaberite termin za 30-minutnu vođenu demonstraciju — ili ćemo ga potvrditi u jednom radnom danu.",
+  "booking.intro": "U kalendaru odaberite termin:",
+  "booking.open": "Otvorite stranicu za rezervaciju u novoj kartici",
+  "booking.fallback": "Ako se kalendar ne učita, upotrijebite gornju poveznicu. Rezervacija se obavlja putem usluge Microsoft Bookings kojom za Gradveru upravlja DIGITAL SOLUTIONS d.o.o.",
+  "booking.frameTitle": "Rezervirajte demonstraciju Gradvere — Microsoft Bookings",
   "footer.about.body": "Softver za izradu građevinskih troškovnika potpomognut umjetnom inteligencijom koji tvrtkama pomaže pripremiti ponude, razumjeti troškove i donositi bolje odluke o cijenama — prilagođen njihovu postojećem načinu rada.",
   "footer.about.title": "O Gradveri",
   "footer.bottom.copyright": "© 2026 Gradvera · DIGITAL SOLUTIONS d.o.o., Ljubljana",
