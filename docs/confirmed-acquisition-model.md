@@ -304,7 +304,7 @@ The form and lead record must preserve:
 
 These values should be stored with the lead, not only sent to analytics.
 
-*As built (v1.1):* captured on the first page of the browsing session into `sessionStorage` (no cookie; first touch wins), merged into the form POST and forwarded to gtm-toolkit under `attribution{}` (contract v2, `docs/lead-integration.md`). The deployed gtm-toolkit v1 receiver ignores the new keys (`extra="ignore"`) until its v2 change lands — until then the synthesized `message` digest carries the qualification into the D365 subject.
+*As built (v1.1):* captured on the first page of the browsing session into `sessionStorage` (no cookie; first campaign touch wins — a bare direct visit is upgraded by a later campaign touch), merged into the form POST and forwarded to gtm-toolkit under `attribution{}` (contract v2, `docs/lead-integration.md`). The deployed gtm-toolkit v1 receiver ignores the new keys (`extra="ignore"`) until its v2 change lands — until then the synthesized `message` digest carries the qualification into the D365 subject.
 
 ---
 

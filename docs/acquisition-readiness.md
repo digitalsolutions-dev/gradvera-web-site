@@ -11,25 +11,25 @@ Status key: ✅ done (evidence linked) · 🟡 partly / pending a dependency · 
 
 ## §19 checklist
 
-| # | Readiness item (§19) | Owner | Status | Evidence / where |
-|---|---|---|---|---|
-| 1 | Unsupported proof claims removed or transparently reframed | website | ✅ | PR #74 (WS-A): Results section removed, guarantee verbs softened; `tests/e2e/claims.spec.mjs` pins it |
-| 2 | Free-trial messaging removed | website | ✅ | PR #74; `claims.spec` bans affirmative "free trial" on demo pages; LP states "not a free trial" (PR #77) |
-| 3 | Netherlands landing page live and quality-checked | website | ✅ | PR #77 (WS-E): `/construction-estimating-software/` — indexed, hreflang en + x-default, sitemap 0.9, JSON-LD, e2e `landing.spec.mjs` (135-test suite green); prod-verified after merge |
-| 4 | Page explains Excel support and the guided evaluation route | website | ✅ | PR #74 (demo intro, guides), PR #77 (LP §7.2 sections 5, 7, 9, 11) |
-| 5 | Real product screenshots from the sample tenant present | user → website | ⬜ | Drop PNGs into `public/lp/` and fill `SHOTS` in `src/pages/construction-estimating-software/index.astro` (captions auto-prefixed "Sample data ·"); `ProductEvidence` stays hidden until then |
-| 6 | Gradvera / DIGITAL SOLUTIONS relationship clear | website | ✅ | PR #74: footer line on every page + `Organization.brand`; LP trust section + Bookings fallback copy (PR #76/#77) |
-| 7 | Qualification form collects the required fit + attribution data | website | ✅ | PR #75 (WS-B): `DemoForm` fields (§8.1 — method/frequency/NDA optional, see model v1.1), `src/lib/leadPayload.ts`, `tests/unit/*`, `tests/e2e/lead-form.spec.mjs` |
-| 8 | A test lead is stored correctly with UTM and click identifiers | user (+ gtm-toolkit) | 🟡 | Site sends contract v2 (`docs/lead-integration.md` §2). Deployed gtm-toolkit receiver is `extra="ignore"` → qualification/attribution/score are **not yet persisted** in D365 until the toolkit v2 change lands (separate repo). Until then the synthesized `message` carries the qualification digest. Do: submit a test lead with `?gclid=TEST&utm_campaign=test` on prod and confirm the D365 record + (after toolkit v2) the attribution fields |
-| 9 | Microsoft Bookings branded, embedded, direct-link fallback | website + user | 🟡 | Embed + fallback live (PR #76); **Bookings page configuration is a user action** — §9.2 checklist in `docs/lead-tracking-ga4.md` |
-| 10 | A test booking can be matched to the originating lead | user | ⬜ | Make one booking from the embed on prod with a test lead email; find it in Microsoft Bookings by that email; record here |
-| 11 | Consent + analytics verified under accept and reject | user | ⬜ | §11.3 matrix (7 rows) in `docs/lead-tracking-ga4.md` — run in GTM Preview / Tag Assistant on staging, record Date · Tester · Result per row |
-| 12 | Google Ads conversion records one valid form conversion exactly once | user | ⬜ | GTM steps 1–5 in `docs/lead-tracking-ga4.md` (conversion = `qualification_form_submit` only); verify on staging; then retire `generate_lead` (step 6) |
-| 13 | Sample-tenant demo stable and rehearsed | user | ⬜ | §10.1 30-minute structure; record rehearsal date |
-| 14 | NDA handling and the 20-file preview process ready | user | ⬜ | §10.2 governance (≤20 files, NDA first, ≤2/week, indicative only, human approval); NDA template location |
-| 15 | Annual-agreement requirement for full onboarding reflected in sales materials | user | ⬜ | §10.3; demo script + proposal template |
-| 16 | Lead stages, owner, response standard, weekly review operating | user | ⬜ | §15 stages 1–10 in the lead register; owner named; 1-business-day follow-up standard |
-| 17 | Keyword research, negatives, ads, budget cap, stop conditions approved | user | ⬜ | §12.2–12.4, §13 Phase 1 cap (€500–€1,000 / 30–50 clicks, 2–3 weeks) |
+| # | Readiness item (§19) | Owner | Status | Evidence / where | Done (date · who) |
+|---|---|---|---|---|---|
+| 1 | Unsupported proof claims removed or transparently reframed | website | ✅ | PR #74 (WS-A): Results section removed, guarantee verbs softened; `tests/e2e/claims.spec.mjs` pins it | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 2 | Free-trial messaging removed | website | ✅ | PR #74; `claims.spec` bans affirmative "free trial" on demo pages; LP states "not a free trial" (PR #77) | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 3 | Netherlands landing page live and quality-checked | website | ✅ | PR #77 (WS-E): `/construction-estimating-software/` — indexed, hreflang en + x-default, sitemap 0.9, JSON-LD, e2e `landing.spec.mjs` (135-test suite green); prod-verified after merge | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 4 | Page explains Excel support and the guided evaluation route | website | ✅ | PR #74 (demo intro, guides), PR #77 (LP §7.2 sections 5, 7, 9, 11) | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 5 | Real product screenshots from the sample tenant present | user → website | ⬜ | Drop PNGs into `public/lp/` and fill `SHOTS` in `src/pages/construction-estimating-software/index.astro` (captions auto-prefixed "Sample data ·"); `ProductEvidence` stays hidden until then  | |
+| 6 | Gradvera / DIGITAL SOLUTIONS relationship clear | website | ✅ | PR #74: footer line on every page + `Organization.brand`; LP trust section + Bookings fallback copy (PR #76/#77) | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 7 | Qualification form collects the required fit + attribution data | website | ✅ | PR #75 (WS-B): `DemoForm` fields (§8.1 — method/frequency/NDA optional, see model v1.1), `src/lib/leadPayload.ts`, `tests/unit/*`, `tests/e2e/lead-form.spec.mjs` | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 8 | A test lead is stored correctly with UTM and click identifiers | user (+ gtm-toolkit) | 🟡 | Site sends contract v2 (`docs/lead-integration.md` §2). Deployed gtm-toolkit receiver is `extra="ignore"` → qualification/attribution/score are **not yet persisted** in D365 until the toolkit v2 change lands (separate repo). Until then the synthesized `message` carries the qualification digest. Do: submit a test lead with `?gclid=TEST&utm_campaign=test` on prod and confirm the D365 record + (after toolkit v2) the attribution fields  | |
+| 9 | Microsoft Bookings branded, embedded, direct-link fallback | website + user | 🟡 | Embed + fallback live (PR #76); **Bookings page configuration is a user action** — §9.2 checklist in `docs/lead-tracking-ga4.md` | 2026-08-19 · Claude (controller) — merged + prod-probed |
+| 10 | A test booking can be matched to the originating lead | user | ⬜ | Make one booking from the embed on prod with a test lead email; find it in Microsoft Bookings by that email; record here  | |
+| 11 | Consent + analytics verified under accept and reject | user | ⬜ | §11.3 matrix (7 rows) in `docs/lead-tracking-ga4.md` — run in GTM Preview / Tag Assistant on staging, record Date · Tester · Result per row  | |
+| 12 | Google Ads conversion records one valid form conversion exactly once | user | ⬜ | GTM steps 1–5 in `docs/lead-tracking-ga4.md` (conversion = `qualification_form_submit` only); verify on staging; then retire `generate_lead` (step 6)  | |
+| 13 | Sample-tenant demo stable and rehearsed | user | ⬜ | §10.1 30-minute structure; record rehearsal date  | |
+| 14 | NDA handling and the 20-file preview process ready | user | ⬜ | §10.2 governance (≤20 files, NDA first, ≤2/week, indicative only, human approval); NDA template location  | |
+| 15 | Annual-agreement requirement for full onboarding reflected in sales materials | user | ⬜ | §10.3; demo script + proposal template  | |
+| 16 | Lead stages, owner, response standard, weekly review operating | user | ⬜ | §15 stages 1–10 in the lead register; owner named; 1-business-day follow-up standard  | |
+| 17 | Keyword research, negatives, ads, budget cap, stop conditions approved | user | ⬜ | §12.2–12.4, §13 Phase 1 cap (€500–€1,000 / 30–50 clicks, 2–3 weeks)  | |
 
 ## Dashboard & operational checklists (user actions)
 

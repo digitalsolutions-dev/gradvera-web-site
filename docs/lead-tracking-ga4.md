@@ -83,8 +83,8 @@ unreliable (§9.4).
 e2e (`tests/e2e/lead-events.spec.mjs`) proves the dataLayer pushes are correct
 and fire exactly once; what GTM/GA4/Ads do with them under Consent Mode must be
 verified by hand on **staging.gradvera.com** (same container) after each GTM
-change. Record Date · Tester · Result per row here; once Workstream F creates
-`docs/acquisition-readiness.md`, move the log there:
+change. Record Date · Tester · Result per row **here** (this table is the
+home of the log; `docs/acquisition-readiness.md` §19 rows 11–12 link to it):
 
 | # | Scenario | Expect | Date | Tester | Result |
 |---|---|---|---|---|---|
@@ -102,7 +102,7 @@ counts in GA4 are modelled/partial by design.
 ## Microsoft Bookings page configuration (§9.2 — user action)
 
 The embed goes live with this PR; the page itself is configured in Microsoft
-Bookings (not in this repo). Record who/when (moves to the readiness doc in WS-F):
+Bookings (not in this repo). Record who/when **here** (`docs/acquisition-readiness.md` §19 rows 9–10 link to this table):
 
 | # | Setting | Done (date · by) |
 |---|---|---|
