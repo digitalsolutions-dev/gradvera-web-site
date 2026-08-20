@@ -187,7 +187,7 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 
 ## 9. Workstream F — readiness, doc, graph
 
-- `docs/acquisition-readiness.md`: §19 checklist as table with Evidence / PR / Date / Verifier; items owned by user (GTM config, Bookings branding, sample tenant, NDA process, keyword research) marked "external". *(As built: columns Owner · Status · Evidence · Done (date · who); the detailed GTM consent matrix and Bookings checklist stay in `docs/lead-tracking-ga4.md` and are linked from rows 9–12.)*
+- `docs/acquisition-readiness.md`: §19 checklist as table with Evidence / PR / Date / Verifier; items owned by user (GTM config, Bookings branding, sample tenant, NDA process, keyword research) marked "external". *(As built: columns Owner · Status · Evidence · Done (date · who); the detailed GTM consent matrix and Bookings checklist stay in `docs/lead-tracking-ga4.md`, linked from the corresponding §19 rows.)*
 - `docs/confirmed-acquisition-model.md` → v1.1: §8.1 mark method/frequency/NDA/message optional (+ why: paid-traffic friction; scoring still reaches 7 on required fields), §7.1.7 slug + geo-in-copy, §11 response body + event names as built, changelog block.
 - CLAUDE.md layout list: new route, `components/landing/`, `forms/BookingEmbed`, `lib/leadScore.ts`, `scripts/attribution.js`, new docs.
 - `/graphify --update` folded into E's PR (structural change), verify no `users_katarov` absolute ids.
