@@ -1,8 +1,8 @@
 # Gradvera Confirmed Acquisition Model
 
 **Status:** Confirmed baseline for implementation  
-**Version:** 1.0  
-**Date:** 18 August 2026  
+**Version:** 1.1 (as built — see §21 changelog)  
+**Date:** 18 August 2026 (v1.0); 19 August 2026 (v1.1)  
 **Scope:** Inbound acquisition preparation, Google Search Ads validation, qualified-demo conversion, customer-specific preview, and annual onboarding
 
 ---
@@ -207,7 +207,7 @@ Before paid traffic begins:
 4. Make the relationship clear: **“Gradvera is a product of DIGITAL SOLUTIONS d.o.o.”**
 5. State that the supported input is Excel BoQ files.
 6. Present the annual onboarding route clearly enough that visitors do not expect an instant self-service product.
-7. Add a focused Netherlands acquisition landing page.
+7. Add a focused Netherlands acquisition landing page. *(As built: market-neutral slug `/construction-estimating-software/` — English-only, indexed, hreflang `en` + `x-default`; "Netherlands" appears in the title, eyebrow and copy, not in the URL, so the same page can serve the later Nordic test via ad targeting; a Dutch page would live under `/nl/`.)*
 8. Add real screenshots from the stable sample tenant.
 9. Connect the qualification form to the embedded Microsoft Bookings flow.
 10. Add the required attribution fields and verify analytics and consent behavior.
@@ -223,7 +223,7 @@ Use one focused page for the first campaign rather than creating several thin pa
 5. **How it works:** import, structure/match, review, prepare/manage
 6. **Product evidence:** real screenshots from the sample tenant
 7. **Capabilities:** short workflow-focused list
-8. **Data and trust:** tenant isolation, data use, GDPR position, and NDA availability
+8. **Data and trust:** tenant isolation, data use, GDPR position (application tenants are hosted in the EU — confirmed 19 Aug 2026), and NDA availability
 9. **Evaluation process:** demo, optional qualified preview, annual onboarding
 10. **Commercial context:** annual plans; exact price display can be tested
 11. **FAQ:** data volume, Excel support, onboarding, security, preview, languages
@@ -252,11 +252,14 @@ The form should remain short enough for paid traffic while collecting enough inf
 - Country
 - Role
 - Approximate company size
-- Current estimating method
-- Approximate bid/estimate frequency
 - Main challenge
-- Willingness to discuss historical Excel BoQs under NDA
+- Current estimating method — *optional (v1.1)*
+- Approximate bid/estimate frequency — *optional (v1.1)*
+- Willingness to discuss historical Excel BoQs under NDA — *optional (v1.1)*
 - Phone number: optional
+- Free-text message ("Anything else?") — optional
+
+*v1.1 note:* the three optional qualifiers were made optional to keep the form short for paid traffic; the §8.2 threshold (7) is still reachable from the required fields alone (Netherlands +2, decision role +2, ≥30 employees +2, core pain +2 = 8). Blank optional fields score 0. The wire values are the enum slugs listed in `docs/lead-integration.md` §1.
 
 ### 8.2 Operational lead score
 
@@ -276,6 +279,8 @@ This scoring model is the initial default and must be recalibrated after real le
 
 **Initial qualification threshold:** 7 points.  
 **Human override:** permitted, with the reason recorded.
+
+*As built (v1.1):* the score is computed server-side (`src/lib/leadScore.ts`), stored on the lead (`score`, `scoreReasons`, `qualified`) and returned to the browser (`{qualified, score}`) so `qualified_lead` can be pushed to the dataLayer. The −5 signal is a human-review action, not code. The −2 freemail signal uses a fixed consumer-domain list.
 
 Lead scoring is for routing and analysis. It should not automatically promise or deny a preview without a human review.
 
@@ -298,6 +303,8 @@ The form and lead record must preserve:
 - Consent state where applicable
 
 These values should be stored with the lead, not only sent to analytics.
+
+*As built (v1.1):* captured on the first page of the browsing session into `sessionStorage` (no cookie; first campaign touch wins — a bare direct visit is upgraded by a later campaign touch), merged into the form POST and forwarded to gtm-toolkit under `attribution{}` (contract v2, `docs/lead-integration.md`). The deployed gtm-toolkit v1 receiver ignores the new keys (`extra="ignore"`) until its v2 change lands — until then the synthesized `message` digest carries the qualification into the D365 subject.
 
 ---
 
@@ -336,6 +343,8 @@ https://outlook.office.com/book/GradveraBookings@digitalsolutions.si/?ismsaljsau
 ```
 
 Use campaign-level identifiers only. Never place a prospect's name, email address, company, or other personal data in the booking URL.
+
+*As built (v1.1):* `RefID` = the sanitized first-touch `utm_campaign` (lowercase `[a-z0-9_-]`, ≤ 40 chars) or the page default `website-demo-<locale>` / `website-lp`; the iframe is loaded only after a successful form submit and the direct link is always visible.
 
 ### 9.4 Measurement limitation
 
@@ -426,6 +435,8 @@ Once sufficient volume and reliable reconciliation exist, optimization should mo
 5. Signed annual agreement
 
 Do not configure button clicks, page views, or booking-widget opens as primary conversions.
+
+*As built (v1.1):* the website pushes `qualification_form_start`, `qualification_form_submit {qualified, score}`, `qualified_lead` (when qualified) and `booking_widget_open {ref}`; `generate_lead` (2026-08-05) is retired. GTM/GA4/Ads configuration and the §11.3 verification are user actions tracked in `docs/acquisition-readiness.md`; see `docs/lead-tracking-ga4.md`.
 
 ### 11.3 Consent and verification
 
@@ -726,6 +737,8 @@ These decisions must not be disguised as settled facts in advertisements or sale
 
 ## 19. Definition of acquisition readiness
 
+Evidence for each item is logged in `docs/acquisition-readiness.md` (website items with PR numbers; dashboard and operational items with date and owner).
+
 Gradvera is ready to open the first Google Search campaign only when all of the following are true:
 
 - [ ] Unsupported proof claims have been removed or transparently reframed.
@@ -754,3 +767,9 @@ This document governs the initial acquisition implementation. Website copy, adve
 
 When real evidence contradicts an assumption, record the evidence and revise this specification. The model should evolve through measured phase gates, not through untracked expansion of channels, markets, features, or offers.
 
+---
+
+## 21. Changelog
+
+- **v1.1 — 19 August 2026 (as built, Phase 0 website work).** §7.1.7 market-neutral landing-page slug; §7.2.8 EU hosting stated; §8.1 three qualifiers marked optional + free-text message added; §8.2/§8.3/§9.3/§11.2 "as built" notes (server-side scoring and response fields, sessionStorage attribution and contract v2, RefID rule, §11.1 event names with `generate_lead` retired); §19 points to `docs/acquisition-readiness.md`. Website PRs #74–#77. No change to the staged investment model (§13), funnel controls (§14) or open decisions (§18).
+- **v1.0 — 18 August 2026.** Confirmed baseline.

@@ -4,7 +4,7 @@
 **Source of requirements:** `docs/confirmed-acquisition-model.md` (v1.0). This
 spec maps its website-facing clauses (§6, §7, §8, §9, §11) onto concrete
 changes in this repo, plus the one cross-repo dependency (gtm-toolkit).
-**Status:** approved design, pending implementation plan.
+**Status:** approved design — **implemented** (Workstreams A–E in PRs #74–#77; F in the WS-F docs PR, 19 Aug 2026). "As built" notes mark where the implementation refined this text; `docs/confirmed-acquisition-model.md` v1.1 carries the model-level amendments.
 
 ## 1. Goal
 
@@ -122,8 +122,8 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 ### 5.3 `src/pages/api/lead.ts`
 
 - `Lead` type gains: `qualification: {country, role, companySize, mainChallenge, estimatingMethod, bidFrequency, ndaWilling}` (strings, `''` when absent), `attribution: {gclid, gbraid, wbraid, utm_source, utm_medium, utm_campaign, utm_term, utm_content, landingPage, referrer, submissionPage, submittedAt, consent}` (strings, `''` when absent; `consent` ∈ `accept|reject|unset`), `score: number`, `scoreReasons: string[]`, `qualified: boolean`.
-- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered to the URL-safe set (RFC 3986 unreserved + reserved + `%` + space for decoded `utm_term`; anything else → `''`); `message` optional.
-- `message` synthesis when blank: `Main challenge: <label> · <method> · <frequency> · <country> · <size>` (English labels; keeps gtm-toolkit v1 `min_length=1` satisfied and D365 subject informative).
+- Validation: required set per §5.1; enum membership for chip fields (invalid → 400); attribution values length-capped (≤256) and character-filtered to the URL-safe set (Unicode letters/digits + RFC 3986 unreserved punctuation `-._~` + reserved + `%` + space — diacritics in decoded SL/HR `utm_term` survive; anything else → `''`); `message` optional. *(As built, PR #75.)*
+- `message` synthesis when blank: `Main challenge: <label> · Method: <label> · Frequency: <label> · Country: <ISO2> · Size: <band> · Role: <label> · NDA: yes` (English labels; blank parts omitted; `Demo request` if all blank) — keeps gtm-toolkit v1 `min_length=1` satisfied and the D365 subject informative. *(As built, PR #75; format documented in `docs/lead-integration.md` §2.)*
 - Pure `scoreLead(input): {score, reasons, qualified}` in `src/lib/leadScore.ts` and `parseLeadBody()` in `src/lib/leadPayload.ts`, unit-tested with Vitest (`tests/unit/`, `npm run test:unit` — the e2e harness cannot reach the on-demand `/api/lead` route); `lead.ts` becomes transport only.
 - Response: `{ ok: true, forwarded: boolean, qualified: boolean, score: number }`.
 
@@ -155,13 +155,13 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 - `DemoForm.astro`: `qualification_form_start` on first `input`/`change` (once); `qualification_form_submit {form_id, locale, page, qualified, score}` on 2xx; `qualified_lead {form_id, locale, page, score}` when `qualified`. Remove `generate_lead`.
 - `booking_widget_open {ref}` from C. `landing_page_view` = GTM page-path trigger, no code.
 - `docs/lead-tracking-ga4.md` rewrite: events table (§11.1 subset that is client-observable), GTM trigger/tag names (`CE - qualification_form_submit` etc.), Ads conversion = `qualification_form_submit` **only** (§11.2 rule), consent-matrix checklist (§11.3) with columns date/tester/result. GTM dashboard edits are user actions listed explicitly.
-- e2e spec `tests/e2e/lead-events.spec.ts`: dataLayer contains each event exactly once with expected params; `generate_lead` absent.
+- e2e spec `tests/e2e/lead-events.spec.mjs`: dataLayer contains each event exactly once with expected params; `generate_lead` absent.
 
 ## 8. Workstream E — landing page
 
 **Route:** `src/pages/construction-estimating-software/index.astro`, EN only, indexed, self-canonical.
 
-**EN-only routes plumbing:** `src/i18n/slugs.ts` exports `EN_ONLY_ROUTES = new Set(['construction-estimating-software'])`; `alternates()` in `utils.ts` returns `[en, x-default]` for those; `astro.config.mjs` `serialize()` emits only `en` + `x-default` links and skips them from SL/HR sitemap alternates; priority 0.9. `SEO.astro` needs no new prop (uses `alternates()`).
+**EN-only routes plumbing:** `src/i18n/slugs.ts` exports `EN_ONLY_ROUTES = new Set(['construction-estimating-software'])` + `isEnOnlyPath()`; `alternates()` in `utils.ts` returns `[en, x-default]` for those; `astro.config.mjs` `serialize()` emits only `en` + `x-default` links; priority 0.9. *(As built, PR #77: also `LangSwitch` sends SL/HR to their locale home while EN stays self-linked, `SEO.astro` omits `og:locale:alternate` on EN-only routes, and `Header`/`MobileNav`/`BaseLayout` accept `ctaHref`; `DemoForm` gained a `page` prop.)*
 
 **Sections (§7.2), components under `src/components/landing/`:**
 1. `LpHero` — H1 "Construction estimating software for contractors in the Netherlands" (tune ≤ ~70 chars), sub-line = §6.1 primary message, CTA → `#book-a-demo`.
@@ -187,7 +187,7 @@ Existing role labels keep their i18n keys; chip values become slugs. On the wire
 
 ## 9. Workstream F — readiness, doc, graph
 
-- `docs/acquisition-readiness.md`: §19 checklist as table with Evidence / PR / Date / Verifier; items owned by user (GTM config, Bookings branding, sample tenant, NDA process, keyword research) marked "external".
+- `docs/acquisition-readiness.md`: §19 checklist as table with Evidence / PR / Date / Verifier; items owned by user (GTM config, Bookings branding, sample tenant, NDA process, keyword research) marked "external". *(As built: columns Owner · Status · Evidence · Done (date · who); the detailed GTM consent matrix and Bookings checklist stay in `docs/lead-tracking-ga4.md`, linked from the corresponding §19 rows.)*
 - `docs/confirmed-acquisition-model.md` → v1.1: §8.1 mark method/frequency/NDA/message optional (+ why: paid-traffic friction; scoring still reaches 7 on required fields), §7.1.7 slug + geo-in-copy, §11 response body + event names as built, changelog block.
 - CLAUDE.md layout list: new route, `components/landing/`, `forms/BookingEmbed`, `lib/leadScore.ts`, `scripts/attribution.js`, new docs.
 - `/graphify --update` folded into E's PR (structural change), verify no `users_katarov` absolute ids.
