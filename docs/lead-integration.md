@@ -189,10 +189,11 @@ Field notes for the receiver:
   `· <score> pts` / `· qualified` suffix, and a structured qualification +
   attribution block is appended under the visitor message on the Lead
   **description** (capped to D365's 2000-char Memo — the message is trimmed, the
-  v2 block is kept). No new D365 columns. Note: the change is live only once the
-  updated receiver image is deployed; a pre-#145 receiver still ignores the v2
-  keys, in which case the synthesized `message` carries the qualification into
-  the D365 subject.
+  v2 block is kept). No new D365 columns. **Live in production since 2026-08-21**
+  (receiver image `v9` on Fargate; end-to-end verified with a prod test lead —
+  see `docs/acquisition-readiness.md` row 8). A pre-#145 receiver still ignores
+  the v2 keys, in which case the synthesized `message` carries the qualification
+  into the D365 subject.
 
 ### Headers
 
