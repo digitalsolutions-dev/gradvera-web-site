@@ -657,9 +657,15 @@
       "p": "Subcontractor requests, offer-revision comparison, company margins and norms, and management visibility into estimating activity."
     }
   ],
-  "lp.evidence.eyebrow": "Product evidence",
-  "lp.evidence.h2": "Real screens from the sample tenant",
-  "lp.evidence.note": "All screenshots show sample data, not a customer case.",
+  "lp.evidence.eyebrow": "How it works, illustrated",
+  "lp.evidence.h2": "What the four steps look like in Gradvera",
+  "lp.evidence.note": "Illustrative UI reproductions using sample data — not literal screenshots, not a customer case.",
+  "lp.evidence.shots": [
+    { "title": "Import", "caption": "Excel bill of quantities imported into an estimate" },
+    { "title": "Structure & match", "caption": "line items matched to your historical estimates" },
+    { "title": "Review", "caption": "pricing-confidence review with historical recommendations" },
+    { "title": "Prepare & manage", "caption": "subcontractor quotes compared against bid items" }
+  ],
   "lp.caps.eyebrow": "Capabilities",
   "lp.caps.h2": "What is operational today",
   "lp.caps.items": [

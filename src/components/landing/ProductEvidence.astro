@@ -1,44 +1,229 @@
 ---
-// Screenshots from the stable sample tenant (acquisition model §7.1.8). Every
-// caption is prefixed "Sample data ·" — the screens are never presented as a
-// customer case. With no shots supplied the component renders NOTHING: an empty
-// "product evidence" frame would be a promise the page cannot keep.
+// Coded app-window UI reproductions — NOT screenshots. These are the same
+// on-brand vector "app screen" mocks the homepage Capability sections use
+// (winbar app / gv-holder / gv-screen, styled by cap-screens.css + cap1-screens.css,
+// both loaded globally by BaseLayout). Four windows, one per workflow step
+// (Import · Structure & match · Review · Prepare & manage). Every window carries
+// a figcaption prefixed "Illustration ·" and shows plausible SAMPLE data only
+// (no real names/prices; numbers are internally self-consistent). The section
+// copy is framed as illustration, never as a real customer screen — the site's
+// "show the work, don't claim it" principle. scaleScreens() in site.js scales
+// each --gw panel to fit its column; the overflow:hidden wrappers clip cleanly.
 import { useTranslations, type Locale } from '../../i18n/utils';
-interface Props { lang: Locale; shots: { src: string; alt: string; caption: string }[] }
-const { lang, shots } = Astro.props;
+interface Props { lang: Locale }
+const { lang } = Astro.props;
 const t = useTranslations(lang);
+const shots: { title: string; caption: string }[] = t('lp.evidence.shots');
+const [sImport, sMatch, sReview, sManage] = shots;
 ---
-{shots.length > 0 && (
-  <section class="product-evidence">
-    <div class="wrap">
-      <p class="eyebrow">{t('lp.evidence.eyebrow')}</p>
-      <h2 class="h-section lp-h2">{t('lp.evidence.h2')}</h2>
-      <p class="lede lp-lede">{t('lp.evidence.note')}</p>
-      <ul class="pe-grid">
-        {shots.map((s) => (
-          <li>
-            <figure>
-              <img src={s.src} alt={s.alt} loading="lazy" width="1200" height="750" />
-              <figcaption>Sample data · {s.caption}</figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-)}
+<section class="product-evidence">
+  <div class="wrap">
+    <p class="eyebrow">{t('lp.evidence.eyebrow')}</p>
+    <h2 class="h-section lp-h2">{t('lp.evidence.h2')}</h2>
+    <p class="lede lp-lede">{t('lp.evidence.note')}</p>
+    <ul class="pe-grid">
+      {/* 1 — Import: an Excel bill of quantities just ingested into an estimate */}
+      <li>
+        <figure>
+          <div class="gv-panelwrap" aria-hidden="true">
+            <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="" />Gradvera · {sImport.title}</span></div>
+            <div class="gv-holder">
+              <div class="gv-screen solo pnl" style="--gw:460px">
+                <div class="pe-scr">
+                  <div class="pe-hd">
+                    <span class="pe-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></span>
+                    <div class="pe-tx"><div class="pe-ti">boq-phase-2.xlsx</div><div class="pe-su">Business park · Phase 2 · imported just now</div></div>
+                    <span class="pe-badge ok">Imported</span>
+                  </div>
+                  <div class="pe-list">
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22h20"/><path d="M4 22V10l8-6 8 6v12"/></svg></span><div class="pe-tx"><div class="pe-nm">Earthworks — excavation</div><div class="pe-mt">BoQ 01.1</div></div><div class="pe-rt"><div class="pe-val tnum">1,240 m³</div></div></div>
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><div class="pe-tx"><div class="pe-nm">Concrete C25/30 — foundations</div><div class="pe-mt">BoQ 02.3</div></div><div class="pe-rt"><div class="pe-val tnum">615 m³</div></div></div>
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg></span><div class="pe-tx"><div class="pe-nm">Masonry — external walls</div><div class="pe-mt">BoQ 04.1</div></div><div class="pe-rt"><div class="pe-val tnum">380 m²</div></div></div>
+                  </div>
+                  <div class="pe-foot"><span>3 of 3 sections mapped</span><span class="tnum">42 line items</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b class="pe-tag">Illustration</b> · {sImport.caption}</figcaption>
+        </figure>
+      </li>
+
+      {/* 2 — Structure & match: line items matched to historical estimates */}
+      <li>
+        <figure>
+          <div class="gv-panelwrap" aria-hidden="true">
+            <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="" />Gradvera · {sMatch.title}</span></div>
+            <div class="gv-holder">
+              <div class="gv-screen solo pnl" style="--gw:460px">
+                <div class="pe-scr">
+                  <div class="pe-hd">
+                    <span class="pe-fic ai"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6z"/></svg></span>
+                    <div class="pe-tx"><div class="pe-ti">Concrete C25/30 — foundations</div><div class="pe-su">matched to your estimate history</div></div>
+                    <span class="pe-badge ai"><span class="gv-spark">✦</span> Suggested</span>
+                  </div>
+                  <div class="pe-rec">
+                    <div class="pe-reck">Suggested unit price</div>
+                    <div class="pe-recrow"><span class="pe-recval tnum">€167.40 <small>/ m³</small></span><span class="gv-conf h">3 matches</span></div>
+                    <div class="pe-recsub">carried from prior estimates — review before it enters the bid</div>
+                  </div>
+                  <div class="pe-lbl">Source projects</div>
+                  <div class="pe-list">
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span><div class="pe-tx"><div class="pe-nm">Office block · 2023</div><div class="pe-mt tnum">540 m³ · C25/30</div></div><div class="pe-rt"><div class="pe-val tnum">€167.40</div><div class="pe-mt2">top match</div></div></div>
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span><div class="pe-tx"><div class="pe-nm">Retail centre · 2023</div><div class="pe-mt tnum">180 m³ · C25/30</div></div><div class="pe-rt"><div class="pe-val tnum">€168.00</div><div class="pe-mt2">close match</div></div></div>
+                    <div class="pe-li"><span class="pe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span><div class="pe-tx"><div class="pe-nm">Logistics hub · 2022</div><div class="pe-mt tnum">320 m³ · C25/30</div></div><div class="pe-rt"><div class="pe-val tnum">€166.20</div><div class="pe-mt2">match</div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b class="pe-tag">Illustration</b> · {sMatch.caption}</figcaption>
+        </figure>
+      </li>
+
+      {/* 3 — Review (flagship): pricing-confidence flags + value requiring review + a historical recommendation */}
+      <li>
+        <figure>
+          <div class="gv-panelwrap" aria-hidden="true">
+            <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="" />Gradvera · {sReview.title}</span></div>
+            <div class="gv-holder">
+              <div class="gv-screen solo pnl" style="--gw:460px">
+                <div class="pe-scr">
+                  <div class="pe-hd">
+                    <span class="pe-fic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+                    <div class="pe-tx"><div class="pe-ti">Pricing-confidence review</div><div class="pe-su">Business park · Phase 2</div></div>
+                    <span class="pe-badge warn">2 to review</span>
+                  </div>
+                  <div class="pe-total">
+                    <div class="pe-totk">Value requiring pricing review</div>
+                    <div class="pe-totv tnum">€135,790</div>
+                    <div class="pe-tots">2 of 42 flagged for review</div>
+                  </div>
+                  <div class="pe-list">
+                    <div class="pe-li"><span class="pe-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><div class="pe-tx"><div class="pe-nm">Concrete C25/30 — foundations</div><div class="pe-mt">priced from 3 matched projects</div></div><div class="pe-rt"><div class="pe-val tnum">€102,951</div></div><span class="gv-conf h">High</span></div>
+                    <div class="pe-li"><span class="pe-ic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="pe-tx"><div class="pe-nm">Structural steel — reinforcement</div><div class="pe-mt">priced from a single old quote</div></div><div class="pe-rt"><div class="pe-val tnum">€119,040</div></div><span class="gv-conf l">Low</span></div>
+                    <div class="pe-li"><span class="pe-ic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="pe-tx"><div class="pe-nm">Waterproofing membrane</div><div class="pe-mt">rate estimated, no recent match</div></div><div class="pe-rt"><div class="pe-val tnum">€16,750</div></div><span class="gv-conf m">Medium</span></div>
+                  </div>
+                  <div class="pe-rec">
+                    <div class="pe-reck"><span class="gv-spark">✦</span> Historical recommendation · Structural steel</div>
+                    <div class="pe-recrow"><span class="pe-recval tnum">€1,240 <small>/ t</small></span><span class="gv-conf h">2 matches</span></div>
+                    <div class="pe-recsub">Based on 2 past projects · 210 t and 140 t (S500)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b class="pe-tag">Illustration</b> · {sReview.caption}</figcaption>
+        </figure>
+      </li>
+
+      {/* 4 — Prepare & manage: subcontractor quotes compared against a bid item */}
+      <li>
+        <figure>
+          <div class="gv-panelwrap" aria-hidden="true">
+            <div class="winbar app"><span class="dots"><i></i><i></i><i></i></span><span class="wtitle"><img src="/assets/monogram-plain.svg" alt="" />Gradvera · {sManage.title}</span></div>
+            <div class="gv-holder">
+              <div class="gv-screen solo pnl" style="--gw:460px">
+                <div class="pe-scr">
+                  <div class="pe-hd">
+                    <span class="pe-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+                    <div class="pe-tx"><div class="pe-ti">Subcontractor quotes</div><div class="pe-su">Structural steel — reinforcement · BoQ 05.2 · 96 t</div></div>
+                    <span class="pe-badge">3 quotes</span>
+                  </div>
+                  <div class="pe-list">
+                    <div class="pe-li win"><span class="pe-av" style="background:#1F7A4D">A</span><div class="pe-tx"><div class="pe-nm">Subcontractor A</div><div class="pe-mt">6 quotes before · valid to 12 Sep</div></div><div class="pe-rt"><div class="pe-val tnum">€118,600</div></div><span class="pe-badge ok pe-inbadge">Best value</span></div>
+                    <div class="pe-li"><span class="pe-av" style="background:#2A6FDB">B</span><div class="pe-tx"><div class="pe-nm">Subcontractor B</div><div class="pe-mt">2 quotes before · valid to 09 Sep</div></div><div class="pe-rt"><div class="pe-val tnum">€121,400</div></div></div>
+                    <div class="pe-li"><span class="pe-av" style="background:#7C3AED">C</span><div class="pe-tx"><div class="pe-nm">Subcontractor C</div><div class="pe-mt">new subcontractor · valid to 15 Sep</div></div><div class="pe-rt"><div class="pe-val tnum">€129,500</div></div></div>
+                  </div>
+                  <div class="pe-foot"><span>Compared to historical €1,240 / t</span><span class="tnum">Best €118,600</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b class="pe-tag">Illustration</b> · {sManage.caption}</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>
 
 <style is:global>
-  /* Continues the how-it-works band (same --bg2), separated by a hairline:
-     these are the screens for the steps above, not a new claim. */
+  /* Continues the how-it-works band (same --bg2), separated by a hairline: these
+     are illustrations of the steps above, not a new claim. */
   .product-evidence { background: var(--bg2); padding: var(--sec) 0;
     border-top: 1px solid var(--border2); }
   .pe-grid { list-style: none; margin: clamp(28px, 4vh, 46px) 0 0; padding: 0;
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(22px, 3vw, 36px); }
-  .pe-grid figure { margin: 0; }
-  .pe-grid img { width: 100%; height: auto; border: 1px solid var(--border2);
-    border-radius: 12px; background: var(--bg1); }
-  .pe-grid figcaption { margin-top: 10px; font: 500 12.5px/1.5 var(--font-mono);
-    letter-spacing: 0.04em; color: var(--fg2); }
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(22px, 3vw, 40px); }
+  .pe-grid > li { margin: 0; min-width: 0; display: flex; }
+  .product-evidence figure { margin: 0; min-width: 0; flex: 1; display: flex; flex-direction: column; }
+  .product-evidence figcaption { margin-top: auto; padding-top: 13px; font: 500 12.5px/1.5 var(--font-mono);
+    letter-spacing: 0.02em; color: var(--fg2); }
+  /* "Illustration ·" in Amber Ink (--brand-primary-soft-text, 7.7:1 on white) —
+     raw --amber would fail WCAG AA on this light band. */
+  .product-evidence .pe-tag { color: var(--brand-primary-soft-text); font-weight: 600; }
+
+  /* ---- shared compact panel body (reuses winbar/gv-holder/gv-screen chrome) ---- */
+  .product-evidence .pe-scr { padding: 14px 16px 15px; display: flex; flex-direction: column; gap: 12px; }
+  .product-evidence .pe-hd { display: flex; align-items: center; gap: 10px; }
+  .product-evidence .pe-hd .pe-tx { min-width: 0; }
+  .product-evidence .pe-ti { font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--fg1);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .product-evidence .pe-su { font-size: 10.5px; color: var(--fg3); margin-top: 2px; }
+  .product-evidence .pe-fic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+    flex: none; background: var(--bg3); color: var(--fg2); }
+  .product-evidence .pe-fic svg { width: 16px; height: 16px; }
+  .product-evidence .pe-fic.ai, .product-evidence .pe-fic.warn { background: var(--brand-primary-soft); color: var(--brand-primary-pressed); }
+
+  .product-evidence .pe-badge { margin-left: auto; flex: none; font-size: 9.5px; font-weight: 700;
+    border-radius: 999px; padding: 4px 9px; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;
+    color: var(--fg2); background: var(--bg3); border: 1px solid var(--border2); }
+  .product-evidence .pe-badge .gv-spark { color: var(--brand-primary); }
+  .product-evidence .pe-badge.ok { color: var(--success); background: var(--success-soft); border-color: var(--success-soft-border); }
+  .product-evidence .pe-badge.ai { color: var(--brand-primary-pressed); background: var(--brand-primary-soft); border-color: var(--brand-primary-soft-border); }
+  .product-evidence .pe-badge.warn { color: var(--warning-soft-text); background: var(--warning-soft); border-color: var(--warning-soft-border); }
+  .product-evidence .pe-inbadge { margin-left: 8px; }
+
+  .product-evidence .pe-lbl { font: 500 9px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--fg3); }
+  .product-evidence .pe-list { border: 1px solid var(--border2); border-radius: 11px; overflow: hidden; }
+  .product-evidence .pe-li { display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    border-top: 1px solid var(--border1); }
+  .product-evidence .pe-li:first-child { border-top: 0; }
+  .product-evidence .pe-li.win { background: var(--success-soft); }
+  .product-evidence .pe-li .pe-tx { min-width: 0; }
+  .product-evidence .pe-ic { width: 26px; height: 26px; border-radius: 7px; background: var(--bg3); color: var(--fg2);
+    display: grid; place-items: center; flex: none; }
+  .product-evidence .pe-ic svg { width: 13px; height: 13px; }
+  .product-evidence .pe-ic.ok { background: var(--success-soft); color: var(--success); }
+  .product-evidence .pe-ic.warn { background: var(--brand-primary-soft); color: var(--brand-primary-pressed); }
+  .product-evidence .pe-av { width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center;
+    flex: none; font-size: 10px; font-weight: 700; color: #fff; }
+  .product-evidence .pe-nm { font-size: 11.5px; font-weight: 600; color: var(--fg1);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .product-evidence .pe-mt { font-size: 9.5px; color: var(--fg3); margin-top: 2px; }
+  .product-evidence .pe-rt { margin-left: auto; text-align: right; flex: none; }
+  .product-evidence .pe-val { font-size: 11.5px; font-weight: 600; color: var(--fg1); }
+  .product-evidence .pe-mt2 { font-size: 9px; color: var(--success); font-weight: 600; margin-top: 2px; }
+
+  /* value-requiring-review stat block (Review screen) */
+  .product-evidence .pe-total { border: 1px solid var(--brand-primary-soft-border); background: var(--brand-primary-soft);
+    border-radius: 11px; padding: 12px 14px; }
+  .product-evidence .pe-totk { font: 500 9px/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--brand-primary-soft-text); }
+  .product-evidence .pe-totv { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin-top: 7px; }
+  .product-evidence .pe-tots { font-size: 10px; color: var(--brand-primary-soft-text); margin-top: 5px; }
+
+  /* recommendation / suggested-match card */
+  .product-evidence .pe-rec { border: 1px solid var(--border2); background: #fff; border-radius: 11px; padding: 12px 14px; }
+  .product-evidence .pe-reck { font-size: 11px; font-weight: 600; color: var(--fg1); display: flex; align-items: center; gap: 6px; }
+  .product-evidence .pe-reck .gv-spark { color: var(--brand-primary); }
+  .product-evidence .pe-recrow { display: flex; align-items: center; gap: 9px; margin-top: 8px; }
+  .product-evidence .pe-recval { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); }
+  .product-evidence .pe-recval small { font-size: 12px; font-weight: 500; color: var(--fg3); }
+  .product-evidence .pe-recsub { font-size: 10px; color: var(--fg2); margin-top: 7px; line-height: 1.45; }
+
+  .product-evidence .pe-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    font-size: 10px; color: var(--fg3); }
+
   @media (max-width: 760px) { .pe-grid { grid-template-columns: 1fr; } }
 </style>

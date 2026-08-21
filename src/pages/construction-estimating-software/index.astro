@@ -24,9 +24,6 @@ const site = Astro.site;
 const PATH = '/construction-estimating-software/';
 const url = absoluteUrl(PATH, site);
 
-/** Screenshots from the stable sample tenant (acquisition model §7.1.8). Empty until the PNGs land — the section renders nothing. */
-const SHOTS: { src: string; alt: string; caption: string }[] = [];
-
 // JSON-LD. Organization + WebSite come from SEO.astro (its subtree, sole
 // emitter); this page adds the three page-level nodes. SoftwareApplication
 // carries NO offers/aggregateRating — there is no public price and no reviews,
@@ -75,7 +72,7 @@ const breadcrumbLd = {
   <LpWhoFor lang={lang} />
   <LpPains lang={lang} />
   <LpSteps lang={lang} />
-  <ProductEvidence lang={lang} shots={SHOTS} />
+  <ProductEvidence lang={lang} />
   <LpCapabilities lang={lang} />
   <LpTrust lang={lang} />
   <LpEvaluation lang={lang} />
