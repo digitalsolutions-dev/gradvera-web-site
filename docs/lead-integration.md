@@ -183,14 +183,16 @@ Field notes for the receiver:
   keeps producing readable values; the slug lives in `qualification.role`.
 - The honeypot field and any extra browser fields are **stripped** — only the
   keys above are forwarded.
-- **Receiver compatibility.** The deployed gtm-toolkit receiver (`WebsiteLead`,
-  `extra="ignore"`) accepts this body today: it persists the v1 keys and ignores
-  `qualification` / `attribution` / `score` / `scoreReasons` / `qualified`.
-  **gtm-toolkit follow-up (separate repo/PR):** extend `WebsiteLead` + the queue
-  envelope + the D365 mapping (score/qualified/reasons → Lead fields;
-  qualification + attribution → description/notes or dedicated columns) so the
-  §8.3 attribution is *stored with the lead*, not only sent. Until then the
-  synthesized `message` carries the qualification into the D365 subject.
+- **Receiver compatibility.** gtm-toolkit **accepts and persists this body as of
+  its PR #145 (merged 2026-08-20)**: `WebsiteLead` parses the v2 keys (absent on
+  v1 posts — fully backward compatible), the Lead **Topic** gains a
+  `· <score> pts` / `· qualified` suffix, and a structured qualification +
+  attribution block is appended under the visitor message on the Lead
+  **description** (capped to D365's 2000-char Memo — the message is trimmed, the
+  v2 block is kept). No new D365 columns. Note: the change is live only once the
+  updated receiver image is deployed; a pre-#145 receiver still ignores the v2
+  keys, in which case the synthesized `message` carries the qualification into
+  the D365 subject.
 
 ### Headers
 
