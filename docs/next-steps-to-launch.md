@@ -29,7 +29,7 @@ dashboard/sales-ops actions you own.
 
 | Track | Rows | Owner | Blocks launch? |
 |---|---|---|---|
-| A. LP screenshots | 5 | you supply PNGs → I wire | yes (row 5) |
+| A. LP reproductions | 5 | website (coded) | ✅ shipped |
 | B. GTM / GA4 / Ads | 11, 12 | you (dashboard) | yes |
 | C. Microsoft Bookings | 9, 10 | you (dashboard) | yes |
 | D. Sales operations | 13, 14, 15, 16 | you | yes |
@@ -41,7 +41,7 @@ last: it is the go/no-go that consumes everything above.
 ## Critical path
 
 ```
-A (screenshots) ─┐
+A (reproductions) ✅┐
                  ├─► all four green ─► E (ads approved) ─► OPEN Phase-1 campaign
 B GTM ─► consent │
    matrix (11) ──► Ads conversion (12) ─┤
@@ -66,15 +66,16 @@ Everything else is parallelizable. Nothing in B/C/D depends on A.
 
 ---
 
-## Track A — LP screenshots (row 5) · website
+## Track A — LP reproductions (row 5) · website · ✅ DONE
 
-**Blocked on:** sample-tenant PNGs from you.
-**When they arrive, I do:** drop them in `public/lp/`, fill the `SHOTS` array in
-`src/pages/construction-estimating-software/index.astro` (captions auto-prefixed
-"Sample data ·"), which un-hides `ProductEvidence`; small PR + CI + staging sync.
-**Done when:** LP renders the real screenshots on prod; row 5 → ✅.
+**Shipped (PR #82).** Instead of raster screenshots, the LP `ProductEvidence`
+section now renders **four coded app-window reproductions** — the four workflow
+steps — reusing the homepage `winbar app`/`gv-screen` pattern. On-brand,
+responsive, accessible, no capture step, no GDPR surface. Honestly framed as
+illustrations (caption prefix "Illustration ·"), never as screenshots. Model
+amended to v1.2 (§7.2.6/§7.3/§19).
 
-> Standing reminder — this is the one website item left. Hand me the PNGs and it ships same session.
+> No user PNGs needed — this row is closed by the website.
 
 ---
 
@@ -183,7 +184,7 @@ answered (model §13, §19).
 
 | Track | Row | Item | Status |
 |---|---|---|---|
-| A | 5 | LP screenshots | ⬜ blocked on your PNGs |
+| A | 5 | LP reproductions | ✅ shipped (PR #82) |
 | B | 11 | Consent matrix verified | ⬜ |
 | B | 12 | Ads conversion once, `generate_lead` retired | ⬜ |
 | C | 9 | Bookings page configured | 🟡 embed live, page unconfigured |

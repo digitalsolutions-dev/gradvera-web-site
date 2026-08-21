@@ -1,8 +1,8 @@
 # Gradvera Confirmed Acquisition Model
 
 **Status:** Confirmed baseline for implementation  
-**Version:** 1.1 (as built — see §21 changelog)  
-**Date:** 18 August 2026 (v1.0); 19 August 2026 (v1.1)  
+**Version:** 1.2 (as built — see §21 changelog)  
+**Date:** 18 August 2026 (v1.0); 19 August 2026 (v1.1); 21 August 2026 (v1.2)  
 **Scope:** Inbound acquisition preparation, Google Search Ads validation, qualified-demo conversion, customer-specific preview, and annual onboarding
 
 ---
@@ -191,7 +191,7 @@ A calculator may later replace the unsupported results section if:
 - Outputs are labeled “modeled scenario” or “potential impact.”
 - No output is presented as a measured Gradvera customer result.
 
-Until the calculator is ready, use qualitative product outcomes and real product screenshots.
+Until the calculator is ready, use qualitative product outcomes and illustrative product-UI reproductions (coded app-window mimics using sample data, clearly labelled as illustrations — not literal screenshots).
 
 ---
 
@@ -208,7 +208,7 @@ Before paid traffic begins:
 5. State that the supported input is Excel BoQ files.
 6. Present the annual onboarding route clearly enough that visitors do not expect an instant self-service product.
 7. Add a focused Netherlands acquisition landing page. *(As built: market-neutral slug `/construction-estimating-software/` — English-only, indexed, hreflang `en` + `x-default`; "Netherlands" appears in the title, eyebrow and copy, not in the URL, so the same page can serve the later Nordic test via ad targeting; a Dutch page would live under `/nl/`.)*
-8. Add real screenshots from the stable sample tenant.
+8. Add illustrative product-UI reproductions from the stable sample tenant (coded app-window mimics, labelled as illustrations).
 9. Connect the qualification form to the embedded Microsoft Bookings flow.
 10. Add the required attribution fields and verify analytics and consent behavior.
 
@@ -221,7 +221,7 @@ Use one focused page for the first campaign rather than creating several thin pa
 3. **Primary pain:** pricing confidence and overlooked bid value
 4. **Secondary pain:** fragmented subcontractor quotations
 5. **How it works:** import, structure/match, review, prepare/manage
-6. **Product evidence:** real screenshots from the sample tenant
+6. **Product evidence:** illustrative product-UI reproductions (coded app-window mimics, sample data, labelled as illustrations — not screenshots)
 7. **Capabilities:** short workflow-focused list
 8. **Data and trust:** tenant isolation, data use, GDPR position (application tenants are hosted in the EU — confirmed 19 Aug 2026), and NDA availability
 9. **Evaluation process:** demo, optional qualified preview, annual onboarding
@@ -231,7 +231,7 @@ Use one focused page for the first campaign rather than creating several thin pa
 
 ### 7.3 No video requirement
 
-The initial page will use screenshots and a concise three-step explanation. Video production is deferred until one of these evidence thresholds is reached:
+The initial page will use illustrative product-UI reproductions and a concise three-step explanation. Video production is deferred until one of these evidence thresholds is reached:
 
 - 100–200 relevant landing-page visits, or
 - 5–10 qualified demo requests.
@@ -745,7 +745,7 @@ Gradvera is ready to open the first Google Search campaign only when all of the 
 - [ ] Free-trial messaging has been removed.
 - [ ] The Netherlands landing page is live and quality-checked.
 - [ ] The page accurately explains Excel support and the guided evaluation route.
-- [ ] Real product screenshots from the sample tenant are present.
+- [ ] Illustrative product-UI reproductions from the sample tenant are present (coded app-window mimics, labelled as illustrations — not screenshots).
 - [ ] The Gradvera/DIGITAL SOLUTIONS relationship is clear.
 - [ ] The qualification form collects the required fit and attribution data.
 - [ ] A test lead is stored correctly with UTM and click identifiers.
@@ -771,5 +771,6 @@ When real evidence contradicts an assumption, record the evidence and revise thi
 
 ## 21. Changelog
 
+- **v1.2 — 21 August 2026 (evidence approach).** §7.2.6 / §7.3 / §19: product evidence on the landing page is delivered as **illustrative coded product-UI reproductions** (app-window mimics reusing the homepage `winbar app`/`gv-screen` pattern, sample data, honestly labelled "Illustration ·" — not literal screenshots), replacing the earlier real-screenshot requirement. Rationale: on-brand + accessible + fast + no capture/GDPR surface, and consistent with how the homepage already visualises the product; the honesty line (never presented as a screenshot) preserves the §7 "show the work, don't claim it" rule. Website PR #82. No change to §13/§14/§18.
 - **v1.1 — 19 August 2026 (as built, Phase 0 website work).** §7.1.7 market-neutral landing-page slug; §7.2.8 EU hosting stated; §8.1 three qualifiers marked optional + free-text message added; §8.2/§8.3/§9.3/§11.2 "as built" notes (server-side scoring and response fields, sessionStorage attribution and contract v2, RefID rule, §11.1 event names with `generate_lead` retired); §19 points to `docs/acquisition-readiness.md`. Website PRs #74–#77. No change to the staged investment model (§13), funnel controls (§14) or open decisions (§18).
 - **v1.0 — 18 August 2026.** Confirmed baseline.
