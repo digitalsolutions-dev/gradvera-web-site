@@ -36,7 +36,7 @@ test('LP: JSON-LD carries SoftwareApplication (no offers/ratings), FAQPage, Brea
   expect(faq.mainEntity.length).toBeGreaterThanOrEqual(6);
 });
 
-test('LP: sections + anchors present, header CTA targets #book-a-demo, no ProductEvidence placeholder', async ({ page }) => {
+test('LP: sections + anchors present, header CTA targets #book-a-demo, ProductEvidence renders 4 coded reproductions framed as illustrations', async ({ page }) => {
   await gotoClean(page, LP);
   for (const id of ['pricing-review', 'subcontractor-quotes', 'how-it-works', 'faq', 'book-a-demo']) {
     await expect(page.locator(`#${id}`)).toHaveCount(1);
@@ -44,9 +44,31 @@ test('LP: sections + anchors present, header CTA targets #book-a-demo, no Produc
   await expect(page.locator('header .nav-cta a.btn-primary')).toHaveAttribute('href', '#book-a-demo');
   // The mobile menu carries its own CTA — it must follow the same override.
   await expect(page.locator('#mobile-nav a.btn-primary, #mobile-nav a[href="#book-a-demo"]').first()).toHaveAttribute('href', '#book-a-demo');
-  await expect(page.locator('.product-evidence')).toHaveCount(0);
+
+  // ProductEvidence no longer renders <img> screenshots (or nothing): it renders
+  // four coded app-window reproductions — the homepage winbar/gv-screen mock
+  // pattern — one per workflow step, each captioned as an illustration.
+  const pe = page.locator('.product-evidence');
+  await expect(pe).toHaveCount(1);
+  await expect(pe.locator('.winbar')).toHaveCount(4);
+  const caps = await pe.locator('figcaption').allTextContents();
+  expect(caps).toHaveLength(4);
+  for (const c of caps) expect(c.trim()).toMatch(/^Illustration ·/);
+  // Honest reframing: the new illustration note is present; the earlier
+  // "real screens from the sample tenant" overclaim is gone from the whole page.
+  await expect(pe).toContainText('Illustrative UI reproductions using sample data');
+  const bodyText = await page.evaluate(() => document.body.textContent || '');
+  expect(bodyText).not.toContain('Real screens from the sample tenant');
+
   await expect(page.locator('#gv-demo-form input[name="page"]')).toHaveValue('construction-estimating-software');
   await expect(page.locator('.form-ok .booking-link')).toHaveAttribute('href', `${BOOKING_URL}&RefID=website-lp`);
+});
+
+test('LP: ProductEvidence reproductions cause no horizontal overflow at 360px', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await gotoClean(page, LP);
+  await expect(page.locator('.product-evidence .winbar')).toHaveCount(4);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);
 });
 
 test('LP: language switcher links to the locale homepages (no SL/HR LP)', async ({ page }) => {
