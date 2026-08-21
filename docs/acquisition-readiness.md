@@ -9,6 +9,8 @@ answered.
 
 Status key: ✅ done (evidence linked) · 🟡 partly / pending a dependency · ⬜ open.
 
+> **Sequenced execution plan for the open rows:** `docs/next-steps-to-launch.md` — critical path, ownership, and done-criteria for rows 5, 9–17.
+
 ## §19 checklist
 
 | # | Readiness item (§19) | Owner | Status | Evidence / where | Done (date · who) |
