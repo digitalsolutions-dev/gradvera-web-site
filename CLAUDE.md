@@ -63,8 +63,10 @@ feeds the `astro check` gate.
 - `src/components/` — `sections/` (Hero, Problem, HelpsIntro, Capability1–4,
   HowItWorks, Outcomes, Cta1/2, PrivacyBody), `layout/` (Header, Footer,
   MobileNav), `forms/{DemoForm,BookingEmbed}`, `landing/` (the acquisition
-  landing page's sections — `LpHero` … `LpBook`, `ProductEvidence` renders
-  nothing until screenshots are configured), `marketing/` (Analytics, CookieConsent),
+  landing page's sections — `LpHero` … `LpBook`; `ProductEvidence` renders four
+  coded app-window UI reproductions — NOT screenshots — reusing the homepage
+  `winbar app`/`gv-screen` pattern, each captioned "Illustration ·" over sample
+  data, per acquisition model v1.2), `marketing/` (Analytics, CookieConsent),
   `seo/SEO`, `pages/` (HomeSections, GuideArticle).
 - `src/i18n/` — `en.json` / `sl.json` / `hr.json`, plus `_parts/` fragments (EN
   is authored in parts and assembled; `_parts/lp.en.json` holds the EN-only
