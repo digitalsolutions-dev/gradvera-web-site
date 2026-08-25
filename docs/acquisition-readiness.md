@@ -9,7 +9,14 @@ answered.
 
 Status key: ✅ done (evidence linked) · 🟡 partly / pending a dependency · ⬜ open.
 
-> **Sequenced execution plan for the open rows:** `docs/next-steps-to-launch.md` — critical path, ownership, and done-criteria for rows 5, 9–17.
+> **Sequenced execution plan for the open rows:** `docs/next-steps-to-launch.md` —
+> critical path, ownership, and **click-by-click follow-along steps** for every
+> open row, grouped into tracks: **B** = GTM/GA4/Ads (rows 11–12), **C** =
+> Microsoft Bookings (rows 9–10), **D** = sales operations (rows 13–16),
+> **E** = Ads approval (row 17). Each open row's *Evidence / where* cell below
+> links to its track. The canonical field values still live in
+> `docs/lead-tracking-ga4.md` and `docs/confirmed-acquisition-model.md`; the
+> runbook is the how-to, those are the authority.
 
 ## §19 checklist
 
@@ -23,22 +30,27 @@ Status key: ✅ done (evidence linked) · 🟡 partly / pending a dependency · 
 | 6 | Gradvera / DIGITAL SOLUTIONS relationship clear | website | ✅ | PR #74: footer line on every page + `Organization.brand`; LP trust section + Bookings fallback copy (PR #76/#77) | 2026-08-19 · Claude (controller) — merged + prod-probed |
 | 7 | Qualification form collects the required fit + attribution data | website | ✅ | PR #75 (WS-B): `DemoForm` fields (§8.1 — method/frequency/NDA optional, see model v1.1), `src/lib/leadPayload.ts`, `tests/unit/*`, `tests/e2e/lead-form.spec.mjs` | 2026-08-19 · Claude (controller) — merged + prod-probed |
 | 8 | A test lead is stored correctly with UTM and click identifiers | user (+ gtm-toolkit) | ✅ | Site sends contract v2 (`docs/lead-integration.md` §2); gtm-toolkit accepts + persists it (its PR #145, merged 2026-08-20). Receiver image `v9` deployed to Fargate 2026-08-21 (both services stable; signed smoke 200/401). Prod test lead with `gclid=TEST` / `utm_campaign=test` submitted via `POST /api/lead` → forwarded → consumed (`leads: 1, account_created: 1, created: 1`) → D365 Lead carries Topic suffix `· 14 pts · qualified` + qualification/attribution block (gclid TEST, UTM test/test/test, landing page, consent) | 2026-08-21 · Claude (controller) — deployed + prod-verified |
-| 9 | Microsoft Bookings branded, embedded, direct-link fallback | website + user | 🟡 | Embed + fallback live (PR #76); **Bookings page configuration is a user action** — §9.2 checklist in `docs/lead-tracking-ga4.md` | |
-| 10 | A test booking can be matched to the originating lead | user | ⬜ | Make one booking from the embed on prod with a test lead email; find it in Microsoft Bookings by that email; record in the §9.2 table in `docs/lead-tracking-ga4.md` (row 8) and here  | |
-| 11 | Consent + analytics verified under accept and reject | user | ⬜ | §11.3 matrix (7 rows) in `docs/lead-tracking-ga4.md` — run in GTM Preview / Tag Assistant on staging, record Date · Tester · Result per row  | |
-| 12 | Google Ads conversion records one valid form conversion exactly once | user | ⬜ | GTM steps 1–5 in `docs/lead-tracking-ga4.md` (conversion = `qualification_form_submit` only); verify on staging (consent matrix); then retire `generate_lead` (step 6)  | |
-| 13 | Sample-tenant demo stable and rehearsed | user | ⬜ | §10.1 30-minute structure; record rehearsal date  | |
-| 14 | NDA handling and the 20-file preview process ready | user | ⬜ | §10.2 governance (≤20 files, NDA first, ≤2/week, indicative only, human approval); NDA template location  | |
-| 15 | Annual-agreement requirement for full onboarding reflected in sales materials | user | ⬜ | §10.3; demo script + proposal template  | |
-| 16 | Lead stages, owner, response standard, weekly review operating | user | ⬜ | §15 stages 1–10 in the lead register; owner named; 1-business-day follow-up standard  | |
-| 17 | Keyword research, negatives, ads, budget cap, stop conditions approved | user | ⬜ | §12.2–12.4, §13 Phase 1 cap (€500–€1,000 / 30–50 clicks, 2–3 weeks)  | |
+| 9 | Microsoft Bookings branded, embedded, direct-link fallback | website + user | 🟡 | Embed + fallback live (PR #76); **Bookings page configuration is a user action** — §9.2 checklist in `docs/lead-tracking-ga4.md` · **steps → `next-steps-to-launch.md` Track C** | |
+| 10 | A test booking can be matched to the originating lead | user | ⬜ | Make one booking from the embed on prod with a test lead email; find it in Microsoft Bookings by that email; record in the §9.2 table in `docs/lead-tracking-ga4.md` (row 8) and here · **steps → `next-steps-to-launch.md` Track C** | |
+| 11 | Consent + analytics verified under accept and reject | user | ⬜ | §11.3 matrix (7 rows) in `docs/lead-tracking-ga4.md` — run in GTM Preview / Tag Assistant on staging, record Date · Tester · Result per row · **steps → `next-steps-to-launch.md` Track B** | |
+| 12 | Google Ads conversion records one valid form conversion exactly once | user | ⬜ | GTM steps 1–5 in `docs/lead-tracking-ga4.md` (conversion = `qualification_form_submit` only); verify on staging (consent matrix); then retire `generate_lead` (step 6) · **steps → `next-steps-to-launch.md` Track B** (⚠️ conversion measurement is dark until this is published) | |
+| 13 | Sample-tenant demo stable and rehearsed | user | ⬜ | §10.1 30-minute structure; record rehearsal date · **steps → `next-steps-to-launch.md` Track D (row 13)** | |
+| 14 | NDA handling and the 20-file preview process ready | user | ⬜ | §10.2 governance (≤20 files, NDA first, ≤2/week, indicative only, human approval); NDA template location · **steps → `next-steps-to-launch.md` Track D (row 14)** | |
+| 15 | Annual-agreement requirement for full onboarding reflected in sales materials | user | ⬜ | §10.3; demo script + proposal template · **steps → `next-steps-to-launch.md` Track D (row 15)** | |
+| 16 | Lead stages, owner, response standard, weekly review operating | user | ⬜ | §15 stages 1–10 in the lead register; owner named; 1-business-day follow-up standard · **steps → `next-steps-to-launch.md` Track D (row 16)** | |
+| 17 | Keyword research, negatives, ads, budget cap, stop conditions approved | user | ⬜ | §12.2–12.4, §13 Phase 1 cap (€500–€1,000 / 30–50 clicks, 2–3 weeks) · **steps → `next-steps-to-launch.md` Track E** | |
 
 ## Dashboard & operational checklists (user actions)
 
-- **GTM / GA4 / Ads** — `docs/lead-tracking-ga4.md` → "GTM container setup" steps 1–7 and the **Consent & verification matrix** (copy the rows here when done, or link the filled table).
-- **Microsoft Bookings page** — `docs/lead-tracking-ga4.md` → "Microsoft Bookings page configuration (§9.2)" 8 rows.
-- **Google Search Console** — request indexing for `/construction-estimating-software/`; after 2–3 weeks check query→page for homepage ↔ LP overlap ("construction cost estimating software" vs "construction estimating software").
-- **Google Ads** — final URL = `https://gradvera.com/construction-estimating-software/`, display path e.g. `gradvera.com/estimating-software/netherlands`; Search only, NL location "present in", exact + phrase match, themes §12.2, negatives §12.3; no free-trial / percentage / speed claims (§12.4).
+> **Follow-along steps for all of these live in `docs/next-steps-to-launch.md`
+> (Tracks B–E).** The bullets below are the canonical field values; the runbook
+> is the ordered how-to that references them.
+
+- **GTM / GA4 / Ads** — `docs/lead-tracking-ga4.md` → "GTM container setup" steps 1–7 and the **Consent & verification matrix** (copy the rows here when done, or link the filled table). **Steps → runbook Track B** (rows 11–12; ⚠️ do first — conversion measurement is dark until published).
+- **Microsoft Bookings page** — `docs/lead-tracking-ga4.md` → "Microsoft Bookings page configuration (§9.2)" 8 rows. **Steps → runbook Track C** (rows 9–10).
+- **Sales operations** — `docs/confirmed-acquisition-model.md` §10 (demo/preview/onboarding) + §15 (lead stages, response standard, weekly review). **Steps → runbook Track D** (rows 13–16).
+- **Google Search Console** — request indexing for `/construction-estimating-software/`; after 2–3 weeks check query→page for homepage ↔ LP overlap ("construction cost estimating software" vs "construction estimating software"). (Post-launch; see runbook "After launch".)
+- **Google Ads** — final URL = `https://gradvera.com/construction-estimating-software/`, display path e.g. `gradvera.com/estimating-software/netherlands`; Search only, NL location "present in", exact + phrase match, themes §12.2, negatives §12.3; no free-trial / percentage / speed claims (§12.4). **Steps → runbook Track E** (row 17, final gate).
 - **gtm-toolkit v2** — ✅ merged (gtm-toolkit PR #145, 2026-08-20) **and deployed** (receiver image `v9`, Fargate, 2026-08-21): `WebsiteLead` v2 fields + Topic score suffix + description block (see `docs/lead-integration.md` §2 "Receiver compatibility"); end-to-end prod-verified via row 8's test lead.
 
 ## Website deliverables shipped (Phase 0, §13)
