@@ -1,7 +1,7 @@
 // Qualification form (acquisition model §8.1): required fields + enum wire
 // values + optional fields, per locale, asserted on the intercepted POST body.
 import { test, expect } from '@playwright/test';
-import { gotoClean, fillRequired, armLeadCapture, checkChip } from './helpers.mjs';
+import { gotoClean, fillRequired, armLeadCapture, checkChip, openOptional } from './helpers.mjs';
 
 const DEMO = [
   { path: '/book-a-demo/', locale: 'en' },
@@ -14,6 +14,9 @@ for (const { path, locale } of DEMO) {
     const cap = await armLeadCapture(page);
     await gotoClean(page, path);
     await fillRequired(page);
+    // The three optional qualifier groups sit inside the collapsed
+    // `<details class="form-more">` disclosure — reveal it before clicking them.
+    await openOptional(page);
     await checkChip(page, 'estimatingMethod', 'mixed');
     await checkChip(page, 'bidFrequency', 'monthly');
     await checkChip(page, 'ndaWilling', 'yes');
