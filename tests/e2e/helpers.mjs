@@ -47,6 +47,23 @@ export async function checkChip(page, name, value) {
   });
 }
 
+/** Reveal the optional qualifier group (estimatingMethod / bidFrequency /
+ *  ndaWilling / message), which lives inside a closed `<details class="form-more">`
+ *  disclosure. A no-op when the disclosure is absent or already open, so it is a
+ *  pure enabler for the specs that pick optional chips — its existence and closed
+ *  default are asserted head-on in demo-form-layout.spec.mjs, not here. */
+export async function openOptional(page) {
+  const details = page.locator('details.form-more');
+  if ((await details.count()) === 0) return;
+  if (await details.evaluate((el) => el.open)) return;
+  const summary = page.locator('details.form-more summary');
+  await summary.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await summary.click();
+  await details.evaluate((el) => {
+    if (!el.open) throw new Error('optional disclosure did not open');
+  });
+}
+
 /** Fill every required demo-form field with fixed values (qualification form, WS-B). */
 export async function fillRequired(page) {
   await page.fill('#fn', 'Test Person');

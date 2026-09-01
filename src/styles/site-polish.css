@@ -228,3 +228,16 @@ html {
   white-space: normal;
   text-wrap: balance;
 }
+
+/* [Conversion layout] Book-a-demo stacked layout (2026-09) ---------------------
+   The demo page and the landing page's book section used site.css's `.demo-grid`
+   (0.9fr intro / 1.1fr form), which left the qualification form ~547px wide on a
+   1280 desktop — a narrow column for a form with five chip groups. The two panes
+   become one centred column instead: intro as a compact header, the form card
+   full width beneath it. Lives here (loads last, ships on every route) rather
+   than in a component style block, because both DemoIntro.astro (demo pages) and
+   LpBook.astro (landing page) need the same geometry. */
+.demo .demo-stack { display: flex; flex-direction: column; }
+.demo .demo-stack > * { width: 100%; max-width: 880px; margin-inline: auto; }
+.demo .demo-form-col { margin-top: clamp(30px, 4.5vh, 46px); }
+.demo .demo-stack .form-card { padding: clamp(26px, 4vw, 44px); }
