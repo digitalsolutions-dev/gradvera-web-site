@@ -32,29 +32,35 @@ for (const path of FORM_PAGES) {
   });
 }
 
-test('/book-a-demo/ folds the optional qualifiers into a closed disclosure that still posts their values', async ({ page }) => {
-  const cap = await armLeadCapture(page);
-  await page.setViewportSize(VIEWPORTS.desktop);
-  await gotoClean(page, '/book-a-demo/');
+// EN plus HR — the Croatian dictionary carries the longest strings, so it is the
+// worst case for the disclosure summary's wrap and for narrow-viewport overflow.
+const DISCLOSURE_PAGES = ['/book-a-demo/', '/hr/rezervirajte-demo/'];
 
-  const more = page.locator('details.form-more');
-  await expect(more).toHaveCount(1);
-  expect(await more.evaluate((el) => el.open), 'disclosure must start closed').toBe(false);
+for (const path of DISCLOSURE_PAGES) {
+  test(`${path} folds the optional qualifiers into a closed disclosure that still posts their values`, async ({ page }) => {
+    const cap = await armLeadCapture(page);
+    await page.setViewportSize(VIEWPORTS.desktop);
+    await gotoClean(page, path);
 
-  const methodChip = page.locator('label.chip:has(input[name="estimatingMethod"][value="mixed"])');
-  await expect(methodChip, 'optional chips are hidden while the disclosure is closed').toBeHidden();
+    const more = page.locator('details.form-more');
+    await expect(more).toHaveCount(1);
+    expect(await more.evaluate((el) => el.open), 'disclosure must start closed').toBe(false);
 
-  await openOptional(page);
-  expect(await more.evaluate((el) => el.open), 'summary click must open the disclosure').toBe(true);
-  await expect(methodChip).toBeVisible();
+    const methodChip = page.locator('label.chip:has(input[name="estimatingMethod"][value="mixed"])');
+    await expect(methodChip, 'optional chips are hidden while the disclosure is closed').toBeHidden();
 
-  // A field behind the disclosure must still reach the POST body.
-  await fillRequired(page);
-  await checkChip(page, 'estimatingMethod', 'mixed');
-  await page.click('#gv-demo-form button[type="submit"]');
-  await expect(page.locator('.form-ok')).toBeVisible();
-  expect(await cap.body).toMatchObject({ estimatingMethod: 'mixed' });
-});
+    await openOptional(page);
+    expect(await more.evaluate((el) => el.open), 'summary click must open the disclosure').toBe(true);
+    await expect(methodChip).toBeVisible();
+
+    // A field behind the disclosure must still reach the POST body.
+    await fillRequired(page);
+    await checkChip(page, 'estimatingMethod', 'mixed');
+    await page.click('#gv-demo-form button[type="submit"]');
+    await expect(page.locator('.form-ok')).toBeVisible();
+    expect(await cap.body).toMatchObject({ estimatingMethod: 'mixed' });
+  });
+}
 
 test('/book-a-demo/ country control keeps native <select> semantics under custom chrome', async ({ page }) => {
   await gotoClean(page, '/book-a-demo/');
@@ -70,14 +76,58 @@ test('/book-a-demo/ country control keeps native <select> semantics under custom
   expect(['none', 'base-select']).toContain(info.appearance);
 });
 
-test('/book-a-demo/ has no horizontal overflow at 390px', async ({ page }) => {
-  await page.setViewportSize(VIEWPORTS.mobile);
+for (const path of DISCLOSURE_PAGES) {
+  test(`${path} has no horizontal overflow at 390px`, async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS.mobile);
+    await gotoClean(page, path);
+    const m = await page.evaluate(() => ({
+      scrollWidth: document.scrollingElement.scrollWidth,
+      innerWidth: window.innerWidth,
+    }));
+    expect(m.scrollWidth, `page scrollWidth ${m.scrollWidth} > viewport ${m.innerWidth}`).toBeLessThanOrEqual(m.innerWidth + 1);
+  });
+}
+
+// ---- card geometry: nothing inside the form card may inherit `.demo p`'s
+// 380px measure (site.css:469), which is meant for the intro prose column. ----
+
+test('/book-a-demo/ section divider spans the card, not the 380px prose measure', async ({ page }) => {
+  await page.setViewportSize(VIEWPORTS.desktop);
+  await gotoClean(page, '/book-a-demo/');
+  const sec = await boxOf(page, '.form-card .form-sec');
+  expect(sec, '.form-sec missing on /book-a-demo/').not.toBeNull();
+  // The `<p class="form-sec">` rows are label + rule; capped at 380px the rule
+  // stops mid-card. The card itself is 760–900px wide here.
+  expect(sec.width, `.form-sec width ${sec.width}`).toBeGreaterThan(600);
+});
+
+test('/book-a-demo/ submit button reaches the card edge at desktop', async ({ page }) => {
+  await page.setViewportSize(VIEWPORTS.desktop);
+  await gotoClean(page, '/book-a-demo/');
+  const card = await boxOf(page, '.form-card');
+  const btn = await boxOf(page, '.form-card .form-foot .btn');
+  expect(card, '.form-card missing').not.toBeNull();
+  expect(btn, '.form-foot .btn missing').not.toBeNull();
+  // A capped `.consent` shrinks the footer row and floats the button mid-card;
+  // with the cap lifted only the card padding (<=36px) sits to its right.
+  expect(card.right - btn.right, `button right edge is ${card.right - btn.right}px short of the card`).toBeLessThanOrEqual(60);
+});
+
+test('/book-a-demo/ keeps the submit button inside the card padding at 320px', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
   await gotoClean(page, '/book-a-demo/');
   const m = await page.evaluate(() => ({
     scrollWidth: document.scrollingElement.scrollWidth,
     innerWidth: window.innerWidth,
   }));
   expect(m.scrollWidth, `page scrollWidth ${m.scrollWidth} > viewport ${m.innerWidth}`).toBeLessThanOrEqual(m.innerWidth + 1);
+  const card = await boxOf(page, '.form-card');
+  const btn = await boxOf(page, '.form-card .form-foot .btn');
+  expect(card, '.form-card missing').not.toBeNull();
+  expect(btn, '.form-foot .btn missing').not.toBeNull();
+  // `min-width: 240px` survives into the stacked footer and overhangs the card's
+  // 24px padding below ~330px. 20 = under the narrowest card padding.
+  expect(btn.right, `button right ${btn.right} vs card right ${card.right}`).toBeLessThanOrEqual(card.right - 20);
 });
 
 test('/book-a-demo/ shows the three "what happens next" steps as one 3-across strip at desktop', async ({ page }) => {
