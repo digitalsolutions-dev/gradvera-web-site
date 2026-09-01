@@ -22,6 +22,15 @@ test('LP: 200, H1, title/description limits, canonical + hreflang en/x-default o
   expect(await page.locator('meta[name="robots"][content*="noindex"]').count()).toBe(0);
 });
 
+test('LP: hero H1 is light-on-ink (tokens.css paints bare h1 dark; .lp-hero h1 must override)', async ({ page }) => {
+  await gotoClean(page, LP);
+  // gradvera-tokens.css:101 `h1 { color: var(--fg1) }` (#0F172A) beats the
+  // section's inherited --on-ink; without an explicit color the title renders
+  // near-invisible on the ink hero.
+  const c = await page.evaluate(() => getComputedStyle(document.querySelector('.lp-hero h1')).color);
+  expect(c, '.lp-hero h1 color').toBe('rgb(238, 242, 250)');
+});
+
 test('LP: JSON-LD carries SoftwareApplication (no offers/ratings), FAQPage, BreadcrumbList', async ({ page }) => {
   await page.goto(LP, { waitUntil: 'load' });
   const blocks = await page.$$eval('script[type="application/ld+json"]', (els) => els.map((e) => JSON.parse(e.textContent || '{}')));
