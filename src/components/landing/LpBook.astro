@@ -32,7 +32,7 @@ const t = useTranslations(lang);
   .lp-book.demo.standalone { min-height: auto; display: block; padding: var(--sec) 0;
     scroll-margin-top: 74px; }
   .lp-book .demo-intro h2 { margin: 16px 0 0; }
-  /* Stacked layout: the intro is now a header spanning the full 880px column, so
+  /* Stacked layout: the intro is now a header spanning the full wrap-width column, so
      site.css's 380px `.demo p` measure (sized for the old narrow left rail) would
      leave it ragged. DemoIntro.astro carries the same override for /book-a-demo/,
      but its styles never ship on this route — it is not rendered here. */
