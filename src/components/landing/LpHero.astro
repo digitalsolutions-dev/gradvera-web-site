@@ -23,8 +23,10 @@ const t = useTranslations(lang);
   /* Top padding clears the 74px fixed header. */
   .lp-hero { background: var(--ink); color: var(--on-ink);
     padding: calc(74px + clamp(56px, 9vh, 110px)) 0 clamp(56px, 8vh, 96px); }
+  /* color must be explicit: gradvera-tokens.css `h1 { color: var(--fg1) }`
+     outranks the section's inherited --on-ink and paints the title dark-on-dark. */
   .lp-hero h1 { font-weight: 600; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.04;
-    letter-spacing: -0.022em; max-width: 900px; margin: 16px 0 0; text-wrap: balance; }
+    letter-spacing: -0.022em; color: var(--on-ink); max-width: 900px; margin: 16px 0 0; text-wrap: balance; }
   .lp-hero .lp-hero-sub { color: var(--on-ink-2); max-width: 720px; margin-top: 22px;
     text-wrap: pretty; }
   .lp-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
