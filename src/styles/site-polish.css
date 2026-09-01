@@ -238,6 +238,6 @@ html {
    than in a component style block, because both DemoIntro.astro (demo pages) and
    LpBook.astro (landing page) need the same geometry. */
 .demo .demo-stack { display: flex; flex-direction: column; }
-.demo .demo-stack > * { width: 100%; max-width: 880px; margin-inline: auto; }
+.demo .demo-stack > * { width: 100%; }
 .demo .demo-form-col { margin-top: clamp(30px, 4.5vh, 46px); }
 .demo .demo-stack .form-card { padding: clamp(26px, 4vw, 44px); }

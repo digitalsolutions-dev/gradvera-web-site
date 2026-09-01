@@ -289,7 +289,7 @@ const privacyHref = localizePath('/privacy-policy/', lang);
      .field fieldset, and site.css:475 `.field label` (0,1,1) outranked a bare
      `.chip` (0,1,0) — chips rendered as full-width uppercase mono blocks.
      min-height 44px: they are real radio controls (were 35px, below the touch bar). */
-  .form-card .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  .form-card .chip { position: relative; display: inline-flex; align-items: center; min-height: 44px;
     padding: 9px 14px; border: 1px solid var(--ink-hair-2); border-radius: 999px;
     background: var(--ink); color: var(--on-ink); font: 500 14px/1 var(--font-sans);
     text-transform: none; letter-spacing: 0; margin-bottom: 0;
@@ -297,10 +297,13 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     transition: border-color 140ms, background 140ms, color 140ms; }
   .form-card .chip input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
   .chip:hover { border-color: var(--on-ink-2); }
-  .chip-tick { display: inline-flex; width: 0; overflow: hidden; opacity: 0;
-    transition: width 140ms, opacity 140ms; }
+  /* Tick spacing rides on margin, not the chip's flex gap: a gap would still
+     insert itself before the 0-width tick's label neighbour while unchecked,
+     skewing the label 6px off-centre. */
+  .chip-tick { display: inline-flex; width: 0; overflow: hidden; opacity: 0; margin-right: 0;
+    transition: width 140ms, opacity 140ms, margin 140ms; }
   .chip:has(input:checked) { background: var(--amber); border-color: var(--amber); color: var(--brand-on-primary); }
-  .chip:has(input:checked) .chip-tick { width: 13px; opacity: 1; }
+  .chip:has(input:checked) .chip-tick { width: 13px; opacity: 1; margin-right: 6px; }
   .chip:has(input:focus-visible) { outline: 2px solid var(--amber); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     /* Must match the raised `.form-card .chip` base rule (0,2,0) or the
