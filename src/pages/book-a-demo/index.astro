@@ -36,9 +36,9 @@ const breadcrumbLd = {
 >
   <section class="demo standalone" id="demo">
     <div class="wrap">
-      <div class="demo-grid">
+      <div class="demo-stack">
         <DemoIntro lang={lang} />
-        <div>
+        <div class="demo-form-col">
           <DemoForm lang={lang} />
         </div>
       </div>
@@ -47,7 +47,11 @@ const breadcrumbLd = {
 </BaseLayout>
 
 <style is:global>
-  .demo.standalone { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; padding-top: 120px; }
+  /* Stacked conversion layout: the page is now taller than the viewport on every
+     locale, so the section top-aligns instead of vertically centring (which would
+     push the h1 off-screen) and carries its own bottom breathing room. */
+  .demo.standalone { min-height: 100vh; min-height: 100dvh; display: flex; align-items: flex-start;
+    padding-top: 120px; padding-bottom: clamp(64px, 9vh, 110px); }
   .demo .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--on-ink-2);
     font: 500 13px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 26px; }
   .demo .back-link:hover { color: var(--amber); }
