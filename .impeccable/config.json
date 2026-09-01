@@ -1,0 +1,32 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-radius",
+        "value": "999px",
+        "createdAt": "2026-09-01T14:46:01.889Z",
+        "reason": "vendored site.css pill shape: 6 pre-existing uses (chips, reassure, nav pills) — established brand pattern"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(26,25,22,0.30)",
+        "createdAt": "2026-09-01T14:46:01.930Z",
+        "reason": "spinner track = --brand-on-primary #1A1916 at 30% on the amber CTA; derived tone, shipped since demo-form v1"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "13px",
+        "createdAt": "2026-09-01T14:46:01.972Z",
+        "reason": "microcopy step used across vendored site.css (net-err, back-link); DESIGN.md ramp documents display..label only"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14px",
+        "createdAt": "2026-09-01T14:46:02.013Z",
+        "reason": "UI-control step used across vendored site.css (chips, foot links); consistent with shipped vernacular"
+      }
+    ]
+  }
+}
