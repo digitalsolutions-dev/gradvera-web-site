@@ -25,12 +25,31 @@ for (const path of FORM_PAGES) {
     await gotoClean(page, path);
     const card = await boxOf(page, '.form-card');
     expect(card, `.form-card missing on ${path}`).not.toBeNull();
-    // Stacked layout caps the column at 880px; the old two-column grid gave the
-    // card ~560px inside the 1.1fr track.
-    expect(card.width, `.form-card width on ${path}`).toBeGreaterThan(760);
-    expect(card.width, `.form-card width on ${path}`).toBeLessThan(900);
+    // The stacked column spans the parent .wrap's content box (no 880px cap);
+    // the old two-column grid gave the card ~560px inside the 1.1fr track.
+    const wrapContent = await page.evaluate(() => {
+      const wrap = document.querySelector('.demo .wrap');
+      const cs = getComputedStyle(wrap);
+      return wrap.getBoundingClientRect().width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    });
+    expect(Math.abs(card.width - wrapContent), `.form-card width ${card.width} vs .wrap content ${wrapContent} on ${path}`).toBeLessThanOrEqual(2);
   });
 }
+
+test('/book-a-demo/ unchecked chips pad the label symmetrically (no phantom tick gap)', async ({ page }) => {
+  await page.setViewportSize(VIEWPORTS.desktop);
+  await gotoClean(page, '/book-a-demo/');
+  // The tick span is 0-width while unchecked; a flex `gap` on the chip would
+  // still insert itself before the label and skew the left inset by 6px.
+  const { left, right } = await page.evaluate(() => {
+    const chip = document.querySelector('.chip-field .chip');
+    const lbl = chip.querySelector('.chip-lbl');
+    const c = chip.getBoundingClientRect();
+    const l = lbl.getBoundingClientRect();
+    return { left: l.left - c.left, right: c.right - l.right };
+  });
+  expect(Math.abs(left - right), `label insets left=${left} right=${right}`).toBeLessThanOrEqual(2);
+});
 
 // EN plus HR — the Croatian dictionary carries the longest strings, so it is the
 // worst case for the disclosure summary's wrap and for narrow-viewport overflow.
@@ -97,7 +116,7 @@ test('/book-a-demo/ section divider spans the card, not the 380px prose measure'
   const sec = await boxOf(page, '.form-card .form-sec');
   expect(sec, '.form-sec missing on /book-a-demo/').not.toBeNull();
   // The `<p class="form-sec">` rows are label + rule; capped at 380px the rule
-  // stops mid-card. The card itself is 760–900px wide here.
+  // stops mid-card. The card spans the .wrap content box (~1070px at 1280).
   expect(sec.width, `.form-sec width ${sec.width}`).toBeGreaterThan(600);
 });
 
