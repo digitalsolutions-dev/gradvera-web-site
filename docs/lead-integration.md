@@ -85,6 +85,16 @@ and the client, which early-returned on a filled trap, then silently did nothing
 on submit. The trap is now unrendered, and neither its name nor its label uses
 autofill-bait words (`tests/e2e/lead-form.spec.mjs` pins both).
 
+**Confirmed mechanism (Chrome's own autofill engine, via CDP `Autofill.trigger`).**
+Chrome classified `company_website` as *Company name* (`autofillInferred` —
+`autocomplete="off"` ignored), so with two Company-name fields it split the form
+into two autofill sections at the repeat, and the trap (first in the DOM) shared
+a section with Full name. Autofill from Full name therefore filled only the trap
+and `fullName`. The rule: never give a hidden or decoy field a name or label a
+browser can map to a contact or address type — keep the trap unclassifiable. The
+e2e group `spam trap vs Chrome autofill` pins this on the real engine (trap
+empty with no autofill type; one section fills every contact field).
+
 **The server decides.** The client no longer inspects the trap: it validates
 the visible fields and POSTs the body, trap included. `/api/lead` treats the
 body as tripped when `hp_field` **or the legacy `company_website`** (pages cached
