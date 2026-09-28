@@ -241,3 +241,12 @@ html {
 .demo .demo-stack > * { width: 100%; }
 .demo .demo-form-col { margin-top: clamp(30px, 4.5vh, 46px); }
 .demo .demo-stack .form-card { padding: clamp(26px, 4vw, 44px); }
+
+/* [Conversion / header CTA] On the book-a-demo pages the header + mobile-menu
+   "Book a demo" jumps to the on-page form column (`ctaHref="#demo-form-col"`, the
+   `.demo-form-col` wrapping both the form and the success card, so the jump still
+   lands after a submit hides the form) instead of reloading the page. Not
+   `#demo-form`: site.js's vendored demo-form handler hides that id on submit.
+   The header is position:fixed at 74px (site.css `.hdr`), so without this offset
+   the anchor jump parks the column's top under it. */
+#demo-form-col { scroll-margin-top: 96px; }

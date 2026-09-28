@@ -15,8 +15,8 @@ to Vercel. Production domain: `gradvera.com`.
   (`export const prerender = false`).
 - **TypeScript**, `astro/tsconfigs/strict`, no `any`. Import alias `@/*` → `src/*`.
 - `@astrojs/sitemap`; fonts `@fontsource/ibm-plex-sans` + `-mono`.
-- `astro check` is the gate; Vitest covers `src/lib/` (`npm run test:unit`),
-  Playwright covers the built site (`npm run test:e2e`).
+- `astro check` is the gate; Vitest covers `src/lib/` + the `/api/lead` route
+  (`npm run test:unit`), Playwright covers the built site (`npm run test:e2e`).
 
 ## Commands
 
@@ -27,17 +27,18 @@ to Vercel. Production domain: `gradvera.com`.
 - `npm run preview` — serve the build locally
 - `npm run check` — `astro check` (type + `.astro` template diagnostics)
 - `npm run test:unit` — Vitest unit tests for the pure modules in `src/lib/`
-  (`tests/unit/`); runs in CI next to `astro check`
+  and the `/api/lead` route (`tests/unit/`); runs in CI next to `astro check`
 - `npm run test:e2e` — Playwright browser checks (see below); runs in CI, but `astro check` is the gate
 
 **`npm run check` is the verification gate — run it before pushing; CI enforces
 it** (see _Branches, CI & deploy_). To type-check a single file, still run `npm
 run check` (astro check is project-wide; there is no per-file test runner).
 
-Unit tests (Vitest) exist only for the pure modules in `src/lib/` — see
-`tests/unit/README.md`. For behaviour that `astro check` and static HTML greps
-can't prove — interaction, focus management, computed layout, responsive
-overflow, runtime console errors — there is a Playwright harness under
+Unit tests (Vitest) cover the pure modules in `src/lib/` and the `/api/lead`
+route (`fetch` stubbed, no lead ever forwarded) — see `tests/unit/README.md`.
+For behaviour that `astro check` and static HTML greps can't prove —
+interaction, focus management, computed layout, responsive overflow, runtime
+console errors — there is a Playwright harness under
 `tests/e2e/` (`npm run test:e2e`; one-time `npx playwright install chromium`).
 It builds the site and runs the specs against the real `dist/client` output. It
 runs in CI as a separate **e2e** job (alongside the `astro check` gate) and does
@@ -85,12 +86,14 @@ feeds the `astro check` gate.
 ## Lead capture
 
 `POST /api/lead` is the site's only non-static route. `DemoForm.astro` POSTs the
-form as JSON. A hidden `company_website` honeypot silently drops bots (still
-returns 200). Valid submissions are normalized and, if `GTM_LEAD_ENDPOINT` is
-set, forwarded HMAC-SHA256-signed to the gtm-toolkit inbound-lead service
-(→ Dynamics 365). Forwarding failures are logged but never surfaced — the route
-always returns 200 so the success UX never breaks. Env vars in `.env.example`;
-full contract in `docs/lead-integration.md`.
+form as JSON. A `hidden` `hp_field` honeypot (legacy `company_website` still
+honoured) drops bots server-side (still returns 200) and logs each drop without
+PII; the client never short-circuits on it. Valid submissions are normalized
+and, if `GTM_LEAD_ENDPOINT` is set, forwarded HMAC-SHA256-signed to the
+gtm-toolkit inbound-lead service (→ Dynamics 365). Forwarding failures are
+logged but never surfaced — the route always returns 200 so the success UX
+never breaks. Env vars in `.env.example`; full contract in
+`docs/lead-integration.md`.
 
 On success the form reveals the Microsoft Bookings calendar
 (`BookingEmbed.astro`: lazy iframe whose `src` is set only after the 2xx, plus

@@ -4,10 +4,13 @@ How a demo / contact submission travels from the Gradvera marketing website to
 the CRM, and how the **gtm-toolkit** receives it.
 
 ```
- browser form            website endpoint                 gtm-toolkit                     D365
- (DemoForm.astro)  ──►   POST /api/lead          ──►      inbound-lead webhook    ──►     Lead
-   JSON               validate + normalize             verify HMAC + upsert_lead
-                      HMAC-sign + forward              (optionally enroll smartlead)
+ browser form            website endpoint                 gtm-toolkit (AWS Lambda)             D365
+ (DemoForm.astro)  ──►   POST /api/lead          ──►      API Gateway → receiver Lambda
+   JSON               validate + normalize                verify HMAC → SQS FIFO queue
+                      HMAC-sign + forward                       │
+                                                                ▼
+                                                          consumer Lambda               ──►    Account + Lead
+                                                          idempotency ledger → upsert
 ```
 
 The website never talks to D365 directly. It validates, normalizes and signs
@@ -56,7 +59,7 @@ defined in `src/lib/leadScore.ts`):
   "submissionPage": "/book-a-demo/",
   "submittedAt": "2026-08-19T09:59:50.000Z",           // browser clock — informational; receivedAt is authoritative
   "consent": "accept",                                 // accept | reject | unset (gv-consent cookie)
-  "company_website": ""                   // HONEYPOT — must stay empty (see below)
+  "hp_field": ""                          // HONEYPOT (spam trap) — must stay empty (see below)
 }
 ```
 
@@ -69,10 +72,45 @@ while an absent optional field is fine.
 
 ### Honeypot
 
-`company_website` is a hidden field. Real visitors never see or fill it; bots
-do. If it arrives **non-empty**, the endpoint returns `200 {"ok":true}` and
-**silently drops** the lead — the bot believes it succeeded and nothing is
-forwarded.
+`hp_field` is a spam trap: an input inside a `hidden` (`display:none`),
+`aria-hidden` wrapper, labelled "Leave this field empty", `tabindex="-1"`,
+`autocomplete="off"`. Real visitors never see, focus or fill it; bots that fill
+every input do.
+
+**Why `hidden` and a neutral name (2026-09-28).** The trap used to be
+`company_website`, parked off-screen (`left:-9999px`). Browser autofill and
+password managers ignore `autocomplete="off"`, fill off-screen fields and match
+company/website wording, so a real visitor's saved company landed in the trap —
+and the client, which early-returned on a filled trap, then silently did nothing
+on submit. The trap is now unrendered, and neither its name nor its label uses
+autofill-bait words (`tests/e2e/lead-form.spec.mjs` pins both).
+
+**The server decides.** The client no longer inspects the trap: it validates
+the visible fields and POSTs the body, trap included. `/api/lead` treats the
+body as tripped when `hp_field` **or the legacy `company_website`** (pages cached
+before the rename, bots that scraped the old form) is a non-empty string
+(`trippedHoneypot` in `src/lib/leadPayload.ts`). A tripped body gets
+`200 {"ok":true}` and is **dropped** — never turned into a lead, never forwarded —
+and the function logs one line:
+
+```
+[lead] honeypot tripped — submission dropped { field, wouldParse, locale?, page? }
+```
+
+`field` is the trap that fired; `wouldParse` says whether the rest of the body
+would have passed validation (`true` hints at a real visitor whose browser filled
+the trap); the normalized `locale` / `page` are added only when `wouldParse` is
+`true`, and only as the values DemoForm sends (`en`/`sl`/`hr`;
+`book-a-demo`/`construction-estimating-software`) — any other text is logged as
+`other`. Never the trap's value or any personal field (`honeypotDropLog`,
+unit-tested).
+
+**Client on the drop reply.** Every real success carries a boolean `qualified`;
+the drop reply does not. A 2xx body with `ok === true` and no boolean `qualified`
+still shows the success card and the booking calendar (a wrongly trapped visitor
+can still book), but pushes **no** `qualification_form_submit` /
+`qualified_lead` — `booking_widget_open` still fires. See
+[lead-tracking-ga4.md](lead-tracking-ga4.md).
 
 ### Validation
 
@@ -97,7 +135,7 @@ HTTP 400
 | Valid lead, toolkit rejected (non-2xx)       | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
 | Valid lead, forward threw / timed out        | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
 | Valid lead, no endpoint configured (logged)  | 200    | `{ "ok": true, "forwarded": false, "qualified": bool, "score": n }` |
-| Honeypot tripped                             | 200    | `{ "ok": true }`                     |
+| Honeypot tripped (dropped; logged, no PII)   | 200    | `{ "ok": true }`                     |
 | Payload over 16 KB                           | 413    | `{ "ok": false, "error": "too_large" }` |
 | Non-JSON `Content-Type`                      | 415    | `{ "ok": false, "error": "unsupported_media_type" }` |
 | Missing/invalid field, or unparseable body   | 400    | `{ "ok": false, "error": "invalid" }` |
@@ -111,22 +149,34 @@ itself prove the lead reached D365 — that happens later in the consumer (see
 below). A `forwarded:false` that should have been `true` means one of:
 
 - **the toolkit rejected it** (non-2xx — e.g. `401` bad/absent HMAC, `413` too
-  large, `422` failed the lead contract, `5xx` outage): logged as
+  large, `422` failed the lead contract, `429` API Gateway throttle, `5xx`
+  outage): logged as
   `[lead] forward to GTM_LEAD_ENDPOINT rejected <status> <body-snippet>`;
-- **the request never completed** (network/DNS error, or the **5 s timeout**
+- **the request never completed** (network/DNS error, or the **9 s timeout**
   aborting a hung receiver): logged as
   `[lead] forward to GTM_LEAD_ENDPOINT failed <err>`.
 
-The forward is bounded by a **5 s timeout** (`AbortSignal.timeout`) so a slow or
-hung receiver can never stall the visitor's request up to the function timeout.
+The forward is bounded by a **9 s timeout** (`FORWARD_TIMEOUT_MS`,
+`AbortSignal.timeout`) so a slow or hung receiver can never stall the visitor's
+request up to the function timeout. It was 5 s until 2026-09-28: the receiver
+Lambda's first request after idle (cold start) takes ~5.6–6.7 s (as reported by
+the gtm-toolkit side on 2026-09-28), which the 5 s bound aborted and reported as
+`forwarded:false`. The receiver's API Gateway integration allows 10 s
+(gtm-toolkit `deploy/terraform/apigw.tf`), so 9 s keeps cold-start leads
+`forwarded:true` while staying under that limit. The website function itself is
+pinned to a **15 s** max duration (`vercel({ maxDuration: 15 })` in
+`astro.config.mjs`, allowed on every Vercel plan) so it outlives the 9 s abort
+with room to log and reply — the plan default can be as low as 10 s.
 Check the website function logs for the two lines above to tell the cases apart.
 
-The front-end (`DemoForm.astro`) only checks `res.ok` (the HTTP status), so any
-200 shows the success card. `qualified` / `score` (acquisition model §8.2 — see
-`src/lib/leadScore.ts`; threshold 7) are returned so client-side analytics can
-distinguish qualified leads (pushed as `qualification_form_submit` /
-`qualified_lead`, see `lead-tracking-ga4.md`); they carry no
-PII.
+The front-end (`DemoForm.astro`) shows the success card on any 2xx (`res.ok`).
+`qualified` / `score` (acquisition model §8.2 — see `src/lib/leadScore.ts`;
+threshold 7) are returned so client-side analytics can distinguish qualified
+leads (pushed as `qualification_form_submit` / `qualified_lead`, see
+`lead-tracking-ga4.md`); they carry no PII. A 2xx body with `ok:true` but no
+boolean `qualified` (the honeypot reply) pushes neither — see **Honeypot** above;
+a 2xx with a non-JSON body still pushes `qualification_form_submit` with
+`qualified:false, score:0`.
 
 ---
 
@@ -176,13 +226,13 @@ Field notes for the receiver:
   the three literals.
 - **`message` is never blank.** When the visitor leaves the optional textarea
   empty the website synthesizes a qualification digest so the v1 receiver's
-  `message` `min_length=1` contract holds and the D365 subject stays useful, e.g.
+  `message` `min_length=1` contract holds and the D365 Lead notes stay useful, e.g.
   `Main challenge: Pricing confidence · Method: Excel spreadsheets · Frequency: A few per month · Country: NL · Size: 30-99 · Role: Head of estimating · NDA: yes`
   (parts omitted when blank; `Demo request` if everything is blank).
 - **`role` is the English label**, not the slug, so the v1 mapping `role → jobtitle`
   keeps producing readable values; the slug lives in `qualification.role`.
-- The honeypot field and any extra browser fields are **stripped** — only the
-  keys above are forwarded.
+- The honeypot fields (`hp_field`, legacy `company_website`) and any extra
+  browser fields are **stripped** — only the keys above are forwarded.
 - **Receiver compatibility.** gtm-toolkit **accepts and persists this body as of
   its PR #145 (merged 2026-08-20)**: `WebsiteLead` parses the v2 keys (absent on
   v1 posts — fully backward compatible), the Lead **Topic** gains a
@@ -190,10 +240,14 @@ Field notes for the receiver:
   attribution block is appended under the visitor message on the Lead
   **description** (capped to D365's 2000-char Memo — the message is trimmed, the
   v2 block is kept). No new D365 columns. **Live in production since 2026-08-21**
-  (receiver image `v9` on Fargate; end-to-end verified with a prod test lead —
-  see `docs/acquisition-readiness.md` row 8). A pre-#145 receiver still ignores
-  the v2 keys, in which case the synthesized `message` carries the qualification
-  into the D365 subject.
+  (end-to-end verified with a prod test lead — see
+  `docs/acquisition-readiness.md` row 8; then receiver image `v9` on Fargate).
+  Since **2026-09-27** the receiver runs on **AWS Lambda** (gtm-toolkit v1.32.0)
+  — the same receiver/consumer code, with the Account rules tightened in v1.32.1
+  and v1.32.3; see [gtm-toolkit receiver](#gtm-toolkit-receiver-implemented)
+  below. A pre-#145
+  receiver ignored the v2 keys, which is why the synthesized `message` also
+  carries the qualification.
 
 ### Headers
 
@@ -250,48 +304,87 @@ are read only inside the serverless `/api/lead` function.
 
 ## gtm-toolkit receiver (implemented)
 
-The receiving end lives in the **gtm-toolkit** repo as the `gtm_toolkit.website`
-module (mirrors the Smartlead webhook receiver: Starlette + HMAC, decoupled
-queue + consumer — the public endpoint never blocks on D365).
+The receiving end lives in the **gtm-toolkit** repo (`src/gtm_toolkit/website/`)
+and has run on **AWS Lambda since 2026-09-27** (gtm-toolkit v1.32.0; before that a
+Fargate task). Operator guide: gtm-toolkit `deploy/README.md`; infrastructure:
+`deploy/terraform/`. The public endpoint only verifies and enqueues; a separate
+consumer does the D365 write, so a Dataverse hiccup never fails the website's
+request.
 
-**Endpoint — `POST /website/lead`**, run as a service (not a CLI):
-
-```bash
-# in gtm-toolkit; needs the [webhook] extra (starlette + uvicorn)
-uvicorn --factory gtm_toolkit.website.webhook_receiver:build
+```
+GTM_LEAD_ENDPOINT = https://leads.gradvera.com/website/lead
+  → Cloudflare (proxied CNAME) → API Gateway HTTP API — route POST /website/lead,
+      10 s integration timeout, throttle 5 req/s (burst 20)
+  → receiver Lambda  (website/lambda_receiver.py) — verify HMAC → validate →
+      SQS FIFO send → 200 {"status":"queued"}
+  → SQS FIFO queue — one message group, so exactly one D365 writer;
+      3 failed receives → DLQ
+  → consumer Lambda  (website/lambda_consumer.py) — idempotency ledger →
+      consumer._ingest_lead → D365 Account + Lead
 ```
 
-Point the website's `GTM_LEAD_ENDPOINT` at the deployed URL, e.g.
-`https://<toolkit-host>/website/lead`.
+**Secret.** The toolkit's `WEBSITE_WEBHOOK_SECRET` (an SSM SecureString under
+`/gtm/website/receiver/`, read at cold start) must equal the website's
+`GTM_LEAD_SECRET`. The receiver verifies `x-gradvera-signature` against the
+**raw body** (HMAC-SHA256, constant-time, `sha256=` prefix), exactly as §2
+requires (verify → then parse). It is HMAC-only — there is no `?token=` fallback.
 
-**Secret.** Set the toolkit's `WEBSITE_WEBHOOK_SECRET` to the **same value** as the
-website's `GTM_LEAD_SECRET`. The receiver verifies `x-gradvera-signature` against
-the **raw body** (constant-time), exactly as §2 requires (verify → then parse).
-Bad/absent signature → `401`; body over 64 KB → `413`; unparseable JSON → `400`;
-a body that fails the lead contract → `422`; valid → `200 {"status":"queued"}`.
+**Receiver responses** (`process_webhook` in `website/webhook_receiver.py`):
+body over 64 KiB → `413`; bad/absent signature → `401`; unparseable JSON or a
+non-object → `400`; a body that fails the `WebsiteLead` contract → `422`
+(nothing queued); valid → `200 {"status":"queued"}`. A queue or cold-start
+configuration failure → `500 {"status":"error"}`; above the throttle, API
+Gateway answers `429` itself. Any non-2xx shows up on the website as
+`forwarded:false` (§1).
 
-**Write path.** The receiver returns fast (enqueues only). A separate scheduled
-consumer performs the D365 write, idempotently:
+**Write path** (`_ingest_lead` in `website/consumer.py`), per lead:
 
-```bash
-gtm website consume            # dry-run (counts what would apply)
-gtm website consume --apply    # create the D365 Account + Lead
-```
+1. **Known person — no new Lead.** An **Open Lead** with that email is not
+   rewritten; its `dso_handraise` flag is set so the rep sees the inbound
+   hand-raise (the new message is not written to D365). An **active Contact**
+   with that email is skipped and logged. Nothing else is written in either case.
+2. **Account — matched by company name only.** One exact-name lookup
+   (`name eq '<company>'`, company capped at 160 chars). The email domain is
+   **never** a match key — there is no domain fallback (a free-mail host would
+   merge unrelated companies); for a non-free-mail domain it is only a
+   `websiteurl` hint, written when a new Account is created.
+   - no match → **create** the Account (name + `websiteurl` hint);
+   - Active match → **bind it as-is**: website input never modifies an existing
+     Account — no rename, no `websiteurl` overwrite (v1.32.1);
+   - deactivated match → **reactivate** it, state only (`statecode` 0 /
+     `statuscode` 1, never a visitor-supplied value), and bind it (v1.32.3,
+     commit `23831f5`). If D365 refuses the flip, the Lead is still created and
+     bound to the inactive Account. An Active namesake wins over a deactivated one.
+3. **Lead** created and bound to that Account, owned by
+   `GTM_DEFAULT_LEAD_OWNER_ID`, `classify=False` (inbound skips the outbound
+   role-bucket classifier), Product Interest = Gradvera (`WEBSITE_PRODUCT_INTEREST`).
 
-Each lead becomes a D365 **Account** (deduped by company name + email-domain
-fallback) and a **Lead** bound to it, owned by `GTM_DEFAULT_LEAD_OWNER_ID`,
-`classify=False` (inbound skips the outbound role-bucket classifier). Mapping:
-`fullName` → first/last, `company` → `companyname` (+ Account name), `email` →
-`emailaddress1`, `phone` → `telephone1`, `role` → `jobtitle`; `source` + `message`
-go onto the rep-visible Lead `subject` (`Website demo request — <company>: <msg>`,
-truncated) while the **full** `message`, `locale`, `page` and `receivedAt` are
-preserved in the durable queue envelope + the `website.consume.applied` log line.
-**Idempotent** on `(email, receivedAt)` via a processed-key ledger. An email that
-already exists as an Open Lead or active Contact is **skipped + logged** (a
-hand-raise from a known prospect — inbound never clobbers a rep-managed record).
-Smartlead enrollment of inbound demo requests is intentionally **not** automatic
-(kept separate from cold outbound); wire it later if wanted.
+Mapping: `fullName` → `firstname` (first word) / `lastname` (the rest; a one-word
+name fills both), `company` → `companyname` (+ Account `name`), `email` →
+`emailaddress1`, `phone` → `telephone1`, `role` → `jobtitle`. The rep-visible
+Topic (`subject`) is `Website demo request — <company>` plus the v2
+`· <score> pts` / `· qualified` suffix (≤ 250 chars). The visitor `message`,
+verbatim, goes on the Lead `description` (notes) with the v2 qualification +
+attribution block under it (2000-char cap: the message is trimmed and marked
+`… [message truncated]`, the block is kept). Every other visitor string is cut to
+its measured D365 column width. A lead D365 can never accept — an email over 100
+chars, or a placeholder company (`Unknown`, `n/a`, `none`, any case) — is not
+retried; it goes to the DLQ.
 
-Until the receiver is deployed and `GTM_LEAD_ENDPOINT` is set, leave it blank:
-`/api/lead` validates and logs each lead (metadata only — no PII) and the site
-keeps working.
+**Idempotent** on `(email, receivedAt)`: the receiver derives the SQS
+deduplication id from it, and the consumer's DynamoDB ledger (SHA-256 of the key
+only — no PII — 90-day TTL) makes a replay a no-op. **Failures:** a deterministic
+failure (bad envelope, the unacceptable leads above, a D365 400/413) reaches the
+DLQ within seconds; a transient one (auth, 429, 5xx, timeout) is retried about
+every 30 min, 3 receives, then DLQ (14-day retention, alarmed). There is no
+Smartlead enrollment on this path (gtm-toolkit's Smartlead integration was
+decommissioned 2026-09-26).
+
+**Local / manual path.** The same code runs without AWS:
+`uvicorn --factory gtm_toolkit.website.webhook_receiver:build` (needs the
+`[webhook]` extra) serves `POST /website/lead` into a file queue, and
+`gtm website consume` (dry-run; `--apply` writes) drains it. Production does not
+use it.
+
+With `GTM_LEAD_ENDPOINT` blank, `/api/lead` validates and logs each lead
+(metadata only — no PII) and the site keeps working.

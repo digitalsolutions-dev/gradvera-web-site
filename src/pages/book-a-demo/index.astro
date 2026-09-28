@@ -32,13 +32,14 @@ const breadcrumbLd = {
   path="/book-a-demo/"
   title={t('seo.demo.title')}
   description={t('seo.demo.desc')}
+  ctaHref="#demo-form-col"
   jsonLd={[breadcrumbLd]}
 >
   <section class="demo standalone" id="demo">
     <div class="wrap">
       <div class="demo-stack">
         <DemoIntro lang={lang} />
-        <div class="demo-form-col">
+        <div class="demo-form-col" id="demo-form-col">
           <DemoForm lang={lang} />
         </div>
       </div>
