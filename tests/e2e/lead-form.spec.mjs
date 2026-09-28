@@ -54,6 +54,57 @@ for (const { path, locale } of DEMO) {
   });
 }
 
+// ---- Spam trap (honeypot) ----
+// Browser autofill and password managers ignore autocomplete="off", treat an
+// off-screen input as fillable, and match "company"/"website"-style names and
+// labels — so the old off-screen `company_website` trap got a real visitor's
+// saved company and the submit went dead. The trap must be unrendered
+// (`hidden` → display:none, unfocusable) and carry no autofill-bait wording.
+const TRAP_BANNED = ['company', 'website', 'url', 'email', 'name', 'phone', 'tel', 'address'];
+
+for (const { path } of DEMO) {
+  test(`${path} spam trap is unrendered, unfocusable, and has no autofill-bait name or label`, async ({ page }) => {
+    await gotoClean(page, path);
+    const trap = page.locator('#gv-demo-form input[name="hp_field"]');
+    await expect(trap).toHaveCount(1);
+    await expect(page.locator('input[name="company_website"]')).toHaveCount(0);
+    await expect(trap).toBeHidden();
+    const t = await trap.evaluate((el) => {
+      el.focus();
+      const label = el.closest('label') || (el.id ? document.querySelector(`label[for="${el.id}"]`) : null);
+      return {
+        rendered: el.getClientRects().length > 0,
+        focused: document.activeElement === el,
+        name: el.getAttribute('name') || '',
+        id: el.id || '',
+        label: label ? (label.textContent || '').trim() : '',
+        tabindex: el.getAttribute('tabindex'),
+        autocomplete: el.getAttribute('autocomplete'),
+        inAriaHidden: !!el.closest('[aria-hidden="true"]'),
+      };
+    });
+    expect(t.rendered, 'trap has no layout box (display:none)').toBe(false);
+    expect(t.focused, 'trap cannot take focus').toBe(false);
+    expect(t.label).toBe('Leave this field empty');
+    for (const [k, v] of [['name', t.name], ['id', t.id], ['label', t.label]]) {
+      for (const w of TRAP_BANNED) expect(v.toLowerCase(), `trap ${k} "${v}" contains "${w}"`).not.toContain(w);
+    }
+    expect(t).toMatchObject({ tabindex: '-1', autocomplete: 'off', inAriaHidden: true });
+  });
+}
+
+test('/book-a-demo/ a filled trap never kills the button: empty required fields still show errors, no POST', async ({ page }) => {
+  let posted = false;
+  await page.route('**/api/lead', (route) => { posted = true; route.fulfill({ status: 200, body: '{"ok":true}' }); });
+  await gotoClean(page, '/book-a-demo/');
+  await page.locator('#gv-demo-form input[name="hp_field"]').evaluate((el) => { el.value = 'Test Co BV'; });
+  await page.click('#gv-demo-form button[type="submit"]');
+  for (const id of ['#err-fn', '#err-co', '#err-em', '#err-country', '#err-role', '#err-size', '#err-challenge']) {
+    await expect(page.locator(id), `${id} shown`).toBeVisible();
+  }
+  expect(posted).toBe(false);
+});
+
 test('/book-a-demo/ optional fields may be left blank and message is optional', async ({ page }) => {
   const cap = await armLeadCapture(page);
   await gotoClean(page, '/book-a-demo/');

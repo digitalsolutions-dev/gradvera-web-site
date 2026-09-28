@@ -1,7 +1,7 @@
 /**
  * Lead body → normalized Lead (contract v2, docs/lead-integration.md §2).
  * Pure: validation, enum membership, attribution sanitizing, message synthesis,
- * scoring. lead.ts is transport only (honeypot, forward, response).
+ * scoring, honeypot detection. lead.ts is transport only (drop, forward, response).
  */
 import {
   BID_FREQUENCIES, COMPANY_SIZES, COUNTRIES, ESTIMATING_METHODS, MAIN_CHALLENGES, NDA_WILLING, ROLES,
@@ -86,6 +86,23 @@ function attr(body: Record<string, unknown>, key: string): string {
   return ATTR_SAFE_RE.test(v) ? v : '';
 }
 
+/**
+ * Spam-trap fields, current first. `hp_field` is DemoForm's hidden trap;
+ * `company_website` is its pre-rename name, still honoured so pages cached
+ * before the rename (and bots that scraped the old form) are caught too.
+ */
+const HONEYPOT_FIELDS = ['hp_field', 'company_website'] as const;
+export type HoneypotField = (typeof HONEYPOT_FIELDS)[number];
+
+/** Which trap field holds a non-empty string, or null when none was filled. */
+export function trippedHoneypot(body: Record<string, unknown>): HoneypotField | null {
+  for (const f of HONEYPOT_FIELDS) {
+    const v = body[f];
+    if (typeof v === 'string' && v.length > 0) return f;
+  }
+  return null;
+}
+
 /** Human-readable qualification digest — keeps gtm-toolkit v1's non-empty `message` contract. */
 export function synthesizeMessage(q: Qualification): string {
   const parts: string[] = [];
@@ -148,5 +165,41 @@ export function parseLeadBody(body: Record<string, unknown>, receivedAt: Date): 
       qualification, attribution,
       score, scoreReasons: reasons, qualified,
     },
+  };
+}
+
+/**
+ * The `locale` / `page` values DemoForm really sends (its hidden inputs: the
+ * site locales; `page` defaults to `book-a-demo`, LpBook passes
+ * `construction-estimating-software`). The drop log keeps only these — any
+ * other body text (an email address, control characters) is logged as 'other'.
+ */
+const DROP_LOG_LOCALES = ['en', 'sl', 'hr'] as const;
+const DROP_LOG_PAGES = ['book-a-demo', 'construction-estimating-software'] as const;
+
+/** What lead.ts logs when a trap drops a submission — see honeypotDropLog. */
+export type HoneypotDropLog =
+  | {
+      field: HoneypotField; wouldParse: true;
+      locale: (typeof DROP_LOG_LOCALES)[number] | 'other';
+      page: (typeof DROP_LOG_PAGES)[number] | 'other';
+    }
+  | { field: HoneypotField; wouldParse: false };
+
+/**
+ * The only facts logged about a trapped submission: which trap fired, whether
+ * the rest would have parsed (a fully valid form hints at a real visitor whose
+ * browser autofilled the trap), and — only then — the normalized locale/page,
+ * allowlisted. Never the trap's value or any personal field (GDPR
+ * data-minimisation).
+ */
+export function honeypotDropLog(field: HoneypotField, body: Record<string, unknown>, receivedAt: Date): HoneypotDropLog {
+  const parsed = parseLeadBody(body, receivedAt);
+  if (!parsed.ok) return { field, wouldParse: false };
+  const { locale, page } = parsed.lead;
+  return {
+    field, wouldParse: true,
+    locale: isOneOf(DROP_LOG_LOCALES, locale) ? locale : 'other',
+    page: isOneOf(DROP_LOG_PAGES, page) ? page : 'other',
   };
 }

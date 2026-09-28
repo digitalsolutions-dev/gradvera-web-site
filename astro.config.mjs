@@ -36,7 +36,10 @@ export default defineConfig({
   // routes opt into on-demand rendering via `export const prerender = false`
   // (used only by /api/lead — every page stays pre-rendered HTML).
   output: 'static',
-  adapter: vercel(),
+  // 15 s function limit (allowed on every Vercel plan): /api/lead waits up to
+  // FORWARD_TIMEOUT_MS (9 s, src/pages/api/lead.ts) on the lead receiver, which
+  // the 10 s classic-Hobby default would leave < 1 s of headroom.
+  adapter: vercel({ maxDuration: 15 }),
   trailingSlash: 'ignore',
   redirects,
   i18n: {

@@ -1,8 +1,9 @@
 ---
 import { localizePath, useTranslations, type Locale } from '../../i18n/utils';
 import LangSwitch from './LangSwitch.astro';
-// `ctaHref` overrides the header CTA target — landing pages point it at their
-// own on-page form anchor instead of /book-a-demo/.
+// `ctaHref` overrides the header CTA target — pages that already carry the demo
+// form (the landing page, the book-a-demo pages) point it at their own on-page
+// form anchor instead of /book-a-demo/.
 interface Props { lang: Locale; path?: string; ctaHref?: string }
 const { lang, path, ctaHref } = Astro.props;
 const t = useTranslations(lang);

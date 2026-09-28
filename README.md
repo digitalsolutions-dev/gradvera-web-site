@@ -116,9 +116,10 @@ One deliberate change from the original export: the Google Fonts hotlink was
   main-thread loader** (kept on the main thread so Consent Mode v2 gating and
   every GTM/GA4 tag behave reliably; `j.async=true` keeps it off the critical
   rendering path) — see `src/components/marketing/Analytics.astro`.
-- A successful demo-form submit pushes a **`generate_lead`** event to the
-  dataLayer (registered as a GA4 key event) — contract and GTM container setup
-  in `docs/lead-tracking-ga4.md`.
+- The demo form pushes `qualification_form_start`, `qualification_form_submit`
+  (the primary Ads conversion), `qualified_lead` and `booking_widget_open` to
+  the dataLayer (`generate_lead` was retired 2026-08-19) — contract, GTM
+  container setup and consent matrix in `docs/lead-tracking-ga4.md`.
 - **Consent Mode v2** defaults everything to `denied` (ads + analytics storage)
   before GTM loads; `functionality_storage` / `security_storage` are granted.
 - `src/components/marketing/CookieConsent.astro` renders the consent banner. A
@@ -134,8 +135,10 @@ The demo / contact form (`src/components/forms/DemoForm.astro`) POSTs JSON to
 **`POST /api/lead`** (`src/pages/api/lead.ts`, the only on-demand route). The
 endpoint:
 
-1. Drops bot submissions via a `company_website` honeypot (silent 200).
-2. Validates the required fields (`fullName`, `company`, `email`, `message`).
+1. Drops bot submissions via a hidden `hp_field` honeypot (legacy
+   `company_website` still honoured): silent 200, one PII-free log line per drop.
+2. Validates the required fields (`fullName`, `company`, `email`, `country`,
+   `role`, `companySize`, `mainChallenge`; `message` is optional).
 3. Normalizes the lead and, when `GTM_LEAD_ENDPOINT` is set, forwards it to the
    gtm-toolkit **HMAC-SHA256 signed** (`x-gradvera-signature: sha256=<hex>`).
 4. Always returns `200` to the visitor on a valid lead — a downstream outage is
@@ -173,7 +176,7 @@ src/
   consts.ts           Brand / company facts, integration ids
 docs/
   lead-integration.md Lead contract + gtm-toolkit receiver spec
-  lead-tracking-ga4.md GA4 generate_lead conversion event + GTM container setup
+  lead-tracking-ga4.md Qualification-form dataLayer events + GTM container setup
 ```
 
 ---

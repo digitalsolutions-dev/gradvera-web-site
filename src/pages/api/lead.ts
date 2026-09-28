@@ -5,8 +5,12 @@
  * The browser (src/components/forms/DemoForm.astro) POSTs the form as JSON.
  *
  * Flow:
- *   1. Honeypot — a hidden `company_website` field; bots fill it, humans don't.
- *      If present we silently 200 (the bot thinks it won; we drop the lead).
+ *   1. Honeypot — DemoForm's hidden `hp_field` (the legacy `company_website`
+ *      name is still honoured; see `trippedHoneypot`). Bots fill it, humans
+ *      don't. If filled we drop the lead and reply a bare 200 `{ok:true}` (the
+ *      bot thinks it won; the absent `qualified` tells the client no conversion
+ *      happened), logging one PII-free line so wrongly-dropped real visitors
+ *      (browser autofill) stay visible.
  *   2. Validate + normalize with `parseLeadBody` (src/lib/leadPayload.ts) — the
  *      required marketing fields, the qualification enums, and the sanitized
  *      attribution. This route is transport only; the contract lives there.
@@ -28,12 +32,19 @@
  */
 import type { APIRoute } from 'astro';
 import crypto from 'node:crypto';
-import { parseLeadBody, type Lead } from '../../lib/leadPayload';
+import { honeypotDropLog, parseLeadBody, trippedHoneypot, type Lead } from '../../lib/leadPayload';
 
 export const prerender = false;
 
-/** Max time to wait on the downstream hand-off before aborting it (ms). */
-const FORWARD_TIMEOUT_MS = 5_000;
+/**
+ * Max time to wait on the downstream hand-off before aborting it (ms). The
+ * receiver's first request after idle takes ~5.6–6.7 s (cold start, as reported
+ * by the gtm-toolkit side on 2026-09-28) and its API gateway allows 10 s; 9 s
+ * keeps those leads `forwarded:true` while staying under the gateway limit.
+ * This function itself may run 15 s (`maxDuration` in astro.config.mjs), which
+ * leaves headroom after the abort to log and reply.
+ */
+const FORWARD_TIMEOUT_MS = 9_000;
 
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -65,15 +76,19 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: 'invalid' }, 400);
   }
 
-  // ---- Honeypot — silently accept and discard ------------------------------
-  // A real visitor never sees the hidden `company_website` field; bots fill it.
-  // Return a 200 so the bot believes it succeeded, but do nothing.
-  if (typeof body.company_website === 'string' && body.company_website.length > 0) {
+  // ---- Honeypot — accept and discard ---------------------------------------
+  // A real visitor never sees the hidden trap; bots fill it. Return a 200 so
+  // the bot believes it succeeded, but do nothing — except log which trap fired
+  // (never its value or any personal field) so autofill false positives show.
+  const now = new Date();
+  const trap = trippedHoneypot(body);
+  if (trap) {
+    console.warn('[lead] honeypot tripped — submission dropped', honeypotDropLog(trap, body, now));
     return json({ ok: true }, 200);
   }
 
   // ---- Validate + normalize (pure; see src/lib/leadPayload.ts) ------------
-  const parsed = parseLeadBody(body, new Date());
+  const parsed = parseLeadBody(body, now);
   if (!parsed.ok) return json({ ok: false, error: parsed.error }, 400);
   const lead: Lead = parsed.lead;
   const verdict = { qualified: lead.qualified, score: lead.score };
@@ -107,8 +122,9 @@ export const POST: APIRoute = async ({ request }) => {
           ...(sig ? { 'x-gradvera-signature': 'sha256=' + sig } : {}),
         },
         body: payload,
-        // Bound the hand-off: the visitor waits on this response synchronously,
-        // and the toolkit returns fast (it only enqueues). Abort a slow/hung
+        // Bound the hand-off: the visitor waits on this response synchronously.
+        // A warm toolkit returns fast (it only enqueues), but a cold start can
+        // take several seconds — see FORWARD_TIMEOUT_MS. Abort a slow/hung
         // receiver so we never stall the request up to the function timeout.
         signal: AbortSignal.timeout(FORWARD_TIMEOUT_MS),
       });

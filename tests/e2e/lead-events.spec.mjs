@@ -84,6 +84,46 @@ test('/book-a-demo/ unqualified submit → form_submit with qualified:false, no 
   expect(await events(page, 'booking_widget_open')).toHaveLength(1);
 });
 
+// The server's honeypot reply is a bare {"ok":true} — every real success
+// carries a boolean `qualified`. The client must not short-circuit on the trap
+// (autofill fills it for real people): it POSTs, shows success + the calendar
+// (a false-positive human can still book), but pushes no conversion.
+const SUBMIT_DROPPED = '{"ok":true}';
+
+for (const { path, locale, ref } of PAGES) {
+  test(`${path} autofilled trap → still POSTs; the drop reply shows success + calendar but pushes no conversion`, async ({ page }) => {
+    const cap = await armLeadCapture(page, SUBMIT_DROPPED);
+    await gotoClean(page, path);
+    await fillRequired(page);
+    // Mimic browser autofill writing into the hidden trap.
+    await page.locator('#gv-demo-form input[name="hp_field"]').evaluate((el) => {
+      el.value = 'Test Co BV';
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    await page.click('#gv-demo-form button[type="submit"]');
+    await expect(page.locator('.form-ok')).toBeVisible();
+    expect(await cap.body, 'the server decides: the trap value rides the POST').toMatchObject({ hp_field: 'Test Co BV', locale, fullName: 'Test Person' });
+    expect(await events(page, 'qualification_form_submit')).toHaveLength(0);
+    expect(await events(page, 'qualified_lead')).toHaveLength(0);
+    expect(await events(page, 'booking_widget_open')).toHaveLength(1);
+    await expect(page.locator('.form-ok iframe.booking-frame')).toHaveAttribute('src', `${BOOKING_URL}&RefID=${ref}`);
+  });
+}
+
+test('/book-a-demo/ a 2xx with a non-JSON body still counts: form_submit with qualified:false, score:0', async ({ page }) => {
+  await armLeadCapture(page, 'accepted');
+  await gotoClean(page, '/book-a-demo/');
+  await fillRequired(page);
+  await page.click('#gv-demo-form button[type="submit"]');
+  await expect(page.locator('.form-ok')).toBeVisible();
+  const submit = await events(page, 'qualification_form_submit');
+  expect(submit).toHaveLength(1);
+  expect(submit[0]).toMatchObject({ qualified: false, score: 0 });
+  expect(await events(page, 'qualified_lead')).toHaveLength(0);
+  expect(await events(page, 'booking_widget_open')).toHaveLength(1);
+});
+
 test('/book-a-demo/ utm_campaign becomes the sanitized RefID; direct link follows', async ({ page }) => {
   await armLeadCapture(page, SUBMIT_OK);
   await gotoClean(page, '/book-a-demo/?utm_source=google&utm_campaign=NL%20Est%20%2F%20Pricing!');

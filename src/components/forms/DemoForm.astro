@@ -47,7 +47,12 @@ const privacyHref = localizePath('/privacy-policy/', lang);
   data-err-email={t('demo.form.errEmail')}
   data-sending={t('demo.form.sending')}
 >
-  <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+  {/* Spam trap: bots fill every input; people never see this one. `hidden`
+       (display:none), not an off-screen position — browser autofill and password
+       managers ignore autocomplete="off", fill off-screen fields, and match
+       company/website/contact wording, so neither the name nor the label may use
+       it. The server (/api/lead) decides; the client never short-circuits. */}
+  <div hidden aria-hidden="true"><label>Leave this field empty<input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="locale" value={lang}>
   <input type="hidden" name="page" value={page}>
   <!-- Decorative section rules. The fieldsets/labels already name every control,
@@ -450,9 +455,6 @@ const privacyHref = localizePath('/privacy-policy/', lang);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      var honeypot = form.querySelector('input[name="company_website"]');
-      if (honeypot && honeypot.value) return;
-
       // ---- Client-side validation: block submit, focus first invalid ----
       var firstInvalid = null, allOk = true;
       for (var r = 0; r < REQUIRED.length; r++) {
@@ -496,10 +498,17 @@ const privacyHref = localizePath('/privacy-policy/', lang);
           return res.json().catch(function () { return {}; });
         })
         .then(function (body) {
-          var qualified = !!(body && body.qualified === true);
-          var score = body && typeof body.score === 'number' ? body.score : 0;
-          push({ event: 'qualification_form_submit', form_id: formId, locale: ctx.locale, page: ctx.page, qualified: qualified, score: score });
-          if (qualified) push({ event: 'qualified_lead', form_id: formId, locale: ctx.locale, page: ctx.page, score: score });
+          // The server's spam-trap drop replies a bare {ok:true}; every real
+          // success carries a boolean `qualified`. A dropped submission still
+          // gets the success card + calendar (a false-positive human can book)
+          // but pushes no conversion. A 2xx with a non-JSON body ({}) still counts.
+          var dropped = !!(body && body.ok === true && typeof body.qualified !== 'boolean');
+          if (!dropped) {
+            var qualified = !!(body && body.qualified === true);
+            var score = body && typeof body.score === 'number' ? body.score : 0;
+            push({ event: 'qualification_form_submit', form_id: formId, locale: ctx.locale, page: ctx.page, qualified: qualified, score: score });
+            if (qualified) push({ event: 'qualified_lead', form_id: formId, locale: ctx.locale, page: ctx.page, score: score });
+          }
           form.style.display = 'none';
           if (ok) { ok.classList.add('show'); ok.focus(); }
           revealBooking(bookingRef(attr));
