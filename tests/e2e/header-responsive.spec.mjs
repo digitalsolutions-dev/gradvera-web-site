@@ -77,8 +77,7 @@ for (const locale of LOCALES) {
 // reloading the page, and scroll-margin keeps the form's top clear of the
 // fixed 74px header. The target is the `#demo-form-col` column (it wraps both the
 // form and the success card), so the CTA still lands somewhere after a submit
-// has hidden the form (and not `#demo-form`, which site.js's vendored handler
-// hides on submit). Every other page keeps its own CTA target.
+// has hidden the form. Every other page keeps its own CTA target.
 const DEMO_PAGES = ['/book-a-demo/', '/sl/rezervirajte-demo/', '/hr/rezervirajte-demo/'];
 const HEADER_H = 74;
 
