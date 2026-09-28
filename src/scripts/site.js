@@ -743,13 +743,6 @@ import './attribution.js';
     });
   }
 
-  /* ---------------- Demo form ---------------- */
-  var form = document.getElementById('demo-form');
-  if (form) form.addEventListener('submit', function (e) {
-    e.preventDefault(); form.style.display = 'none';
-    var ok = document.querySelector('.form-ok'); if (ok) ok.classList.add('show');
-  });
-
   /* ---------------- motion detection ----------------
      Some preview/verifier iframes freeze the animation timeline (transitions,
      keyframes & WAAPI never progress, IntersectionObserver never fires) while
