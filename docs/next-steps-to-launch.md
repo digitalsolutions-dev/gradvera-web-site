@@ -23,7 +23,9 @@ When behaviour changes, change the model or the readiness log — not this file
 - Row 5 — LP product evidence shipped as coded reproductions (PR #82).
 - Row 8 — lead pipeline **live and prod-verified**: site contract v2 → gtm-toolkit
   receiver image `v9` (Fargate) → D365 Lead with score suffix + qualification/
-  attribution block. Deployed 2026-08-21.
+  attribution block. Deployed 2026-08-21. Since 2026-09-27 the receiver runs on
+  AWS Lambda (gtm-toolkit v1.32.0), not Fargate — current path in
+  `docs/lead-integration.md` "gtm-toolkit receiver".
 
 **9 rows open — all of them are dashboard / sales-ops actions you own.** No
 website work is left on the launch path.

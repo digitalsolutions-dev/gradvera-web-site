@@ -9,7 +9,7 @@ email or company.
 | Event | When | Payload | Use |
 |---|---|---|---|
 | `qualification_form_start` | first `input`/`change` inside the form, once per page load | `{form_id:'gv-demo-form', locale, page}` | diagnostic (form engagement) |
-| `qualification_form_submit` | `/api/lead` answered 2xx, once | `{form_id, locale, page, qualified:boolean, score:number}` | **primary Google Ads conversion**; GA4 key event |
+| `qualification_form_submit` | `/api/lead` answered 2xx (not the honeypot reply — see Mechanics), once | `{form_id, locale, page, qualified:boolean, score:number}` | **primary Google Ads conversion**; GA4 key event |
 | `qualified_lead` | right after `qualification_form_submit`, only when `qualified === true` (score ≥ 7, see `src/lib/leadScore.ts`) | `{form_id, locale, page, score}` | sales KPI; later Ads optimisation target |
 | `booking_widget_open` | the Microsoft Bookings iframe `src` is set (success state), once | `{form_id, locale, page, ref}` (`ref` = campaign RefID, never PII) | diagnostic — **not** a conversion |
 
@@ -18,11 +18,16 @@ landing page — no site code. `demo_booked`, `demo_attended`, `qualified_opport
 `preview_started`, `annual_agreement_signed`, `onboarding_accepted` live in the
 lead register / CRM, not in the dataLayer (§9.4, §11.2).
 
-Mechanics: the pushes happen client-side only after the API returns 2xx — the
-honeypot and validation paths never fire them (the client early-returns on a
-filled honeypot before `fetch`; a non-JS bot that POSTs `/api/lead` directly
-gets `200` but runs no client script). A 4xx/5xx/network failure pushes nothing
-and leaves the calendar unloaded. With `PUBLIC_GTM_ID` unset the pushes still
+Mechanics: the pushes happen client-side only after the API returns 2xx —
+client-side validation failures never reach `fetch`. The client does not inspect
+the honeypot (`hp_field`): it POSTs and `/api/lead` decides. A tripped trap gets
+a bare `200 {"ok":true}` with no boolean `qualified`; on that reply the client
+shows the success card and reveals the calendar (`booking_widget_open` fires —
+a wrongly trapped visitor can still book) but pushes **no**
+`qualification_form_submit` / `qualified_lead` (`docs/lead-integration.md`,
+"Honeypot"). A non-JS bot that POSTs `/api/lead` directly gets the same `200`
+but runs no client script. A 4xx/5xx/network failure pushes nothing and leaves
+the calendar unloaded. With `PUBLIC_GTM_ID` unset the pushes still
 happen (inert). `qualified`/`score` come from the API response (contract v2,
 `docs/lead-integration.md`); if the 2xx body is not JSON they fall back to
 `false` / `0` and the calendar is still revealed. `generate_lead` (the
