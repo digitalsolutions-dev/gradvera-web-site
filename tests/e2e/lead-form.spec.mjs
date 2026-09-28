@@ -105,6 +105,135 @@ test('/book-a-demo/ a filled trap never kills the button: empty required fields 
   expect(posted).toBe(false);
 });
 
+// ---- Spam trap vs Chrome's real autofill engine ----
+// The confirmed root cause of the dead submit (PR #90), pinned with the browser
+// itself: Chrome classified the old off-screen `company_website` trap as *Company
+// name* (autocomplete="off" ignored), split the form into two autofill sections at
+// the repeated company type, and autofill from Full name then filled only the trap
+// + fullName. This drives Chrome's address-autofill engine over CDP
+// (`Autofill.trigger`) from each contact field and asserts the trap — and every
+// other non-contact field — stays empty and unclassified while ONE section fills
+// every contact field. The `Autofill` domain
+// exists only in the full Chromium build (`channel: 'chromium'`), not the default
+// headless shell — and `test.use({ channel })` can't be scoped to a describe (it
+// forces a new worker), so the group launches its own full Chromium. A missing
+// domain or a missing fill event fails the test; it never skips.
+const AUTOFILL_PAGES = [...DEMO.map((d) => d.path), '/construction-estimating-software/'];
+// Obviously fake profile; nothing is submitted and /api/lead is intercepted anyway.
+// It carries a street/city/zip the form never asks for, so a future decoy typed as
+// an address field (not just the known trap) would be filled — and caught below.
+const AUTOFILL_ADDRESS = {
+  fields: [
+    { name: 'NAME_FULL', value: 'Ada Lovelace' },
+    { name: 'NAME_FIRST', value: 'Ada' },
+    { name: 'NAME_LAST', value: 'Lovelace' },
+    { name: 'COMPANY_NAME', value: 'Analytical Engines BV' },
+    { name: 'EMAIL_ADDRESS', value: 'ada@example.com' },
+    { name: 'PHONE_HOME_WHOLE_NUMBER', value: '+31612345678' },
+    { name: 'ADDRESS_HOME_LINE1', value: '1 Example Street' },
+    { name: 'ADDRESS_HOME_CITY', value: 'Exampleton' },
+    { name: 'ADDRESS_HOME_ZIP', value: '1234 AB' },
+    { name: 'ADDRESS_HOME_COUNTRY', value: 'NL' },
+  ],
+};
+// Found by structure, not name, so a renamed or reintroduced bait trap (the pre-fix
+// `company_website` included) is still the one under test.
+const TRAP_SEL = '#gv-demo-form [aria-hidden="true"] input[tabindex="-1"]';
+const CONTACT = ['fullName', 'company', 'email', 'phone', 'country'];
+const fmtFilled = (f) => `${f.name || f.id}=${JSON.stringify(f.value)} [${f.autofillType}/${f.fillingStrategy}]`;
+
+test.describe('spam trap vs Chrome autofill (full Chromium)', () => {
+  let browser;
+  test.beforeAll(async ({ playwright, headless }) => {
+    browser = await playwright.chromium.launch({ channel: 'chromium', headless });
+  });
+  test.afterAll(async () => {
+    await browser?.close();
+  });
+
+  for (const path of AUTOFILL_PAGES) {
+    for (const trigger of ['#fn', '#co', '#em']) {
+      test(`${path} autofill from ${trigger} fills every contact field, never the trap`, async ({ baseURL }) => {
+        const ctx = await browser.newContext({ baseURL });
+        let timer; // the event-wait timer; cleared in `finally` on every path
+        try {
+          let posted = 0;
+          await ctx.route('**/api/lead', (route) => { posted++; route.fulfill({ status: 200, body: '{"ok":true}' }); });
+          const page = await ctx.newPage();
+          await gotoClean(page, path);
+          const trap = page.locator(TRAP_SEL);
+          await expect(trap).toHaveCount(1);
+          const trapName = await trap.getAttribute('name');
+
+          const cdp = await ctx.newCDPSession(page);
+          await cdp.send('DOM.enable');
+          await cdp.send('Autofill.enable').catch(() => {}); // absent on some builds; Autofill.trigger below is not optional
+          // Bounded wait on Chrome's own report of the fill (resolves null on timeout → loud failure below).
+          const filledEvent = new Promise((resolve) => {
+            timer = setTimeout(() => resolve(null), 10_000);
+            cdp.once('Autofill.addressFormFilled', (e) => { clearTimeout(timer); resolve(e); });
+          });
+          await page.focus(trigger);
+          const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
+          const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: root.nodeId, selector: trigger });
+          const { node } = await cdp.send('DOM.describeNode', { nodeId });
+          await cdp.send('Autofill.trigger', { fieldId: node.backendNodeId, address: AUTOFILL_ADDRESS });
+          const ev = await filledEvent;
+          expect(ev, `no Autofill.addressFormFilled event within 10s of triggering from ${trigger}`).not.toBeNull();
+          const filled = ev.filledFields;
+          const report = filled.map(fmtFilled).join(', ');
+
+          // Sync point: the DOM shows every non-trap value Chrome reports as filled.
+          const reported = filled.filter((f) => f.value && f.name && f.name !== trapName).map((f) => f.name);
+          await page.waitForFunction((names) => {
+            const form = document.getElementById('gv-demo-form');
+            return names.every((n) => form.elements.namedItem(n)?.value);
+          }, reported);
+          const values = await page.evaluate(([sel, names]) => {
+            const form = document.getElementById('gv-demo-form');
+            const out = { trap: document.querySelector(sel).value, contact: {}, dirty: [] };
+            for (const n of names) out.contact[n] = form.elements.namedItem(n)?.value ?? '';
+            // Every other control a visitor or autofill could set (not locale/page,
+            // which are type="hidden") must be untouched: empty, unchecked, or on
+            // its default option.
+            for (const el of form.querySelectorAll('input, select, textarea')) {
+              if (names.includes(el.name) || ['hidden', 'submit', 'button', 'reset', 'image'].includes(el.type)) continue;
+              const touched = el.type === 'radio' || el.type === 'checkbox' ? el.checked
+                : el.tagName === 'SELECT' ? [...el.options].some((o) => o.selected !== o.defaultSelected)
+                : el.value !== '';
+              if (touched) out.dirty.push(`${el.name || el.id || el.tagName}=${JSON.stringify(el.value)}`);
+            }
+            return out;
+          }, [TRAP_SEL, CONTACT]);
+
+          // (b) Chrome types and fills ONLY the five contact fields: the trap (no
+          // Company-name type) and every other field in the section — `message`
+          // today, any future decoy (street, city, zip, a second email…) — get no
+          // value and no autofill type.
+          const strays = filled.filter((f) => !CONTACT.includes(f.name) && (f.value || f.autofillType));
+          expect.soft(strays.map(fmtFilled), `Chrome autofill filled/classified a non-contact field (trap "${trapName}") from ${trigger} — ${report}`).toEqual([]);
+          // (a) The trap input itself, and every other non-contact control, is still empty.
+          expect.soft(values.trap, `trap "${trapName}" value after autofill from ${trigger}`).toBe('');
+          expect.soft(values.dirty, `non-contact form controls set by autofill from ${trigger}`).toEqual([]);
+          // (c) One section, per Chrome's own report: every contact field is typed and
+          // filled, whichever field triggered it. (The DOM alone can't prove it —
+          // SL/HR pre-select their country.)
+          for (const n of CONTACT) {
+            const f = filled.find((x) => x.name === n);
+            expect.soft(f?.value ?? '', `${n} not filled by autofill from ${trigger} (form split?) — ${report}`).not.toBe('');
+            expect.soft(f?.autofillType ?? '', `${n} has no autofill type (from ${trigger}) — ${report}`).not.toBe('');
+            expect.soft(values.contact[n], `${n} empty in the DOM after autofill from ${trigger}`).not.toBe('');
+          }
+          expect(posted, 'nothing was submitted').toBe(0);
+        } finally {
+          clearTimeout(timer);
+          await ctx.close();
+        }
+      });
+    }
+  }
+});
+
 test('/book-a-demo/ optional fields may be left blank and message is optional', async ({ page }) => {
   const cap = await armLeadCapture(page);
   await gotoClean(page, '/book-a-demo/');
