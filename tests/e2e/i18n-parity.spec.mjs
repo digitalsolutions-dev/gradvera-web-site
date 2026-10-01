@@ -86,3 +86,46 @@ test('every t() key in the localized components exists in en, sl and hr', () => 
   }
   expect(missing).toEqual([]);
 });
+
+// HR proofreading (lektura, 2026-10-01): the demo is a "prezentacija" booked
+// with "Zakažite", never a "demonstracija" you "rezervirate". The raw HTML is
+// checked, so attributes (iframe title), <title>, meta and JSON-LD count too —
+// the lowercase URL slug `rezervirajte-demo` is deliberately unchanged.
+const HR_PAGES = ['/hr/', '/hr/rezervirajte-demo/', '/hr/gradevinski-troskovnik/', '/hr/gradevinske-kalkulacije/', '/hr/pravila-privatnosti/'];
+const HR_CTA = 'Zakažite prezentaciju';
+
+for (const path of HR_PAGES) {
+  test(`${path} uses the proofread HR demo wording`, async ({ page }) => {
+    await gotoClean(page, path);
+    const html = await page.content();
+    expect(html, `${path} still says "demonstracija"`).not.toMatch(/demonstrac/i);
+    expect(html, `${path} still says "Rezervirajte"`).not.toContain('Rezervirajte');
+    await expect(page.locator('header.hdr .nav-cta a.btn-primary')).toHaveText(HR_CTA);
+    await expect(page.locator('footer')).toContainText(HR_CTA);
+  });
+}
+
+test('/hr/ home CTAs and headings carry the proofread copy', async ({ page }) => {
+  await gotoClean(page, '/hr/');
+  for (const sel of ['.hero-actions a.btn-primary', '.cta1 a.btn-primary', '.cta2 a.btn-primary']) {
+    await expect(page.locator(sel)).toHaveText(`${HR_CTA} →`);
+  }
+  await expect(page.locator('#helps h2')).toHaveText('Odredite cijene za više ponuda u manje vremena, uz troškove na koje se možete osloniti.');
+  await expect(page.locator('#helps h2 .amber')).toHaveText('troškove na koje se možete osloniti.');
+  await expect(page.locator('.cta1 .c1t')).toHaveText('Pogledajte koliko se brže sastavlja pouzdana ponuda.');
+  await expect(page.locator('.cta1 .c1t .amber')).toHaveText('pouzdana');
+});
+
+test('/hr/rezervirajte-demo/ title, submit button and Bookings frame carry the proofread copy', async ({ page }) => {
+  await gotoClean(page, '/hr/rezervirajte-demo/');
+  await expect(page).toHaveTitle(`${HR_CTA} — Gradvera`);
+  await expect(page.locator('#gv-demo-form button[type="submit"] .btn-label')).toHaveText(HR_CTA);
+  await expect(page.locator('iframe.booking-frame')).toHaveAttribute('title', `${HR_CTA} Gradvere — Microsoft Bookings`);
+});
+
+for (const path of ['/hr/gradevinski-troskovnik/', '/hr/gradevinske-kalkulacije/']) {
+  test(`${path} guide CTA carries the proofread copy`, async ({ page }) => {
+    await gotoClean(page, path);
+    await expect(page.locator('.guide-cta a.btn-primary')).toHaveText(`${HR_CTA} →`);
+  });
+}
